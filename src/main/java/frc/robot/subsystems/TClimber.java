@@ -10,18 +10,18 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class ExampleSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  TalonFX eRica = new TalonFX(10);
+public class TClimber extends SubsystemBase {
+  /** Creates a new TClimber. */
+  TalonFX TClimberMotor = new TalonFX(10);
   DutyCycleOut energy = new DutyCycleOut(0);
 
-  private final VelocityVoltage eRicaVelocityRequest = new VelocityVoltage(0);
+  private final VelocityVoltage TClimberVelocityRequest = new VelocityVoltage(0);
 
-  public ExampleSubsystem() {
-    this.eRicaMotorConfiguration(eRica);
+  public TClimber() {
+    this.TClimberMotorConfiguration(TClimberMotor);
   }
 
-  public void eRicaMotorConfiguration(TalonFX eRica) {
+  public void TClimberMotorConfiguration(TalonFX TClimberMotor) {
 
   }
 
@@ -31,8 +31,8 @@ public class ExampleSubsystem extends SubsystemBase {
    * @return a command
    */
  
-  public void setEricaPower(double Erika) {
-    eRica.setControl(eRicaVelocityRequest.withVelocity(Erika));
+  public void setTClimberPower(double Erika) {
+    TClimberMotor.setControl(TClimberVelocityRequest.withVelocity(Erika));
     System.out.println(Erika);
     
   }

@@ -10,18 +10,21 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class ExampleSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  TalonFX eRica = new TalonFX(10);
+public class Elevator extends SubsystemBase {
+  /** Creates a new Elevator. */
+  TalonFX Elevator1 = new TalonFX(10);
+  TalonFX Elevator2 = new TalonFX(10);
+
   DutyCycleOut energy = new DutyCycleOut(0);
 
-  private final VelocityVoltage eRicaVelocityRequest = new VelocityVoltage(0);
+  private final VelocityVoltage ElevatorVelocityRequest = new VelocityVoltage(0);
 
-  public ExampleSubsystem() {
-    this.eRicaMotorConfiguration(eRica);
+  public Elevator() {
+    this.ElevatorMotorConfiguration(Elevator1);
+    this.ElevatorMotorConfiguration(Elevator2);
   }
 
-  public void eRicaMotorConfiguration(TalonFX eRica) {
+  public void ElevatorMotorConfiguration(TalonFX Elevator1) {
 
   }
 
@@ -31,8 +34,9 @@ public class ExampleSubsystem extends SubsystemBase {
    * @return a command
    */
  
-  public void setEricaPower(double Erika) {
-    eRica.setControl(eRicaVelocityRequest.withVelocity(Erika));
+  public void setElevatorPower(double Erika) {
+    Elevator1.setControl(ElevatorVelocityRequest.withVelocity(Erika));
+    Elevator2.setControl(ElevatorVelocityRequest.withVelocity(Erika));
     System.out.println(Erika);
     
   }

@@ -13,13 +13,6 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static final int kDriverControllerPort = 0;
-  public static final int keRicaMaxForwardVoltage = 11;
-  public static final int keRicaMaxReverseVoltage = -11;
-  public static final int kBeamBreakIntakeAnalog = 0;
-  public static final int kBeamBreakShooterAnalog = 1;
-  public static final double kIntakeBeamBreakCrossover = 0.9;
-  public static final double kShooterBeamBreakCrossover = 0.9;
-  public static final boolean kPrintSubsystemBeamBreak = false;
+  
 
 }

@@ -10,29 +10,33 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class ExampleSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  TalonFX eRica = new TalonFX(10);
+public class CoralIntake extends SubsystemBase {
+  /** Creates a new CoralIntake. */
+  TalonFX coralIntake = new TalonFX(10);
+  TalonFX coralRotate = new TalonFX(10);
   DutyCycleOut energy = new DutyCycleOut(0);
 
-  private final VelocityVoltage eRicaVelocityRequest = new VelocityVoltage(0);
+  private final VelocityVoltage coralMotorVelocityRequest = new VelocityVoltage(0);
 
-  public ExampleSubsystem() {
-    this.eRicaMotorConfiguration(eRica);
+  public CoralIntake() {
+    this.coralIntakeConfiguration(coralIntake);
+    this.coralIntakeConfiguration(coralRotate);
+
   }
 
-  public void eRicaMotorConfiguration(TalonFX eRica) {
+  public void coralIntakeConfiguration(TalonFX coralIntake) {
 
   }
 
   /**
    * Example command factory method.
    *
-   * @return a command
+   * @return a command 
    */
  
-  public void setEricaPower(double Erika) {
-    eRica.setControl(eRicaVelocityRequest.withVelocity(Erika));
+  public void setcoralMotorPower(double Erika) {
+    coralIntake.setControl(coralMotorVelocityRequest.withVelocity(Erika));
+    coralRotate.setControl(coralMotorVelocityRequest.withVelocity(Erika));
     System.out.println(Erika);
     
   }

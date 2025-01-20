@@ -10,18 +10,23 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class ExampleSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  TalonFX eRica = new TalonFX(10);
+public class AlgaeIntake extends SubsystemBase {
+  /** Creates a new AlgaeIntake. */
+  TalonFX AlgaeIntake1 = new TalonFX(10);
+  TalonFX AlgaeIntake2 = new TalonFX(10);
+  TalonFX AlgaeRotate = new TalonFX(10);
+
   DutyCycleOut energy = new DutyCycleOut(0);
 
-  private final VelocityVoltage eRicaVelocityRequest = new VelocityVoltage(0);
+  private final VelocityVoltage AlgaeVelocityRequest = new VelocityVoltage(0);
 
-  public ExampleSubsystem() {
-    this.eRicaMotorConfiguration(eRica);
+  public AlgaeIntake() {
+    this.AlgaeIntakeMotorConfiguration(AlgaeIntake1);
+    this.AlgaeIntakeMotorConfiguration(AlgaeIntake2);
+    this.AlgaeIntakeMotorConfiguration(AlgaeRotate);
   }
 
-  public void eRicaMotorConfiguration(TalonFX eRica) {
+  public void AlgaeIntakeMotorConfiguration(TalonFX AlgaeIntake) {
 
   }
 
@@ -31,8 +36,10 @@ public class ExampleSubsystem extends SubsystemBase {
    * @return a command
    */
  
-  public void setEricaPower(double Erika) {
-    eRica.setControl(eRicaVelocityRequest.withVelocity(Erika));
+  public void setAlgaePower(double Erika) {
+    AlgaeIntake1.setControl(AlgaeVelocityRequest.withVelocity(Erika));
+    AlgaeIntake2.setControl(AlgaeVelocityRequest.withVelocity(Erika));
+    AlgaeRotate.setControl(AlgaeVelocityRequest.withVelocity(Erika));
     System.out.println(Erika);
     
   }
