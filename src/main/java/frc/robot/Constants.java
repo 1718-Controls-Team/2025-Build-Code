@@ -39,7 +39,7 @@ public final class Constants {
   public static final double kCoralRotateSupplyCurrentLimit = 1;
   public static final InvertedValue kCoralRotateDirection = InvertedValue.Clockwise_Positive;
   public static final SensorDirectionValue kCoralRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
-  public static final double kAbsoluteSensorDiscontinuityPoint = 1;
+  public static final double kCoralCancoderAbsoluteSensorDiscontinuityPoint = 1;
 
 // coralSpiin Constants
 public static final double kCoralSpinDerivative = 0;
@@ -52,4 +52,45 @@ public static final double kCoralSpinSupplyCurrentLimit = 0;
 public static final double kCoralSpinVelocityFeedFoward = 0;
 public static final double kCoralSpinVoltageClosedLoopRampPeriod = 0;
 
+// Climber Constants
+public static final double kTClimberProportional = 0; 
+public static final double kTClimberIntegral = 0;
+public static final double kTClimberDerivative = 0;
+public static final double kTClimberFeedFoward = 0;
+public static final double kTClimberVelocityFeedForward = 0;
+public static final double kTClimberGravityFeedForward = 0;
+public static final double kTClimberMaxReverseVoltage = -11;
+public static final double kTClimberMaxForwardVoltage = 11;
+public static final double kTClimberMotionMagicAcceleration = 0;
+public static final double kTClimberMotionMagicCruiseVelocity = 0;
+public static final double kTClimberVoltageClosedLoopRampPeriod = 0;
+public static final double kTClimberSupplyCurrentLimit = 1;
+public static final InvertedValue kTClimberDirection = InvertedValue.Clockwise_Positive;
+public static final SensorDirectionValue kTClimberCancoderDirection = SensorDirectionValue.Clockwise_Positive;
+public static final double kTClimberCancoderAbsoluteSensorDiscontinuityPoint = 1;
+public static final double kTClimberRotorToSensorRatio = 0;
+public static final double kTClimberVelocityFeedFoward = 0;
+
+// Elevator Constants
+  public static final double kElevator1Proportional = 0;
+  public static final double kElevator1Integral = 0;
+  public static final double kElevator1Derivative = 0;
+  public static final double kElevator1VelocityFeedFoward = 0;
+  public static final InvertedValue kElevator1Direction = InvertedValue.Clockwise_Positive;
+  public static final double kElevator1SupplyCurrentLimit = 0;
+  public static final double kElevator1VoltageClosedLoopRampPeriod = 0;
+  public static final double kElevator1MaxForwardVoltage = 11;
+  public static final double kElevator1MaxReverseVoltage = -11;
+
+  public static final double kElevator2Proportional = 0;
+  public static final double kElevator2Integral = 0;
+  public static final double kElevator2Derivative = 0;
+  public static final double kElevator2VelocityFeedFoward = 0;
+  public static final InvertedValue kElevator2Direction = InvertedValue.Clockwise_Positive;
+  public static final double kElevator2SupplyCurrentLimit = 0;
+  public static final double kElevator2VoltageClosedLoopRampPeriod = 0;
+  public static final double kElevator2MaxForwardVoltage = 11;
+  public static final double kElevator2MaxReverseVoltage = -11;
+
+  
 }

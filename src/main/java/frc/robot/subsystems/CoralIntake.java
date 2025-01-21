@@ -51,7 +51,7 @@ public class CoralIntake extends SubsystemBase {
   public void configureCoralCancoder(CANcoder coralRotateCancoder){  
     CANcoderConfiguration coralRotateCANcoderConfig = new CANcoderConfiguration();
     coralRotateCANcoderConfig.MagnetSensor.MagnetOffset = -0.398926;
-    coralRotateCANcoderConfig.MagnetSensor.AbsoluteSensorDiscontinuityPoint = Constants.kAbsoluteSensorDiscontinuityPoint;
+    coralRotateCANcoderConfig.MagnetSensor.AbsoluteSensorDiscontinuityPoint = Constants.kCoralCancoderAbsoluteSensorDiscontinuityPoint;
     coralRotateCANcoderConfig.MagnetSensor.SensorDirection = Constants.kCoralRotateCancoderDirection;
   }
   public void coralRotateConfiguration(TalonFX m_coralRotate) {

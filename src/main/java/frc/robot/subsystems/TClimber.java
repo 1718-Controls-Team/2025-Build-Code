@@ -16,6 +16,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
+import frc.robot.Constants;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -23,6 +24,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class TClimber extends SubsystemBase {
   /** Creates a new TClimber. */
   TalonFX m_TClimber = new TalonFX(22);
+  CANcoder m_TClimberCancoder = new CANcoder(23);
+
   
   private final MotionMagicVoltage TClimberRotationRequest = new MotionMagicVoltage(0);
   private final DutyCycleOut TClimberVoltageRequest = new DutyCycleOut(0);
@@ -61,13 +64,12 @@ public class TClimber extends SubsystemBase {
     slot0.kP = Constants.kTClimberProportional;
     slot0.kI = Constants.kTClimberIntegral;
     slot0.kD = Constants.kTClimberDerivative;
-    slot0.kG = Constants.kTClimberGravity;
+    slot0.kG = Constants.kTClimberGravityFeedForward;
     slot0.kV = Constants.kTClimberVelocityFeedFoward;
     slot0.GravityType = GravityTypeValue.Arm_Cosine;
 
     //slot0.kV = Constants.kTClimberVelocityFeedFoward;
     //slot0.kS = Constants.kTClimberStaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
-    TClimberConfig.Feedback.FeedbackRemoteSensorID = Constants.kTClimberCancoderCanID;
     TClimberConfig.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder;
     TClimberConfig.Feedback.RotorToSensorRatio = Constants.kTClimberRotorToSensorRatio;
 
@@ -87,8 +89,8 @@ public class TClimber extends SubsystemBase {
   public void configureFrontIntakeCancoder(CANcoder frontIntakeCancoder){  
     CANcoderConfiguration TClimberCANcoderConfig = new CANcoderConfiguration();
     TClimberCANcoderConfig.MagnetSensor.MagnetOffset = -0.398926;
-    TClimberCANcoderConfig.MagnetSensor.AbsoluteSensorDiscontinuityPoint = Constants.kTClimberCancoderAbsoluteSensorDiscontinuityPoint
-    TClimberCANcoderConfig.MagnetSensor.SensorDirection = Constants.kFrontIntakeRotateCancoderDirection;
+    TClimberCANcoderConfig.MagnetSensor.AbsoluteSensorDiscontinuityPoint = Constants.kTClimberCancoderAbsoluteSensorDiscontinuityPoint;
+    TClimberCANcoderConfig.MagnetSensor.SensorDirection = Constants.kTClimberCancoderDirection;
   }
   
   /**
