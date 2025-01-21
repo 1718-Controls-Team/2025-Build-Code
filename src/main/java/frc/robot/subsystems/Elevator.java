@@ -13,12 +13,14 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import frc.robot.Constants;
-
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
+  double m_desiredPosition = 0;
+
   TalonFX m_Elevator1 = new TalonFX(13);
   TalonFX m_Elevator2 = new TalonFX(14);
 
@@ -122,6 +124,13 @@ public class Elevator extends SubsystemBase {
    *
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
+
+   public void setClimberDesiredPosition(double desiredPosition) {
+      m_Elevator1.setControl(ElevatorPositionRequest.withPosition(desiredPosition));
+      m_Elevator2.setControl(ElevatorPositionRequest.withPosition(desiredPosition));
+      m_desiredPosition = desiredPosition;
+  }
+
 
   @Override
   public void periodic() {
