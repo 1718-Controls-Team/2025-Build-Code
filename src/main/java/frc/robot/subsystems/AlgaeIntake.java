@@ -61,8 +61,8 @@ public class AlgaeIntake extends SubsystemBase {
     slot0.kP = Constants.kAlgaeIntakeRotateProportional;
     slot0.kI = Constants.kAlgaeIntakeRotateIntegral;
     slot0.kD = Constants.kAlgaeIntakeRotateDerivative;
-    slot0.kG = Constants.kAlgaeIntakeRotateGravity;
-    slot0.kV = Constants.kAlgaeIntakeRotateVelocityFeedFoward;
+    slot0.kG = Constants.kAlgaeIntakeRotateGravityFeedForward;
+    slot0.kV = Constants.kAlgaeIntakeRotateVelocityFeedForward;
     slot0.GravityType = GravityTypeValue.Arm_Cosine;
 
     //slot0.kV = Constants.kAlgaeIntakeRotateVelocityFeedFoward;
@@ -76,7 +76,7 @@ public class AlgaeIntake extends SubsystemBase {
 
     StatusCode algaeIntakeRotateStatus = StatusCode.StatusCodeNotInitialized;
     for(int i = 0; i < 5; ++i) {
-      algaeIntakeRotateStatus = m_algaeIntakeRotate.getConfigurator().apply(algaeIntakeRotateConfig);
+      algaeIntakeRotateStatus = AlgaeRotate.getConfigurator().apply(algaeIntakeRotateConfig);
       if (algaeIntakeRotateStatus.isOK()) break;
     }
     if (!algaeIntakeRotateStatus.isOK()) {
@@ -87,7 +87,7 @@ public class AlgaeIntake extends SubsystemBase {
   public void configureAlgaeIntakeCancoder(CANcoder algaeIntakeCancoder){  
     CANcoderConfiguration algaeIntakeRotateCANcoderConfig = new CANcoderConfiguration();
     algaeIntakeRotateCANcoderConfig.MagnetSensor.MagnetOffset = -0.398926;
-    algaeIntakeRotateCANcoderConfig.MagnetSensor.AbsoluteSensorRange = AbsoluteSensorRangeValue.Signed_PlusMinusHalf;
+    algaeIntakeRotateCANcoderConfig.MagnetSensor.AbsoluteSensorDiscontinuityPoint = Constants.kAlgaeIntakeRotateCancoderAbsoluteSensorDiscontinuityPoint;
     algaeIntakeRotateCANcoderConfig.MagnetSensor.SensorDirection = Constants.kAlgaeIntakeRotateCancoderDirection;
   }
 
