@@ -40,6 +40,8 @@ public final class Constants {
   public static final InvertedValue kCoralRotateDirection = InvertedValue.Clockwise_Positive;
   public static final SensorDirectionValue kCoralRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
   public static final double kCoralCancoderAbsoluteSensorDiscontinuityPoint = 1;
+  public static final int kCoralRotateCancoderCanID = 16;
+  public static final double kCoralRotateRotorToSensorRatio = 0;
 
 // coralSpiin Constants
 public static final double kCoralSpinDerivative = 0;
@@ -70,6 +72,7 @@ public static final SensorDirectionValue kTClimberCancoderDirection = SensorDire
 public static final double kTClimberCancoderAbsoluteSensorDiscontinuityPoint = 1;
 public static final double kTClimberRotorToSensorRatio = 0;
 public static final double kTClimberVelocityFeedFoward = 0;
+public static final int kTClimberCancoderCanID = 23;
 
 // Elevator Constants
   public static final double kElevator1Proportional = 0;

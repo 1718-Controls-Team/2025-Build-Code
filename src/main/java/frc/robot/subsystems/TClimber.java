@@ -71,6 +71,7 @@ public class TClimber extends SubsystemBase {
 
     //slot0.kV = Constants.kTClimberVelocityFeedFoward;
     //slot0.kS = Constants.kTClimberStaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
+    TClimberConfig.Feedback.FeedbackRemoteSensorID = Constants.kTClimberCancoderCanID;
     TClimberConfig.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder;
     TClimberConfig.Feedback.RotorToSensorRatio = Constants.kTClimberRotorToSensorRatio;
 

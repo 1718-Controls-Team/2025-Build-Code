@@ -13,6 +13,7 @@ import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
@@ -68,6 +69,10 @@ public class CoralIntake extends SubsystemBase {
   coralRotateConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kCoralRotateVoltageClosedLoopRampPeriod;
   coralRotateConfig.Voltage.PeakForwardVoltage = Constants.kCoralMaxReverseVoltage;
   coralRotateConfig.Voltage.PeakForwardVoltage = Constants.kCoralMaxForwardVoltage;
+
+  coralRotateConfig.Feedback.FeedbackRemoteSensorID = Constants.kCoralRotateCancoderCanID;
+  coralRotateConfig.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder;
+  coralRotateConfig.Feedback.RotorToSensorRatio = Constants.kCoralRotateRotorToSensorRatio;
 
   Slot0Configs slot0 = coralRotateConfig.Slot0;
     slot0.kP = Constants.kCoralRotateProportional;
