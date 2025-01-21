@@ -9,6 +9,7 @@ import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
+import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -16,6 +17,7 @@ import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.units.measure.Velocity;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -27,8 +29,10 @@ public class AlgaeIntake extends SubsystemBase {
   TalonFX AlgaeIntake1 = new TalonFX(20);
   TalonFX AlgaeIntake2 = new TalonFX(21);
   
-  
-  DutyCycleOut energy = new DutyCycleOut(0);
+  MotionMagicVoltage AlgaeIntakePosition = new MotionMagicVoltage(0);
+  VelocityVoltage AlgaeIntake1Power = new VelocityVoltage(0);
+  VelocityVoltage AlgaeIntake2Power = new VelocityVoltage(0);
+  DutyCycleOut AlgaeIntakeVoltage = new DutyCycleOut(0);
 
   private final VelocityVoltage AlgaeVelocityRequest = new VelocityVoltage(0);
 
@@ -147,12 +151,18 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
    * @return a command
    */
  
-  public void setAlgaePower(double Erika) {
-    AlgaeIntake1.setControl(AlgaeVelocityRequest.withVelocity(Erika));
-    AlgaeIntake2.setControl(AlgaeVelocityRequest.withVelocity(Erika));
-    AlgaeRotate.setControl(AlgaeVelocityRequest.withVelocity(Erika));
-    //System.out.println(Erika);
-    
+  public void setAlgaeSpinPower(double AlgaeIntakePower) {
+    AlgaeIntake1.setControl(AlgaeVelocityRequest.withVelocity(AlgaeIntakePower));
+    AlgaeIntake2.setControl(AlgaeVelocityRequest.withVelocity(AlgaeIntakePower));
+    //System.out.println(AlgaeIntakePower);
+  }
+  
+  public void setAlgaeRotatePosition(double AlgaeIntakeDesiredPosition) {
+    AlgaeRotate.setControl(AlgaeIntakePosition.withPosition(AlgaeIntakeDesiredPosition));
+  }
+
+  public void ZeroAlgaeRotateOutput() {
+    AlgaeRotate.setControl(AlgaeIntakeVoltage);
   }
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).
