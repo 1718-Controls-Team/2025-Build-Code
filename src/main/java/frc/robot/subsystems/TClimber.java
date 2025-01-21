@@ -32,6 +32,7 @@ public class TClimber extends SubsystemBase {
 
   public TClimber() {
     this.configureTClimber(m_TClimber);
+    this.configureTClimberCancoder(m_TClimberCancoder);
   }
 
   /**
@@ -86,7 +87,7 @@ public class TClimber extends SubsystemBase {
     }
   }
 
-  public void configureFrontIntakeCancoder(CANcoder frontIntakeCancoder){  
+  public void configureTClimberCancoder(CANcoder TClimberCancoder){  
     CANcoderConfiguration TClimberCANcoderConfig = new CANcoderConfiguration();
     TClimberCANcoderConfig.MagnetSensor.MagnetOffset = -0.398926;
     TClimberCANcoderConfig.MagnetSensor.AbsoluteSensorDiscontinuityPoint = Constants.kTClimberCancoderAbsoluteSensorDiscontinuityPoint;
@@ -98,6 +99,16 @@ public class TClimber extends SubsystemBase {
    *
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
+  public void setcoralRotate(double position) {
+    m_TClimber.setControl(TClimberRotationRequest.withPosition(position));
+
+  }
+  public void ZeroCoralRotate() {
+    m_TClimber.setControl(TClimberVoltageRequest);
+  }
+
+
+
   public boolean exampleCondition() {
     // Query some boolean state, such as a digital sensor.
     return false;
