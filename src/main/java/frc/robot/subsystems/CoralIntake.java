@@ -9,6 +9,7 @@ import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
+import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -24,13 +25,16 @@ public class CoralIntake extends SubsystemBase {
   TalonFX m_coralSpin = new TalonFX(17);
   TalonFX m_coralRotate = new TalonFX(15);
   CANcoder m_coralRotatCancoder = new CANcoder(16);
-  DutyCycleOut energy = new DutyCycleOut(0);
 
-  private final VelocityVoltage coralMotorVelocityRequest = new VelocityVoltage(0);
 
+  private final VelocityVoltage coralSpinVelocityRequest = new VelocityVoltage(0);
+  private final MotionMagicVoltage coralRotationRequest = new MotionMagicVoltage(0);
+  private final DutyCycleOut coralRotateVoltageRequest = new DutyCycleOut(0);
+ 
   public CoralIntake() {
     this.coralIntakeConfiguration(m_coralSpin);
     this.coralRotateConfiguration(m_coralRotate);
+    this.configureCoralCancoder(m_coralRotatCancoder);
 
   }
 
@@ -90,12 +94,20 @@ if (!coralRotStatus.isOK()) {
    * @return a command 
    */
  
-  public void setcoralMotorPower(double Erika) {
-    m_coralSpin.setControl(coralMotorVelocityRequest.withVelocity(Erika));
-    m_coralRotate.setControl(coralMotorVelocityRequest.withVelocity(Erika));
-    System.out.println(Erika);
-    
+  public void setcoralSpinPower(double speed) {
+    m_coralSpin.setControl(coralSpinVelocityRequest.withVelocity(speed));
+  
   }
+
+  public void setcoralRotate(double position) {
+    m_coralRotate.setControl(coralRotationRequest.withPosition(position));
+
+  }
+
+  public void ZeroCoralRotate() {
+    m_coralRotate.setControl(coralRotateVoltageRequest);
+  }
+  
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).
    *
