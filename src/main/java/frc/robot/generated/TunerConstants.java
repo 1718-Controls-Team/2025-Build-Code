@@ -156,7 +156,7 @@ public class TunerConstants {
     private static final boolean kBackLeftEncoderInverted = false;
 
     private static final Distance kBackLeftXPos = Inches.of(-11.1875);
-    private static final Distance kBackLeftYPos = Inches.of(-11.25);
+    private static final Distance kBackLeftYPos = Inches.of(11.25);
 
     // Back Right
     private static final int kBackRightDriveMotorId = 4;
