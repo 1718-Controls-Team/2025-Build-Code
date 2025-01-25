@@ -6,24 +6,36 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.subsystems.AlgaeIntake;
+import frc.robot.subsystems.CoralIntake;
+import frc.robot.subsystems.Elevator;
 
 
 /** An example command that uses an example subsystem. */
-public class Elevator extends Command {
+public class MoveElevator extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
- 
+  private final  Elevator m_Elevator;
+  private final AlgaeIntake m_AlgaeIntake;
+  private final CoralIntake m_CoralIntake;
+
+  private boolean m_isFinished = false;
+  private int m_stateMachine = 1;
+
 
   /**
    * Creates a new set-PowerCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Elevator(Subsystem[] subsystem) {
-    
+    public MoveElevator(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
+    m_Elevator = elevator;
+    m_AlgaeIntake = algaeIntake;
+    m_CoralIntake = coralIntake;
    
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
-    
+    addRequirements(m_Elevator);
+    addRequirements(m_AlgaeIntake);
+    addRequirements(m_CoralIntake);
   }
 
   // Called when the command is initially scheduled.
