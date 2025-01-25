@@ -18,6 +18,7 @@ public class AlgaeDelivery extends Command {
   private final Elevator m_elevatorSubsystem;
   private final BeamBreakSubsystem m_beamBreakSubsystem;
 
+  @SuppressWarnings("unused")
   private boolean m_isFinished = false;
 
   /**

@@ -36,8 +36,6 @@ public static final int kAlgaeIntakeRotateCanID = 18;
 public static final int kAlgaeIntakeRotateCancoderCanID = 19;
 public static final int kAlgaeIntakeSpin1CanID = 20;
 public static final int kAlgaeIntakeSpin2CanID = 21;
-public static final int kTClimberCanID = 22;
-public static final int kTClimberCancoderCanID = 23;
 
 
 // coralRotate Constants
@@ -92,6 +90,9 @@ public static final int kTClimberCancoderCanID = 23;
   public static final double kTClimberCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kTClimberRotorToSensorRatio = 0;
   public static final double kTClimberVelocityFeedFoward = 0;
+  // not skigma, not alphica aproved constants below
+  public static final double kTClimberUpPos = 0;
+
 
 // Elevator Constants
   public static final double kElevator1Proportional = 0;
