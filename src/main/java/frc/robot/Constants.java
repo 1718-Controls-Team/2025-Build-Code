@@ -7,6 +7,9 @@ package frc.robot;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -143,4 +146,8 @@ public static final int kTClimberCancoderCanID = 23;
   public static final SensorDirectionValue kAlgaeIntakeRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
   public static final double kAlgaeIntakeRotateCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kAlgaeIntakeRotateRotorToSensorRatio = 0;
+
+
+  //Custom Brownout voltage for the RIO2.
+  public static final double kCustomBrownout = 6.0;
 }

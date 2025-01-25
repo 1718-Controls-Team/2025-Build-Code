@@ -6,12 +6,15 @@ package frc.robot;
 
 import static edu.wpi.first.units.Units.*;
 
+import java.io.File;
+
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -43,8 +46,11 @@ public class RobotContainer {
     /* Path follower */
     private final SendableChooser<Command> autoChooser;
 
+    File autonFolder = new File(Filesystem.getDeployDirectory() + "/pathplanner/autos");
+    //Selector autonSelect = new Selector(autonFolder, ".auto");
+
     public RobotContainer() {
-        autoChooser = AutoBuilder.buildAutoChooser("Tests");
+        autoChooser = AutoBuilder.buildAutoChooser("NewAuto");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
         configureBindings();

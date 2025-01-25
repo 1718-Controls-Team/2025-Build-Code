@@ -5,22 +5,51 @@
 package frc.robot;
 
 import com.ctre.phoenix6.Utils;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.net.PortForwarder;
+import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-
+  private Command m_autonLoading;
   private final RobotContainer m_robotContainer;
+
+  public boolean hasFilteredAutonRoutines = false;
 
   private final boolean kUseLimelight = false;
 
   public Robot() {
     m_robotContainer = new RobotContainer();
+    m_autonLoading = new PathPlannerAuto("Tests").ignoringDisable(true);
+    m_autonLoading.schedule();
+
+    //Setting up port forwarding for all limelight related ports.
+    //Only setting the port-forwarding once in the code.
+    for (int port = 5800; port <= 5807; port++) {
+      PortForwarder.add(port, "limelight.local", port);
+    }
+
+    //Set a custom brownout voltage for the RoboRIO.
+    //Only works with the RIO2.
+    RobotController.setBrownoutVoltage(Constants.kCustomBrownout);
+
+    //Start a simple recording to the data log.
+    //This should log the contents of the NetworkTables, which should be good for now.
+    DataLogManager.start();
+    //This should log the joysticks as well.
+    DriverStation.startDataLog(DataLogManager.getLog());
   }
+
 
   @Override
   public void robotPeriodic() {
@@ -51,14 +80,37 @@ public class Robot extends TimedRobot {
   public void disabledInit() {}
 
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+    //double m_DistanceBetweenAprilTagAndLimelight = Constants.kSpeakerAprilTagHeight - Constants.kLimelightHeight;
+    SmartDashboard.putNumber("Pigeon", m_robotContainer.drivetrain.getPigeon2().getRotation2d().getDegrees());
+    //double m_VerticalAngleToAprilTag = Math.toRadians(LimelightHelpers.getTY(Constants.kLimelightName));
+    //double m_HorizontalAngleToAprilTag = Math.toRadians(LimelightHelpers.getTX(Constants.kLimelightName));
+    //double m_DistanceToAprilTag = m_DistanceBetweenAprilTagAndLimelight / (Math.tan(m_VerticalAngleToAprilTag));
+    //System.out.println(m_DistanceToAprilTag);
+    //All of the commented stuff is calculations we did last year to find the distance from Limelight to April Tag
+
+    //Check if the robot is in communication with the Driver Station.
+    //If it is, attempt to filter the autonomous routines based on alliance color.
+    
+    /*if (!hasFilteredAutonRoutines && DriverStation.isDSAttached()) {
+      switch (DriverStation.getAlliance().get()) {
+        case Blue:
+          m_robotContainer.autonSelect.filterSelections("Blue");
+        break;
+        case Red:
+          m_robotContainer.autonSelect.filterSelections("Red");
+        break;
+      }
+      m_robotContainer.autonSelect.sortSelections();
+      hasFilteredAutonRoutines = true;*/
+  }
 
   @Override
   public void disabledExit() {}
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    m_autonomousCommand = new WaitCommand(0.010).andThen(m_robotContainer.getAutonomousCommand());
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -79,7 +131,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    SmartDashboard.putNumber("Pigeon", m_robotContainer.drivetrain.getPigeon2().getRotation2d().getDegrees());
+  }
 
   @Override
   public void teleopExit() {}
