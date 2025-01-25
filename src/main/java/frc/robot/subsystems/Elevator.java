@@ -125,12 +125,15 @@ public class Elevator extends SubsystemBase {
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
 
-   public void setClimberDesiredPosition(double desiredPosition) {
+   public void setElevatorDesiredPosition(double desiredPosition) {
       m_Elevator1.setControl(ElevatorPositionRequest.withPosition(desiredPosition));
       m_Elevator2.setControl(ElevatorPositionRequest.withPosition(desiredPosition));
       m_desiredPosition = desiredPosition;
   }
 
+  public double getElevatorPosition() {
+    return m_Elevator1.getPosition().getValueAsDouble();
+  }
 
   @Override
   public void periodic() {

@@ -57,8 +57,13 @@ public static final int kTClimberCancoderCanID = 23;
   public static final SensorDirectionValue kCoralRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
   public static final double kCoralCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kCoralRotateRotorToSensorRatio = 0;
+// these constants below are not accurate lmao
+  public static final double kCoralIntakeDownPos = 0;
+  public static final double kCoralIntakeSpeed = 0;
+  public static final double kCoralSpinIntakeSpeed = 0;
+  public static final double kCoralSpinStopSpeed = 0;
 
-// coralSpiin Constants
+// coralSpin Constants
   public static final double kCoralSpinDerivative = 0;
   public static final double kCoralSpinIntegral = 0;
   public static final double kCoralSpinMaxForwardVoltage = 11;
@@ -108,6 +113,9 @@ public static final int kTClimberCancoderCanID = 23;
   public static final double kElevator2VoltageClosedLoopRampPeriod = 0;
   public static final double kElevator2MaxForwardVoltage = 11;
   public static final double kElevator2MaxReverseVoltage = -11;
+// These Constants below arent real take yo pills
+  public static final double kElevatorIntakePos = 0;
+  public static final double kElevatorHomePos = 0;
 
 // Algae Intake Spins Constants
   public static final double kAlgaeIntake1Derivative = 0;
@@ -147,6 +155,12 @@ public static final int kTClimberCancoderCanID = 23;
   public static final double kAlgaeIntakeRotateCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kAlgaeIntakeRotateRotorToSensorRatio = 0;
 
+  // BeamBreak Constants
+  public static final double kIntakeBeamBreakCrossover = 0.9;
+  public static final double kShooterBeamBreakCrossover = 0.9;
+  public static final boolean kPrintSubsystemBeamBreak = false;
+  public static final int kBeamBreakZeroAnalog = 0;
+  public static final int kBeamBreakOneAnalog = 1;
 
   //Custom Brownout voltage for the RIO2.
   public static final double kCustomBrownout = 6.0;

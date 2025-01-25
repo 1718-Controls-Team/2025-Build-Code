@@ -107,6 +107,10 @@ if (!coralRotStatus.isOK()) {
     m_coralRotate.setControl(coralRotationRequest.withPosition(position));
 
   }
+
+  public double getCoralPosition() {
+    return m_coralSpin.getPosition().getValueAsDouble();
+  }
   public void ZeroCoralRotate() {
     m_coralRotate.setControl(coralRotateVoltageRequest);
   }

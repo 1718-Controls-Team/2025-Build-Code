@@ -4,12 +4,13 @@
 
 package frc.robot.commands;
 
+import frc.robot.subsystems.AlgaeIntake;
+import frc.robot.subsystems.CoralIntake;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 
 
 /** An example command that uses an example subsystem. */
-public class Elevator extends Command {
+public class Home extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
  
 
@@ -18,11 +19,10 @@ public class Elevator extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Elevator(Subsystem[] subsystem) {
-    
+  public Home(CoralIntake coralIntake, AlgaeIntake algaeIntake) {
    
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(coralIntake, algaeIntake);
     
   }
 
@@ -46,10 +46,5 @@ public class Elevator extends Command {
   @Override
   public boolean isFinished() {
     return false;
-  }
-
-  public void setElevatorDesiredPosition(double kelevatorintakeposition) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setElevatorDesiredPosition'");
   }
 }
