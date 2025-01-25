@@ -31,6 +31,8 @@ public class CoralIntake extends SubsystemBase {
   private final VelocityVoltage coralSpinVelocityRequest = new VelocityVoltage(0);
   private final MotionMagicVoltage coralRotationRequest = new MotionMagicVoltage(0);
   private final DutyCycleOut coralRotateVoltageRequest = new DutyCycleOut(0);
+
+  private double CoralIntakeRotateDesiredPos = 0;
  
   public CoralIntake() {
     this.coralIntakeConfiguration(m_coralSpin);
@@ -101,16 +103,25 @@ if (!coralRotStatus.isOK()) {
  
   public void setcoralSpinPower(double speed) {
     m_coralSpin.setControl(coralSpinVelocityRequest.withVelocity(speed));
-  
   }
+
   public void setcoralRotate(double position) {
     m_coralRotate.setControl(coralRotationRequest.withPosition(position));
+    CoralIntakeRotateDesiredPos = position;
+  }
 
+  public boolean getCoralRotateInPosition() {
+    if ((Math.abs(m_coralRotate.getPosition().getValueAsDouble() - CoralIntakeRotateDesiredPos) < Constants.kCoralIntakePositionTolerance)){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public double getCoralPosition() {
-    return m_coralSpin.getPosition().getValueAsDouble();
+    return m_coralRotate.getPosition().getValueAsDouble();
   }
+
   public void ZeroCoralRotate() {
     m_coralRotate.setControl(coralRotateVoltageRequest);
   }

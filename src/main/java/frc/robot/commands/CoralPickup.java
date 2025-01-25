@@ -66,7 +66,7 @@ public class CoralPickup extends Command {
   @Override
   public void end(boolean interrupted) {
   if (m_beamBreakSubsystem.getCoralPresentIntake())
-    m_elevatorSubsystem.setElevatorPosition(Constants.kElevatorHomePos);
+    m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
     m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
     m_isFinished=true;
   

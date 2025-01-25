@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.CoralIntake;
 import frc.robot.subsystems.Elevator;
@@ -19,6 +20,7 @@ public class MoveElevator extends Command {
 
   private boolean m_isFinished = false;
   private int m_stateMachine = 1;
+  private double m_ElevatorTargetPos;
 
 
   /**
@@ -26,10 +28,11 @@ public class MoveElevator extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-    public MoveElevator(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
+    public MoveElevator(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake, double elevatorTargetPos) {
     m_Elevator = elevator;
     m_AlgaeIntake = algaeIntake;
     m_CoralIntake = coralIntake;
+    m_ElevatorTargetPos = elevatorTargetPos;
    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Elevator);
@@ -40,13 +43,25 @@ public class MoveElevator extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    m_CoralIntake.setcoralRotate(Constants.kCoralIntakeHomePos);
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  // might need something about the subsystem here
+    // might need something about the subsystem here
+    switch(m_stateMachine){
+      case 1:
+        if (m_CoralIntake.getCoralRotateInPosition()) {
+          m_stateMachine += 1;
+          m_Elevator.setElevatorDesiredPosition(m_ElevatorTargetPos);
+        }
+      break;
+      case 2:
+        
+      break;
+      }
   }
 
   // Called once the command ends or is interrupted.
