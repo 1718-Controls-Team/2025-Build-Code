@@ -50,7 +50,7 @@ public class CoralPickup extends Command {
        */
      //If we don't have a coral,  set speeds and move to execute
       m_coralSubsystem.setcoralRotate(Constants.kCoralIntakeDownPos);  
-      m_coralSubsystem.setcoralSpinPower(Constants.kCoralIntakeSpeed);  
+      m_coralSubsystem.setcoralSpinPower(Constants.kCoralInSpinSpeed);  
       m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorIntakePos);
      
     }
@@ -67,7 +67,7 @@ public class CoralPickup extends Command {
   public void end(boolean interrupted) {
   if (m_beamBreakSubsystem.getCoralPresentIntake())
     m_elevatorSubsystem.setElevatorPosition(Constants.kElevatorHomePos);
-    m_coralSubsystem.setcoralSpinPower(Constants.kCoralSpinStopSpeed);
+    m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
     m_isFinished=true;
   
 }
