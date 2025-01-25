@@ -4,7 +4,7 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.BeamBreakSubsystem;
+import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.CoralIntake;
 import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -16,7 +16,7 @@ public class CoralPickup extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
   private final Elevator m_elevatorSubsystem;
-  private final BeamBreakSubsystem m_beamBreakSubsystem;
+  private final BeamBreak m_beamBreakSubsystem;
 
   @SuppressWarnings("unused")
     private boolean m_isFinished = false;
@@ -27,7 +27,7 @@ public class CoralPickup extends Command {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public CoralPickup(CoralIntake coralSubsystem, Elevator elevatorSubsystem, BeamBreakSubsystem beamBreakSubsystem) {
+    public CoralPickup(CoralIntake coralSubsystem, Elevator elevatorSubsystem, BeamBreak beamBreakSubsystem) {
       m_coralSubsystem = coralSubsystem;
       m_elevatorSubsystem = elevatorSubsystem;
       m_beamBreakSubsystem = beamBreakSubsystem;

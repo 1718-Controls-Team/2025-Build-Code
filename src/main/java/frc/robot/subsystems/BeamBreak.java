@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 // The shooter intake subsystem is the portion of the shooter that is NOT responsible for ejecting notes at high velocities.
-public class BeamBreakSubsystem extends SubsystemBase {
+public class BeamBreak extends SubsystemBase {
 
   //Open sensors
   AnalogInput m_BeamBreakZeroAnalog = new AnalogInput(Constants.kBeamBreakZeroAnalog);
@@ -24,7 +24,7 @@ public class BeamBreakSubsystem extends SubsystemBase {
   //Open Servo
   //Servo intakeHinge = new Servo(Constants.kShooterIntakePivotReleasePWM);
 
-  public BeamBreakSubsystem() {
+  public BeamBreak() {
   m_BeamBreakZeroAnalog.setAverageBits(6);
   m_BeamBreakOneAnalog.setAverageBits(6);
   }
