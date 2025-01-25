@@ -116,6 +116,7 @@ public static final int kTClimberCancoderCanID = 23;
 // These Constants below arent real take yo pills
   public static final double kElevatorIntakePos = 0;
   public static final double kElevatorHomePos = 0;
+  public static final double kElevatorAlgaePos = 0;
 
 // Algae Intake Spins Constants
   public static final double kAlgaeIntake1Derivative = 0;
@@ -154,6 +155,14 @@ public static final int kTClimberCancoderCanID = 23;
   public static final SensorDirectionValue kAlgaeIntakeRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
   public static final double kAlgaeIntakeRotateCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kAlgaeIntakeRotateRotorToSensorRatio = 0;
+
+  // these constants are fake, not sigma :/
+  public static final double kAlgaeOutSpinSpeed = 0;
+  public static final double kAlgaeInSpinSpeed = 0;
+  public static final double kAlgaeStopSpinSpeed = 0;
+  public static final double kAlgaeIntakePos = 0;
+  public static final double kAlgaeHomePos = 0;
+  public static final double kAlgaeStopSpeed = 0;
 
   // BeamBreak Constants
   public static final double kIntakeBeamBreakCrossover = 0.9;

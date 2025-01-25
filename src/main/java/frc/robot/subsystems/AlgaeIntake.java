@@ -157,7 +157,7 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
     //System.out.println(AlgaeIntakePower);
   }
   
-  public void setAlgaeRotatePosition(double AlgaeIntakeDesiredPosition) {
+  public void setAlgaeRotatePos(double AlgaeIntakeDesiredPosition) {
     AlgaeRotate.setControl(AlgaeIntakePosition.withPosition(AlgaeIntakeDesiredPosition));
   }
 

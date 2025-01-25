@@ -50,7 +50,6 @@ public class CoralPickup extends Command {
      //If we don't have a coral,  set speeds and move to execute
       m_coralSubsystem.setcoralRotate(Constants.kCoralIntakeDownPos);  
       m_coralSubsystem.setcoralSpinPower(Constants.kCoralIntakeSpeed);  
-      //m_shooterSubsystem.setShooterSpeed(0); Temporarily disabling this for auto testing
       m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorIntakePos);
      
     }
@@ -60,11 +59,7 @@ public class CoralPickup extends Command {
   @Override
   public void execute() {
  
-        
       }
-
-  
-  
 
   // Called once the command ends or is interrupted.
   @Override
