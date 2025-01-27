@@ -37,7 +37,7 @@ public class BeamBreak extends SubsystemBase {
    * @return Whether the intake beam break detects a note.
    * True or false.
    */
-  public BooleanSupplier getCoralPresentIntake() {  
+  public boolean getCoralPresentIntake() {  
     if (Constants.kPrintSubsystemBeamBreak){System.out.println("Subsystem: Shooter - getNotePresentShooter Voltage " + m_BeamBreakOneAnalog.getAverageVoltage());}
     
     return (m_IntakeDebounce.calculate(m_BeamBreakZeroAnalog.getAverageVoltage() >= Constants.kIntakeBeamBreakCrossover));

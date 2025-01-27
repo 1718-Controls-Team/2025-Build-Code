@@ -109,7 +109,7 @@ public class RobotContainer {
         operatorController.a().onTrue(new Home(m_coralIntake, m_algaeIntake, m_elevator));
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
         driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake, m_elevator, m_beamBreak));
-        driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_elevator, m_beamBreak)).and(m_beamBreak.getCoralPresent());
+        driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_elevator, m_beamBreak));
         driverController.rightTrigger(0.5).whileTrue(new ClimberActivate(m_tClimber));
     }
 

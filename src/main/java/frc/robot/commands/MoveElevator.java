@@ -28,7 +28,7 @@ public class MoveElevator extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-    public MoveElevator(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake, double elevatorTargetPos) {
+    public MoveElevator(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
     m_Elevator = elevator;
     m_AlgaeIntake = algaeIntake;
     m_CoralIntake = coralIntake;
