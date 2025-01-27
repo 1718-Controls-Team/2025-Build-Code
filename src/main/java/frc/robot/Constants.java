@@ -60,6 +60,8 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
   public static final double kCoralSpinSpeed = 0;
   public static final double kCoralInSpinSpeed = 0;
   public static final double kCoralStopSpinSpeed = 0;
+  public static final double kCoralIntakePositionTolerance = 20;
+  public static final double kCoralIntakeHomePos = 0;
 
 // coralSpin Constants
   public static final double kCoralSpinDerivative = 0;
@@ -118,6 +120,9 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
   public static final double kElevatorIntakePos = 0;
   public static final double kElevatorHomePos = 0;
   public static final double kElevatorAlgaePos = 0;
+  public static final double kElevatorL2ScoringPos = 0;
+  public static final double kElevatorL3ScoringPos = 0;
+  public static final double kElevatorL4ScoringPos = 0;
 
 // Algae Intake Spins Constants
   public static final double kAlgaeIntake1Derivative = 0;
@@ -164,6 +169,7 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
   public static final double kAlgaeIntakePos = 0;
   public static final double kAlgaeHomePos = 0;
   public static final double kAlgaeStopSpeed = 0;
+  public static final double kAlgaeIntakePositionTolerance = 10;
 
   // BeamBreak Constants
   public static final double kIntakeBeamBreakCrossover = 0.9;

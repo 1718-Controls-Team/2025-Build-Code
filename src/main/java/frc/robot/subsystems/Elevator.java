@@ -39,11 +39,10 @@ public class Elevator extends SubsystemBase {
    * @return a command
    */
  
-  public void setElevatorPosition(double DesiredPosition) {
+  public void setElevatorDesiredPosition(double DesiredPosition) {
     m_Elevator1.setControl(ElevatorPositionRequest.withPosition(DesiredPosition));
     m_Elevator2.setControl(ElevatorPositionRequest.withPosition(DesiredPosition));
-    //System.out.println(Erika);
-    
+    m_desiredPosition = DesiredPosition;
   }
 
   public void setClimberZeroOutput() {
@@ -125,11 +124,6 @@ public class Elevator extends SubsystemBase {
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
 
-   public void setElevatorDesiredPosition(double desiredPosition) {
-      m_Elevator1.setControl(ElevatorPositionRequest.withPosition(desiredPosition));
-      m_Elevator2.setControl(ElevatorPositionRequest.withPosition(desiredPosition));
-      m_desiredPosition = desiredPosition;
-  }
 
   public double getElevatorPosition() {
     return m_Elevator1.getPosition().getValueAsDouble();

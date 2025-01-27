@@ -11,6 +11,7 @@ import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import frc.robot.Constants;
@@ -66,8 +67,6 @@ public class TClimber extends SubsystemBase {
 
     //slot0.kV = Constants.kTClimberVelocityFeedFoward;
     //slot0.kS = Constants.kTClimberStaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
-    TClimberConfig.Feedback.RotorToSensorRatio = Constants.kTClimberRotorToSensorRatio;
-
     //Setting the config option that allows playing music on the motor during disabled.
     TClimberConfig.Audio.AllowMusicDurDisable = true;
 
@@ -86,11 +85,11 @@ public class TClimber extends SubsystemBase {
    *
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
-  public void setcoralRotate(double position) {
+  public void setClimberRotate(double position) {
     m_TClimber.setControl(TClimberRotationRequest.withPosition(position));
 
   }
-  public void ZeroCoralRotate() {
+  public void ZeroClimberRotate() {
     m_TClimber.setControl(TClimberVoltageRequest);
   }
 
