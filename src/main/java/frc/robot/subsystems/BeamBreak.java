@@ -5,6 +5,8 @@
 package frc.robot.subsystems;
 
 
+import java.util.function.BooleanSupplier;
+
 import edu.wpi.first.math.filter.Debouncer;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -35,7 +37,7 @@ public class BeamBreak extends SubsystemBase {
    * @return Whether the intake beam break detects a note.
    * True or false.
    */
-  public boolean getCoralPresentIntake() {  
+  public BooleanSupplier getCoralPresentIntake() {  
     if (Constants.kPrintSubsystemBeamBreak){System.out.println("Subsystem: Shooter - getNotePresentShooter Voltage " + m_BeamBreakOneAnalog.getAverageVoltage());}
     
     return (m_IntakeDebounce.calculate(m_BeamBreakZeroAnalog.getAverageVoltage() >= Constants.kIntakeBeamBreakCrossover));
