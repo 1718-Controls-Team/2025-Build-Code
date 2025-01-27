@@ -19,8 +19,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.commands.AlgaeDelivery;
-import frc.robot.commands.AlgaePickup;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.AlgaeToggle;
 import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.CoralPickup;
 import frc.robot.commands.Home;
@@ -70,6 +70,7 @@ public class RobotContainer {
         autoChooser = AutoBuilder.buildAutoChooser("NewAuto");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
+
         configureBindings();
     }
 
@@ -108,8 +109,7 @@ public class RobotContainer {
         operatorController.b().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake, 0));
         operatorController.a().onTrue(new Home(m_coralIntake, m_algaeIntake, m_elevator));
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
-        driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake, m_elevator, m_beamBreak));
-        driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_elevator, m_beamBreak));
+        driverController.leftBumper().whileTrue(new AlgaeToggle(m_algaeIntake, m_elevator, m_beamBreak));
         driverController.rightTrigger(0.5).whileTrue(new ClimberActivate(m_tClimber));
     }
 

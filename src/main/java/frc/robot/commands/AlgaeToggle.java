@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 
 /** An example command that uses an example subsystem. */
-public class AlgaePickup extends Command {
+public class AlgaeToggle extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final AlgaeIntake m_algaeSubsystem;
   private final Elevator m_elevatorSubsystem;
@@ -26,7 +26,7 @@ public class AlgaePickup extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public AlgaePickup(AlgaeIntake algaeSubsystem, Elevator elevatorSubsystem, BeamBreak beamBreakSubsystem) {
+  public AlgaeToggle(AlgaeIntake algaeSubsystem, Elevator elevatorSubsystem, BeamBreak beamBreakSubsystem) {
     m_algaeSubsystem = algaeSubsystem;
     m_elevatorSubsystem = elevatorSubsystem;
     m_beamBreakSubsystem = beamBreakSubsystem;
@@ -42,10 +42,17 @@ public class AlgaePickup extends Command {
   @Override
   public void initialize() {
     m_isFinished = false;
-
-    m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);  
-    m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);  
-    m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
+    if (m_beamBreakSubsystem.getAlgaePresentIntake() == true) {
+      // Delivery
+      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
+      m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeOutSpinSpeed);  
+      m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorAlgaePos);
+    } else {
+      // Pickup
+      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);  
+      m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);  
+      m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
+    }
     // the above elevator might not be correct
   }
 
