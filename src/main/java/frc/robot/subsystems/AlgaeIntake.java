@@ -35,6 +35,7 @@ public class AlgaeIntake extends SubsystemBase {
   DutyCycleOut AlgaeIntakeVoltage = new DutyCycleOut(0);
 
   private final VelocityVoltage AlgaeVelocityRequest = new VelocityVoltage(0);
+  private double AlgaeIntakeRotateDesiredPos = 0;
 
   public AlgaeIntake() {
     this.configureAlgaeIntakeRotate(AlgaeRotate);
@@ -159,10 +160,19 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
   
   public void setAlgaeRotatePos(double AlgaeIntakeDesiredPosition) {
     AlgaeRotate.setControl(AlgaeIntakePosition.withPosition(AlgaeIntakeDesiredPosition));
+    AlgaeIntakeRotateDesiredPos = AlgaeIntakeDesiredPosition;
   }
 
   public void ZeroAlgaeRotateOutput() {
     AlgaeRotate.setControl(AlgaeIntakeVoltage);
+  }
+
+  public boolean getAlgaeRotateInPosition(){
+    if ((Math.abs(AlgaeRotate.getPosition().getValueAsDouble() - AlgaeIntakeRotateDesiredPos) < Constants.kAlgaeIntakePositionTolerance)){
+      return true;
+    } else {
+      return false;
+    }
   }
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).

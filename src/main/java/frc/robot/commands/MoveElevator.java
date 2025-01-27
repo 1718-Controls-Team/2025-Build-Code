@@ -44,21 +44,22 @@ public class MoveElevator extends Command {
   @Override
   public void initialize() {
     m_CoralIntake.setcoralRotate(Constants.kCoralIntakeHomePos);
-
+    m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // might need something about the subsystem here
     switch(m_stateMachine){
       case 1:
+      //Make sure coral rotate and algae rotate are in correct positions then move elevator
         if (m_CoralIntake.getCoralRotateInPosition()) {
           m_stateMachine += 1;
           m_Elevator.setElevatorDesiredPosition(m_ElevatorTargetPos);
         }
       break;
       case 2:
+      //
         
       break;
       }

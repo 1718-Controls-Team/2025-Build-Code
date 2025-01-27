@@ -169,6 +169,7 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
   public static final double kAlgaeIntakePos = 0;
   public static final double kAlgaeHomePos = 0;
   public static final double kAlgaeStopSpeed = 0;
+  public static final double kAlgaeIntakePositionTolerance = 10;
 
   // BeamBreak Constants
   public static final double kIntakeBeamBreakCrossover = 0.9;
