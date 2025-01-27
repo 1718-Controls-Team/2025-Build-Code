@@ -103,9 +103,9 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        operatorController.y().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake));
-        operatorController.x().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake));
-        operatorController.b().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.y().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake, 0));
+        operatorController.x().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake, 0));
+        operatorController.b().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake, 0));
         operatorController.a().onTrue(new Home(m_coralIntake, m_algaeIntake, m_elevator));
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
         driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake, m_elevator, m_beamBreak));
