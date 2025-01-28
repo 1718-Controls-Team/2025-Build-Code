@@ -12,7 +12,7 @@ import frc.robot.Constants;
 
 
 /** An example command that uses an example subsystem. */
-public class CoralPickup extends Command {
+public class CoralDelivery extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
   private final Elevator m_elevatorSubsystem;
@@ -27,7 +27,7 @@ public class CoralPickup extends Command {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public CoralPickup(CoralIntake coralSubsystem, Elevator elevatorSubsystem, BeamBreak beamBreakSubsystem) {
+    public CoralDelivery(CoralIntake coralSubsystem, Elevator elevatorSubsystem, BeamBreak beamBreakSubsystem) {
       m_coralSubsystem = coralSubsystem;
       m_elevatorSubsystem = elevatorSubsystem;
       m_beamBreakSubsystem = beamBreakSubsystem;
@@ -36,7 +36,7 @@ public class CoralPickup extends Command {
       // Use addRequirements() here to declare subsystem dependencies.
       addRequirements(m_elevatorSubsystem);
       addRequirements(m_coralSubsystem);
-      
+      addRequirements(m_beamBreakSubsystem);
           
         }
    
@@ -45,10 +45,8 @@ public class CoralPickup extends Command {
     public void initialize() {
       m_isFinished = false;
     
-    
       m_coralSubsystem.setcoralRotate(Constants.kCoralRotateIntakePos);  
-      m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);  
-      m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorCoralIntakePos);
+      m_coralSubsystem.setcoralSpinPower(Constants.kCoralOutSpinSpeed);  
      
     }
 
@@ -56,7 +54,7 @@ public class CoralPickup extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
- 
+
   }
 
   // Called once the command ends or is interrupted.

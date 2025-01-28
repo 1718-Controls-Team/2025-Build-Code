@@ -40,7 +40,7 @@ public class Home extends Command {
   public void initialize() {
     m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
     m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeStopSpinSpeed); 
-    m_coralSubsystem.setcoralRotate(Constants.kCoralIntakeDownPos);  
+    m_coralSubsystem.setcoralRotate(Constants.kCoralRotateIntakePos);  
     m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);  
     m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
   }
