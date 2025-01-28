@@ -12,7 +12,7 @@ import frc.robot.subsystems.Elevator;
 
 
 /** An example command that uses an example subsystem. */
-public class MoveElevator extends Command {
+public class AlgaeIntakePosition extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final  Elevator m_Elevator;
   private final AlgaeIntake m_AlgaeIntake;
@@ -20,7 +20,7 @@ public class MoveElevator extends Command {
 
   private boolean m_isFinished = false;
   private int m_stateMachine = 1;
-  private double m_ElevatorTargetPos;
+  private double m_ElevatorTargetPos = 0;
 
 
   /**
@@ -28,11 +28,10 @@ public class MoveElevator extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-    public MoveElevator(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake, double elevatorTargetPos) {
+    public AlgaeIntakePosition(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
     m_Elevator = elevator;
     m_AlgaeIntake = algaeIntake;
-    m_CoralIntake = coralIntake;
-    m_ElevatorTargetPos = elevatorTargetPos;
+    m_CoralIntake = coralIntake;;
    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Elevator);
@@ -43,7 +42,7 @@ public class MoveElevator extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_CoralIntake.setcoralRotate(Constants.kCoralIntakeHomePos);
+    m_CoralIntake.setcoralRotate(Constants.kCoralRotateHomePos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
   }
 

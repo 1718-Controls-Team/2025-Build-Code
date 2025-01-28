@@ -111,7 +111,7 @@ if (!coralRotStatus.isOK()) {
   }
 
   public boolean getCoralRotateInPosition() {
-    if ((Math.abs(m_coralRotate.getPosition().getValueAsDouble() - CoralIntakeRotateDesiredPos) < Constants.kCoralIntakePositionTolerance)){
+    if ((Math.abs(m_coralRotate.getPosition().getValueAsDouble() - CoralIntakeRotateDesiredPos) < Constants.kCoralRotatePositionTolerance)){
       return true;
     } else {
       return false;

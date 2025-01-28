@@ -24,7 +24,7 @@ import frc.robot.commands.AlgaeToggle;
 import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.CoralPickup;
 import frc.robot.commands.Home;
-import frc.robot.commands.MoveElevator;
+import frc.robot.commands.AlgaeIntakePosition;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.BeamBreak;
@@ -104,9 +104,9 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        operatorController.y().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake, 0));
-        operatorController.x().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake, 0));
-        operatorController.b().onTrue(new MoveElevator(m_elevator, m_algaeIntake, m_coralIntake, 0));
+        operatorController.y().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.x().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.b().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.a().onTrue(new Home(m_coralIntake, m_algaeIntake, m_elevator));
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
         driverController.leftBumper().whileTrue(new AlgaeToggle(m_algaeIntake, m_elevator, m_beamBreak));
