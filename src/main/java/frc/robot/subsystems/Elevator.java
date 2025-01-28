@@ -19,13 +19,14 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
-  double m_desiredPosition = 0;
 
   TalonFX m_Elevator1 = new TalonFX(13);
   TalonFX m_Elevator2 = new TalonFX(14);
 
   private final PositionVoltage ElevatorPositionRequest = new PositionVoltage(0).withSlot(0);
   private final DutyCycleOut ElevatorVoltageRequest = new DutyCycleOut(0);
+
+  private double ElevatorDesiredPos = 0;
 
   public Elevator() {
     this.configureElevator1(m_Elevator1);
@@ -42,12 +43,20 @@ public class Elevator extends SubsystemBase {
   public void setElevatorDesiredPosition(double DesiredPosition) {
     m_Elevator1.setControl(ElevatorPositionRequest.withPosition(DesiredPosition));
     m_Elevator2.setControl(ElevatorPositionRequest.withPosition(DesiredPosition));
-    m_desiredPosition = DesiredPosition;
+    ElevatorDesiredPos = DesiredPosition;
   }
 
   public void setClimberZeroOutput() {
     m_Elevator1.setControl(ElevatorVoltageRequest);
     m_Elevator2.setControl(ElevatorVoltageRequest);
+  }
+
+  public boolean getElevatorInPosition(){
+    if ((Math.abs(m_Elevator1.getPosition().getValueAsDouble() - ElevatorDesiredPos) < Constants.kAlgaeIntakePositionTolerance)){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public void configureElevator1(TalonFX elevator1){

@@ -59,7 +59,10 @@ public class MoveElevator extends Command {
         }
       break;
       case 2:
-      //
+      //Make sure elevator is in position then end command
+      if (m_Elevator.getElevatorInPosition()) {
+        m_isFinished = true;
+      }
         
       break;
       }
