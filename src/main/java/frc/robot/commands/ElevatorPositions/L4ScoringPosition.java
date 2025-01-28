@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.ElevatorPositions;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
@@ -12,7 +12,7 @@ import frc.robot.subsystems.Elevator;
 
 
 /** An example command that uses an example subsystem. */
-public class L2ScoringPosition extends Command {
+public class L4ScoringPosition extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final  Elevator m_Elevator;
   private final AlgaeIntake m_AlgaeIntake;
@@ -28,7 +28,7 @@ public class L2ScoringPosition extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-    public L2ScoringPosition(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
+    public L4ScoringPosition(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
     m_Elevator = elevator;
     m_AlgaeIntake = algaeIntake;
     m_CoralIntake = coralIntake;;

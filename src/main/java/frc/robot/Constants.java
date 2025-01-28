@@ -56,7 +56,7 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
   public static final double kCoralCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kCoralRotateRotorToSensorRatio = 0;
 // these constants below are not accurate lmao
-  public static final double kCoralRotateIntakePos = 0;
+  public static final double kCoralRotateDeliveryPos = 0;
   public static final double kCoralOutSpinSpeed = 0;
   public static final double kCoralInSpinSpeed = 0;
   public static final double kCoralStopSpinSpeed = 0;
