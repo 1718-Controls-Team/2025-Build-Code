@@ -79,7 +79,7 @@ public class CoralCheckPosition extends Command {
         //Make sure elevator is in position then end command
       if ((PosCheckTimer.get() < 4.00) && (m_driverController.getRightTriggerAxis() >= 0.5)) {
         m_coralSubsystem.setcoralSpinPower(Constants.kCoralOutSpinSpeed);  
-      
+        m_stateMachine += 1;
       } else {
          m_elevatorSubsystem.setElevatorDesiredPosition(elevatorStartPos);
       }
