@@ -8,6 +8,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.Elevator;
+import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj2.command.Command;
 
 
@@ -55,7 +56,6 @@ public class AlgaeToggle extends Command {
     }
     // the above elevator might not be correct
   }
-
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
