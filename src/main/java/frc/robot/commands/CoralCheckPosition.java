@@ -23,7 +23,7 @@ public class CoralCheckPosition extends Command {
   private final CommandXboxController m_driverController;
 
   private int m_stateMachine = 1;
-  private double m_ElevatorTargetPos = 0;
+  private double m_ElevatorTargetPos;
   private double elevatorStartPos;
 
   Timer PosCheckTimer = new Timer();
@@ -59,7 +59,7 @@ public class CoralCheckPosition extends Command {
       PosCheckTimer.reset();
       PosCheckTimer.start();
 
-
+      m_ElevatorTargetPos = elevatorStartPos-30;
       m_stateMachine = 1;
     }
 
@@ -93,10 +93,9 @@ public class CoralCheckPosition extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-  if (m_beamBreakSubsystem.getCoralPresentIntake())
-    m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
-    m_isFinished=true;
-  
+  m_elevatorSubsystem.setElevatorDesiredPosition(elevatorStartPos);
+  m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
+  m_isFinished=true;
 }
   // Returns true when the command should end.
   @Override
