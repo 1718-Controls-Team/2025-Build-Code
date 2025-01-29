@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.829965753424658,
-        "y": 4.040025684931507
+        "x": 1.8481592465753425,
+        "y": 2.1918664383561643
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.430993150684932,
-        "y": 3.3788955479452056
+        "x": 2.4191352739726026,
+        "y": 0.8696061643835615
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Dane Path 3"
     },
     {
       "anchor": {
-        "x": 6.3258133561643834,
-        "y": 0.4939640410958907
+        "x": 6.3708904109589035,
+        "y": 0.4639126712328766
       },
       "prevControl": {
-        "x": 6.3258133561643834,
-        "y": 0.19345034246575327
+        "x": 6.160530821917807,
+        "y": 1.9063784246575346
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Dane Path 2"
     }
   ],
   "rotationTargets": [],
@@ -49,13 +49,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -87.61405596961121
+    "rotation": -92.2906100426385
   },
   "reversed": false,
-  "folder": "Blue Middle Folder",
+  "folder": "Dane Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -177.79740183823424
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

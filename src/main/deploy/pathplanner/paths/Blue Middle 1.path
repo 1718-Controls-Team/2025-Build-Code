@@ -16,11 +16,11 @@
     },
     {
       "anchor": {
-        "x": 5.860017123287671,
+        "x": 5.739811643835617,
         "y": 4.040025684931507
       },
       "prevControl": {
-        "x": 6.108488056956076,
+        "x": 5.988282577504022,
         "y": 4.012417803412796
       },
       "nextControl": null,
@@ -52,7 +52,7 @@
     "rotation": -178.3634229583833
   },
   "reversed": false,
-  "folder": "New New Folder",
+  "folder": "Blue Middle Folder",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

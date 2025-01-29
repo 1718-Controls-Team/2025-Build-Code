@@ -5,9 +5,22 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "New New Path"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Blue Middle 1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "L4ScoringPosition"
+                }
+              }
+            ]
           }
         }
       ]
