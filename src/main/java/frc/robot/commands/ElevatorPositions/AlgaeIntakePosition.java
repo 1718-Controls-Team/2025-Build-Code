@@ -43,7 +43,7 @@ public class AlgaeIntakePosition extends Command {
   @Override
   public void initialize() {
     m_CoralIntake.setcoralRotate(Constants.kCoralRotateHomePos);
-    m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
+    m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeIntakePos);  
   }
 
   // Called every time the scheduler runs while the command is scheduled.

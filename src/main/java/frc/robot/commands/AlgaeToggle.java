@@ -7,7 +7,6 @@ package frc.robot.commands;
 import frc.robot.Constants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.BeamBreak;
-import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -16,7 +15,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class AlgaeToggle extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final AlgaeIntake m_algaeSubsystem;
-  private final Elevator m_elevatorSubsystem;
   private final BeamBreak m_beamBreakSubsystem;
 
   @SuppressWarnings("unused")
@@ -27,14 +25,12 @@ public class AlgaeToggle extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public AlgaeToggle(AlgaeIntake algaeSubsystem, Elevator elevatorSubsystem, BeamBreak beamBreakSubsystem) {
+  public AlgaeToggle(AlgaeIntake algaeSubsystem, BeamBreak beamBreakSubsystem) {
     m_algaeSubsystem = algaeSubsystem;
-    m_elevatorSubsystem = elevatorSubsystem;
     m_beamBreakSubsystem = beamBreakSubsystem;
    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_algaeSubsystem);
-    addRequirements(m_elevatorSubsystem);
     addRequirements(m_beamBreakSubsystem);
     
   }
@@ -47,12 +43,9 @@ public class AlgaeToggle extends Command {
       // Delivery
       m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeOutSpinSpeed);  
-      m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorAlgaePos);
     } else {
       // Pickup
-      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);  
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);  
-      m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
     }
     // the above elevator might not be correct
   }
@@ -66,7 +59,6 @@ public class AlgaeToggle extends Command {
   @Override
   public void end(boolean interrupted) {
     m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeStopSpinSpeed);  
-    m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
     m_isFinished=true;
   }
 
