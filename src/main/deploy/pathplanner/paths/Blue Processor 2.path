@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.242380136986301,
-        "y": 4.040025684931507
+        "x": 5.169270833333332,
+        "y": 2.9628472222222215
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.806635273972604,
-        "y": 4.009974315068493
+        "x": 5.770298230593606,
+        "y": 2.30171708523592
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue Processor 1"
     },
     {
       "anchor": {
-        "x": 5.739811643835617,
-        "y": 4.040025684931507
+        "x": 6.3258133561643834,
+        "y": 0.4939640410958907
       },
       "prevControl": {
-        "x": 5.988282577504022,
-        "y": 4.012417803412796
+        "x": 6.3258133561643834,
+        "y": 0.19345034246575327
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,13 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "L4ScoringPosition",
+      "name": "Home",
+      "waypointRelativePos": 0.25373134328358216,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "AlgaeToggle",
       "waypointRelativePos": 1.0,
       "endWaypointRelativePos": null,
       "command": null
@@ -49,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -178.3634229583833
+    "rotation": -87.61405596961121
   },
   "reversed": false,
-  "folder": "Blue Middle Folder",
+  "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 121.32869286780407
   },
   "useDefaultConstraints": true
 }

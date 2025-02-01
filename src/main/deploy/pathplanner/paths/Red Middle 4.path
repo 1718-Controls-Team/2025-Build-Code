@@ -3,35 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 7.0
+        "x": 15.69296875,
+        "y": 5.813888888888889
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0,
-        "y": 7.0
+        "x": 16.504029031334028,
+        "y": 5.516220866445023
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Red Middle 3"
     },
     {
       "anchor": {
-        "x": 4.0,
-        "y": 6.0
+        "x": 11.500260416666668,
+        "y": 7.5608506944444445
       },
       "prevControl": {
-        "x": 3.0,
-        "y": 6.0
+        "x": 11.238765549466844,
+        "y": 7.590361129040899
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Red Middle 2"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Home",
+      "waypointRelativePos": 0.48656716417910456,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "AlgaeToggle",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -42,10 +55,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "reversed": false,
-  "folder": "Andrew Path",
+  "folder": "Red Processor Folder",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 0.0
