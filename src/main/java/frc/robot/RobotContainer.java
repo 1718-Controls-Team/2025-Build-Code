@@ -12,6 +12,8 @@ import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Filesystem;
@@ -25,6 +27,10 @@ import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.CoralPickup;
 import frc.robot.commands.Home;
 import frc.robot.commands.ElevatorPositions.AlgaeIntakePosition;
+import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
+import frc.robot.commands.ElevatorPositions.L2ScoringPosition;
+import frc.robot.commands.ElevatorPositions.L3ScoringPosition;
+import frc.robot.commands.ElevatorPositions.L4ScoringPosition;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.BeamBreak;
@@ -70,7 +76,7 @@ public class RobotContainer {
         autoChooser = AutoBuilder.buildAutoChooser("NewAuto");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
-
+        registerAutonCommands();
         configureBindings();
     }
 
@@ -107,12 +113,24 @@ public class RobotContainer {
         operatorController.y().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.x().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.b().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
-        operatorController.a().onTrue(new Home(m_coralIntake, m_algaeIntake, m_elevator));
+        operatorController.a().onTrue(new Home(m_elevator, m_algaeIntake, m_coralIntake));
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
         driverController.leftBumper().whileTrue(new AlgaeToggle(m_algaeIntake, m_beamBreak));
         driverController.rightTrigger(0.5).whileTrue(new ClimberActivate(m_tClimber));
     }
 
+    private void registerAutonCommands() {
+        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("CoralIntakePosition", new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("L2ScoringPosition", new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("L3ScoringPosition", new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("L4ScoringPosition", new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AlgaeToggle", new AlgaeToggle(m_algaeIntake, m_beamBreak));
+        NamedCommands.registerCommand("CoralPickup", new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
+        NamedCommands.registerCommand("Home", new Home(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+    }
     public Command getAutonomousCommand() {
         /* Run the path selected from the auto chooser */
         return autoChooser.getSelected();
