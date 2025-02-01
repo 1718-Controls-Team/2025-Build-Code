@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.AlgaeToggle;
+import frc.robot.commands.AutonSpitCoral;
 import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.CoralPickup;
 import frc.robot.commands.Home;
@@ -128,8 +129,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("AlgaeToggle", new AlgaeToggle(m_algaeIntake, m_beamBreak));
         NamedCommands.registerCommand("CoralPickup", new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
         NamedCommands.registerCommand("Home", new Home(m_elevator, m_algaeIntake, m_coralIntake));
-        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
-        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AutonSpitCoral", new AutonSpitCoral(m_coralIntake, m_beamBreak));
     }
     public Command getAutonomousCommand() {
         /* Run the path selected from the auto chooser */
