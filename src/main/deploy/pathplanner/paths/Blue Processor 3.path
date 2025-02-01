@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.3075520833333325,
-        "y": 1.607204861111111
+        "x": 6.343229166666666,
+        "y": 0.5031249999999988
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.304262410085567,
-        "y": 1.5321622968691624
+        "x": 4.652170138888888,
+        "y": 1.2857638888888883
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue 2 Coral 2"
     },
     {
       "anchor": {
-        "x": 5.253124999999999,
-        "y": 2.920920138888888
+        "x": 1.8710069444444435,
+        "y": 0.5031249999999988
       },
       "prevControl": {
-        "x": 5.310819485339249,
-        "y": 2.677668527668245
+        "x": 1.5495659722222213,
+        "y": 0.6009548611111108
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue 2 Coral 1"
+      "linkedName": "End of Blue 2 Coral 3"
     }
   ],
   "rotationTargets": [],
@@ -33,19 +33,13 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "L4ScoringPosition",
-      "waypointRelativePos": 0.4955223880597015,
+      "name": "CoralIntakePosition",
+      "waypointRelativePos": 0.45074626865671685,
       "endWaypointRelativePos": null,
       "command": null
     },
     {
-      "name": "AutonSpitCoral",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "AlgaeToggle",
+      "name": "CoralPickup",
       "waypointRelativePos": 1.0,
       "endWaypointRelativePos": null,
       "command": null
@@ -61,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 121.26373169437757
+    "rotation": -129.80557109226527
   },
   "reversed": false,
   "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

@@ -3,9 +3,11 @@
   "robotLength": 0.762,
   "holonomicMode": true,
   "pathFolders": [
+    "Blue Algae Folder",
     "Blue Processor Folder",
+    "Blue Topside Folder",
     "Dane Folder",
-    "Blue Barge Folder",
+    "Blue Middle Folder",
     "Red Processor Folder"
   ],
   "autoFolders": [],

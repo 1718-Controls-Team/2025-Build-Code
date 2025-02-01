@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.3075520833333325,
-        "y": 1.607204861111111
+        "x": 0.669097222222221,
+        "y": 6.680381944444445
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.304262410085567,
-        "y": 1.5321622968691624
+        "x": 1.57751736111111,
+        "y": 6.7921875
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue Middle 2"
     },
     {
       "anchor": {
-        "x": 5.253124999999999,
-        "y": 2.920920138888888
+        "x": 1.5076388888888876,
+        "y": 6.456770833333333
       },
       "prevControl": {
-        "x": 5.310819485339249,
-        "y": 2.677668527668245
+        "x": 1.6194422877638786,
+        "y": 6.233164035583354
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue 2 Coral 1"
+      "linkedName": "End of Blue Topside 3"
     }
   ],
   "rotationTargets": [],
@@ -33,14 +33,8 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "L4ScoringPosition",
-      "waypointRelativePos": 0.4955223880597015,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "AutonSpitCoral",
-      "waypointRelativePos": 1.0,
+      "name": "AlgaeIntakePosition",
+      "waypointRelativePos": 0.20298507462686563,
       "endWaypointRelativePos": null,
       "command": null
     },
@@ -61,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 121.26373169437757
+    "rotation": -110.77225468204588
   },
   "reversed": false,
-  "folder": "Blue Processor Folder",
+  "folder": "Blue Middle Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 124.8244891569569
   },
   "useDefaultConstraints": true
 }

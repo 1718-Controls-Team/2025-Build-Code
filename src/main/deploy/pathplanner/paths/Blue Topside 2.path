@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.197222222222222,
-        "y": 5.129079861111111
+        "x": 5.127343749999999,
+        "y": 5.15703125
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.8121527777777775,
-        "y": 5.045225694444444
+        "x": 4.72204861111111,
+        "y": 5.939670138888889
       },
       "isLocked": false,
-      "linkedName": "End of Blue Barge 1"
+      "linkedName": "End of Blue Topside 1"
     },
     {
       "anchor": {
-        "x": 7.531163194444443,
-        "y": 6.135329861111111
+        "x": 1.7172743055555546,
+        "y": 7.435069444444444
       },
       "prevControl": {
-        "x": 7.223697916666667,
-        "y": 6.526649305555555
+        "x": 1.8430555555555546,
+        "y": 6.540625
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue Topside 2"
     }
   ],
   "rotationTargets": [],
@@ -33,13 +33,13 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "L4ScoringPosition",
-      "waypointRelativePos": 0.5373134328358211,
+      "name": "CoralIntakePosition",
+      "waypointRelativePos": 0.429850746268657,
       "endWaypointRelativePos": null,
       "command": null
     },
     {
-      "name": "AlgaeToggle",
+      "name": "CoralPickup",
       "waypointRelativePos": 1.0,
       "endWaypointRelativePos": null,
       "command": null
@@ -55,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 128.0189425931702
   },
   "reversed": false,
-  "folder": "Blue Barge Folder",
+  "folder": "Blue Topside Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -122.0053832080835
+    "rotation": -119.74488129694231
   },
   "useDefaultConstraints": true
 }
