@@ -1587,3 +1587,14 @@ public class LimelightHelpers {
         return results;
     }
 }
+/*
+ * Charles - "Erika freaks me. Like, actually."
+ * Charles - "I want to hold your pole" (To Sam)
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */

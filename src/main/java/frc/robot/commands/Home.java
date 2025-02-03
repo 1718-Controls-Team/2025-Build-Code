@@ -23,7 +23,7 @@ public class Home extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Home(CoralIntake coralSubsystem, AlgaeIntake algaeSubsystem, Elevator elevatorSubsystem) {
+  public Home(Elevator elevatorSubsystem, AlgaeIntake algaeSubsystem, CoralIntake coralSubsystem) {
     m_algaeSubsystem = algaeSubsystem;
     m_elevatorSubsystem = elevatorSubsystem;
     m_coralSubsystem = coralSubsystem;

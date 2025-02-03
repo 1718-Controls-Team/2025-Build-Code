@@ -119,7 +119,6 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
 // These Constants below arent real take yo pills
   public static final double kElevatorCoralIntakePos = 0;
   public static final double kElevatorHomePos = 0;
-  public static final double kElevatorAlgaePos = 0;
   public static final double kElevatorL2ScoringPos = 0;
   public static final double kElevatorL3ScoringPos = 0;
   public static final double kElevatorL4ScoringPos = 0;
@@ -168,7 +167,6 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
   public static final double kAlgaeStopSpinSpeed = 0;
   public static final double kAlgaeIntakePos = 0;
   public static final double kAlgaeHomePos = 0;
-  public static final double kAlgaeStopSpeed = 0;
   public static final double kAlgaeIntakePositionTolerance = 10;
 
   // BeamBreak Constants
