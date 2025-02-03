@@ -48,10 +48,6 @@ public class Drive extends Command {
     .withRotationalDeadband(0.1)
     .withDriveRequestType(DriveRequestType.Velocity);
 
-  private final SwerveRequest.RobotCentric robotCentric = new SwerveRequest.RobotCentric()
-    .withDeadband(MaxSpeed * 0.1)
-    .withRotationalDeadband(MaxAngularRate * 0.1)
-    .withDriveRequestType(DriveRequestType.Velocity);
   
   /**
    * Creates a new set-PowerCommand.
@@ -80,16 +76,40 @@ public class Drive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_Controller.leftBumper().getAsBoolean() && (LimelightHelpers.getTV(Constants.kLimelightName) || LimeLightShootingFlag)) {
+    if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || LimeLightShootingFlag)) {
       driveRequest = "limeLightAim";
       LimeLightShootingFlag = true;
       m_AngleToAprilTag = LimelightHelpers.getTX(Constants.kLimelightName);
-      m_CurrentRobotHeading = m_Drivetrain.getPigeon2().getAngle();
+      m_CurrentRobotHeading = m_Drivetrain.getPigeon2().getRotation3d().getAngle();
       m_NewAngleHeading = m_AngleToAprilTag + m_CurrentRobotHeading;
       m_VariablePass.setLimelightTargetHeading(m_NewAngleHeading);
       //m_RotationTarget = Rotation2d.fromDegrees(m_NewAngleHeading);
       SmartDashboard.putNumber("LIMELIGHT TX", m_AngleToAprilTag);
       SmartDashboard.putNumber("ROBOT HEADING (Pigeon)", m_CurrentRobotHeading);
+    } else {
+      driveRequest = "";
+      LimeLightShootingFlag = false;
+    }
+
+    switch(driveRequest) {
+      case "limeLightAim":
+        limeLightController = aimPID.calculate(m_Drivetrain.getPigeon2().getRotation3d().getAngle(), m_NewAngleHeading);
+        if (limeLightController > 1) {
+          limeLightController = 1;
+         } else if (limeLightController < -1) {
+          limeLightController = -1;
+         }
+
+        m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with                                                                    
+         .withVelocityY(-m_Controller.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+         .withRotationalRate(-limeLightController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
+         break;
+      default:
+      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
+      // negative Y (forward)
+        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+        .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate)); // Drive counterclockwise with negative X (left)
+      break;
     }
   }
 
