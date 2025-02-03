@@ -37,6 +37,8 @@ public static final int kAlgaeIntakeRotateCancoderCanID = 19;
 public static final int kAlgaeIntakeSpin1CanID = 20;
 public static final int kAlgaeIntakeSpin2CanID = 21;
 
+public static final String kLimelightName = "limelight";
+
 
 // coralRotate Constants
   public static final double kCoralRotateProportional = 0; 
