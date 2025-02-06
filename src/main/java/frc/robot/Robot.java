@@ -36,8 +36,11 @@ public class Robot extends TimedRobot {
     //Setting up port forwarding for all limelight related ports.
     //Only setting the port-forwarding once in the code.
     for (int port = 5800; port <= 5807; port++) {
-      PortForwarder.add(port, "limelight.local", port);
+      PortForwarder.add(port, "limelight-lime.local", port);
     }
+
+    int[] validIDs = {1,2};
+  LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
 
     //Set a custom brownout voltage for the RoboRIO.
     //Only works with the RIO2.
@@ -66,13 +69,13 @@ public class Robot extends TimedRobot {
     if (kUseLimelight) {
       var driveState = m_robotContainer.drivetrain.getState();
       double headingDeg = driveState.Pose.getRotation().getDegrees();
-      double omegaRps = Units.radiansToRotations(driveState.Speeds.omegaRadiansPerSecond);
+      //double omegaRps = Units.radiansToRotations(driveState.Speeds.omegaRadiansPerSecond);
       
-      LimelightHelpers.SetRobotOrientation("limelight", headingDeg, 0, 0, 0, 0, 0);
-      LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight");
-      if (llMeasurement != null && llMeasurement.tagCount > 0 && omegaRps < 2.0) {
+      LimelightHelpers.SetRobotOrientation("limelight-lime", headingDeg, 0, 0, 0, 0, 0);
+      LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+      //if (llMeasurement != null && llMeasurement.tagCount > 0) {
         m_robotContainer.drivetrain.addVisionMeasurement(llMeasurement.pose, Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds));
-      }
+      //}
     }
   }
 
