@@ -101,7 +101,7 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        operatorController.y().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.x().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.b().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.a().onTrue(new Home(m_elevator, m_algaeIntake, m_coralIntake));
