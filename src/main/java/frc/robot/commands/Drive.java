@@ -42,10 +42,13 @@ public class Drive extends Command {
   private double m_CurrentRobotHeading;
   private double m_NewAngleHeading;
   private double limeLightController = 0;
-  private boolean LimeLightShootingFlag = false;
+  private boolean UsingLimelight = false;
   private boolean doRejectUpdate = true;
   private final PIDController drivePID, strafePID, aimPID;
   private double aprilTagID;
+  private double xTarget = 0;
+  private double yTarget = 0;
+  private double rotationTarget = 0;
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
     .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -88,9 +91,9 @@ public class Drive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || LimeLightShootingFlag)) {
-      driveRequest = "limeLightAim";
-      LimeLightShootingFlag = true;
+    if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) {
+      driveRequest = "limelightDrive";
+      UsingLimelight = true;
       m_AngleToAprilTag = LimelightHelpers.getTX(Constants.kLimelightName);
       m_CurrentRobotHeading = m_Drivetrain.getPigeon2().getRotation3d().getAngle();
       m_NewAngleHeading = m_AngleToAprilTag + m_CurrentRobotHeading;
@@ -100,7 +103,7 @@ public class Drive extends Command {
       SmartDashboard.putNumber("ROBOT HEADING (Pigeon)", m_CurrentRobotHeading);
     } else {
       driveRequest = "";
-      LimeLightShootingFlag = false;
+      UsingLimelight = false;
     }
 
     switch(driveRequest) {
@@ -118,7 +121,61 @@ public class Drive extends Command {
          break;
       case "limelightDrive":
         aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
-        
+         if (m_Controller.povRight().getAsBoolean()) {
+          if (aprilTagID == 6) {
+            xTarget = Constants.kBlueBottomRL[0];
+            yTarget = Constants.kBlueBottomRL[1];
+            rotationTarget = Constants.kBlueBottomRL[2];
+          } else if (aprilTagID == 7) {
+
+          } else if (aprilTagID == 8) {
+
+          } else if (aprilTagID == 9) {
+
+          } else if (aprilTagID == 10) {
+
+          } else if (aprilTagID == 11) {
+
+          } else if (aprilTagID == 17) {
+
+          } else if (aprilTagID == 18) {
+
+          } else if (aprilTagID == 19) {
+
+          } else if (aprilTagID == 20) {
+
+          } else if (aprilTagID == 21) {
+
+          } else if (aprilTagID == 22) {
+
+          }
+         } else if (m_Controller.povLeft().getAsBoolean()) {
+          if (aprilTagID == 6) {
+
+          } else if (aprilTagID == 7) {
+
+          } else if (aprilTagID == 8) {
+
+          } else if (aprilTagID == 9) {
+
+          } else if (aprilTagID == 10) {
+
+          } else if (aprilTagID == 11) {
+
+          } else if (aprilTagID == 17) {
+
+          } else if (aprilTagID == 18) {
+
+          } else if (aprilTagID == 19) {
+
+          } else if (aprilTagID == 20) {
+
+          } else if (aprilTagID == 21) {
+
+          } else if (aprilTagID == 22) {
+
+          }
+         }
 
       break;
       default:
