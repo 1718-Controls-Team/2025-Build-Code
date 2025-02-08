@@ -123,60 +123,105 @@ public class Drive extends Command {
         aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
          if (m_Controller.povRight().getAsBoolean()) {
           if (aprilTagID == 6) {
-            xTarget = Constants.kBlueBottomRL[0];
-            yTarget = Constants.kBlueBottomRL[1];
-            rotationTarget = Constants.kBlueBottomRL[2];
+            xTarget = Constants.kRedBottomRR[0];
+            yTarget = Constants.kRedBottomRR[1];
+            rotationTarget = Constants.kRedBottomRR[2];
           } else if (aprilTagID == 7) {
-
+            xTarget = Constants.kRedRightR[0];
+            yTarget = Constants.kRedRightR[1];
+            rotationTarget = Constants.kRedRightR[2];
           } else if (aprilTagID == 8) {
-
+            xTarget = Constants.kRedTopRR[0];
+            yTarget = Constants.kRedTopRR[1];
+            rotationTarget = Constants.kRedTopRR[2];
           } else if (aprilTagID == 9) {
-
+            xTarget = Constants.kRedTopLR[0];
+            yTarget = Constants.kRedTopLR[1];
+            rotationTarget = Constants.kRedTopLR[2];
           } else if (aprilTagID == 10) {
-
+            xTarget = Constants.kRedLeftR[0];
+            yTarget = Constants.kRedLeftR[1];
+            rotationTarget = Constants.kRedLeftR[2];
           } else if (aprilTagID == 11) {
-
+            xTarget = Constants.kRedBottomLR[0];
+            yTarget = Constants.kRedBottomLR[1];
+            rotationTarget = Constants.kRedBottomLR[2];
           } else if (aprilTagID == 17) {
-
+            xTarget = Constants.kBlueBottomLR[0];
+            yTarget = Constants.kBlueBottomLR[1];
+            rotationTarget = Constants.kBlueBottomLR[2];
           } else if (aprilTagID == 18) {
-
+            xTarget = Constants.kBlueLeftR[0];
+            yTarget = Constants.kBlueLeftR[1];
+            rotationTarget = Constants.kBlueLeftR[2];
           } else if (aprilTagID == 19) {
-
+            xTarget = Constants.kBlueTopLR[0];
+            yTarget = Constants.kBlueTopLR[1];
+            rotationTarget = Constants.kBlueTopLR[2];
           } else if (aprilTagID == 20) {
-
+            xTarget = Constants.kBlueTopRR[0];
+            yTarget = Constants.kBlueTopRR[1];
+            rotationTarget = Constants.kBlueTopRR[2];
           } else if (aprilTagID == 21) {
-
+            xTarget = Constants.kBlueRightR[0];
+            yTarget = Constants.kBlueRightR[1];
+            rotationTarget = Constants.kBlueRightR[2];
           } else if (aprilTagID == 22) {
-
+            xTarget = Constants.kBlueBottomRR[0];
+            yTarget = Constants.kBlueBottomRR[1];
+            rotationTarget = Constants.kBlueBottomRR[2];
           }
          } else if (m_Controller.povLeft().getAsBoolean()) {
           if (aprilTagID == 6) {
-
+            xTarget = Constants.kRedBottomRL[0];
+            yTarget = Constants.kRedBottomRL[1];
+            rotationTarget = Constants.kRedBottomRL[2];
           } else if (aprilTagID == 7) {
-
+            xTarget = Constants.kRedRightL[0];
+            yTarget = Constants.kRedRightL[1];
+            rotationTarget = Constants.kRedRightL[2];
           } else if (aprilTagID == 8) {
-
+            xTarget = Constants.kRedTopRL[0];
+            yTarget = Constants.kRedTopRL[1];
+            rotationTarget = Constants.kRedTopRL[2];
           } else if (aprilTagID == 9) {
-
+            xTarget = Constants.kRedTopLL[0];
+            yTarget = Constants.kRedTopLL[1];
+            rotationTarget = Constants.kRedTopLL[2];
           } else if (aprilTagID == 10) {
-
+            xTarget = Constants.kRedLeftL[0];
+            yTarget = Constants.kRedLeftL[1];
+            rotationTarget = Constants.kRedLeftL[2];
           } else if (aprilTagID == 11) {
-
+            xTarget = Constants.kRedBottomLL[0];
+            yTarget = Constants.kRedBottomLL[1];
+            rotationTarget = Constants.kRedBottomLL[2];
           } else if (aprilTagID == 17) {
-
+            xTarget = Constants.kBlueBottomLL[0];
+            yTarget = Constants.kBlueBottomLL[1];
+            rotationTarget = Constants.kBlueBottomLL[2];
           } else if (aprilTagID == 18) {
-
+            xTarget = Constants.kBlueLeftL[0];
+            yTarget = Constants.kBlueLeftL[1];
+            rotationTarget = Constants.kBlueLeftL[2];
           } else if (aprilTagID == 19) {
-
+            xTarget = Constants.kBlueTopLL[0];
+            yTarget = Constants.kBlueTopLL[1];
+            rotationTarget = Constants.kBlueTopLL[2];
           } else if (aprilTagID == 20) {
-
+            xTarget = Constants.kBlueTopRL[0];
+            yTarget = Constants.kBlueTopRL[1];
+            rotationTarget = Constants.kBlueTopRL[2];
           } else if (aprilTagID == 21) {
-
+            xTarget = Constants.kBlueRightL[0];
+            yTarget = Constants.kBlueRightL[1];
+            rotationTarget = Constants.kBlueRightL[2];
           } else if (aprilTagID == 22) {
-
-          }
+            xTarget = Constants.kBlueBottomRL[0];
+            yTarget = Constants.kBlueBottomRL[1];
+            rotationTarget = Constants.kBlueBottomRL[2];
          }
-
+        }
       break;
       default:
       m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
