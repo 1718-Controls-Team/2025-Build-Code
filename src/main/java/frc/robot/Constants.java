@@ -181,8 +181,8 @@ public static final String kLimelightName = "limelight";
   //Custom Brownout voltage for the RIO2.
   public static final double kCustomBrownout = 6.0;
 
-<<<<<<< HEAD
-  //Bunch of preset drive positions
+
+  //Bunch of preset drive positions Xvalue, Yvalue, rotation
   public static final double[] kBlueTopLR = {3.722, 5.019, -60};
   public static final double[] kBlueTopLL = {4.017, 5.187, -60};
   public static final double[] kBlueTopRR = {4.969, 5.191, -120};
@@ -195,7 +195,6 @@ public static final String kLimelightName = "limelight";
   public static final double[] kBlueBottomLL = {3.716, 3.031, 60};
   public static final double[] kBlueLeftR = {3.236, 3.862, 0};
   public static final double[] kBlueLeftL = {3.236, 4.192, 0};
-  public static final double[] kRedTopLR = {0, 0, 0};
   public static final double[] kRedTopLR = {(17.55 - kBlueTopRL[1]), kBlueTopRL[2], -60};
   public static final double[] kRedTopLL = {(17.55 - kBlueTopRR[1]), kBlueTopRR[2], -60};
   public static final double[] kRedTopRR = {(17.55 - kBlueTopLL[1]), kBlueTopLL[2], -120};
