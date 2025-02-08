@@ -19,6 +19,7 @@ import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.estimator.PoseEstimator;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -49,6 +50,8 @@ public class Drive extends Command {
   private double xTarget = 0;
   private double yTarget = 0;
   private double rotationTarget = 0;
+  //PoseEstimate RobotPosition;
+  private Pose2d RobotPosition;
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
     .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -222,6 +225,11 @@ public class Drive extends Command {
             rotationTarget = Constants.kBlueBottomRL[2];
          }
         }
+        //RobotPosition = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+        RobotPosition = m_Drivetrain.getState().Pose;
+        m_Drivetrain.setControl(drive.withVelocityX(drivePID.calculate(RobotPosition.getX(), xTarget)) // Drive forward with                                                                    
+         .withVelocityY(strafePID.calculate(RobotPosition.getY(), yTarget)) // Drive left with negative X (left)
+         .withRotationalRate(-aimPID.calculate(m_Drivetrain.getPigeon2().getRotation3d().getAngle(), rotationTarget))); // Drive counterclockwise with negative X (left)
       break;
       default:
       m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
