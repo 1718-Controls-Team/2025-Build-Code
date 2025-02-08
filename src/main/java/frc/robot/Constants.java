@@ -180,4 +180,30 @@ public static final String kLimelightName = "limelight";
 
   //Custom Brownout voltage for the RIO2.
   public static final double kCustomBrownout = 6.0;
+
+  //Bunch of preset drive positions
+  public static final double[] kBlueTopLR = {0, 0, 0};
+  public static final double[] kBlueTopLL = {0, 0, 0};
+  public static final double[] kBlueTopRR = {0, 0, 0};
+  public static final double[] kBlueTopRL = {0, 0, 0};
+  public static final double[] kBlueRightR = {0, 0, 0};
+  public static final double[] kBlueRightL = {0, 0, 0};
+  public static final double[] kBlueBottomRR = {0, 0, 0};
+  public static final double[] kBlueBottomRL = {0, 0, 0};
+  public static final double[] kBlueBottomLR = {0, 0, 0};
+  public static final double[] kBlueBottomLL = {0, 0, 0};
+  public static final double[] kBlueLeftR = {0, 0, 0};
+  public static final double[] kBlueLeftL = {0, 0, 0};
+  public static final double[] kRedTopLR = {0, 0, 0};
+  public static final double[] kRedTopLL = {0, 0, 0};
+  public static final double[] kRedTopRR = {0, 0, 0};
+  public static final double[] kRedTopRL = {0, 0, 0};
+  public static final double[] kRedRightR = {0, 0, 0};
+  public static final double[] kRedRightL = {0, 0, 0};
+  public static final double[] kRedBottomRR = {0, 0, 0};
+  public static final double[] kRedBottomRL = {0, 0, 0};
+  public static final double[] kRedBottomLR = {0, 0, 0};
+  public static final double[] kRedBottomLL = {0, 0, 0};
+  public static final double[] kRedLeftR = {0, 0, 0};
+  public static final double[] kRedLeftL = {0, 0, 0};
 }
