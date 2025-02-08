@@ -181,7 +181,7 @@ public static final String kLimelightName = "limelight";
   //Custom Brownout voltage for the RIO2.
   public static final double kCustomBrownout = 6.0;
 
-  //Bunch of preset drive positions
+  //Bunch of preset drive positions Xvalue, Yvalue, rotation
   public static final double[] kBlueTopLR = {0, 0, 0};
   public static final double[] kBlueTopLL = {0, 0, 0};
   public static final double[] kBlueTopRR = {0, 0, 0};
@@ -194,16 +194,16 @@ public static final String kLimelightName = "limelight";
   public static final double[] kBlueBottomLL = {0, 0, 0};
   public static final double[] kBlueLeftR = {0, 0, 0};
   public static final double[] kBlueLeftL = {0, 0, 0};
-  public static final double[] kRedTopLR = {0, 0, 0};
-  public static final double[] kRedTopLL = {0, 0, 0};
-  public static final double[] kRedTopRR = {0, 0, 0};
-  public static final double[] kRedTopRL = {0, 0, 0};
-  public static final double[] kRedRightR = {0, 0, 0};
-  public static final double[] kRedRightL = {0, 0, 0};
-  public static final double[] kRedBottomRR = {0, 0, 0};
-  public static final double[] kRedBottomRL = {0, 0, 0};
-  public static final double[] kRedBottomLR = {0, 0, 0};
-  public static final double[] kRedBottomLL = {0, 0, 0};
-  public static final double[] kRedLeftR = {0, 0, 0};
-  public static final double[] kRedLeftL = {0, 0, 0};
+  public static final double[] kRedTopLR = {(17.55 - kBlueTopRL[1]), kBlueTopRL[2], -60};
+  public static final double[] kRedTopLL = {(17.55 - kBlueTopRR[1]), kBlueTopRR[2], -60};
+  public static final double[] kRedTopRR = {(17.55 - kBlueTopLL[1]), kBlueTopLL[2], -120};
+  public static final double[] kRedTopRL = {(17.55 - kBlueTopLR[1]), kBlueTopLR[2], -120};
+  public static final double[] kRedRightR = {(17.55 - kBlueLeftL[1]), kBlueLeftL[2], -180};
+  public static final double[] kRedRightL = {(17.55 - kBlueLeftR[1]), kBlueLeftR[2], -180};
+  public static final double[] kRedBottomRR = {(17.55 - kBlueBottomLL[1]), kBlueBottomLL[2], 120};
+  public static final double[] kRedBottomRL = {(17.55 - kBlueBottomLR[1]), kBlueBottomLR[2], 120};
+  public static final double[] kRedBottomLR = {(17.55 - kBlueBottomRL[1]), kBlueBottomRL[2], 60};
+  public static final double[] kRedBottomLL = {(17.55 - kBlueBottomRR[1]), kBlueBottomRR[2], 60};
+  public static final double[] kRedLeftR = {(17.55 - kBlueRightL[1]), kBlueRightL[2], 0};
+  public static final double[] kRedLeftL = {(17.55 - kBlueRightR[1]), kBlueRightR[2], 0};
 }
