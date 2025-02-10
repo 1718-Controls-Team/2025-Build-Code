@@ -13,11 +13,11 @@ import frc.robot.subsystems.Elevator;
 
 /** An example command that uses an example subsystem. */
 public class L2ScoringPosition extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final  Elevator m_Elevator;
   private final AlgaeIntake m_AlgaeIntake;
   private final CoralIntake m_CoralIntake;
 
+  @SuppressWarnings("unused")
   private boolean m_isFinished = false;
   private int m_stateMachine = 1;
   private double m_ElevatorTargetPos = 0;

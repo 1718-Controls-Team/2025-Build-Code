@@ -5,13 +5,16 @@
 package frc.robot;
 
 import com.ctre.phoenix6.Utils;
+import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.path.PathConstraints;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -24,9 +27,19 @@ public class Robot extends TimedRobot {
   private Command m_autonLoading;
   private final RobotContainer m_robotContainer;
 
-  public boolean hasFilteredAutonRoutines = false;
-
   private final boolean kUseLimelight = true;
+
+
+
+  private static Pose2d targetPose = new Pose2d(6.2, 4, Rotation2d.fromDegrees(180));
+
+  // Create the constraints to use while pathfinding
+  private static PathConstraints constraints = new PathConstraints(
+    3.0, 4.0,
+    Units.degreesToRadians(540), Units.degreesToRadians(720));
+
+  
+  private static Command m_autoStarterCommand = AutoBuilder.pathfindToPose(targetPose, constraints);
 
   public Robot() {
     m_robotContainer = new RobotContainer();
@@ -69,13 +82,12 @@ public class Robot extends TimedRobot {
     if (kUseLimelight) {
       var driveState = m_robotContainer.drivetrain.getState();
       double headingDeg = driveState.Pose.getRotation().getDegrees();
-      //double omegaRps = Units.radiansToRotations(driveState.Speeds.omegaRadiansPerSecond);
       
       LimelightHelpers.SetRobotOrientation("limelight-lime", headingDeg, 0, 0, 0, 0, 0);
       LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
-      //if (llMeasurement != null && llMeasurement.tagCount > 0) {
+      if (llMeasurement != null && llMeasurement.tagCount > 0) {
         m_robotContainer.drivetrain.addVisionMeasurement(llMeasurement.pose, Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds));
-      //}
+      }
     }
   }
 
@@ -84,29 +96,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
-    //double m_DistanceBetweenAprilTagAndLimelight = Constants.kSpeakerAprilTagHeight - Constants.kLimelightHeight;
     SmartDashboard.putNumber("Pigeon", m_robotContainer.drivetrain.getPigeon2().getRotation2d().getDegrees());
-    //double m_VerticalAngleToAprilTag = Math.toRadians(LimelightHelpers.getTY(Constants.kLimelightName));
-    //double m_HorizontalAngleToAprilTag = Math.toRadians(LimelightHelpers.getTX(Constants.kLimelightName));
-    //double m_DistanceToAprilTag = m_DistanceBetweenAprilTagAndLimelight / (Math.tan(m_VerticalAngleToAprilTag));
-    //System.out.println(m_DistanceToAprilTag);
-    //All of the commented stuff is calculations we did last year to find the distance from Limelight to April Tag
-
-    //Check if the robot is in communication with the Driver Station.
-    //If it is, attempt to filter the autonomous routines based on alliance color.
-    
-    /*if (!hasFilteredAutonRoutines && DriverStation.isDSAttached()) {
-      switch (DriverStation.getAlliance().get()) {
-        case Blue:
-          m_robotContainer.autonSelect.filterSelections("Blue");
-        break;
-        case Red:
-          m_robotContainer.autonSelect.filterSelections("Red");
-        break;
-      }
-      m_robotContainer.autonSelect.sortSelections();
-      hasFilteredAutonRoutines = true;*/
-      
   }
 
   @Override
@@ -117,6 +107,7 @@ public class Robot extends TimedRobot {
     m_autonomousCommand = new WaitCommand(0.010).andThen(m_robotContainer.getAutonomousCommand());
 
     if (m_autonomousCommand != null) {
+      m_autoStarterCommand.schedule();
       m_autonomousCommand.schedule();
     }
   }

@@ -5,11 +5,8 @@
 package frc.robot.subsystems;
 
 
-import edu.wpi.first.math.filter.Debouncer;
 import edu.wpi.first.util.sendable.SendableBuilder;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 
 // The shooter intake subsystem is the portion of the shooter that is NOT responsible for ejecting notes at high velocities.
 public class VariablePassSubsystem extends SubsystemBase {

@@ -18,6 +18,7 @@ public class L3ScoringPosition extends Command {
   private final AlgaeIntake m_AlgaeIntake;
   private final CoralIntake m_CoralIntake;
 
+  @SuppressWarnings("unused")
   private boolean m_isFinished = false;
   private int m_stateMachine = 1;
   private double m_ElevatorTargetPos = 0;

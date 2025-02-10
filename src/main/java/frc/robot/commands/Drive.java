@@ -11,14 +11,10 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
-import frc.robot.LimelightHelpers.PoseEstimate;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.VariablePassSubsystem;
-import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.estimator.PoseEstimator;
-import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -32,19 +28,16 @@ public class Drive extends Command {
   private final VariablePassSubsystem m_VariablePass;
   private final CommandXboxController m_Controller;
 
-  private final SwerveDrivePoseEstimator m_poseEstimator = new SwerveDrivePoseEstimator(null, null, null, null);
-
   private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
   private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
   private String driveRequest = "";
-  private int m_LimelightStateMachine = 1;
+  @SuppressWarnings("unused")
   private boolean m_isFinished = false;
   private double m_AngleToAprilTag = 0;
   private double m_CurrentRobotHeading;
   private double m_NewAngleHeading;
   private double limeLightController = 0;
   private boolean UsingLimelight = false;
-  private boolean doRejectUpdate = true;
   private final PIDController drivePID, strafePID, aimPID;
   private double aprilTagID;
   private double xTarget = 0;

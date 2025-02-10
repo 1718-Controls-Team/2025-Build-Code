@@ -13,7 +13,6 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import frc.robot.Constants;
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 

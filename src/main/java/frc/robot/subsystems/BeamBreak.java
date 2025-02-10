@@ -5,8 +5,6 @@
 package frc.robot.subsystems;
 
 
-import java.util.function.BooleanSupplier;
-
 import edu.wpi.first.math.filter.Debouncer;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.AnalogInput;
