@@ -21,7 +21,7 @@
       },
       "prevControl": {
         "x": 5.349143835616437,
-        "y": 0.5991438356164385
+        "y": 0.5991438356164386
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,7 +58,7 @@
     "rotation": -92.2906100426385
   },
   "reversed": false,
-  "folder": "Dane Folder",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": 120.14138555222547

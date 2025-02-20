@@ -3,45 +3,38 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.8481592465753425,
-        "y": 2.1918664383561643
+        "x": 5.094774590163934,
+        "y": 5.1098872950819665
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.4191352739726026,
-        "y": 0.8696061643835615
+        "x": 4.966150651307052,
+        "y": 4.895514063653831
       },
       "isLocked": false,
-      "linkedName": "End of Dane Path 3"
+      "linkedName": "End of Blue Topside 1"
     },
     {
       "anchor": {
-        "x": 6.3708904109589035,
-        "y": 0.4639126712328766
+        "x": 5.158091855576299,
+        "y": 5.079578605967286
       },
       "prevControl": {
-        "x": 6.160530821917807,
-        "y": 1.9063784246575346
+        "x": 5.289922631785427,
+        "y": 5.296681096380478
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Dane Path 2"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "AlgaeToggle",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 0.5,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -49,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -92.2906100426385
+    "rotation": -119.99999999999999
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -119.74488129694231
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

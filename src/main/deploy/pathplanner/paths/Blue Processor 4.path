@@ -9,7 +9,7 @@
       "prevControl": null,
       "nextControl": {
         "x": 2.07812885984273,
-        "y": 0.3631231708628585
+        "y": 0.3631231708628584
       },
       "isLocked": false,
       "linkedName": "End of Blue 2 Coral 3"
@@ -58,7 +58,7 @@
     "rotation": 58.67130713219579
   },
   "reversed": false,
-  "folder": "Blue Processor Folder",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": -129.80557109226527

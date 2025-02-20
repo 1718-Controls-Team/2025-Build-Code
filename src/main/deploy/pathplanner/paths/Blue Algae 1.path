@@ -64,7 +64,7 @@
     "rotation": 121.32869286780407
   },
   "reversed": false,
-  "folder": "Blue Algae Folder",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

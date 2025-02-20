@@ -9,6 +9,7 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.path.PathConstraints;
 
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.util.Units;
@@ -20,31 +21,24 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  private Command m_autonLoading;
   private final RobotContainer m_robotContainer;
+  private Command m_autonLoading;
+  private int m_auto2 = 0;
 
-  private final boolean kUseLimelight = true;
 
-
-
-  private static Pose2d targetPose = new Pose2d(6.2, 4, Rotation2d.fromDegrees(180));
-
-  // Create the constraints to use while pathfinding
-  private static PathConstraints constraints = new PathConstraints(
-    3.0, 4.0,
-    Units.degreesToRadians(540), Units.degreesToRadians(720));
-
-  
-  private static Command m_autoStarterCommand = AutoBuilder.pathfindToPose(targetPose, constraints);
+  boolean kUseLimelight = false;
 
   public Robot() {
     m_robotContainer = new RobotContainer();
     m_autonLoading = new PathPlannerAuto("Tests").ignoringDisable(true);
     m_autonLoading.schedule();
+    
 
     //Setting up port forwarding for all limelight related ports.
     //Only setting the port-forwarding once in the code.
@@ -52,8 +46,8 @@ public class Robot extends TimedRobot {
       PortForwarder.add(port, "limelight-lime.local", port);
     }
 
-    int[] validIDs = {1,2};
-  LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
+    int[] validIDs = {12, 13, 16, 17, 18, 19, 20, 21, 22};
+    LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
 
     //Set a custom brownout voltage for the RoboRIO.
     //Only works with the RIO2.
@@ -61,15 +55,16 @@ public class Robot extends TimedRobot {
 
     //Start a simple recording to the data log.
     //This should log the contents of the NetworkTables, which should be good for now.
-    DataLogManager.start();
+    //DataLogManager.start();
     //This should log the joysticks as well.
-    DriverStation.startDataLog(DataLogManager.getLog());
+    //DriverStation.startDataLog(DataLogManager.getLog());
   }
 
 
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
+
 
     /*
      * This example of adding Limelight is very simple and may not be sufficient for on-field use.
@@ -87,6 +82,7 @@ public class Robot extends TimedRobot {
       LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
       if (llMeasurement != null && llMeasurement.tagCount > 0) {
         m_robotContainer.drivetrain.addVisionMeasurement(llMeasurement.pose, Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds));
+        m_robotContainer.drivetrain.setVisionMeasurementStdDevs(VecBuilder.fill(0.7, 0.7, 9999999));
       }
     }
   }
@@ -104,10 +100,16 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = new WaitCommand(0.010).andThen(m_robotContainer.getAutonomousCommand());
+    if (m_auto2 == 0) {
+      m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+      m_auto2 = 1;
+    } else {
+      m_autonomousCommand = m_robotContainer.getAutonomous2Command();
+    }
+
+    
 
     if (m_autonomousCommand != null) {
-      m_autoStarterCommand.schedule();
       m_autonomousCommand.schedule();
     }
   }
@@ -123,6 +125,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    kUseLimelight=true;
   }
 
   @Override
@@ -131,7 +134,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopExit() {}
+  public void teleopExit() {
+    kUseLimelight=false;
+  }
 
   @Override
   public void testInit() {

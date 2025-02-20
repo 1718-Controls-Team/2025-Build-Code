@@ -64,7 +64,7 @@
     "rotation": -59.03624346792637
   },
   "reversed": false,
-  "folder": "Red Processor Folder",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": -35.537677791974744

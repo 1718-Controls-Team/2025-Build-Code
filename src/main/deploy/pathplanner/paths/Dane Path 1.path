@@ -52,7 +52,7 @@
     "rotation": 120.14138555222547
   },
   "reversed": false,
-  "folder": "Dane Folder",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": -179.9999999990808
