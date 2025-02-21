@@ -23,6 +23,7 @@ import frc.robot.commands.AlgaeToggle;
 import frc.robot.commands.AutonSpitCoral;
 import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.CoralPickup;
+import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
 import frc.robot.commands.ElevatorPositions.AlgaeIntakePosition;
 import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
@@ -88,11 +89,12 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
-            drivetrain.applyRequest(() ->
+            /*drivetrain.applyRequest(() ->
                 drive.withVelocityX(-driverController.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
                     .withVelocityY(-driverController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
                     .withRotationalRate(-driverController.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
-            )
+            )*/
+            new Drive(drivetrain, driverController, null)
         );
 
         driverController.a().whileTrue(drivetrain.applyRequest(() -> brake));

@@ -16,6 +16,7 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.VariablePassSubsystem;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -66,9 +67,9 @@ public class Drive extends Command {
     m_Controller = controller;
     m_VariablePass = variable;
 
-    this.drivePID = new PIDController(0.058, 0, 0.0013); // 0.055, 0, 0.0013
-    this.strafePID = new PIDController(0.058, 0, 0.0013); // 0.055, 0, 0.0013
-    this.aimPID = new PIDController(0.058, 0, 0.0013); // 0.055, 0, 0.0013
+    this.drivePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
+    this.strafePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
+    this.aimPID = new PIDController(0.008, 0, 0.0); // 0.055, 0, 0.0013
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Drivetrain);
@@ -91,9 +92,9 @@ public class Drive extends Command {
       driveRequest = "limelightDrive";
       UsingLimelight = true;
       m_AngleToAprilTag = LimelightHelpers.getTX(Constants.kLimelightName);
-      m_CurrentRobotHeading = m_Drivetrain.getPigeon2().getRotation3d().getAngle();
+      m_CurrentRobotHeading = m_Drivetrain.getPigeon2().getRotation2d().getDegrees();
       m_NewAngleHeading = m_AngleToAprilTag + m_CurrentRobotHeading;
-      m_VariablePass.setLimelightTargetHeading(m_NewAngleHeading);
+      //m_VariablePass.setLimelightTargetHeading(m_NewAngleHeading);
       //m_RotationTarget = Rotation2d.fromDegrees(m_NewAngleHeading);
       SmartDashboard.putNumber("LIMELIGHT TX", m_AngleToAprilTag);
       SmartDashboard.putNumber("ROBOT HEADING (Pigeon)", m_CurrentRobotHeading);
@@ -219,10 +220,11 @@ public class Drive extends Command {
          }
         }
         //RobotPosition = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+
         RobotPosition = m_Drivetrain.getState().Pose;
         m_Drivetrain.setControl(drive.withVelocityX(drivePID.calculate(RobotPosition.getX(), xTarget)) // Drive forward with                                                                    
          .withVelocityY(strafePID.calculate(RobotPosition.getY(), yTarget)) // Drive left with negative X (left)
-         .withRotationalRate(-aimPID.calculate(m_Drivetrain.getPigeon2().getRotation3d().getAngle(), rotationTarget))); // Drive counterclockwise with negative X (left)
+         .withRotationalRate(-aimPID.calculate(Units.radiansToDegrees(m_Drivetrain.getPigeon2().getRotation3d().getZ()), rotationTarget))); // Drive counterclockwise with negative X (left)
       break;
       default:
       m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
