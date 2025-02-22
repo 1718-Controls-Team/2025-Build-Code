@@ -19,8 +19,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.commands.AlgaeToggle;
+import frc.robot.commands.AlgaeDelivery;
+import frc.robot.commands.AlgaePickup;
 import frc.robot.commands.AutonSpitCoral;
+import frc.robot.commands.CancelCoralCheck;
 import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.CoralPickup;
 import frc.robot.commands.Drive;
@@ -56,11 +58,10 @@ public class RobotContainer {
             .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
 
     private final Telemetry logger = new Telemetry(MaxSpeed);
-    //private final TClimber m_tClimber = new TClimber();
-    //private final AlgaeIntake m_algaeIntake = new AlgaeIntake();
-    //private final Elevator m_elevator = new Elevator();
-    //private final CoralIntake m_coralIntake = new CoralIntake();
-    //private final BeamBreak m_beamBreak = new BeamBreak();
+    private final TClimber m_tClimber = new TClimber();
+    private final AlgaeIntake m_algaeIntake = new AlgaeIntake();
+    private final Elevator m_elevator = new Elevator();
+    private final CoralIntake m_coralIntake = new CoralIntake();
     public Command AutonomousRun;
 
     private final CommandXboxController driverController = new CommandXboxController(0);
@@ -96,21 +97,26 @@ public class RobotContainer {
             )*/
             new Drive(drivetrain, driverController, null)
         );
-
         driverController.a().whileTrue(drivetrain.applyRequest(() -> brake));
 
         // reset the field-centric heading on left bumper press
-        driverController.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
+        driverController.back().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        /*operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
-        operatorController.x().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
-        operatorController.b().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.x().onTrue(new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.b().onTrue(new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.a().onTrue(new Home(m_elevator, m_algaeIntake, m_coralIntake));
-        driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
-        driverController.leftBumper().whileTrue(new AlgaeToggle(m_algaeIntake, m_beamBreak));
-        driverController.rightTrigger(0.5).whileTrue(new ClimberActivate(m_tClimber)); */
+        operatorController.rightBumper().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.leftBumper().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        
+        driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator));
+        // driver rightTrigger CoralCheckPosition
+        driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake));
+        driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake));
+        driverController.start().onTrue( new CancelCoralCheck(m_coralIntake, m_elevator));
+        driverController.y().whileTrue(new ClimberActivate(m_tClimber));
     }
 
     /*private void registerAutonCommands() {
