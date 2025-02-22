@@ -47,6 +47,10 @@ public class Drive extends Command {
   //PoseEstimate RobotPosition;
   private Pose2d RobotPosition;
 
+  private double turnController;
+  private double strafeController;
+  private double driveController;
+
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
     .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
@@ -219,12 +223,32 @@ public class Drive extends Command {
             rotationTarget = Constants.kBlueBottomRL[2];
          }
         }
-        //RobotPosition = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
 
         RobotPosition = m_Drivetrain.getState().Pose;
-        m_Drivetrain.setControl(drive.withVelocityX(drivePID.calculate(RobotPosition.getX(), xTarget)) // Drive forward with                                                                    
-         .withVelocityY(strafePID.calculate(RobotPosition.getY(), yTarget)) // Drive left with negative X (left)
-         .withRotationalRate(-aimPID.calculate(Units.radiansToDegrees(m_Drivetrain.getPigeon2().getRotation3d().getZ()), rotationTarget))); // Drive counterclockwise with negative X (left)
+
+        turnController = aimPID.calculate((m_Drivetrain.getPigeon2().getRotation2d().getDegrees() + 180)%360, rotationTarget);
+        strafeController = strafePID.calculate(RobotPosition.getY(), yTarget);
+        driveController = drivePID.calculate(RobotPosition.getX(), xTarget);
+
+        if (driveController > 1) {
+          driveController = 1;
+         } else if (driveController < -1) {
+          driveController = -1;
+         }
+        if (strafeController > 1) {
+          strafeController = 1;
+        } else if (strafeController < -1) {
+          strafeController = -1;
+        }
+        if (turnController > 1) {
+          turnController = 1;
+        } else if (turnController < -1) {
+          turnController = -1;
+        }
+
+        m_Drivetrain.setControl(drive.withVelocityX(driveController * MaxSpeed * 1.0) // Drive forward with                                                                    
+         .withVelocityY(strafeController * MaxSpeed * 1.0) // Drive left with negative X (left)
+         .withRotationalRate(turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
       break;
       default:
       m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
