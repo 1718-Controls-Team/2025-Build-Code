@@ -11,10 +11,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 
 /** An example command that uses an example subsystem. */
-public class AlgaeToggle extends Command {
+public class AlgaeDelivery extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final AlgaeIntake m_algaeSubsystem;
-  private final BeamBreak m_beamBreakSubsystem;
 
   @SuppressWarnings("unused")
   private boolean m_isFinished = false;
@@ -24,13 +23,11 @@ public class AlgaeToggle extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public AlgaeToggle(AlgaeIntake algaeSubsystem, BeamBreak beamBreakSubsystem) {
+  public AlgaeDelivery(AlgaeIntake algaeSubsystem) {
     m_algaeSubsystem = algaeSubsystem;
-    m_beamBreakSubsystem = beamBreakSubsystem;
    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_algaeSubsystem);
-    addRequirements(m_beamBreakSubsystem);
     
   }
 
@@ -38,16 +35,11 @@ public class AlgaeToggle extends Command {
   @Override
   public void initialize() {
     m_isFinished = false;
-    if (m_beamBreakSubsystem.getAlgaePresentIntake() == true) {
-      // Delivery
       m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeOutSpinSpeed);  
-    } else {
-      // Pickup
-      m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);  
     }
     // the above elevator might not be correct
-  }
+  
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {

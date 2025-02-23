@@ -16,7 +16,6 @@ public class CoralPickup extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
   private final Elevator m_elevatorSubsystem;
-  private final BeamBreak m_beamBreakSubsystem;
 
   @SuppressWarnings("unused")
     private boolean m_isFinished = false;
@@ -27,10 +26,9 @@ public class CoralPickup extends Command {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public CoralPickup(CoralIntake coralSubsystem, Elevator elevatorSubsystem, BeamBreak beamBreakSubsystem) {
+    public CoralPickup(CoralIntake coralSubsystem, Elevator elevatorSubsystem) {
       m_coralSubsystem = coralSubsystem;
       m_elevatorSubsystem = elevatorSubsystem;
-      m_beamBreakSubsystem = beamBreakSubsystem;
   
      
       // Use addRequirements() here to declare subsystem dependencies.
@@ -61,8 +59,6 @@ public class CoralPickup extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-  if (m_beamBreakSubsystem.getCoralPresentIntake())
-    m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
     m_isFinished=true;
   
 }
