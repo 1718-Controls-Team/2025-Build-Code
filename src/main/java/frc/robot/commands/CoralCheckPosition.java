@@ -18,7 +18,6 @@ public class CoralCheckPosition extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
   private final Elevator m_elevatorSubsystem;
-  private final BeamBreak m_beamBreakSubsystem;
   private final CommandXboxController m_driverController;
 
   private int m_stateMachine = 1;
@@ -36,19 +35,16 @@ public class CoralCheckPosition extends Command {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public CoralCheckPosition(CoralIntake coralSubsystem, Elevator elevatorSubsystem, BeamBreak beamBreakSubsystem, CommandXboxController driverController) {
+    public CoralCheckPosition(CoralIntake coralSubsystem, Elevator elevatorSubsystem, CommandXboxController driverController) {
       m_coralSubsystem = coralSubsystem;
       m_elevatorSubsystem = elevatorSubsystem;
-      m_beamBreakSubsystem = beamBreakSubsystem;
       m_driverController = driverController;
   
      
       // Use addRequirements() here to declare subsystem dependencies.
       addRequirements(m_elevatorSubsystem);
       addRequirements(m_coralSubsystem);
-      addRequirements(m_beamBreakSubsystem);
-          
-        }
+      }
    
         // Called when the command is initially scheduled.
     @Override

@@ -8,6 +8,7 @@ import com.ctre.phoenix6.StatusCode;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
+import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
@@ -76,6 +77,7 @@ public class Elevator extends SubsystemBase {
     slot0.kD = Constants.kElevator1Derivative;
     slot0.GravityType = GravityTypeValue.Elevator_Static;
     slot0.kV = Constants.kElevator1VelocityFeedFoward;
+    slot0.kG = Constants.kElevator1GravityFeedForward;
     //slot0.kS = Constants.kElevator1StaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
 
     //Setting the config option that allows playing music on the motor during disabled.
@@ -94,7 +96,7 @@ public class Elevator extends SubsystemBase {
 
   public void configureElevator2(TalonFX elevator2){
     //Start Configuring Elevator
-    TalonFXConfiguration elevator2Config = new TalonFXConfiguration();
+    /*TalonFXConfiguration elevator2Config = new TalonFXConfiguration();
 
     elevator2Config.MotorOutput.Inverted = Constants.kElevator1Direction;
     elevator2Config.MotorOutput.NeutralMode = NeutralModeValue.Brake;
@@ -122,7 +124,8 @@ public class Elevator extends SubsystemBase {
     }
     if (!climberStatus.isOK()) {
       System.out.println("Could not configure device. Error: " + climberStatus.toString());
-    }
+    }*/
+    m_Elevator2.setControl(new Follower(m_Elevator1.getDeviceID(), true));
     m_Elevator2.setPosition(0);
   }
 

@@ -38,7 +38,7 @@ public static final String kLimelightName = "limelight-lime";
 
 
 // coralRotate Constants
-  public static final double kCoralRotateProportional = 0; 
+  public static final double kCoralRotateProportional = 1; 
   public static final double kCoralRotateIntegral = 0;
   public static final double kCoralRotateDerivative = 0;
   public static final double kCoralRotateFeedFoward = 0;
@@ -46,18 +46,19 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kCoralRotateGravityFeedForward = 0;
   public static final double kCoralMaxReverseVoltage = -11;
   public static final double kCoralMaxForwardVoltage = 11;
-  public static final double kCoralRotateMotionMagicAcceleration = 0;
-  public static final double kCoralRotateMotionMagicCruiseVelocity = 0;
+  public static final double kCoralRotateMotionMagicAcceleration = 100;
+  public static final double kCoralRotateMotionMagicCruiseVelocity = 50;
   public static final double kCoralRotateVoltageClosedLoopRampPeriod = 0;
-  public static final double kCoralRotateSupplyCurrentLimit = 1;
-  public static final InvertedValue kCoralRotateDirection = InvertedValue.Clockwise_Positive;
+  public static final double kCoralRotateSupplyCurrentLimit = 40;
+  public static final InvertedValue kCoralRotateDirection = InvertedValue.CounterClockwise_Positive;
   public static final SensorDirectionValue kCoralRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
   public static final double kCoralCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kCoralRotateRotorToSensorRatio = 0;
 // these constants below are not accurate lmao
+// Coral rotate position range is 0-11
   public static final double kCoralRotateDeliveryPos = 0;
-  public static final double kCoralOutSpinSpeed = 0;
-  public static final double kCoralInSpinSpeed = 0;
+  public static final double kCoralOutSpinSpeed = -10;
+  public static final double kCoralInSpinSpeed = 10;
   public static final double kCoralStopSpinSpeed = 0;
   public static final double kCoralRotatePositionTolerance = 20;
   public static final double kCoralRotateHomePos = 0;
@@ -67,14 +68,14 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kCoralSpinIntegral = 0;
   public static final double kCoralSpinMaxForwardVoltage = 11;
   public static final double kCoralSpinMaxReverseVoltage = -11;
-  public static final double kCoralSpinProportional = 0;
+  public static final double kCoralSpinProportional = 0.07;
   public static final InvertedValue kCoralSpinDirection = InvertedValue.Clockwise_Positive;
-  public static final double kCoralSpinSupplyCurrentLimit = 0;
-  public static final double kCoralSpinVelocityFeedFoward = 0;
+  public static final double kCoralSpinSupplyCurrentLimit = 40;
+  public static final double kCoralSpinVelocityFeedFoward = 0.122;
   public static final double kCoralSpinVoltageClosedLoopRampPeriod = 0;
 
 // Climber Constants
-  public static final double kTClimberProportional = 0; 
+  public static final double kTClimberProportional = 0.2; 
   public static final double kTClimberIntegral = 0;
   public static final double kTClimberDerivative = 0;
   public static final double kTClimberFeedFoward = 0;
@@ -85,21 +86,23 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kTClimberMotionMagicAcceleration = 0;
   public static final double kTClimberMotionMagicCruiseVelocity = 0;
   public static final double kTClimberVoltageClosedLoopRampPeriod = 0;
-  public static final double kTClimberSupplyCurrentLimit = 1;
-  public static final InvertedValue kTClimberDirection = InvertedValue.Clockwise_Positive;
+  public static final double kTClimberSupplyCurrentLimit = 40;
+  public static final InvertedValue kTClimberDirection = InvertedValue.CounterClockwise_Positive;
   public static final SensorDirectionValue kTClimberCancoderDirection = SensorDirectionValue.Clockwise_Positive;
   public static final double kTClimberCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kTClimberRotorToSensorRatio = 0;
   public static final double kTClimberVelocityFeedFoward = 0;
   // not skigma, not alphica aproved constants below
-  public static final double kTClimberUpPos = 0;
+  public static final double kTClimberUpPos = 0; //180 max position if zero is all the way up
+
 
 
 // Elevator Constants
-  public static final double kElevator1Proportional = 0;
+  public static final double kElevator1Proportional = 2.5;
   public static final double kElevator1Integral = 0;
   public static final double kElevator1Derivative = 0;
   public static final double kElevator1VelocityFeedFoward = 0;
+  public static final double kElevator1GravityFeedForward = 0.2;
   public static final InvertedValue kElevator1Direction = InvertedValue.Clockwise_Positive;
   public static final double kElevator1SupplyCurrentLimit = 0;
   public static final double kElevator1VoltageClosedLoopRampPeriod = 0;
@@ -115,7 +118,7 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kElevator2VoltageClosedLoopRampPeriod = 0;
   public static final double kElevator2MaxForwardVoltage = 11;
   public static final double kElevator2MaxReverseVoltage = -11;
-// These Constants below arent real take yo pills
+// These Constants below arent real take yo pills           0-33.5 is position range
   public static final double kElevatorCoralIntakePos = 0;
   public static final double kElevatorHomePos = 0;
   public static final double kElevatorL2ScoringPos = 0;
@@ -127,46 +130,46 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kAlgaeIntake1Integral = 0;
   public static final double kAlgaeIntake1MaxForwardVoltage = 11;
   public static final double kAlgaeIntake1MaxReverseVoltage = -11;
-  public static final double kAlgaeIntake1Proportional = 0;
-  public static final InvertedValue kAlgaeIntake1Direction = InvertedValue.Clockwise_Positive;
-  public static final double kAlgaeIntake1SupplyCurrentLimit = 0;
-  public static final double kAlgaeIntake1VelocityFeedFoward = 0;
+  public static final double kAlgaeIntake1Proportional = 0.07;
+  public static final InvertedValue kAlgaeIntake1Direction = InvertedValue.CounterClockwise_Positive;
+  public static final double kAlgaeIntake1SupplyCurrentLimit = 40;
+  public static final double kAlgaeIntake1VelocityFeedFoward = 0.122;
   public static final double kAlgaeIntake1VoltageClosedLoopRampPeriod = 0;
 
   public static final double kAlgaeIntake2Derivative = 0;
   public static final double kAlgaeIntake2Integral = 0;
   public static final double kAlgaeIntake2MaxForwardVoltage = 11;
   public static final double kAlgaeIntake2MaxReverseVoltage = -11;
-  public static final double kAlgaeIntake2Proportional = 0;
+  public static final double kAlgaeIntake2Proportional = 0.07;
   public static final InvertedValue kAlgaeIntake2Direction = InvertedValue.Clockwise_Positive;
-  public static final double kAlgaeIntake2SupplyCurrentLimit = 0;
-  public static final double kAlgaeIntake2VelocityFeedFoward = 0;
+  public static final double kAlgaeIntake2SupplyCurrentLimit = 40;
+  public static final double kAlgaeIntake2VelocityFeedFoward = 0.122;
   public static final double kAlgaeIntake2VoltageClosedLoopRampPeriod = 0;
 
-  public static final double kAlgaeIntakeRotateProportional = 0; 
+  public static final double kAlgaeIntakeRotateProportional = 7; 
   public static final double kAlgaeIntakeRotateIntegral = 0;
-  public static final double kAlgaeIntakeRotateDerivative = 0;
+  public static final double kAlgaeIntakeRotateDerivative = 0.2;
   public static final double kAlgaeIntakeRotateFeedFoward = 0;
-  public static final double kAlgaeIntakeRotateVelocityFeedForward = 0;
+  public static final double kAlgaeIntakeRotateVelocityFeedForward = 0.2;
   public static final double kAlgaeIntakeRotateGravityFeedForward = 0;
   public static final double kAlgaeIntakeRotateMaxReverseVoltage = -11;
   public static final double kAlgaeIntakeRotateMaxForwardVoltage = 11;
   public static final double kAlgaeIntakeRotateMotionMagicAcceleration = 0;
   public static final double kAlgaeIntakeRotateMotionMagicCruiseVelocity = 0;
   public static final double kAlgaeIntakeRotateVoltageClosedLoopRampPeriod = 0;
-  public static final double kAlgaeIntakeRotateSupplyCurrentLimit = 1;
+  public static final double kAlgaeIntakeRotateSupplyCurrentLimit = 40;
   public static final InvertedValue kAlgaeIntakeRotateDirection = InvertedValue.Clockwise_Positive;
   public static final SensorDirectionValue kAlgaeIntakeRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
   public static final double kAlgaeIntakeRotateCancoderAbsoluteSensorDiscontinuityPoint = 1;
   public static final double kAlgaeIntakeRotateRotorToSensorRatio = 0;
 
-  // these constants are fake, not sigma :/
-  public static final double kAlgaeOutSpinSpeed = 0;
-  public static final double kAlgaeInSpinSpeed = 0;
-  public static final double kAlgaeStopSpinSpeed = 0;
-  public static final double kAlgaeIntakePos = 0;
-  public static final double kAlgaeHomePos = 0;
-  public static final double kAlgaeIntakePositionTolerance = 10;
+  // these constants are fake, not sigma :/ //-0.441 to 1.7
+  public static final double kAlgaeOutSpinSpeed = -20;
+  public static final double kAlgaeInSpinSpeed = 20;
+  public static final double kAlgaeStopSpinSpeed = 3;
+  public static final double kAlgaeIntakePos = 0.2;
+  public static final double kAlgaeHomePos = 0.2;
+  public static final double kAlgaeIntakePositionTolerance = 0.05;
 
   // BeamBreak Constants
   public static final double kIntakeBeamBreakCrossover = 0.9;
