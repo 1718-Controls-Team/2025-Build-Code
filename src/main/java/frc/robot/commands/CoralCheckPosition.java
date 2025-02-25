@@ -17,7 +17,7 @@ import frc.robot.Constants;
 public class CoralCheckPosition extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
-  private final Elevator m_elevatorSubsystem;
+  //private final Elevator m_elevatorSubsystem;
   private final CommandXboxController m_driverController;
 
   private int m_stateMachine = 1;
@@ -35,26 +35,26 @@ public class CoralCheckPosition extends Command {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public CoralCheckPosition(CoralIntake coralSubsystem, Elevator elevatorSubsystem, CommandXboxController driverController) {
+    public CoralCheckPosition(CoralIntake coralSubsystem, CommandXboxController driverController) {
       m_coralSubsystem = coralSubsystem;
-      m_elevatorSubsystem = elevatorSubsystem;
+      //m_elevatorSubsystem = elevatorSubsystem;
       m_driverController = driverController;
   
      
       // Use addRequirements() here to declare subsystem dependencies.
-      addRequirements(m_elevatorSubsystem);
+      //addRequirements(m_elevatorSubsystem);
       addRequirements(m_coralSubsystem);
       }
    
         // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-      double elevatorStartPos = m_elevatorSubsystem.getElevatorPosition();
+      //double elevatorStartPos = m_elevatorSubsystem.getElevatorPosition();
       m_isFinished = false;
-      PosCheckTimer.reset();
-      PosCheckTimer.start();
-
-      m_ElevatorTargetPos = elevatorStartPos-30;
+      //PosCheckTimer.reset();
+      //PosCheckTimer.start();
+      m_coralSubsystem.setcoralSpinPower(Constants.kCoralOutSpinSpeed);  
+      //m_ElevatorTargetPos = elevatorStartPos-1;
       m_stateMachine = 1;
     }
 
@@ -62,7 +62,7 @@ public class CoralCheckPosition extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    switch(m_stateMachine){
+    /*switch(m_stateMachine){
       case 1:
       //Make sure coral rotate and algae rotate are in correct positions then move elevator
         if (m_coralSubsystem.getCoralRotateInPosition()) {
@@ -79,16 +79,16 @@ public class CoralCheckPosition extends Command {
          m_elevatorSubsystem.setElevatorDesiredPosition(elevatorStartPos);
       }
       break;
-      case 3:
+      case 3:*/
         // comments
         m_isFinished = true;
-      }
+      //}
   }
 //          m_coralSubsystem.setcoralSpinPower(Constants.kCoralOutSpinSpeed);  
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-  m_elevatorSubsystem.setElevatorDesiredPosition(elevatorStartPos);
+  //m_elevatorSubsystem.setElevatorDesiredPosition(elevatorStartPos);
   m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
   m_isFinished=true;
 }

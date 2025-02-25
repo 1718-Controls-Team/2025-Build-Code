@@ -21,7 +21,7 @@ public class CoralIntakePosition extends Command {
   @SuppressWarnings("unused")
   private boolean m_isFinished = false;
   private int m_stateMachine = 1;
-  private double m_ElevatorTargetPos = 0;
+  
 
 
   /**
@@ -45,17 +45,19 @@ public class CoralIntakePosition extends Command {
   public void initialize() {
     m_CoralIntake.setcoralRotate(Constants.kCoralRotateHomePos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
+    m_Elevator.setElevatorDesiredPosition(Constants.kElevatorCoralIntakePos);
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    switch(m_stateMachine){
+    /* switch(m_stateMachine){
       case 1:
       //Make sure coral rotate and algae rotate are in correct positions then move elevator
         if (m_CoralIntake.getCoralRotateInPosition()) {
           m_stateMachine += 1;
-          m_Elevator.setElevatorDesiredPosition(m_ElevatorTargetPos);
+          m_Elevator.setElevatorDesiredPosition(Constants.kElevatorCoralIntakePos);
         }
       break;
       case 2:
@@ -65,7 +67,7 @@ public class CoralIntakePosition extends Command {
       }
         
       break;
-      }
+      } */
   }
 
   // Called once the command ends or is interrupted.

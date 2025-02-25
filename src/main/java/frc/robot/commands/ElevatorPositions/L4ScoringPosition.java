@@ -21,7 +21,6 @@ public class L4ScoringPosition extends Command {
   @SuppressWarnings("unused")
   private boolean m_isFinished = false;
   private int m_stateMachine = 1;
-  private double m_ElevatorTargetPos = 0;
 
 
   /**
@@ -45,12 +44,13 @@ public class L4ScoringPosition extends Command {
   public void initialize() {
     m_CoralIntake.setcoralRotate(Constants.kCoralRotateHomePos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
+    m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL4ScoringPos);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    switch(m_stateMachine){
+    /* switch(m_stateMachine){
       case 1:
       //Make sure coral rotate and algae rotate are in correct positions then move elevator
         if (m_CoralIntake.getCoralRotateInPosition()) {
@@ -65,7 +65,7 @@ public class L4ScoringPosition extends Command {
       }
         
       break;
-      }
+      } */
   }
 
   // Called once the command ends or is interrupted.

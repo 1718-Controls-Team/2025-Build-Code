@@ -10,6 +10,7 @@ import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
+import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -28,7 +29,7 @@ public class AlgaeIntake extends SubsystemBase {
   TalonFX AlgaeIntake1 = new TalonFX(20, "rio");
   TalonFX AlgaeIntake2 = new TalonFX(21, "rio");
   
-  MotionMagicVoltage AlgaeIntakePosition = new MotionMagicVoltage(0);
+  PositionVoltage AlgaeIntakePosition = new PositionVoltage(0);
   VelocityVoltage AlgaeIntake1Power = new VelocityVoltage(0);
   VelocityVoltage AlgaeIntake2Power = new VelocityVoltage(0);
   DutyCycleOut AlgaeIntakeVoltage = new DutyCycleOut(0);
@@ -52,8 +53,8 @@ public class AlgaeIntake extends SubsystemBase {
     algaeIntakeRotateConfig.MotorOutput.Inverted = Constants.kAlgaeIntakeRotateDirection;
     algaeIntakeRotateConfig.Voltage.PeakForwardVoltage = Constants.kAlgaeIntakeRotateMaxForwardVoltage;
     algaeIntakeRotateConfig.Voltage.PeakReverseVoltage = Constants.kAlgaeIntakeRotateMaxReverseVoltage;
-    algaeIntakeRotateConfig.MotionMagic.MotionMagicAcceleration = Constants.kAlgaeIntakeRotateMotionMagicAcceleration;
-    algaeIntakeRotateConfig.MotionMagic.MotionMagicCruiseVelocity = Constants.kAlgaeIntakeRotateMotionMagicCruiseVelocity;
+    //algaeIntakeRotateConfig.MotionMagic.MotionMagicAcceleration = Constants.kAlgaeIntakeRotateMotionMagicAcceleration;
+    //algaeIntakeRotateConfig.MotionMagic.MotionMagicCruiseVelocity = Constants.kAlgaeIntakeRotateMotionMagicCruiseVelocity;
     //algaeIntakeRotateConfig.MotionMagic.MotionMagicJerk = Constants.kAlgaeIntakeRotateMotionMagicJerk; // Idk how needed Jerk is
     algaeIntakeRotateConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
 

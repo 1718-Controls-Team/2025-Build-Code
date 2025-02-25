@@ -7,6 +7,7 @@ package frc.robot.commands;
 import frc.robot.Constants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.BeamBreak;
+import frc.robot.subsystems.CoralIntake;
 import edu.wpi.first.wpilibj2.command.Command;
 
 
@@ -14,6 +15,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class AlgaePickup extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final AlgaeIntake m_algaeSubsystem;
+  private final CoralIntake m_coralSubsystem;
+
 
   @SuppressWarnings("unused")
   private boolean m_isFinished = false;
@@ -23,19 +26,24 @@ public class AlgaePickup extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public AlgaePickup(AlgaeIntake algaeSubsystem) {
+  public AlgaePickup(AlgaeIntake algaeSubsystem, CoralIntake coralSubsystem) {
     m_algaeSubsystem = algaeSubsystem;
-   
+    m_coralSubsystem = coralSubsystem;
+
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_algaeSubsystem);
-    
+    addRequirements(m_coralSubsystem);
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     m_isFinished = false;
-      m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);  
+      m_coralSubsystem.setcoralRotate(Constants.kCoralRotateAlgaePos);
+      m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);
+      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);
+
     }
     // the above elevator might not be correct
   

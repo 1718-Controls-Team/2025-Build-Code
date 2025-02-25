@@ -112,6 +112,7 @@ public class Elevator extends SubsystemBase {
     slot0.kD = Constants.kElevator2Derivative;
     slot0.GravityType = GravityTypeValue.Elevator_Static;
     slot0.kV = Constants.kElevator2VelocityFeedFoward;
+    slot0.kG = Constants.kElevator2GravityFeedForward;
     // slot0.kS = Constants.kElevator1StaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
 
     //Setting the config option that allows playing music on the motor during disabled.
