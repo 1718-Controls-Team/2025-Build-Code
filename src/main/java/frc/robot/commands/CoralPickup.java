@@ -59,6 +59,7 @@ public class CoralPickup extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_coralSubsystem.setcoralSpinPower(Constants.kCoralHoldSpinSpeed);
     m_isFinished=true;
   
 }

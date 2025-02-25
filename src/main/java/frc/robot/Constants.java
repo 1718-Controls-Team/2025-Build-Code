@@ -59,9 +59,10 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kCoralRotateDeliveryPos = 0;
   public static final double kCoralOutSpinSpeed = -10;
   public static final double kCoralInSpinSpeed = 10;
+  public static final double kCoralHoldSpinSpeed = 3;
   public static final double kCoralStopSpinSpeed = 0;
-  public static final double kCoralRotatePositionTolerance = 20;
-  public static final double kCoralRotateHomePos = 0;
+  public static final double kCoralRotatePositionTolerance = 0.5;
+  public static final double kCoralRotateHomePos = 7;
 
 // coralSpin Constants
   public static final double kCoralSpinDerivative = 0;
@@ -113,14 +114,14 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kElevator2Integral = 0;
   public static final double kElevator2Derivative = 0;
   public static final double kElevator2VelocityFeedFoward = 0;
-  public static final InvertedValue kElevator2Direction = InvertedValue.Clockwise_Positive;
+  public static final InvertedValue kElevator2Direction = InvertedValue.CounterClockwise_Positive;
   public static final double kElevator2SupplyCurrentLimit = 0;
   public static final double kElevator2VoltageClosedLoopRampPeriod = 0;
   public static final double kElevator2MaxForwardVoltage = 11;
   public static final double kElevator2MaxReverseVoltage = -11;
 // These Constants below arent real take yo pills           0-33.5 is position range
   public static final double kElevatorCoralIntakePos = 0;
-  public static final double kElevatorHomePos = 0;
+  public static final double kElevatorHomePos = 10;
   public static final double kElevatorL2ScoringPos = 0;
   public static final double kElevatorL3ScoringPos = 0;
   public static final double kElevatorL4ScoringPos = 0;

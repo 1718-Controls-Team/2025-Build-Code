@@ -20,8 +20,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
 
-  TalonFX m_Elevator1 = new TalonFX(13);
-  TalonFX m_Elevator2 = new TalonFX(14);
+  TalonFX m_Elevator1 = new TalonFX(13, "rio");
+  TalonFX m_Elevator2 = new TalonFX(14, "rio");
 
   private final PositionVoltage ElevatorPositionRequest = new PositionVoltage(0).withSlot(0);
   private final DutyCycleOut ElevatorVoltageRequest = new DutyCycleOut(0);
@@ -96,14 +96,14 @@ public class Elevator extends SubsystemBase {
 
   public void configureElevator2(TalonFX elevator2){
     //Start Configuring Elevator
-    /*TalonFXConfiguration elevator2Config = new TalonFXConfiguration();
+    TalonFXConfiguration elevator2Config = new TalonFXConfiguration();
 
-    elevator2Config.MotorOutput.Inverted = Constants.kElevator1Direction;
+    elevator2Config.MotorOutput.Inverted = Constants.kElevator2Direction;
     elevator2Config.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-    elevator2Config.CurrentLimits.SupplyCurrentLimit = Constants.kElevator1SupplyCurrentLimit;
-    elevator2Config.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kElevator1VoltageClosedLoopRampPeriod;
-    elevator2Config.Voltage.PeakForwardVoltage = Constants.kElevator1MaxForwardVoltage;
-    elevator2Config.Voltage.PeakReverseVoltage = Constants.kElevator1MaxReverseVoltage;
+    elevator2Config.CurrentLimits.SupplyCurrentLimit = Constants.kElevator2SupplyCurrentLimit;
+    elevator2Config.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kElevator2VoltageClosedLoopRampPeriod;
+    elevator2Config.Voltage.PeakForwardVoltage = Constants.kElevator2MaxForwardVoltage;
+    elevator2Config.Voltage.PeakReverseVoltage = Constants.kElevator2MaxReverseVoltage;
     elevator2Config.CurrentLimits.SupplyCurrentLimitEnable = true;
 
     Slot0Configs slot0 = elevator2Config.Slot0;
@@ -112,7 +112,7 @@ public class Elevator extends SubsystemBase {
     slot0.kD = Constants.kElevator2Derivative;
     slot0.GravityType = GravityTypeValue.Elevator_Static;
     slot0.kV = Constants.kElevator2VelocityFeedFoward;
-    //slot0.kS = Constants.kElevator1StaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
+    // slot0.kS = Constants.kElevator1StaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
 
     //Setting the config option that allows playing music on the motor during disabled.
     //elevator2Config.Audio.AllowMusicDurDisable = true;
@@ -124,8 +124,8 @@ public class Elevator extends SubsystemBase {
     }
     if (!climberStatus.isOK()) {
       System.out.println("Could not configure device. Error: " + climberStatus.toString());
-    }*/
-    m_Elevator2.setControl(new Follower(m_Elevator1.getDeviceID(), true));
+    }
+    // m_Elevator2.setControl(new Follower(m_Elevator1.getDeviceID(), true));
     m_Elevator2.setPosition(0);
   }
 

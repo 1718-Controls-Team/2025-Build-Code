@@ -38,8 +38,8 @@ public class Home extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
-    m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeStopSpinSpeed); 
+    // m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
+   //  m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeStopSpinSpeed); 
     m_coralSubsystem.setcoralRotate(Constants.kCoralRotateHomePos);  
     m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);  
     m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);

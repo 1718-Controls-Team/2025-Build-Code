@@ -22,9 +22,9 @@ import frc.robot.Constants;
 
 public class CoralIntake extends SubsystemBase {
   /** Creates a new CoralIntake. */
-  TalonFX m_coralSpin = new TalonFX(17);
-  TalonFX m_coralRotate = new TalonFX(15);
-  CANcoder m_coralRotatCancoder = new CANcoder(16);
+  TalonFX m_coralSpin = new TalonFX(17, "rio");
+  TalonFX m_coralRotate = new TalonFX(15, "rio");
+  //CANcoder m_coralRotatCancoder = new CANcoder(16);
 
 
   private final VelocityVoltage coralSpinVelocityRequest = new VelocityVoltage(0);
@@ -36,7 +36,7 @@ public class CoralIntake extends SubsystemBase {
   public CoralIntake() {
     this.coralIntakeConfiguration(m_coralSpin);
     this.coralRotateConfiguration(m_coralRotate);
-    this.configureCoralCancoder(m_coralRotatCancoder);
+    //this.configureCoralCancoder(m_coralRotatCancoder);
 
   }
 
@@ -71,9 +71,9 @@ public class CoralIntake extends SubsystemBase {
   coralRotateConfig.Voltage.PeakForwardVoltage = Constants.kCoralMaxReverseVoltage;
   coralRotateConfig.Voltage.PeakForwardVoltage = Constants.kCoralMaxForwardVoltage;
 
-  coralRotateConfig.Feedback.FeedbackRemoteSensorID = Constants.kCoralRotateCancoderCanID;
+  /*coralRotateConfig.Feedback.FeedbackRemoteSensorID = Constants.kCoralRotateCancoderCanID;
   coralRotateConfig.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder;
-  coralRotateConfig.Feedback.RotorToSensorRatio = Constants.kCoralRotateRotorToSensorRatio;
+  coralRotateConfig.Feedback.RotorToSensorRatio = Constants.kCoralRotateRotorToSensorRatio;*/
 
   Slot0Configs slot0 = coralRotateConfig.Slot0;
     slot0.kP = Constants.kCoralRotateProportional;

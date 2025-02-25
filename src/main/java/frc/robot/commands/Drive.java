@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 public class Drive extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CommandSwerveDrivetrain m_Drivetrain;
-  private final VariablePassSubsystem m_VariablePass;
+  //private final VariablePassSubsystem m_VariablePass;
   private final CommandXboxController m_Controller;
 
   private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -66,10 +66,10 @@ public class Drive extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller, VariablePassSubsystem variable) {
+  public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller/*, VariablePassSubsystem variable*/) {
     m_Drivetrain = drive;
     m_Controller = controller;
-    m_VariablePass = variable;
+    //m_VariablePass = variable;
 
     this.drivePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
     this.strafePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013

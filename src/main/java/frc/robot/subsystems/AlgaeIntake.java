@@ -23,10 +23,10 @@ import frc.robot.Constants;
 
 public class AlgaeIntake extends SubsystemBase {
   /** Creates a new AlgaeIntake. */
-  TalonFX AlgaeRotate = new TalonFX(18);
-  CANcoder AlgaeRotateCancoder = new CANcoder(19);
-  TalonFX AlgaeIntake1 = new TalonFX(20);
-  TalonFX AlgaeIntake2 = new TalonFX(21);
+  TalonFX AlgaeRotate = new TalonFX(18, "rio");
+  //CANcoder AlgaeRotateCancoder = new CANcoder(19);
+  TalonFX AlgaeIntake1 = new TalonFX(20, "rio");
+  TalonFX AlgaeIntake2 = new TalonFX(21, "rio");
   
   MotionMagicVoltage AlgaeIntakePosition = new MotionMagicVoltage(0);
   VelocityVoltage AlgaeIntake1Power = new VelocityVoltage(0);
@@ -38,7 +38,7 @@ public class AlgaeIntake extends SubsystemBase {
 
   public AlgaeIntake() {
     this.configureAlgaeIntakeRotate(AlgaeRotate);
-    this.configureAlgaeIntakeCancoder(AlgaeRotateCancoder);
+    //this.configureAlgaeIntakeCancoder(AlgaeRotateCancoder);
     this.configureAlgaeIntake1(AlgaeIntake1);
     this.configureAlgaeIntake2(AlgaeIntake2);
   }
@@ -67,9 +67,9 @@ public class AlgaeIntake extends SubsystemBase {
 
     //slot0.kV = Constants.kAlgaeIntakeRotateVelocityFeedFoward;
     //slot0.kS = Constants.kAlgaeIntakeRotateStaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
-    algaeIntakeRotateConfig.Feedback.FeedbackRemoteSensorID = Constants.kAlgaeIntakeRotateCancoderCanID;
+    /*algaeIntakeRotateConfig.Feedback.FeedbackRemoteSensorID = Constants.kAlgaeIntakeRotateCancoderCanID;
     algaeIntakeRotateConfig.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder;
-    algaeIntakeRotateConfig.Feedback.RotorToSensorRatio = Constants.kAlgaeIntakeRotateRotorToSensorRatio;
+    algaeIntakeRotateConfig.Feedback.RotorToSensorRatio = Constants.kAlgaeIntakeRotateRotorToSensorRatio;*/
 
     //Setting the config option that allows playing music on the motor during disabled.
     algaeIntakeRotateConfig.Audio.AllowMusicDurDisable = true;
@@ -84,12 +84,12 @@ public class AlgaeIntake extends SubsystemBase {
     }
   }
 
-  public void configureAlgaeIntakeCancoder(CANcoder algaeIntakeCancoder){  
+  /*public void configureAlgaeIntakeCancoder(CANcoder algaeIntakeCancoder){  
     CANcoderConfiguration algaeIntakeRotateCANcoderConfig = new CANcoderConfiguration();
     algaeIntakeRotateCANcoderConfig.MagnetSensor.MagnetOffset = -0.398926;
     algaeIntakeRotateCANcoderConfig.MagnetSensor.AbsoluteSensorDiscontinuityPoint = Constants.kAlgaeIntakeRotateCancoderAbsoluteSensorDiscontinuityPoint;
     algaeIntakeRotateCANcoderConfig.MagnetSensor.SensorDirection = Constants.kAlgaeIntakeRotateCancoderDirection;
-  }
+  } */
 
   public void configureAlgaeIntake1(TalonFX algaeIntake1){
     TalonFXConfiguration algaeIntake1VelocityConfig = new TalonFXConfiguration();

@@ -6,6 +6,8 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.CoralIntake;
+import edu.wpi.first.wpilibj.RobotState;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 
@@ -14,20 +16,18 @@ import frc.robot.Constants;
 public class AutonSpitCoral extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
-  private final BeamBreak m_beamBreakSubsystem;
 
   @SuppressWarnings("unused")
     private boolean m_isFinished = false;
+    Timer spitTimer = new Timer();
   
     /**
      * Creates a new set-PowerCommand.
      *
      * @param subsystem The subsystem used by this command.
      */
-    public AutonSpitCoral(CoralIntake coralSubsystem, BeamBreak beamBreakSubsystem) {
+    public AutonSpitCoral(CoralIntake coralSubsystem) {
       m_coralSubsystem = coralSubsystem;
-      m_beamBreakSubsystem = beamBreakSubsystem;
-     
       // Use addRequirements() here to declare subsystem dependencies.
       addRequirements(m_coralSubsystem);
     }
@@ -38,13 +38,15 @@ public class AutonSpitCoral extends Command {
       m_isFinished = false;
       
       m_coralSubsystem.setcoralSpinPower(Constants.kCoralOutSpinSpeed);  
+      spitTimer.reset();
+      spitTimer.start();
     }
 
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (!m_beamBreakSubsystem.getCoralPresentIntake()) {
+    if ((spitTimer.get() > 0.5)){
       m_isFinished=true;
     }
   }

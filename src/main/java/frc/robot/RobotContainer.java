@@ -35,7 +35,7 @@ import frc.robot.commands.ElevatorPositions.L3ScoringPosition;
 import frc.robot.commands.ElevatorPositions.L4ScoringPosition;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.AlgaeIntake;
-import frc.robot.subsystems.BeamBreak;
+//import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.CoralIntake;
 import frc.robot.subsystems.Elevator;
@@ -82,7 +82,7 @@ public class RobotContainer {
         autoChooser = AutoBuilder.buildAutoChooser("Test Auto");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
-        //registerAutonCommands();
+        registerAutonCommands();
         configureBindings();
     }
 
@@ -91,12 +91,12 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
-            /*drivetrain.applyRequest(() ->
+            drivetrain.applyRequest(() ->
                 drive.withVelocityX(-driverController.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
                     .withVelocityY(-driverController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
                     .withRotationalRate(-driverController.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
-            )*/
-            new Drive(drivetrain, driverController, null)
+            )
+            //new Drive(drivetrain, driverController)
         );
         driverController.a().whileTrue(drivetrain.applyRequest(() -> brake));
 
@@ -120,17 +120,18 @@ public class RobotContainer {
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
     }
 
-    /*private void registerAutonCommands() {
+    private void registerAutonCommands() {
         NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("CoralIntakePosition", new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L2ScoringPosition", new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L3ScoringPosition", new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L4ScoringPosition", new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
-        NamedCommands.registerCommand("AlgaeToggle", new AlgaeToggle(m_algaeIntake, m_beamBreak));
-        NamedCommands.registerCommand("CoralPickup", new CoralPickup(m_coralIntake, m_elevator, m_beamBreak));
+        NamedCommands.registerCommand("AlgaeDelivery", new AlgaeDelivery(m_algaeIntake));
+        NamedCommands.registerCommand("AlgaeToggle", new AlgaePickup(m_algaeIntake));
+        NamedCommands.registerCommand("CoralPickup", new CoralPickup(m_coralIntake, m_elevator));
         NamedCommands.registerCommand("Home", new Home(m_elevator, m_algaeIntake, m_coralIntake));
-        NamedCommands.registerCommand("AutonSpitCoral", new AutonSpitCoral(m_coralIntake, m_beamBreak));
-    } */
+        NamedCommands.registerCommand("AutonSpitCoral", new AutonSpitCoral(m_coralIntake));
+    } 
     public Command getAutonomousCommand() {
         /* Run the path selected from the auto chooser */
         AutonomousRun = m_delayCommand.andThen(autoChooser.getSelected());

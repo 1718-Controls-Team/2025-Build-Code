@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class TClimber extends SubsystemBase {
   /** Creates a new TClimber. */
-  TalonFX m_TClimber = new TalonFX(22);
+  TalonFX m_TClimber = new TalonFX(22, "rio");
 
   
   private final MotionMagicVoltage TClimberRotationRequest = new MotionMagicVoltage(0);
