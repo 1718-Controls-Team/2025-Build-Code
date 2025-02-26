@@ -27,10 +27,12 @@ public class Elevator extends SubsystemBase {
 
   private double ElevatorDesiredPos = 0;
 
+
   public Elevator() {
     this.configureElevator1(m_Elevator1);
     this.configureElevator2(m_Elevator2);
   }
+  //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
   public void setElevatorDesiredPosition(double DesiredPosition) {
     m_Elevator1.setControl(ElevatorPositionRequest.withPosition(DesiredPosition));
@@ -38,10 +40,12 @@ public class Elevator extends SubsystemBase {
     ElevatorDesiredPos = DesiredPosition;
   }
 
+
   public void setClimberZeroOutput() {
     m_Elevator1.setControl(ElevatorVoltageRequest);
     m_Elevator2.setControl(ElevatorVoltageRequest);
   }
+
 
   public boolean getElevatorInPosition(){
     if ((Math.abs(m_Elevator1.getPosition().getValueAsDouble() - ElevatorDesiredPos) < Constants.kAlgaeIntakePositionTolerance)){
@@ -51,26 +55,39 @@ public class Elevator extends SubsystemBase {
     }
   }
 
-  public void configureElevator1(TalonFX elevator1){
 
+
+
+//######################################### Start OF ELEVATOR CONFIGURATION ######################################################
+//######################################### Start OF ELEVATOR CONFIGURATION ######################################################
+//######################################### Start OF ELEVATOR CONFIGURATION ###################################################### 
+
+  public void configureElevator1(TalonFX elevator1){
     TalonFXConfiguration elevator1Config = new TalonFXConfiguration();
 
     elevator1Config.MotorOutput.Inverted = Constants.kElevator1Direction;
     elevator1Config.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+
+
     elevator1Config.CurrentLimits.SupplyCurrentLimit = Constants.kElevator1SupplyCurrentLimit;
+    elevator1Config.CurrentLimits.SupplyCurrentLimitEnable = true;
     elevator1Config.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kElevator1VoltageClosedLoopRampPeriod;
     elevator1Config.Voltage.PeakForwardVoltage = Constants.kElevator1MaxForwardVoltage;
     elevator1Config.Voltage.PeakReverseVoltage = Constants.kElevator1MaxReverseVoltage;
-    elevator1Config.CurrentLimits.SupplyCurrentLimitEnable = true;
+    
 
     Slot0Configs slot0 = elevator1Config.Slot0;
     slot0.kP = Constants.kElevator1Proportional;
     slot0.kI = Constants.kElevator1Integral;
     slot0.kD = Constants.kElevator1Derivative;
+
     slot0.GravityType = GravityTypeValue.Elevator_Static;
-    slot0.kV = Constants.kElevator1VelocityFeedFoward;
+    slot0.kV = Constants.kElevator1VelocityFeedForward;
     slot0.kG = Constants.kElevator1GravityFeedForward;
+    slot0.kS = Constants.kElevator1StaticFeedForward;
  
+
+
     StatusCode climberStatus = StatusCode.StatusCodeNotInitialized;
     for(int i = 0; i < 5; ++i) {
       climberStatus = elevator1.getConfigurator().apply(elevator1Config);
@@ -82,6 +99,10 @@ public class Elevator extends SubsystemBase {
     m_Elevator1.setPosition(0);
   }
 
+
+
+
+  
   public void configureElevator2(TalonFX elevator2){
     TalonFXConfiguration elevator2Config = new TalonFXConfiguration();
 
@@ -98,12 +119,10 @@ public class Elevator extends SubsystemBase {
     slot0.kI = Constants.kElevator2Integral;
     slot0.kD = Constants.kElevator2Derivative;
     slot0.GravityType = GravityTypeValue.Elevator_Static;
-    slot0.kV = Constants.kElevator2VelocityFeedFoward;
+    slot0.kV = Constants.kElevator2VelocityFeedForward;
     slot0.kG = Constants.kElevator2GravityFeedForward;
-    // slot0.kS = Constants.kElevator1StaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
+    slot0.kS = Constants.kElevator2StaticFeedForward; // The value of s is approximately the number of volts needed to get the mechanism moving
 
-    //Setting the config option that allows playing music on the motor during disabled.
-    //elevator2Config.Audio.AllowMusicDurDisable = true;
  
     StatusCode elevator2Status = StatusCode.StatusCodeNotInitialized;
     for(int i = 0; i < 5; ++i) {
@@ -116,11 +135,11 @@ public class Elevator extends SubsystemBase {
     m_Elevator2.setPosition(0);
   }
 
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
+//######################################### Start OF ELEVATOR CONFIGURATION ######################################################
+//######################################### Start OF ELEVATOR CONFIGURATION ######################################################
+//######################################### Start OF ELEVATOR CONFIGURATION ######################################################
+
+
 
   @Override
   public void periodic() {

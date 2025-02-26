@@ -69,7 +69,7 @@ public class TClimber extends SubsystemBase {
       slot0.kD = Constants.kTClimberDerivative;
 
       slot0.kV = Constants.kTClimberVelocityFeedForward;
-      slot0.kS = Constants.kTClimberStaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
+      slot0.kS = Constants.kTClimberStaticFeedForward; // The value of s is approximately the number of volts needed to get the mechanism moving
       slot0.GravityType = GravityTypeValue.Arm_Cosine;
       slot0.kG = Constants.kTClimberGravityFeedForward;
     

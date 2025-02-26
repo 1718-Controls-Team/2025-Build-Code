@@ -77,14 +77,18 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kCoralSpinVelocityFeedFoward = 0.122;
   public static final double kCoralSpinVoltageClosedLoopRampPeriod = 0;
 
-// Climber Constants
+/*
+ * ####################################################################################################################################
+ * ###################################################### Climber #####################################################################
+ * ####################################################################################################################################
+ */
   public static final double kTClimberProportional = 0.2; 
   public static final double kTClimberIntegral = 0;
   public static final double kTClimberDerivative = 0;
 
   public static final double kTClimberVelocityFeedForward = 0;
   public static final double kTClimberGravityFeedForward = 0;
-  public static final double kTClimberStaticFeedFoward = 0;
+  public static final double kTClimberStaticFeedForward = 0;
 
   public static final double kTClimberVoltageClosedLoopRampPeriod = 0;
   public static final double kTClimberMaxReverseVoltage = -11;
@@ -96,25 +100,42 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kTClimberUpPos = 0; //180 max position if zero is all the way up
 
 
-
-// Elevator Constants
+/*
+ * ####################################################################################################################################
+ * ################################################## Elevator 1 #####################################################################
+ * ####################################################################################################################################
+ */
   public static final double kElevator1Proportional = 2.5;
   public static final double kElevator1Integral = 0;
   public static final double kElevator1Derivative = 0.1;
-  public static final double kElevator1VelocityFeedFoward = 0;
+
+  public static final double kElevator1VelocityFeedForward = 0;
   public static final double kElevator1GravityFeedForward = 0.2;
+  public static final double kElevator1StaticFeedForward = 0;
+
   public static final InvertedValue kElevator1Direction = InvertedValue.Clockwise_Positive;
+
   public static final double kElevator1SupplyCurrentLimit = 40;
   public static final double kElevator1VoltageClosedLoopRampPeriod = 0;
   public static final double kElevator1MaxForwardVoltage = 11;
   public static final double kElevator1MaxReverseVoltage = -11;
 
+/*
+ * ####################################################################################################################################
+ * ################################################## Elevator 2 #####################################################################
+ * ####################################################################################################################################
+ */
+
   public static final double kElevator2Proportional = 2.5;
   public static final double kElevator2Integral = 0;
   public static final double kElevator2Derivative = 0.1;
-  public static final double kElevator2VelocityFeedFoward = 0;
+
+  public static final double kElevator2VelocityFeedForward = 0;
   public static final double kElevator2GravityFeedForward = 0.2;
+  public static final double kElevator2StaticFeedForward = 0;
+
   public static final InvertedValue kElevator2Direction = InvertedValue.CounterClockwise_Positive;
+
   public static final double kElevator2SupplyCurrentLimit = 40;
   public static final double kElevator2VoltageClosedLoopRampPeriod = 0;
   public static final double kElevator2MaxForwardVoltage = 11;
@@ -126,6 +147,8 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kElevatorL2ScoringPos = 20; //Was 15
   public static final double kElevatorL3ScoringPos = 25;
   public static final double kElevatorL4ScoringPos = 30;
+
+
 
 // Algae Intake Spins Constants
   public static final double kAlgaeIntake1Derivative = 0;
