@@ -62,6 +62,8 @@ public class Elevator extends SubsystemBase {
 //######################################### Start OF ELEVATOR CONFIGURATION ######################################################
 //######################################### Start OF ELEVATOR CONFIGURATION ###################################################### 
 
+//############################################# ELEVATOR 1 CONFIGURATION #################################################### 
+
   public void configureElevator1(TalonFX elevator1){
     TalonFXConfiguration elevator1Config = new TalonFXConfiguration();
 
@@ -99,8 +101,7 @@ public class Elevator extends SubsystemBase {
     m_Elevator1.setPosition(0);
   }
 
-
-
+//############################################# ELEVATOR 1 CONFIGURATION #################################################### 
 
 
   public void configureElevator2(TalonFX elevator2){

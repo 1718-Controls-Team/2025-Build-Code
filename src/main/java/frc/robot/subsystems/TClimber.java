@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class TClimber extends SubsystemBase {
-  /** Creates a new TClimber. */
+
   TalonFX m_TClimber = new TalonFX(22, "rio");
 
   
@@ -47,7 +47,10 @@ public class TClimber extends SubsystemBase {
 //######################################### Start OF TCLIMBER CONFIGURATION ######################################################
 //######################################### Start OF TCLIMBER CONFIGURATION ######################################################
 //######################################### Start OF TCLIMBER CONFIGURATION ###################################################### 
-  public void configureTClimber(TalonFX frontIntakeSpin){
+  
+//############################################# TCLIMBER CONFIGURATION #################################################### 
+
+public void configureTClimber(TalonFX frontIntakeSpin){
     TalonFXConfiguration TClimberConfig = new TalonFXConfiguration();
 
     TClimberConfig.CurrentLimits.SupplyCurrentLimit = Constants.kTClimberSupplyCurrentLimit;

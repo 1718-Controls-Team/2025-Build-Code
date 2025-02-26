@@ -39,8 +39,6 @@ public class AlgaeIntake extends SubsystemBase {
   }
 //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
-//############################################## BEGIN WRITING CLASS FUNCTIONS ########################################################
-
 
   public void setAlgaeSpinPower(double AlgaeIntakePower) {
     AlgaeIntake1.setControl(AlgaeVelocityRequest.withVelocity(AlgaeIntakePower));
@@ -73,9 +71,6 @@ public class AlgaeIntake extends SubsystemBase {
 
 //######################################### ALGAE ROTATE CONFIGURATION ###################################################### 
 
-//################################################## Start OF ALGAE CONFIGURATION ######################################################
-//################################################## Start OF ALGAE CONFIGURATION ######################################################
-//################################################## Start OF ALGAE CONFIGURATION ###################################################### 
 
   public void configureAlgaeIntakeRotate(TalonFX algaeIntakeSpin){
     TalonFXConfiguration algaeIntakeRotateConfig = new TalonFXConfiguration();
@@ -184,10 +179,6 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
 //################################################### END OF ALGAE CONFIGURATION ####################################################### 
 
 
-//######################################### END OF ALGAE CONFIGURATION ######################################################
-//######################################### END OF ALGAE CONFIGURATION ######################################################
-//######################################### END OF ALGAE CONFIGURATION ######################################################
- 
 
   @Override
   public void periodic() {

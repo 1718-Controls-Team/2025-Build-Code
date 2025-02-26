@@ -21,6 +21,45 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
 
 public static final String kLimelightName = "limelight-lime";
 
+/*
+ * ####################################################################################################################################
+ * ##################################################### Positions ###################################################################
+ * ####################################################################################################################################
+*/
+
+// Coral rotate position range is 0-11
+public static final double kCoralRotateDeliveryPos = 5; //Was 5
+public static final double kCoralRotateHomePos = 9;  
+public static final double kCoralRotateAlgaePos = 10.5;  
+public static final double kCoralRotatePositionTolerance = 0.5;
+
+public static final double kCoralOutSpinSpeed = -10;
+public static final double kCoralInSpinSpeed = 10;
+public static final double kCoralHoldSpinSpeed = 3;
+public static final double kCoralStopSpinSpeed = 0;
+
+//180 max position if zero is all the way up
+public static final double kTClimberUpPos = 0;
+
+// Elevator 0-33.5 is position range
+public static final double kElevatorCoralIntakePos = 8;
+public static final double kElevatorAlgaeIntakePos = 5;
+public static final double kElevatorHomePos = 3;
+public static final double kElevatorL2ScoringPos = 20; //Was 15
+public static final double kElevatorL3ScoringPos = 25;
+public static final double kElevatorL4ScoringPos = 30;
+
+// Algae is -0.441 to 3
+public static final double kAlgaeOutSpinSpeed = -20;
+public static final double kAlgaeInSpinSpeed = 20;
+public static final double kAlgaeIdleSpinSpeed = 3;
+public static final double kAlgaeStopSpinSpeed = 0;
+
+public static final double kAlgaeIntakePos = 2.5;
+public static final double kAlgaeHomePos = 0.37;
+public static final double kAlgaeIntakePositionTolerance = 0.05;
+
+
 
 /*
  * ####################################################################################################################################
@@ -31,7 +70,6 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kCoralRotateIntegral = 0;
   public static final double kCoralRotateDerivative = 0;
 
-  public static final double kCoralRotateFeedFoward = 0;
   public static final double kCoralRotateVelocityFeedForward = 0;
   public static final double kCoralRotateGravityFeedForward = 0;
 
@@ -45,20 +83,7 @@ public static final String kLimelightName = "limelight-lime";
 
   public static final InvertedValue kCoralRotateDirection = InvertedValue.CounterClockwise_Positive;
 
-// these constants below are not accurate lmao
-// Coral rotate position range is 0-11
-  public static final double kCoralRotateDeliveryPos = 5; //Was 5
-  public static final double kCoralRotateHomePos = 9;  
-  public static final double kCoralRotateAlgaePos = 10.5;  
-  public static final double kCoralRotatePositionTolerance = 0.5;
-
-  public static final double kCoralOutSpinSpeed = -10;
-  public static final double kCoralInSpinSpeed = 10;
-  public static final double kCoralHoldSpinSpeed = 3;
-  public static final double kCoralStopSpinSpeed = 0;
   
-
-
 
 /*
  * ####################################################################################################################################
@@ -100,8 +125,6 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kTClimberSupplyCurrentLimit = 40;
 
   public static final InvertedValue kTClimberDirection = InvertedValue.CounterClockwise_Positive;
-  // not skigma, not alphica aproved constants below
-  public static final double kTClimberUpPos = 0; //180 max position if zero is all the way up
 
 
 /*
@@ -144,14 +167,6 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kElevator2VoltageClosedLoopRampPeriod = 0;
   public static final double kElevator2MaxForwardVoltage = 11;
   public static final double kElevator2MaxReverseVoltage = -11;
-// These Constants below arent real take yo pills           0-33.5 is position range
-
-  public static final double kElevatorCoralIntakePos = 8;
-  public static final double kElevatorAlgaeIntakePos = 5;
-  public static final double kElevatorHomePos = 3;
-  public static final double kElevatorL2ScoringPos = 20; //Was 15
-  public static final double kElevatorL3ScoringPos = 25;
-  public static final double kElevatorL4ScoringPos = 30;
 
 
 
@@ -221,15 +236,6 @@ public static final String kLimelightName = "limelight-lime";
   public static final InvertedValue kAlgaeIntakeRotateDirection = InvertedValue.CounterClockwise_Positive;
 
 
-  // these constants are fake, not sigma :/ //-0.441 to 1.7
-  public static final double kAlgaeOutSpinSpeed = -20;
-  public static final double kAlgaeInSpinSpeed = 20;
-  public static final double kAlgaeIdleSpinSpeed = 3;
-  public static final double kAlgaeStopSpinSpeed = 0;
-
-  public static final double kAlgaeIntakePos = 2.5;
-  public static final double kAlgaeHomePos = 0.37;
-  public static final double kAlgaeIntakePositionTolerance = 0.05;
 
 /*
  * ####################################################################################################################################

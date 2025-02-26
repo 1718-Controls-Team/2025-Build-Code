@@ -70,7 +70,10 @@ public class CoralIntake extends SubsystemBase {
 //############################################# Start OF CORAL INTAKE CONFIGURATION ####################################################
 //############################################# Start OF CORAL INTAKE CONFIGURATION ####################################################
 //############################################# Start OF CORAL INTAKE CONFIGURATION #################################################### 
-  public void coralIntakeConfiguration(TalonFX m_coralSpin) {
+
+//############################################# CORAL SPIN CONFIGURATION #################################################### 
+
+public void coralIntakeConfiguration(TalonFX m_coralSpin) {
     TalonFXConfiguration coralSpinConfig = new TalonFXConfiguration();
     
     coralSpinConfig.Voltage.PeakForwardVoltage = Constants.kCoralSpinMaxForwardVoltage;
@@ -92,6 +95,7 @@ public class CoralIntake extends SubsystemBase {
       slot0.kS = Constants.kCoralSpinStaticFeedForward;
   }
   
+  //############################################# CORAL ROTATE CONFIGURATION #################################################### 
 
 
   public void coralRotateConfiguration(TalonFX m_coralRotate) {
