@@ -20,7 +20,6 @@ public class CoralIntakePosition extends Command {
 
   @SuppressWarnings("unused")
   private boolean m_isFinished = false;
-  private int m_stateMachine = 1;
   
 
 
@@ -52,22 +51,7 @@ public class CoralIntakePosition extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    /* switch(m_stateMachine){
-      case 1:
-      //Make sure coral rotate and algae rotate are in correct positions then move elevator
-        if (m_CoralIntake.getCoralRotateInPosition()) {
-          m_stateMachine += 1;
-          m_Elevator.setElevatorDesiredPosition(Constants.kElevatorCoralIntakePos);
-        }
-      break;
-      case 2:
-      //Make sure elevator is in position then end command
-      if (m_Elevator.getElevatorInPosition()) {
-        m_isFinished = true;
-      }
-        
-      break;
-      } */
+    
   }
 
   // Called once the command ends or is interrupted.
