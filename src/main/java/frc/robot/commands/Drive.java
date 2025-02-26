@@ -15,7 +15,6 @@ import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
@@ -28,14 +27,12 @@ public class Drive extends Command {
 
   private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
   private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
-  private String driveRequest = "";
   @SuppressWarnings("unused")
   private boolean m_isFinished = false;
-  private double m_AngleToAprilTag = 0;
-  private double m_CurrentRobotHeading;
-  private double m_NewAngleHeading;
-  private double limeLightController = 0;
+
+  private String driveRequest = "";
   private boolean UsingLimelight = false;
+  
   private final PIDController drivePID, strafePID, aimPID;
   private double aprilTagID;
   private double xTarget = 0;
@@ -47,27 +44,20 @@ public class Drive extends Command {
   private double strafeController;
   private double driveController;
 
+
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
     .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
 
-  private final SwerveRequest.FieldCentricFacingAngle driveFacingAngle = new SwerveRequest.FieldCentricFacingAngle()
-    .withDeadband(TunerConstants.kSpeedAt12Volts.in(MetersPerSecond) * 0.1)
-    .withRotationalDeadband(0.1)
-    .withDriveRequestType(DriveRequestType.Velocity);
-
   
-  /**
-   * Creates a new set-PowerCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
+
+//############################################## CLASS INITIALIZATION ##################################################################
   public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller/*, VariablePassSubsystem variable*/) {
     m_Drivetrain = drive;
     m_Controller = controller;
 
     this.drivePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
-    this.strafePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
+    this.strafePID = new PIDController(1, 0, 0.00); // 0.055, 0w, 0.0013
     this.aimPID = new PIDController(0.008, 0, 0.0); // 0.055, 0, 0.0013
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -75,14 +65,13 @@ public class Drive extends Command {
     
   }
 
+
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    driveFacingAngle.HeadingController.enableContinuousInput(-Math.PI, Math.PI);
-    driveFacingAngle.HeadingController.setPID(2, 0, 0.1);
-
     m_isFinished = false;
   }
+
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -90,29 +79,12 @@ public class Drive extends Command {
     if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) {
       driveRequest = "limelightDrive";
       UsingLimelight = true;
-      m_AngleToAprilTag = LimelightHelpers.getTX(Constants.kLimelightName);
-      m_CurrentRobotHeading = m_Drivetrain.getPigeon2().getRotation2d().getDegrees();
-      m_NewAngleHeading = m_AngleToAprilTag + m_CurrentRobotHeading;
-      SmartDashboard.putNumber("LIMELIGHT TX", m_AngleToAprilTag);
-      SmartDashboard.putNumber("ROBOT HEADING (Pigeon)", m_CurrentRobotHeading);
     } else {
       driveRequest = "";
       UsingLimelight = false;
     }
 
     switch(driveRequest) {
-      case "limeLightTurn":
-        limeLightController = aimPID.calculate(m_Drivetrain.getPigeon2().getRotation3d().getAngle(), m_NewAngleHeading);
-        if (limeLightController > 1) {
-          limeLightController = 1;
-         } else if (limeLightController < -1) {
-          limeLightController = -1;
-         }
-         
-        m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with                                                                    
-         .withVelocityY(-m_Controller.getLeftX() * MaxSpeed) // Drive left with negative X (left)
-         .withRotationalRate(-limeLightController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
-         break;
       case "limelightDrive":
         aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
          if (m_Controller.povRight().getAsBoolean()) {
@@ -252,9 +224,11 @@ public class Drive extends Command {
     }
   }
 
+
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}
+
 
   // Returns true when the command should end.
   @Override
