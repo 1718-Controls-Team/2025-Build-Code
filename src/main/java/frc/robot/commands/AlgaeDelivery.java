@@ -6,7 +6,6 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.AlgaeIntake;
-import frc.robot.subsystems.BeamBreak;
 import edu.wpi.first.wpilibj2.command.Command;
 
 
@@ -34,8 +33,7 @@ public class AlgaeDelivery extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_isFinished = false;
-      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);  
+      m_isFinished = false;
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeOutSpinSpeed);  
     }
     // the above elevator might not be correct

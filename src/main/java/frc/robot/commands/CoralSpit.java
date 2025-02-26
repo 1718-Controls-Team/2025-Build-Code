@@ -4,17 +4,13 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.CoralIntake;
-import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants;
 
 
 /** An example command that uses an example subsystem. */
-public class CoralCheckPosition extends Command {
+public class CoralSpit extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
 
@@ -26,7 +22,7 @@ public class CoralCheckPosition extends Command {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public CoralCheckPosition(CoralIntake coralSubsystem) {
+    public CoralSpit(CoralIntake coralSubsystem) {
       m_coralSubsystem = coralSubsystem;
   
       addRequirements(m_coralSubsystem);
