@@ -81,20 +81,17 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kTClimberProportional = 0.2; 
   public static final double kTClimberIntegral = 0;
   public static final double kTClimberDerivative = 0;
-  public static final double kTClimberFeedFoward = 0;
+
   public static final double kTClimberVelocityFeedForward = 0;
   public static final double kTClimberGravityFeedForward = 0;
+  public static final double kTClimberStaticFeedFoward = 0;
+
+  public static final double kTClimberVoltageClosedLoopRampPeriod = 0;
   public static final double kTClimberMaxReverseVoltage = -11;
   public static final double kTClimberMaxForwardVoltage = 11;
-  public static final double kTClimberMotionMagicAcceleration = 0;
-  public static final double kTClimberMotionMagicCruiseVelocity = 0;
-  public static final double kTClimberVoltageClosedLoopRampPeriod = 0;
   public static final double kTClimberSupplyCurrentLimit = 40;
+
   public static final InvertedValue kTClimberDirection = InvertedValue.CounterClockwise_Positive;
-  public static final SensorDirectionValue kTClimberCancoderDirection = SensorDirectionValue.Clockwise_Positive;
-  public static final double kTClimberCancoderAbsoluteSensorDiscontinuityPoint = 1;
-  public static final double kTClimberRotorToSensorRatio = 0;
-  public static final double kTClimberVelocityFeedFoward = 0;
   // not skigma, not alphica aproved constants below
   public static final double kTClimberUpPos = 0; //180 max position if zero is all the way up
 
