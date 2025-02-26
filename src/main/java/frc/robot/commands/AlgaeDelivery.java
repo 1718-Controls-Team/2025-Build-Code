@@ -35,7 +35,7 @@ public class AlgaeDelivery extends Command {
   @Override
   public void initialize() {
     m_isFinished = false;
-      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
+      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);  
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeOutSpinSpeed);  
     }
     // the above elevator might not be correct

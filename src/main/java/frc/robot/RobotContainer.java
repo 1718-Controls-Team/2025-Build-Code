@@ -24,7 +24,7 @@ import frc.robot.commands.AlgaePickup;
 import frc.robot.commands.AutonSpitCoral;
 import frc.robot.commands.CancelCoralCheck;
 import frc.robot.commands.ClimberActivate;
-import frc.robot.commands.CoralCheckPosition;
+import frc.robot.commands.CoralSpit;
 import frc.robot.commands.CoralPickup;
 import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
@@ -113,7 +113,7 @@ public class RobotContainer {
         operatorController.leftBumper().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator));
-        driverController.rightTrigger(0.5).whileTrue(new CoralCheckPosition(m_coralIntake, driverController));
+        driverController.rightTrigger(0.5).whileTrue(new CoralSpit(m_coralIntake));
         driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake));
         driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_coralIntake));
         driverController.start().onTrue( new CancelCoralCheck(m_coralIntake, m_elevator));

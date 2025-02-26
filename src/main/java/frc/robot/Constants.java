@@ -171,7 +171,8 @@ public static final String kLimelightName = "limelight-lime";
   // these constants are fake, not sigma :/ //-0.441 to 1.7
   public static final double kAlgaeOutSpinSpeed = -20;
   public static final double kAlgaeInSpinSpeed = 20;
-  public static final double kAlgaeStopSpinSpeed = 3;
+  public static final double kAlgaeIdleSpinSpeed = 3;
+  public static final double kAlgaeStopSpinSpeed = 0;
   public static final double kAlgaeIntakePos = 2.5;
   public static final double kAlgaeHomePos = 0.37;
   public static final double kAlgaeIntakePositionTolerance = 0.05;

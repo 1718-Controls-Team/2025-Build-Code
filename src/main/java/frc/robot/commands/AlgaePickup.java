@@ -56,7 +56,7 @@ public class AlgaePickup extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeStopSpinSpeed);  
+    m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeIdleSpinSpeed);  
     m_isFinished=true;
   }
 
