@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AlgaeDelivery;
 import frc.robot.commands.AlgaePickup;
 import frc.robot.commands.AutonSpitCoral;
-import frc.robot.commands.CancelCoralCheck;
 import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.CoralSpit;
 import frc.robot.commands.CoralPickup;
@@ -116,7 +115,6 @@ public class RobotContainer {
         driverController.rightTrigger(0.5).whileTrue(new CoralSpit(m_coralIntake));
         driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake));
         driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_coralIntake));
-        driverController.start().onTrue( new CancelCoralCheck(m_coralIntake, m_elevator));
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
     }
 
