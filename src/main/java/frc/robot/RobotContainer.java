@@ -25,7 +25,7 @@ import frc.robot.commands.AutonSpitCoral;
 import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.CoralSpit;
 import frc.robot.commands.CoralPickup;
-import frc.robot.commands.Drive;
+//import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
 import frc.robot.commands.ElevatorPositions.AlgaeProcessorPos;
 import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
@@ -67,7 +67,6 @@ public class RobotContainer {
     private final CommandXboxController driverController = new CommandXboxController(0);
     private final CommandXboxController operatorController = new CommandXboxController(1);
 
-    private int m_autoSelect = 0;
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
     /* Path follower */
