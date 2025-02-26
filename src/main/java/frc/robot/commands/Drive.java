@@ -24,7 +24,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 public class Drive extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CommandSwerveDrivetrain m_Drivetrain;
-  //private final VariablePassSubsystem m_VariablePass;
   private final CommandXboxController m_Controller;
 
   private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -42,7 +41,6 @@ public class Drive extends Command {
   private double xTarget = 0;
   private double yTarget = 0;
   private double rotationTarget = 0;
-  //PoseEstimate RobotPosition;
   private Pose2d RobotPosition;
 
   private double turnController;
@@ -67,7 +65,6 @@ public class Drive extends Command {
   public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller/*, VariablePassSubsystem variable*/) {
     m_Drivetrain = drive;
     m_Controller = controller;
-    //m_VariablePass = variable;
 
     this.drivePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
     this.strafePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
@@ -96,8 +93,6 @@ public class Drive extends Command {
       m_AngleToAprilTag = LimelightHelpers.getTX(Constants.kLimelightName);
       m_CurrentRobotHeading = m_Drivetrain.getPigeon2().getRotation2d().getDegrees();
       m_NewAngleHeading = m_AngleToAprilTag + m_CurrentRobotHeading;
-      //m_VariablePass.setLimelightTargetHeading(m_NewAngleHeading);
-      //m_RotationTarget = Rotation2d.fromDegrees(m_NewAngleHeading);
       SmartDashboard.putNumber("LIMELIGHT TX", m_AngleToAprilTag);
       SmartDashboard.putNumber("ROBOT HEADING (Pigeon)", m_CurrentRobotHeading);
     } else {

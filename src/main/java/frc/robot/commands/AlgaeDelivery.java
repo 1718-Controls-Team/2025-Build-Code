@@ -36,12 +36,11 @@ public class AlgaeDelivery extends Command {
       m_isFinished = false;
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeOutSpinSpeed);  
     }
-    // the above elevator might not be correct
   
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  // might need something about the subsystem here
+
   }
 
   // Called once the command ends or is interrupted.

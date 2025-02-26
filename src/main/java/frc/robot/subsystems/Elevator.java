@@ -32,13 +32,6 @@ public class Elevator extends SubsystemBase {
     this.configureElevator2(m_Elevator2);
   }
 
-
-  /**
-   * Example command factory method.
-   *
-   * @return a command
-   */
- 
   public void setElevatorDesiredPosition(double DesiredPosition) {
     m_Elevator1.setControl(ElevatorPositionRequest.withPosition(DesiredPosition));
     m_Elevator2.setControl(ElevatorPositionRequest.withPosition(DesiredPosition));
@@ -59,7 +52,7 @@ public class Elevator extends SubsystemBase {
   }
 
   public void configureElevator1(TalonFX elevator1){
-    //Start Configuring Elevator
+
     TalonFXConfiguration elevator1Config = new TalonFXConfiguration();
 
     elevator1Config.MotorOutput.Inverted = Constants.kElevator1Direction;
@@ -77,10 +70,6 @@ public class Elevator extends SubsystemBase {
     slot0.GravityType = GravityTypeValue.Elevator_Static;
     slot0.kV = Constants.kElevator1VelocityFeedFoward;
     slot0.kG = Constants.kElevator1GravityFeedForward;
-    //slot0.kS = Constants.kElevator1StaticFeedFoward; // The value of s is approximately the number of volts needed to get the mechanism moving
-
-    //Setting the config option that allows playing music on the motor during disabled.
-    //elevator1Config.Audio.AllowMusicDurDisable = true;
  
     StatusCode climberStatus = StatusCode.StatusCodeNotInitialized;
     for(int i = 0; i < 5; ++i) {
@@ -94,7 +83,6 @@ public class Elevator extends SubsystemBase {
   }
 
   public void configureElevator2(TalonFX elevator2){
-    //Start Configuring Elevator
     TalonFXConfiguration elevator2Config = new TalonFXConfiguration();
 
     elevator2Config.MotorOutput.Inverted = Constants.kElevator2Direction;
@@ -117,15 +105,14 @@ public class Elevator extends SubsystemBase {
     //Setting the config option that allows playing music on the motor during disabled.
     //elevator2Config.Audio.AllowMusicDurDisable = true;
  
-    StatusCode climberStatus = StatusCode.StatusCodeNotInitialized;
+    StatusCode elevator2Status = StatusCode.StatusCodeNotInitialized;
     for(int i = 0; i < 5; ++i) {
-      climberStatus = elevator2.getConfigurator().apply(elevator2Config);
-      if (climberStatus.isOK()) break;
+      elevator2Status = elevator2.getConfigurator().apply(elevator2Config);
+      if (elevator2Status.isOK()) break;
     }
-    if (!climberStatus.isOK()) {
-      System.out.println("Could not configure device. Error: " + climberStatus.toString());
+    if (!elevator2Status.isOK()) {
+      System.out.println("Could not configure device. Error: " + elevator2Status.toString());
     }
-    // m_Elevator2.setControl(new Follower(m_Elevator1.getDeviceID(), true));
     m_Elevator2.setPosition(0);
   }
 
@@ -134,11 +121,6 @@ public class Elevator extends SubsystemBase {
    *
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
-
-
-  public double getElevatorPosition() {
-    return m_Elevator1.getPosition().getValueAsDouble();
-  }
 
   @Override
   public void periodic() {

@@ -44,12 +44,11 @@ public class AlgaePickup extends Command {
       m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);
 
     }
-    // the above elevator might not be correct
   
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  // might need something about the subsystem here
+
   }
 
   // Called once the command ends or is interrupted.
