@@ -38,6 +38,8 @@ public class AlgaeIntake extends SubsystemBase {
     this.configureAlgaeIntake2(AlgaeIntake2);
   }
 
+//############################################## BEGIN WRITING CLASS FUNCTIONS ########################################################
+
 
   public void setAlgaeSpinPower(double AlgaeIntakePower) {
     AlgaeIntake1.setControl(AlgaeVelocityRequest.withVelocity(AlgaeIntakePower));
@@ -61,6 +63,11 @@ public class AlgaeIntake extends SubsystemBase {
     }
   }
 
+//######################################### Start OF ALGAE CONFIGURATION ######################################################
+//######################################### Start OF ALGAE CONFIGURATION ######################################################
+//######################################### Start OF ALGAE CONFIGURATION ###################################################### 
+
+//######################################### ALGAE ROTATE CONFIGURATION ###################################################### 
 
   public void configureAlgaeIntakeRotate(TalonFX algaeIntakeSpin){
     TalonFXConfiguration algaeIntakeRotateConfig = new TalonFXConfiguration();
@@ -81,6 +88,7 @@ public class AlgaeIntake extends SubsystemBase {
     slot0.kV = Constants.kAlgaeIntakeRotateVelocityFeedForward;
     slot0.GravityType = GravityTypeValue.Arm_Cosine;
 
+    
     StatusCode algaeIntakeRotateStatus = StatusCode.StatusCodeNotInitialized;
     for(int i = 0; i < 5; ++i) {
       algaeIntakeRotateStatus = AlgaeRotate.getConfigurator().apply(algaeIntakeRotateConfig);
@@ -91,6 +99,7 @@ public class AlgaeIntake extends SubsystemBase {
     }
   }
 
+//######################################### ALGAE SPIN 1 CONFIGURATION ###################################################### 
 
 
   public void configureAlgaeIntake1(TalonFX algaeIntake1){
@@ -106,6 +115,7 @@ public class AlgaeIntake extends SubsystemBase {
     algaeIntake1VelocityConfig.MotorOutput.Inverted = Constants.kAlgaeIntake1Direction;
     algaeIntake1VelocityConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
 
+
     StatusCode algaeIntake1Status = StatusCode.StatusCodeNotInitialized;
 
     for(int i = 0; i < 5; ++i) {
@@ -117,6 +127,7 @@ public class AlgaeIntake extends SubsystemBase {
     }
   }
 
+//######################################### ALGAE SPIN 2 CONFIGURATION ###################################################### 
 
 
 public void configureAlgaeIntake2(TalonFX algaeIntake2){
@@ -132,6 +143,7 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
     algaeIntake2VelocityConfig.MotorOutput.Inverted = Constants.kAlgaeIntake2Direction;
     algaeIntake2VelocityConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
 
+
     StatusCode algaeIntake2Status = StatusCode.StatusCodeNotInitialized;
 
     for(int i = 0; i < 5; ++i) {
@@ -143,7 +155,12 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
     }
   }
 
+
+//######################################### END OF ALGAE CONFIGURATION ######################################################
+//######################################### END OF ALGAE CONFIGURATION ######################################################
+//######################################### END OF ALGAE CONFIGURATION ######################################################
  
+
   public boolean exampleCondition() {
     return false;
   }
