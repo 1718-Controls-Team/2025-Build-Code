@@ -6,7 +6,6 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.AlgaeIntake;
-import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.CoralIntake;
 import edu.wpi.first.wpilibj2.command.Command;
 

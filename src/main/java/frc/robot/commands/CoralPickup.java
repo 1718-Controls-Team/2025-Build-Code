@@ -4,7 +4,6 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.CoralIntake;
 import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -36,17 +35,15 @@ public class CoralPickup extends Command {
       addRequirements(m_coralSubsystem);
       
           
-        }
+    }
    
         // Called when the command is initially scheduled.
     @Override
     public void initialize() {
       m_isFinished = false;
-    
-    
+
       m_coralSubsystem.setcoralRotate(Constants.kCoralRotateHomePos);  
       m_coralSubsystem.setcoralSpinPower(Constants.kCoralInSpinSpeed);  
-     
     }
 
 
