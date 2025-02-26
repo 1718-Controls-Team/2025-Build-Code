@@ -39,6 +39,8 @@ public class AlgaeIntake extends SubsystemBase {
   }
 //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
+//############################################## BEGIN WRITING CLASS FUNCTIONS ########################################################
+
 
   public void setAlgaeSpinPower(double AlgaeIntakePower) {
     AlgaeIntake1.setControl(AlgaeVelocityRequest.withVelocity(AlgaeIntakePower));
@@ -65,6 +67,11 @@ public class AlgaeIntake extends SubsystemBase {
     }
   }
 
+//######################################### Start OF ALGAE CONFIGURATION ######################################################
+//######################################### Start OF ALGAE CONFIGURATION ######################################################
+//######################################### Start OF ALGAE CONFIGURATION ###################################################### 
+
+//######################################### ALGAE ROTATE CONFIGURATION ###################################################### 
 
 //################################################## Start OF ALGAE CONFIGURATION ######################################################
 //################################################## Start OF ALGAE CONFIGURATION ######################################################
@@ -95,6 +102,7 @@ public class AlgaeIntake extends SubsystemBase {
     slot0.kS = Constants.kAlgaeIntakeRotateStaticFeedForward;
     
 
+    
     StatusCode algaeIntakeRotateStatus = StatusCode.StatusCodeNotInitialized;
     for(int i = 0; i < 5; ++i) {
       algaeIntakeRotateStatus = AlgaeRotate.getConfigurator().apply(algaeIntakeRotateConfig);
@@ -105,6 +113,7 @@ public class AlgaeIntake extends SubsystemBase {
     }
   }
 
+//######################################### ALGAE SPIN 1 CONFIGURATION ###################################################### 
 
 
   public void configureAlgaeIntake1(TalonFX algaeIntake1){
@@ -137,6 +146,7 @@ public class AlgaeIntake extends SubsystemBase {
     }
   }
 
+//######################################### ALGAE SPIN 2 CONFIGURATION ###################################################### 
 
 
 public void configureAlgaeIntake2(TalonFX algaeIntake2){
@@ -173,6 +183,10 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
 //################################################### END OF ALGAE CONFIGURATION #######################################################
 //################################################### END OF ALGAE CONFIGURATION ####################################################### 
 
+
+//######################################### END OF ALGAE CONFIGURATION ######################################################
+//######################################### END OF ALGAE CONFIGURATION ######################################################
+//######################################### END OF ALGAE CONFIGURATION ######################################################
  
 
   @Override
