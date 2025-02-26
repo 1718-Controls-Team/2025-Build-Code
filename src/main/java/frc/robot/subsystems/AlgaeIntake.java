@@ -23,13 +23,13 @@ public class AlgaeIntake extends SubsystemBase {
   TalonFX AlgaeRotate = new TalonFX(18, "rio");
   TalonFX AlgaeIntake1 = new TalonFX(20, "rio");
   TalonFX AlgaeIntake2 = new TalonFX(21, "rio");
+
   
   PositionVoltage AlgaeIntakePosition = new PositionVoltage(0);
-  VelocityVoltage AlgaeIntake1Power = new VelocityVoltage(0);
-  VelocityVoltage AlgaeIntake2Power = new VelocityVoltage(0);
   DutyCycleOut AlgaeIntakeVoltage = new DutyCycleOut(0);
 
-  private final VelocityVoltage AlgaeVelocityRequest = new VelocityVoltage(0);
+  private VelocityVoltage AlgaeVelocityRequest = new VelocityVoltage(0);
+
   private double AlgaeIntakeRotateDesiredPos = 0;
 
   public AlgaeIntake() {
@@ -37,6 +37,7 @@ public class AlgaeIntake extends SubsystemBase {
     this.configureAlgaeIntake1(AlgaeIntake1);
     this.configureAlgaeIntake2(AlgaeIntake2);
   }
+//############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
 
   public void setAlgaeSpinPower(double AlgaeIntakePower) {
@@ -44,14 +45,17 @@ public class AlgaeIntake extends SubsystemBase {
     AlgaeIntake2.setControl(AlgaeVelocityRequest.withVelocity(AlgaeIntakePower));
   }
   
+
   public void setAlgaeRotatePos(double AlgaeIntakeDesiredPosition) {
     AlgaeRotate.setControl(AlgaeIntakePosition.withPosition(AlgaeIntakeDesiredPosition));
     AlgaeIntakeRotateDesiredPos = AlgaeIntakeDesiredPosition;
   }
 
+
   public void ZeroAlgaeRotateOutput() {
     AlgaeRotate.setControl(AlgaeIntakeVoltage);
   }
+
 
   public boolean getAlgaeRotateInPosition(){
     if ((Math.abs(AlgaeRotate.getPosition().getValueAsDouble() - AlgaeIntakeRotateDesiredPos) < Constants.kAlgaeIntakePositionTolerance)){
@@ -62,24 +66,34 @@ public class AlgaeIntake extends SubsystemBase {
   }
 
 
+//################################################## Start OF ALGAE CONFIGURATION ######################################################
+//################################################## Start OF ALGAE CONFIGURATION ######################################################
+//################################################## Start OF ALGAE CONFIGURATION ###################################################### 
+
   public void configureAlgaeIntakeRotate(TalonFX algaeIntakeSpin){
     TalonFXConfiguration algaeIntakeRotateConfig = new TalonFXConfiguration();
 
     algaeIntakeRotateConfig.CurrentLimits.SupplyCurrentLimit = Constants.kAlgaeIntakeRotateSupplyCurrentLimit;
+    algaeIntakeRotateConfig.CurrentLimits.SupplyCurrentLimitEnable = true;    
+
     algaeIntakeRotateConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kAlgaeIntakeRotateVoltageClosedLoopRampPeriod;
-    algaeIntakeRotateConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
-    algaeIntakeRotateConfig.MotorOutput.Inverted = Constants.kAlgaeIntakeRotateDirection;
     algaeIntakeRotateConfig.Voltage.PeakForwardVoltage = Constants.kAlgaeIntakeRotateMaxForwardVoltage;
     algaeIntakeRotateConfig.Voltage.PeakReverseVoltage = Constants.kAlgaeIntakeRotateMaxReverseVoltage;
+
+    algaeIntakeRotateConfig.MotorOutput.Inverted = Constants.kAlgaeIntakeRotateDirection;
     algaeIntakeRotateConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+  
 
     Slot0Configs slot0 = algaeIntakeRotateConfig.Slot0;
     slot0.kP = Constants.kAlgaeIntakeRotateProportional;
     slot0.kI = Constants.kAlgaeIntakeRotateIntegral;
     slot0.kD = Constants.kAlgaeIntakeRotateDerivative;
+    
+    slot0.GravityType = GravityTypeValue.Arm_Cosine;
     slot0.kG = Constants.kAlgaeIntakeRotateGravityFeedForward;
     slot0.kV = Constants.kAlgaeIntakeRotateVelocityFeedForward;
-    slot0.GravityType = GravityTypeValue.Arm_Cosine;
+    slot0.kS = Constants.kAlgaeIntakeRotateStaticFeedForward;
+    
 
     StatusCode algaeIntakeRotateStatus = StatusCode.StatusCodeNotInitialized;
     for(int i = 0; i < 5; ++i) {
@@ -98,13 +112,19 @@ public class AlgaeIntake extends SubsystemBase {
     algaeIntake1VelocityConfig.Slot0.kP = Constants.kAlgaeIntake1Proportional; // An error of 1 rotation per second results in 2V output
     algaeIntake1VelocityConfig.Slot0.kI = Constants.kAlgaeIntake1Integral; // An error of 1 rotation per second increases output by 0.5V every second
     algaeIntake1VelocityConfig.Slot0.kD = Constants.kAlgaeIntake1Derivative; // A change of 1 rotation per second squared results in 0.01 volts output
-    algaeIntake1VelocityConfig.Slot0.kV = Constants.kAlgaeIntake1VelocityFeedFoward; // Falcon 500 is a 500kV motor, 500rpm per V = 8.333 rps per V, 1/8.33 = 0.12 volts / Rotation per second Peak output of 8 volts
+    
+    algaeIntake1VelocityConfig.Slot0.kV = Constants.kAlgaeIntake1VelocityFeedForward; // Falcon 500 is a 500kV motor, 500rpm per V = 8.333 rps per V, 1/8.33 = 0.12 volts / Rotation per second Peak output of 8 volts
+    algaeIntake1VelocityConfig.Slot0.kG = Constants.kAlgaeIntake1GravityFeedForward;
+    algaeIntake1VelocityConfig.Slot0.kS = Constants.kAlgaeIntake1StaticFeedForward;
+
     algaeIntake1VelocityConfig.Voltage.PeakForwardVoltage = Constants.kAlgaeIntake1MaxForwardVoltage;
     algaeIntake1VelocityConfig.Voltage.PeakReverseVoltage = Constants.kAlgaeIntake1MaxReverseVoltage;
-    algaeIntake1VelocityConfig.CurrentLimits.SupplyCurrentLimit = Constants.kAlgaeIntake1SupplyCurrentLimit;
     algaeIntake1VelocityConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kAlgaeIntake1VoltageClosedLoopRampPeriod;
-    algaeIntake1VelocityConfig.MotorOutput.Inverted = Constants.kAlgaeIntake1Direction;
+    algaeIntake1VelocityConfig.CurrentLimits.SupplyCurrentLimit = Constants.kAlgaeIntake1SupplyCurrentLimit;
     algaeIntake1VelocityConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+
+    algaeIntake1VelocityConfig.MotorOutput.Inverted = Constants.kAlgaeIntake1Direction;
+    
 
     StatusCode algaeIntake1Status = StatusCode.StatusCodeNotInitialized;
 
@@ -124,13 +144,20 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
     algaeIntake2VelocityConfig.Slot0.kP = Constants.kAlgaeIntake2Proportional; // An error of 1 rotation per second results in 2V output
     algaeIntake2VelocityConfig.Slot0.kI = Constants.kAlgaeIntake2Integral; // An error of 1 rotation per second increases output by 0.5V every second
     algaeIntake2VelocityConfig.Slot0.kD = Constants.kAlgaeIntake2Derivative; // A change of 1 rotation per second squared results in 0.01 volts output
-    algaeIntake2VelocityConfig.Slot0.kV = Constants.kAlgaeIntake2VelocityFeedFoward; // Falcon 500 is a 500kV motor, 500rpm per V = 8.333 rps per V, 1/8.33 = 0.12 volts / Rotation per second Peak output of 8 volts
+    
+    algaeIntake2VelocityConfig.Slot0.kV = Constants.kAlgaeIntake2VelocityFeedForward; // Falcon 500 is a 500kV motor, 500rpm per V = 8.333 rps per V, 1/8.33 = 0.12 volts / Rotation per second Peak output of 8 volts
+    algaeIntake2VelocityConfig.Slot0.kG = Constants.kAlgaeIntake2GravityFeedForward;
+    algaeIntake2VelocityConfig.Slot0.kS = Constants.kAlgaeIntake2StaticFeedForward;
+
     algaeIntake2VelocityConfig.Voltage.PeakForwardVoltage = Constants.kAlgaeIntake2MaxForwardVoltage;
     algaeIntake2VelocityConfig.Voltage.PeakReverseVoltage = Constants.kAlgaeIntake2MaxReverseVoltage;
-    algaeIntake2VelocityConfig.CurrentLimits.SupplyCurrentLimit = Constants.kAlgaeIntake2SupplyCurrentLimit;
     algaeIntake2VelocityConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kAlgaeIntake2VoltageClosedLoopRampPeriod;
-    algaeIntake2VelocityConfig.MotorOutput.Inverted = Constants.kAlgaeIntake2Direction;
+
+    algaeIntake2VelocityConfig.CurrentLimits.SupplyCurrentLimit = Constants.kAlgaeIntake2SupplyCurrentLimit;
     algaeIntake2VelocityConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+
+    algaeIntake2VelocityConfig.MotorOutput.Inverted = Constants.kAlgaeIntake2Direction;
+    
 
     StatusCode algaeIntake2Status = StatusCode.StatusCodeNotInitialized;
 
@@ -142,11 +169,11 @@ public void configureAlgaeIntake2(TalonFX algaeIntake2){
       System.out.println("Could not configure device. Error: " + algaeIntake2Status.toString());
     }
   }
+//################################################### END OF ALGAE CONFIGURATION #######################################################
+//################################################### END OF ALGAE CONFIGURATION #######################################################
+//################################################### END OF ALGAE CONFIGURATION ####################################################### 
 
  
-  public boolean exampleCondition() {
-    return false;
-  }
 
   @Override
   public void periodic() {

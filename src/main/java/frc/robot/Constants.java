@@ -5,23 +5,8 @@
 package frc.robot;
 
 import com.ctre.phoenix6.signals.InvertedValue;
-import com.ctre.phoenix6.signals.SensorDirectionValue;
 
-/**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants. This class should not be used for any other purpose. All constants should be declared
- * globally (i.e. public static). Do not put anything functional in this class.
- *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
- * constants are needed, to reduce verbosity.
- * public static final double kShooterIntakeRotateMaxForwardVoltage = 11;
-    public static final double kShooterIntakeRotateMaxReverseVoltage = -11;
-    public static final double kShooterIntakeRotateSupplyCurrentLimit = 1; //was 20.  
-    public static final double kShooterIntakeRotateVoltageClosedLoopRampPeriod = 0.1;
-    public static final InvertedValue kShooterIntakeRotateDirection = InvertedValue.CounterClockwise_Positive;
-    public static final double kShooterIntakeRotateMotionMagicCruiseVelocity = 0;
-    public static final double kShooterIntakeRotateMotionMagicAcceleration = 0;
- */
+
 public final class Constants {
 //Cancoder constants
 public static final int kElevator1CanID = 13;
@@ -37,51 +22,70 @@ public static final int kAlgaeIntakeSpin2CanID = 21;
 public static final String kLimelightName = "limelight-lime";
 
 
-// coralRotate Constants
+/*
+ * ####################################################################################################################################
+ * ####################################################### Coral Rotate ###############################################################
+ * ####################################################################################################################################
+*/
   public static final double kCoralRotateProportional = 1; 
   public static final double kCoralRotateIntegral = 0;
   public static final double kCoralRotateDerivative = 0;
+
   public static final double kCoralRotateFeedFoward = 0;
   public static final double kCoralRotateVelocityFeedForward = 0;
   public static final double kCoralRotateGravityFeedForward = 0;
+
   public static final double kCoralMaxReverseVoltage = -11;
   public static final double kCoralMaxForwardVoltage = 11;
-  public static final double kCoralRotateMotionMagicAcceleration = 100;
-  public static final double kCoralRotateMotionMagicCruiseVelocity = 50;
   public static final double kCoralRotateVoltageClosedLoopRampPeriod = 0;
   public static final double kCoralRotateSupplyCurrentLimit = 40;
+
+  public static final double kCoralRotateMotionMagicAcceleration = 100;
+  public static final double kCoralRotateMotionMagicCruiseVelocity = 50;
+
   public static final InvertedValue kCoralRotateDirection = InvertedValue.CounterClockwise_Positive;
-  public static final SensorDirectionValue kCoralRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
-  public static final double kCoralCancoderAbsoluteSensorDiscontinuityPoint = 1;
-  public static final double kCoralRotateRotorToSensorRatio = 0;
+
 // these constants below are not accurate lmao
 // Coral rotate position range is 0-11
   public static final double kCoralRotateDeliveryPos = 5; //Was 5
+  public static final double kCoralRotateHomePos = 9;  
+  public static final double kCoralRotateAlgaePos = 10.5;  
+  public static final double kCoralRotatePositionTolerance = 0.5;
+
   public static final double kCoralOutSpinSpeed = -10;
   public static final double kCoralInSpinSpeed = 10;
   public static final double kCoralHoldSpinSpeed = 3;
   public static final double kCoralStopSpinSpeed = 0;
-  public static final double kCoralRotatePositionTolerance = 0.5;
-  public static final double kCoralRotateHomePos = 9;  
-  public static final double kCoralRotateAlgaePos = 10.5;
+  
 
 
-// coralSpin Constants
+
+/*
+ * ####################################################################################################################################
+ * ##################################################### Coral Spin ###################################################################
+ * ####################################################################################################################################
+*/
   public static final double kCoralSpinDerivative = 0;
   public static final double kCoralSpinIntegral = 0;
+  public static final double kCoralSpinProportional = 0.07;  
+
+  public static final double kCoralSpinVelocityFeedForward = 0.122;
+  public static final double kCoralSpinGravityFeedForward = 0;
+  public static final double kCoralSpinStaticFeedForward = 0;
+
   public static final double kCoralSpinMaxForwardVoltage = 11;
   public static final double kCoralSpinMaxReverseVoltage = -11;
-  public static final double kCoralSpinProportional = 0.07;
+
   public static final InvertedValue kCoralSpinDirection = InvertedValue.Clockwise_Positive;
   public static final double kCoralSpinSupplyCurrentLimit = 40;
-  public static final double kCoralSpinVelocityFeedFoward = 0.122;
+
   public static final double kCoralSpinVoltageClosedLoopRampPeriod = 0;
 
 /*
  * ####################################################################################################################################
  * ###################################################### Climber #####################################################################
  * ####################################################################################################################################
- */
+*/
   public static final double kTClimberProportional = 0.2; 
   public static final double kTClimberIntegral = 0;
   public static final double kTClimberDerivative = 0;
@@ -104,7 +108,7 @@ public static final String kLimelightName = "limelight-lime";
  * ####################################################################################################################################
  * ################################################## Elevator 1 #####################################################################
  * ####################################################################################################################################
- */
+*/
   public static final double kElevator1Proportional = 2.5;
   public static final double kElevator1Integral = 0;
   public static final double kElevator1Derivative = 0.1;
@@ -124,7 +128,7 @@ public static final String kLimelightName = "limelight-lime";
  * ####################################################################################################################################
  * ################################################## Elevator 2 #####################################################################
  * ####################################################################################################################################
- */
+*/
 
   public static final double kElevator2Proportional = 2.5;
   public static final double kElevator2Integral = 0;
@@ -141,6 +145,7 @@ public static final String kLimelightName = "limelight-lime";
   public static final double kElevator2MaxForwardVoltage = 11;
   public static final double kElevator2MaxReverseVoltage = -11;
 // These Constants below arent real take yo pills           0-33.5 is position range
+
   public static final double kElevatorCoralIntakePos = 8;
   public static final double kElevatorAlgaeIntakePos = 5;
   public static final double kElevatorHomePos = 3;
@@ -150,59 +155,87 @@ public static final String kLimelightName = "limelight-lime";
 
 
 
-// Algae Intake Spins Constants
-  public static final double kAlgaeIntake1Derivative = 0;
+/*
+ * ####################################################################################################################################
+ * ################################################## ALGAE INTAKE SPIN ###############################################################
+ * ####################################################################################################################################
+*/
+  public static final double kAlgaeIntake1Proportional = 0.07;
   public static final double kAlgaeIntake1Integral = 0;
+  public static final double kAlgaeIntake1Derivative = 0;
+  
+  public static final double kAlgaeIntake1VelocityFeedForward = 0.122;
+  public static final double kAlgaeIntake1GravityFeedForward = 0;
+  public static final double kAlgaeIntake1StaticFeedForward = 0;
+
   public static final double kAlgaeIntake1MaxForwardVoltage = 11;
   public static final double kAlgaeIntake1MaxReverseVoltage = -11;
-  public static final double kAlgaeIntake1Proportional = 0.07;
-  public static final InvertedValue kAlgaeIntake1Direction = InvertedValue.CounterClockwise_Positive;
+  
   public static final double kAlgaeIntake1SupplyCurrentLimit = 40;
-  public static final double kAlgaeIntake1VelocityFeedFoward = 0.122;
   public static final double kAlgaeIntake1VoltageClosedLoopRampPeriod = 0;
 
+  public static final InvertedValue kAlgaeIntake1Direction = InvertedValue.CounterClockwise_Positive;
+
+/*
+ * ####################################################################################################################################
+ * ################################################# ALGAE INTAKE SPIN 2 ##############################################################
+ * ####################################################################################################################################
+*/
+
+  public static final double kAlgaeIntake2Proportional = 0.07;
+  public static final double kAlgaeIntake2Integral = 0;  
   public static final double kAlgaeIntake2Derivative = 0;
-  public static final double kAlgaeIntake2Integral = 0;
+
+  public static final double kAlgaeIntake2VelocityFeedForward = 0.122;
+  public static final double kAlgaeIntake2GravityFeedForward = 0;
+  public static final double kAlgaeIntake2StaticFeedForward = 0;
+
   public static final double kAlgaeIntake2MaxForwardVoltage = 11;
   public static final double kAlgaeIntake2MaxReverseVoltage = -11;
-  public static final double kAlgaeIntake2Proportional = 0.07;
-  public static final InvertedValue kAlgaeIntake2Direction = InvertedValue.Clockwise_Positive;
+
   public static final double kAlgaeIntake2SupplyCurrentLimit = 40;
-  public static final double kAlgaeIntake2VelocityFeedFoward = 0.122;
   public static final double kAlgaeIntake2VoltageClosedLoopRampPeriod = 0;
+
+  public static final InvertedValue kAlgaeIntake2Direction = InvertedValue.Clockwise_Positive;
+
+/*
+ * ####################################################################################################################################
+ * ################################################# ALGAE INTAKE ROTATE ##############################################################
+ * ####################################################################################################################################
+*/
 
   public static final double kAlgaeIntakeRotateProportional = 7; 
   public static final double kAlgaeIntakeRotateIntegral = 0;
   public static final double kAlgaeIntakeRotateDerivative = 0.2;
-  public static final double kAlgaeIntakeRotateFeedFoward = 0;
+
   public static final double kAlgaeIntakeRotateVelocityFeedForward = 0.2;
   public static final double kAlgaeIntakeRotateGravityFeedForward = 0;
+  public static final double kAlgaeIntakeRotateStaticFeedForward = 0;
+
   public static final double kAlgaeIntakeRotateMaxReverseVoltage = -11;
   public static final double kAlgaeIntakeRotateMaxForwardVoltage = 11;
-  public static final double kAlgaeIntakeRotateMotionMagicAcceleration = 0;
-  public static final double kAlgaeIntakeRotateMotionMagicCruiseVelocity = 0;
+
   public static final double kAlgaeIntakeRotateVoltageClosedLoopRampPeriod = 0;
   public static final double kAlgaeIntakeRotateSupplyCurrentLimit = 40;
+
   public static final InvertedValue kAlgaeIntakeRotateDirection = InvertedValue.CounterClockwise_Positive;
-  public static final SensorDirectionValue kAlgaeIntakeRotateCancoderDirection = SensorDirectionValue.Clockwise_Positive;
-  public static final double kAlgaeIntakeRotateCancoderAbsoluteSensorDiscontinuityPoint = 1;
-  public static final double kAlgaeIntakeRotateRotorToSensorRatio = 0;
+
 
   // these constants are fake, not sigma :/ //-0.441 to 1.7
   public static final double kAlgaeOutSpinSpeed = -20;
   public static final double kAlgaeInSpinSpeed = 20;
   public static final double kAlgaeIdleSpinSpeed = 3;
   public static final double kAlgaeStopSpinSpeed = 0;
+
   public static final double kAlgaeIntakePos = 2.5;
   public static final double kAlgaeHomePos = 0.37;
   public static final double kAlgaeIntakePositionTolerance = 0.05;
 
-  // BeamBreak Constants
-  public static final double kIntakeBeamBreakCrossover = 0.9;
-  public static final double kShooterBeamBreakCrossover = 0.9;
-  public static final boolean kPrintSubsystemBeamBreak = false;
-  public static final int kBeamBreakZeroAnalog = 0;
-  public static final int kBeamBreakOneAnalog = 1;
+/*
+ * ####################################################################################################################################
+ * ##################################################### THE OTHER STUFF ##############################################################
+ * ####################################################################################################################################
+*/
 
   //Custom Brownout voltage for the RIO2.
   public static final double kCustomBrownout = 6.0;

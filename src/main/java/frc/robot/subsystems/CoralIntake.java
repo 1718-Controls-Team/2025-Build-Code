@@ -33,17 +33,20 @@ public class CoralIntake extends SubsystemBase {
   public CoralIntake() {
     this.coralIntakeConfiguration(m_coralSpin);
     this.coralRotateConfiguration(m_coralRotate);
-
   }
+  //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
+
 
   public void setcoralSpinPower(double speed) {
     m_coralSpin.setControl(coralSpinVelocityRequest.withVelocity(speed));
   }
 
+
   public void setcoralRotate(double position) {
     m_coralRotate.setControl(coralRotationRequest.withPosition(position));
     CoralIntakeRotateDesiredPos = position;
   }
+
 
   public boolean getCoralRotateInPosition() {
     if ((Math.abs(m_coralRotate.getPosition().getValueAsDouble() - CoralIntakeRotateDesiredPos) < Constants.kCoralRotatePositionTolerance)){
@@ -53,29 +56,40 @@ public class CoralIntake extends SubsystemBase {
     }
   }
 
+
   public double getCoralPosition() {
     return m_coralRotate.getPosition().getValueAsDouble();
   }
+
 
   public void ZeroCoralRotate() {
     m_coralRotate.setControl(coralRotateVoltageRequest);
   }
 
 
-
+//############################################# Start OF CORAL INTAKE CONFIGURATION ####################################################
+//############################################# Start OF CORAL INTAKE CONFIGURATION ####################################################
+//############################################# Start OF CORAL INTAKE CONFIGURATION #################################################### 
   public void coralIntakeConfiguration(TalonFX m_coralSpin) {
     TalonFXConfiguration coralSpinConfig = new TalonFXConfiguration();
+    
+    coralSpinConfig.Voltage.PeakForwardVoltage = Constants.kCoralSpinMaxForwardVoltage;
+    coralSpinConfig.Voltage.PeakReverseVoltage = Constants.kCoralSpinMaxReverseVoltage;
+    coralSpinConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kCoralSpinVoltageClosedLoopRampPeriod;
+
+    coralSpinConfig.CurrentLimits.SupplyCurrentLimit = Constants.kCoralSpinSupplyCurrentLimit;
+    coralSpinConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+
+    coralSpinConfig.MotorOutput.Inverted = Constants.kCoralSpinDirection;
+
+    
     Slot0Configs slot0 = coralSpinConfig.Slot0;
       slot0.kP = Constants.kCoralSpinProportional; // An error of 1 rotation per second results in 2V output
       slot0.kI = Constants.kCoralSpinIntegral; // An error of 1 rotation per second increases output by 0.5V every second
       slot0.kD = Constants.kCoralSpinDerivative; // A change of 1 rotation per second squared results in 0.01 volts output
-      slot0.kV = Constants.kCoralSpinVelocityFeedFoward; // Falcon 500 is a 500kV motor, 500rpm per V = 8.333 rps per V, 1/8.33 = 0.12 volts / Rotation per second Peak output of 8 volts
-    coralSpinConfig.Voltage.PeakForwardVoltage = Constants.kCoralSpinMaxForwardVoltage;
-    coralSpinConfig.Voltage.PeakReverseVoltage = Constants.kCoralSpinMaxReverseVoltage;
-    coralSpinConfig.CurrentLimits.SupplyCurrentLimit = Constants.kCoralSpinSupplyCurrentLimit;
-    coralSpinConfig.ClosedLoopRamps.VoltageClosedLoopRampPeriod = Constants.kCoralSpinVoltageClosedLoopRampPeriod;
-    coralSpinConfig.MotorOutput.Inverted = Constants.kCoralSpinDirection;
-    coralSpinConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+      slot0.kV = Constants.kCoralSpinVelocityFeedForward; // Falcon 500 is a 500kV motor, 500rpm per V = 8.333 rps per V, 1/8.33 = 0.12 volts / Rotation per second Peak output of 8 volts
+      slot0.kG = Constants.kCoralSpinGravityFeedForward;
+      slot0.kS = Constants.kCoralSpinStaticFeedForward;
   }
   
 
@@ -99,16 +113,18 @@ public class CoralIntake extends SubsystemBase {
     slot0.kV = Constants.kCoralRotateVelocityFeedForward;
     slot0.GravityType = GravityTypeValue.Arm_Cosine;
 
-StatusCode coralRotStatus = StatusCode.StatusCodeNotInitialized;
-for(int i = 0; i < 5; ++i) {
-  coralRotStatus = m_coralRotate.getConfigurator().apply(coralRotateConfig);
-  if (coralRotStatus.isOK()) break;
-}
-if (!coralRotStatus.isOK()) {
-  System.out.println("Could not configure device. Error: " + coralRotStatus.toString());
-}  
-
+  StatusCode coralRotStatus = StatusCode.StatusCodeNotInitialized;
+  for(int i = 0; i < 5; ++i) {
+    coralRotStatus = m_coralRotate.getConfigurator().apply(coralRotateConfig);
+    if (coralRotStatus.isOK()) break;
   }
+  if (!coralRotStatus.isOK()) {
+    System.out.println("Could not configure device. Error: " + coralRotStatus.toString());
+  }  
+}
+//############################################### END OF CORAL INTAKE CONFIGURATION ####################################################
+//############################################### END OF CORAL INTAKE CONFIGURATION ####################################################
+//############################################### END OF CORAL INTAKE CONFIGURATION #################################################### 
 
   
   public boolean exampleCondition() {

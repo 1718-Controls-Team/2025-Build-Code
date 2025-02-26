@@ -102,7 +102,7 @@ public class Elevator extends SubsystemBase {
 
 
 
-  
+
   public void configureElevator2(TalonFX elevator2){
     TalonFXConfiguration elevator2Config = new TalonFXConfiguration();
 
@@ -135,9 +135,9 @@ public class Elevator extends SubsystemBase {
     m_Elevator2.setPosition(0);
   }
 
-//######################################### Start OF ELEVATOR CONFIGURATION ######################################################
-//######################################### Start OF ELEVATOR CONFIGURATION ######################################################
-//######################################### Start OF ELEVATOR CONFIGURATION ######################################################
+//################################################# END OF ELEVATOR CONFIGURATION ######################################################
+//################################################# END OF ELEVATOR CONFIGURATION ######################################################
+//################################################# END OF ELEVATOR CONFIGURATION ######################################################
 
 
 
