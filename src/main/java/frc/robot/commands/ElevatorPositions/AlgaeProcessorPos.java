@@ -12,7 +12,7 @@ import frc.robot.subsystems.Elevator;
 
 
 /** An example command that uses an example subsystem. */
-public class AlgaeIntakePosition extends Command {
+public class AlgaeProcessorPos extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final  Elevator m_Elevator;
   private final AlgaeIntake m_AlgaeIntake;
@@ -20,8 +20,6 @@ public class AlgaeIntakePosition extends Command {
 
   @SuppressWarnings("unused")
   private boolean m_isFinished = false;
-  private int m_stateMachine = 1;
-  private double m_ElevatorTargetPos = 0;
 
 
   /**
@@ -29,7 +27,7 @@ public class AlgaeIntakePosition extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-    public AlgaeIntakePosition(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
+    public AlgaeProcessorPos(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
     m_Elevator = elevator;
     m_AlgaeIntake = algaeIntake;
     m_CoralIntake = coralIntake;;
@@ -51,22 +49,7 @@ public class AlgaeIntakePosition extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    /* switch(m_stateMachine){
-      case 1:
-      //Make sure coral rotate and algae rotate are in correct positions then move elevator
-        if (m_CoralIntake.getCoralRotateInPosition()) {
-          m_stateMachine += 1;
-          m_Elevator.setElevatorDesiredPosition(m_ElevatorTargetPos);
-        }
-      break;
-      case 2:
-      //Make sure elevator is in position then end command
-      if (m_Elevator.getElevatorInPosition()) {
-        m_isFinished = true;
-      }
-        
-      break;
-      } */
+    
   }
 
   // Called once the command ends or is interrupted.

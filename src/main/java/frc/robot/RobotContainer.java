@@ -28,7 +28,7 @@ import frc.robot.commands.CoralCheckPosition;
 import frc.robot.commands.CoralPickup;
 import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
-import frc.robot.commands.ElevatorPositions.AlgaeIntakePosition;
+import frc.robot.commands.ElevatorPositions.AlgaeProcessorPos;
 import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
 import frc.robot.commands.ElevatorPositions.L2ScoringPosition;
 import frc.robot.commands.ElevatorPositions.L3ScoringPosition;
@@ -109,7 +109,7 @@ public class RobotContainer {
         operatorController.x().onTrue(new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.b().onTrue(new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.a().onTrue(new Home(m_elevator, m_algaeIntake, m_coralIntake));
-        operatorController.rightBumper().onTrue(new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.rightBumper().onTrue(new AlgaeProcessorPos(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.leftBumper().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator));
@@ -121,7 +121,7 @@ public class RobotContainer {
     }
 
     private void registerAutonCommands() {
-        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeProcessorPos(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("CoralIntakePosition", new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L2ScoringPosition", new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L3ScoringPosition", new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
