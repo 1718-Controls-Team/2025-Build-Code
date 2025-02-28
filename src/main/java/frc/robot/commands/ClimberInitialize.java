@@ -4,47 +4,48 @@
 
 package frc.robot.commands;
 
-import frc.robot.Constants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.CoralIntake;
+import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.TClimber;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 
 
 /** An example command that uses an example subsystem. */
-public class AlgaePickup extends Command {
+public class ClimberInitialize extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final AlgaeIntake m_algaeSubsystem;
-  private final CoralIntake m_coralSubsystem;
-
-
-  @SuppressWarnings("unused")
-  private boolean m_isFinished = false;
+  private final  Elevator m_Elevator;
+  private final AlgaeIntake m_AlgaeIntake;
+  private final CoralIntake m_CoralIntake;
+  private final TClimber m_Climber;
 
   /**
    * Creates a new set-PowerCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public AlgaePickup(AlgaeIntake algaeSubsystem, CoralIntake coralSubsystem) {
-    m_algaeSubsystem = algaeSubsystem;
-    m_coralSubsystem = coralSubsystem;
-
+  public ClimberInitialize(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake, TClimber climber) {
+    m_Elevator = elevator;
+    m_AlgaeIntake = algaeIntake;
+    m_CoralIntake = coralIntake;
+    m_Climber = climber;
+   
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_algaeSubsystem);
-    addRequirements(m_coralSubsystem);
-
+    addRequirements(m_Elevator);
+    addRequirements(m_AlgaeIntake);
+    addRequirements(m_CoralIntake);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_isFinished = false;
-      m_coralSubsystem.setcoralRotate(Constants.kCoralUpPos);
-      m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);
-      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);
+    m_CoralIntake.setcoralRotate(Constants.kCoralClimbPos);
+    m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeClimbPos);
+    m_Elevator.setElevatorDesiredPosition(Constants.kElevatorClimbPos);
+    m_Climber.setTClimberPosition(-60);
+  }
 
-    }
-  
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
@@ -53,10 +54,7 @@ public class AlgaePickup extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeIdleSpinSpeed);  
-    m_isFinished=true;
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

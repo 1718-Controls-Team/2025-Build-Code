@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 5.094774590163934,
-        "y": 5.1098872950819665
+        "x": 5.4,
+        "y": 5.25
       },
       "prevControl": {
-        "x": 5.574282786881835,
-        "y": 5.984989754094974
+        "x": 5.879508196717902,
+        "y": 6.125102459013007
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,29 +31,10 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "L4ScoringPosition",
-      "waypointRelativePos": 0.5582089552238806,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "AutonSpitCoral",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "AlgaeToggle",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 0.5,
-    "maxAcceleration": 1.5,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -69,5 +50,5 @@
     "velocity": 0,
     "rotation": 180.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

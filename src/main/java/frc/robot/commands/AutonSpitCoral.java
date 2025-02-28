@@ -44,7 +44,7 @@ public class AutonSpitCoral extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if ((spitTimer.get() > 0.5)){
+    if ((spitTimer.get() > 2)){
       m_isFinished=true;
     }
   }
@@ -52,12 +52,12 @@ public class AutonSpitCoral extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
+    //m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
   
   }
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_isFinished;
   }
 }

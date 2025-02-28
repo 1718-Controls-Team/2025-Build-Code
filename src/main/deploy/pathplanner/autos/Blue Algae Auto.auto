@@ -5,6 +5,12 @@
     "data": {
       "commands": [
         {
+          "type": "parallel",
+          "data": {
+            "commands": []
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "Blue Algae 1"
@@ -13,13 +19,13 @@
         {
           "type": "named",
           "data": {
-            "name": "L4ScoringPosition"
+            "name": "L2ScoringPosition"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "AlgaeToggle"
+            "name": "AutonSpitCoral"
           }
         },
         {
@@ -31,7 +37,7 @@
         {
           "type": "named",
           "data": {
-            "name": "AlgaeToggle"
+            "name": null
           }
         }
       ]

@@ -17,7 +17,6 @@ public class L2ScoringPosition extends Command {
   private final AlgaeIntake m_AlgaeIntake;
   private final CoralIntake m_CoralIntake;
 
-  @SuppressWarnings("unused")
   private boolean m_isFinished = false;
 
 
@@ -48,7 +47,7 @@ public class L2ScoringPosition extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    m_isFinished = true;
       
   }
 
@@ -59,6 +58,6 @@ public class L2ScoringPosition extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_isFinished;
   }
 }

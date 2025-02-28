@@ -21,15 +21,20 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AlgaeDelivery;
 import frc.robot.commands.AlgaePickup;
+import frc.robot.commands.AutonCoralPickup;
 import frc.robot.commands.AutonSpitCoral;
 import frc.robot.commands.ClimberActivate;
+import frc.robot.commands.ClimberInitialize;
 import frc.robot.commands.CoralSpit;
 import frc.robot.commands.CoralPickup;
 //import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
+import frc.robot.commands.InitializeMechanisms;
 import frc.robot.commands.ElevatorPositions.AlgaeProcessorPos;
 import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
+import frc.robot.commands.ElevatorPositions.L2AlgaePos;
 import frc.robot.commands.ElevatorPositions.L2ScoringPosition;
+import frc.robot.commands.ElevatorPositions.L3AlgaePos;
 import frc.robot.commands.ElevatorPositions.L3ScoringPosition;
 import frc.robot.commands.ElevatorPositions.L4ScoringPosition;
 import frc.robot.generated.TunerConstants;
@@ -77,10 +82,10 @@ public class RobotContainer {
     private Command m_delayCommand = new WaitCommand(0.01);
 
     public RobotContainer() {
+        registerAutonCommands();
         autoChooser = AutoBuilder.buildAutoChooser("Test Auto");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
-        registerAutonCommands();
         configureBindings();
     }
 
@@ -103,10 +108,12 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        //operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.x().onTrue(new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.b().onTrue(new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.a().onTrue(new Home(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.povLeft().onTrue(new L2AlgaePos(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.povRight().onTrue(new L3AlgaePos(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.rightBumper().onTrue(new AlgaeProcessorPos(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.leftBumper().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         
@@ -114,6 +121,7 @@ public class RobotContainer {
         driverController.rightTrigger(0.5).whileTrue(new CoralSpit(m_coralIntake));
         driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake));
         driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_coralIntake));
+        driverController.a().onTrue(new ClimberInitialize(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber));
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
     }
 
@@ -124,9 +132,9 @@ public class RobotContainer {
         NamedCommands.registerCommand("L3ScoringPosition", new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L4ScoringPosition", new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("AlgaeDelivery", new AlgaeDelivery(m_algaeIntake));
-        NamedCommands.registerCommand("AlgaeToggle", new AlgaePickup(m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AlgaePickup", new AlgaePickup(m_algaeIntake, m_coralIntake));
 
-        NamedCommands.registerCommand("CoralPickup", new CoralPickup(m_coralIntake, m_elevator));
+        NamedCommands.registerCommand("CoralPickup", new AutonCoralPickup(m_coralIntake));
         NamedCommands.registerCommand("Home", new Home(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("AutonSpitCoral", new AutonSpitCoral(m_coralIntake));
     } 
@@ -143,5 +151,9 @@ public class RobotContainer {
             AutonomousRun = m_delayCommand.andThen(autoChooser.getSelected());
         }*/
         return AutonomousRun;
+    }
+
+    public Command runInitializeCommand() {
+        return new InitializeMechanisms(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber);
     }
 }

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.094774590163934,
-        "y": 5.1098872950819665
+        "x": 5.4,
+        "y": 5.25
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.689479451275045,
-        "y": 5.892526183970856
+        "x": 4.994704861111112,
+        "y": 6.032638888888889
       },
       "isLocked": false,
       "linkedName": "End of Blue Topside 1"
     },
     {
       "anchor": {
-        "x": 1.7172743055555546,
-        "y": 7.435069444444444
+        "x": 2.2309220431414793,
+        "y": 6.668409260766502
       },
       "prevControl": {
-        "x": 1.8430555555555546,
-        "y": 6.540625
+        "x": 2.3567032931414813,
+        "y": 5.773964816322058
       },
       "nextControl": null,
       "isLocked": false,
@@ -35,12 +35,6 @@
     {
       "name": "CoralIntakePosition",
       "waypointRelativePos": 0.429850746268657,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "CoralPickup",
-      "waypointRelativePos": 1.0,
       "endWaypointRelativePos": null,
       "command": null
     }
@@ -58,7 +52,7 @@
     "rotation": 128.0189425931702
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Blue Topside Folder",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -119.74488129694231

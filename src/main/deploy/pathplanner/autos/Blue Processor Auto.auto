@@ -13,7 +13,7 @@
         {
           "type": "named",
           "data": {
-            "name": "L4ScoringPosition"
+            "name": "L2ScoringPosition"
           }
         },
         {
@@ -25,7 +25,7 @@
         {
           "type": "named",
           "data": {
-            "name": "AlgaeToggle"
+            "name": "AlgaePickup"
           }
         },
         {
@@ -43,7 +43,7 @@
         {
           "type": "named",
           "data": {
-            "name": "AlgaeToggle"
+            "name": "AlgaeDelivery"
           }
         },
         {
@@ -73,7 +73,7 @@
         {
           "type": "named",
           "data": {
-            "name": "L4ScoringPosition"
+            "name": "L3ScoringPosition"
           }
         },
         {

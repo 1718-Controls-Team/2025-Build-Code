@@ -114,6 +114,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    //CommandScheduler.getInstance().schedule(m_robotContainer.runInitializeCommand());
+    
     kUseLimelight=true;
   }
 

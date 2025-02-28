@@ -13,6 +13,7 @@ import frc.robot.Constants;
 public class ClimberActivate extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final TClimber m_tClimber;
+  
 
   /**
    * Creates a new set-PowerCommand.
@@ -24,7 +25,6 @@ public class ClimberActivate extends Command {
    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_tClimber);
-    
   }
 
   // Called when the command is initially scheduled.
