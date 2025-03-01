@@ -37,15 +37,21 @@ public class CoralIntake extends SubsystemBase {
   //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public double getCoralRotatePosition() {
     return m_coralRotate.getPosition().getValueAsDouble();
 =======
+=======
+>>>>>>> Stashed changes
   public void setL4CoralSpitMode(boolean scoringL4) {
     ScoringL4 = scoringL4;
   }
 
   public boolean getL4CoralSpitMode() {
     return ScoringL4;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   }
 

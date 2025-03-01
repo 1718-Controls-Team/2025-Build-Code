@@ -45,7 +45,11 @@ public class L4ScoringPosition extends Command {
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL4ScoringPos);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_isFinished = true;
+=======
+    m_CoralIntake.setL4CoralSpitMode(true);
+>>>>>>> Stashed changes
 =======
     m_CoralIntake.setL4CoralSpitMode(true);
 >>>>>>> Stashed changes
