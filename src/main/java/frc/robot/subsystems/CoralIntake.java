@@ -28,7 +28,7 @@ public class CoralIntake extends SubsystemBase {
   private final DutyCycleOut coralRotateVoltageRequest = new DutyCycleOut(0);
 
   private double CoralIntakeRotateDesiredPos = 0;
- 
+  public boolean ScoringL4 = false;
 
   public CoralIntake() {
     this.coralIntakeConfiguration(m_coralSpin);
@@ -36,8 +36,17 @@ public class CoralIntake extends SubsystemBase {
   }
   //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
+<<<<<<< Updated upstream
   public double getCoralRotatePosition() {
     return m_coralRotate.getPosition().getValueAsDouble();
+=======
+  public void setL4CoralSpitMode(boolean scoringL4) {
+    ScoringL4 = scoringL4;
+  }
+
+  public boolean getL4CoralSpitMode() {
+    return ScoringL4;
+>>>>>>> Stashed changes
   }
 
   public void setcoralSpinPower(double speed) {
