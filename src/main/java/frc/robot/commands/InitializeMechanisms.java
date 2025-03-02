@@ -20,7 +20,7 @@ public class InitializeMechanisms extends Command {
   private final AlgaeIntake m_algaeSubsystem;
   private final TClimber m_climberSubsystem;
 
-  
+  private boolean m_isFinished = false;
 
   /**
    * Creates a new set-PowerCommand.
@@ -59,7 +59,7 @@ public class InitializeMechanisms extends Command {
   public void execute() {
         if (m_elevatorSubsystem.getElevatorInPosition()) {
           m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
-
+          m_isFinished = true;
         }
  
   }
@@ -71,6 +71,6 @@ public class InitializeMechanisms extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_isFinished;
   }
 }

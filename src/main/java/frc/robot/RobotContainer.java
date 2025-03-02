@@ -13,6 +13,8 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.events.TriggerEvent;
+
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -37,6 +39,9 @@ import frc.robot.commands.ElevatorPositions.L2ScoringPosition;
 import frc.robot.commands.ElevatorPositions.L3AlgaePos;
 import frc.robot.commands.ElevatorPositions.L3ScoringPosition;
 import frc.robot.commands.ElevatorPositions.L4ScoringPosition;
+import frc.robot.commands.ManualControls.ClimberManual;
+import frc.robot.commands.ManualControls.CoralRotateManual;
+import frc.robot.commands.ManualControls.ElevatorManual;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.AlgaeIntake;
 //import frc.robot.subsystems.BeamBreak;
@@ -101,6 +106,11 @@ public class RobotContainer {
             )
             //new Drive(drivetrain, driverController)
         );
+
+        m_elevator.setDefaultCommand(new ElevatorManual(m_elevator, operatorController));
+        m_coralIntake.setDefaultCommand(new CoralRotateManual(m_coralIntake, operatorController));
+        m_tClimber.setDefaultCommand(new ClimberManual(m_tClimber, driverController));
+        
         driverController.a().whileTrue(drivetrain.applyRequest(() -> brake));
 
         // reset the field-centric heading on left bumper press
@@ -123,6 +133,8 @@ public class RobotContainer {
         driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_coralIntake));
         driverController.a().onTrue(new ClimberInitialize(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber));
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
+
+        
     }
 
     private void registerAutonCommands() {

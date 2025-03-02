@@ -40,6 +40,9 @@ public class Elevator extends SubsystemBase {
     ElevatorDesiredPos = DesiredPosition;
   }
 
+  public double getElevatorCurrentPosition(){
+    return m_Elevator1.getPosition().getValueAsDouble();
+  }
 
   public void setClimberZeroOutput() {
     m_Elevator1.setControl(ElevatorVoltageRequest);

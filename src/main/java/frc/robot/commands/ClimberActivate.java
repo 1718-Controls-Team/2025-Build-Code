@@ -14,6 +14,7 @@ public class ClimberActivate extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final TClimber m_tClimber;
   
+  private Boolean m_isFinished = false;
 
   /**
    * Creates a new set-PowerCommand.
@@ -36,7 +37,7 @@ public class ClimberActivate extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
+    m_isFinished = true;
   }
 
   // Called once the command ends or is interrupted.
@@ -46,6 +47,6 @@ public class ClimberActivate extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_isFinished;
   }
 }

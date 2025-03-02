@@ -32,6 +32,9 @@ public class TClimber extends SubsystemBase {
 //############################################## BEGIN WRITING CLASS FUNCTIONS ########################################################
 
 
+  public double getClimberCurrentPosition() {
+    return m_TClimber.getPosition().getValueAsDouble();
+  }
 
   public void setTClimberPosition(double DesiredPosition) {
     m_TClimber.setControl(TClimberRotationRequest.withPosition(DesiredPosition));

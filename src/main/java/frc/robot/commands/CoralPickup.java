@@ -57,12 +57,12 @@ public class CoralPickup extends Command {
   @Override
   public void end(boolean interrupted) {
     m_coralSubsystem.setcoralSpinPower(Constants.kCoralHoldSpinSpeed);
-    m_isFinished=true;
+    m_isFinished = true;
   
 }
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_isFinished;
   }
 }

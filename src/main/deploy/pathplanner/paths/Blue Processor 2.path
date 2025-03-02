@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.253124999999999,
-        "y": 2.920920138888888
+        "x": 5.4,
+        "y": 2.75
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.253124999999999,
-        "y": 2.9209201388888886
+        "x": 6.4,
+        "y": 2.7500000000000004
       },
       "isLocked": false,
       "linkedName": "End of Blue 2 Coral 1"
@@ -58,7 +58,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 121.26373169437757

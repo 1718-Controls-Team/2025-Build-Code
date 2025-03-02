@@ -44,7 +44,7 @@ public class CoralSpit extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-  //m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
+  m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
   m_isFinished=true;
 }
   // Returns true when the command should end.

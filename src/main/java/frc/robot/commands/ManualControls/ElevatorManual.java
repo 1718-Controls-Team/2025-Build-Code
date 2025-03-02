@@ -2,56 +2,49 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.ManualControls;
 
-import frc.robot.Constants;
-import frc.robot.subsystems.AlgaeIntake;
-import frc.robot.subsystems.CoralIntake;
 import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 
 /** An example command that uses an example subsystem. */
-public class Home extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final CoralIntake m_coralSubsystem;
+public class ElevatorManual extends Command {
   private final Elevator m_elevatorSubsystem;
-  private final AlgaeIntake m_algaeSubsystem;
+  private final CommandXboxController m_operator;
 
-  private boolean m_isFinished = false;
+  private boolean flag = true;
 
   /**
    * Creates a new set-PowerCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Home(Elevator elevatorSubsystem, AlgaeIntake algaeSubsystem, CoralIntake coralSubsystem) {
-    m_algaeSubsystem = algaeSubsystem;
+  public ElevatorManual(Elevator elevatorSubsystem, CommandXboxController operator) {
     m_elevatorSubsystem = elevatorSubsystem;
-    m_coralSubsystem = coralSubsystem;
-
+    m_operator = operator;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_algaeSubsystem);
     addRequirements(m_elevatorSubsystem);
-    addRequirements(m_coralSubsystem);
     
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
-    m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeStopSpinSpeed); 
-    m_coralSubsystem.setcoralRotate(Constants.kCoralRotateHomePos);  
-    m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);  
-    m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
-    m_isFinished = true;
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
+    if ((m_operator.getLeftY() > 0.2) || (m_operator.getLeftY() < -0.2)) {
+      flag = false;
+      m_elevatorSubsystem.setElevatorDesiredPosition(m_elevatorSubsystem.getElevatorCurrentPosition() + (3 * -m_operator.getLeftY()));
+    } else if (flag == false) {
+      m_elevatorSubsystem.setElevatorDesiredPosition(m_elevatorSubsystem.getElevatorCurrentPosition());
+      flag = true;
+    }
   }
 
   // Called once the command ends or is interrupted.
@@ -61,6 +54,6 @@ public class Home extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_isFinished;
+    return false;
   }
 }

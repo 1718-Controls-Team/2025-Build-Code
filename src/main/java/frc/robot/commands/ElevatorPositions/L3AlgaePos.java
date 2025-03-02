@@ -40,9 +40,10 @@ public class L3AlgaePos extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_CoralIntake.setcoralRotate(Constants.kCoralRotateDeliveryPos);
-    m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
+    m_CoralIntake.setcoralRotate(Constants.kCoralRotateAlgaePos);
+    m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeIntakePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL3AlgaePos);
+    m_isFinished = true;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -59,6 +60,6 @@ public class L3AlgaePos extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_isFinished;
   }
 }

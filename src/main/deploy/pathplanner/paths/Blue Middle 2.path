@@ -58,7 +58,7 @@
     "rotation": 124.8244891569569
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Blue Middle Folder",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

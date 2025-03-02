@@ -20,6 +20,8 @@ public class ClimberInitialize extends Command {
   private final CoralIntake m_CoralIntake;
   private final TClimber m_Climber;
 
+  private boolean m_isFinished = false;
+
   /**
    * Creates a new set-PowerCommand.
    *
@@ -43,7 +45,9 @@ public class ClimberInitialize extends Command {
     m_CoralIntake.setcoralRotate(Constants.kCoralClimbPos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeClimbPos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorClimbPos);
-    m_Climber.setTClimberPosition(-60);
+    m_Climber.setTClimberPosition(60);
+
+    m_isFinished = true;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -59,6 +63,6 @@ public class ClimberInitialize extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_isFinished;
   }
 }

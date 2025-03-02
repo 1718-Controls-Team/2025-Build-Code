@@ -28,7 +28,7 @@ public static final String kLimelightName = "limelight-lime";
 */
 
 // Coral rotate position range is 0-11
-public static final double kCoralRotateDeliveryPos = 6; //Was 5
+public static final double kCoralRotateDeliveryPos = 5; //Was 5
 public static final double kCoralRotateHomePos = 3;  
 public static final double kCoralRotateAlgaePos = 1.5;  
 public static final double kCoralRotatePositionTolerance = 0.5;
@@ -36,30 +36,29 @@ public static final double kCoralUpPos = 0;
 public static final double kCoralClimbPos = 6.929;
 
 public static final double kCoralOutSpinSpeed = -10;
-public static final double kCoralInSpinSpeed = 10;
-public static final double kCoralHoldSpinSpeed = 3;
+public static final double kCoralInSpinSpeed = 20;
+public static final double kCoralHoldSpinSpeed = 10;
 public static final double kCoralStopSpinSpeed = 0;
 
 //180 max position if zero is all the way up
-public static final double kTClimberUpPos = 38;
+public static final double kTClimberUpPos = -69; //Was 38
 
 // Elevator 0-33.5 is position range
 public static final double kElevatorCoralIntakePos = 7.5;
 public static final double kElevatorAlgaeIntakePos = 4.5;
 public static final double kElevatorHomePos = 3;
-public static final double kElevatorL2ScoringPos = 14; //Was 15
-public static final double kElevatorL3ScoringPos = 25;
+public static final double kElevatorL2ScoringPos = 10.7; //Was 15
+public static final double kElevatorL3ScoringPos = 24.7;
 public static final double kElevatorL4ScoringPos = 33;
-public static final double kElevatorL2AlgaePos = 22;
-public static final double kElevatorL3AlgaePos = 31;
+public static final double kElevatorL2AlgaePos = 16.8; //Was 20
+public static final double kElevatorL3AlgaePos = 27.6; //Was 26
 public static final double kElevatorClimbPos = 0;
-
 
 
 // Algae is -0.441 to 3
 public static final double kAlgaeOutSpinSpeed = -20;
-public static final double kAlgaeInSpinSpeed = 20;
-public static final double kAlgaeIdleSpinSpeed = 3;
+public static final double kAlgaeInSpinSpeed = 30;
+public static final double kAlgaeIdleSpinSpeed = 20;
 public static final double kAlgaeStopSpinSpeed = 0;
 
 public static final double kAlgaeIntakePos = 3.5;
@@ -132,7 +131,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kTClimberMaxForwardVoltage = 11;
   public static final double kTClimberSupplyCurrentLimit = 40;
 
-  public static final InvertedValue kTClimberDirection = InvertedValue.CounterClockwise_Positive;
+  public static final InvertedValue kTClimberDirection = InvertedValue.Clockwise_Positive;
 
 
 /*

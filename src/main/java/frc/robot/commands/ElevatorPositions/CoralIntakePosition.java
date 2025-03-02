@@ -45,7 +45,7 @@ public class CoralIntakePosition extends Command {
     m_CoralIntake.setcoralRotate(Constants.kCoralRotateHomePos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorCoralIntakePos);
-
+    m_isFinished = true;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -61,6 +61,6 @@ public class CoralIntakePosition extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_isFinished;
   }
 }

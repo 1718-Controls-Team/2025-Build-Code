@@ -42,6 +42,7 @@ public class L2ScoringPosition extends Command {
     m_CoralIntake.setcoralRotate(Constants.kCoralRotateDeliveryPos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL2ScoringPos);
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.

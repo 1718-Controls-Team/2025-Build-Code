@@ -36,6 +36,9 @@ public class CoralIntake extends SubsystemBase {
   }
   //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
+  public double getCoralRotatePosition() {
+    return m_coralRotate.getPosition().getValueAsDouble();
+  }
 
   public void setcoralSpinPower(double speed) {
     m_coralSpin.setControl(coralSpinVelocityRequest.withVelocity(speed));

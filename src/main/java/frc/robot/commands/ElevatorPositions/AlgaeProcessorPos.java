@@ -30,7 +30,7 @@ public class AlgaeProcessorPos extends Command {
     public AlgaeProcessorPos(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake) {
     m_Elevator = elevator;
     m_AlgaeIntake = algaeIntake;
-    m_CoralIntake = coralIntake;;
+    m_CoralIntake = coralIntake;
    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Elevator);
@@ -44,6 +44,7 @@ public class AlgaeProcessorPos extends Command {
     m_CoralIntake.setcoralRotate(Constants.kCoralRotateAlgaePos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeIntakePos);  
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorAlgaeIntakePos);
+    m_isFinished = true;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -59,6 +60,6 @@ public class AlgaeProcessorPos extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
