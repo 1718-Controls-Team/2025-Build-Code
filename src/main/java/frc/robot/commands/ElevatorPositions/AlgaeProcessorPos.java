@@ -45,6 +45,7 @@ public class AlgaeProcessorPos extends Command {
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeIntakePos);  
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorAlgaeIntakePos);
     m_isFinished = true;
+    m_CoralIntake.setL4CoralSpitMode(false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

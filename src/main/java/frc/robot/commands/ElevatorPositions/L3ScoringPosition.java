@@ -45,6 +45,7 @@ public class L3ScoringPosition extends Command {
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL3ScoringPos);
     m_isFinished = true;
+    m_CoralIntake.setL4CoralSpitMode(false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

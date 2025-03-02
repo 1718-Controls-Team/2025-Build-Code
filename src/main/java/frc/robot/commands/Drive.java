@@ -7,12 +7,14 @@ package frc.robot.commands;
 import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
+import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveModule.SteerRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.CoralIntake;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,6 +26,7 @@ public class Drive extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CommandSwerveDrivetrain m_Drivetrain;
   private final CommandXboxController m_Controller;
+  private final CoralIntake m_CoralIntake;
 
   private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
   private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
@@ -44,17 +47,17 @@ public class Drive extends Command {
   private double strafeController;
   private double driveController;
 
-
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
     .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
 
-  
+  private final SwerveRequest.RobotCentric L4Score = new SwerveRequest.RobotCentric();
 
 //############################################## CLASS INITIALIZATION ##################################################################
-  public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller/*, VariablePassSubsystem variable*/) {
+  public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller, CoralIntake coralIntake/*, VariablePassSubsystem variable*/) {
     m_Drivetrain = drive;
     m_Controller = controller;
+    m_CoralIntake = coralIntake;
 
     this.drivePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
     this.strafePID = new PIDController(1, 0, 0.00); // 0.055, 0w, 0.0013
@@ -79,6 +82,8 @@ public class Drive extends Command {
     if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) {
       driveRequest = "limelightDrive";
       UsingLimelight = true;
+    } else if ((m_CoralIntake.getL4CoralSpitMode() == true) && (m_CoralIntake.getSpitting())) {
+      driveRequest = "L4Score";
     } else {
       driveRequest = "";
       UsingLimelight = false;
@@ -214,6 +219,9 @@ public class Drive extends Command {
         m_Drivetrain.setControl(drive.withVelocityX(driveController * MaxSpeed * 1.0) // Drive forward with                                                                    
          .withVelocityY(strafeController * MaxSpeed * 1.0) // Drive left with negative X (left)
          .withRotationalRate(turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
+      break;
+      case "L4Score":
+        m_Drivetrain.setControl(L4Score.withVelocityX(0.25));
       break;
       default:
       m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with

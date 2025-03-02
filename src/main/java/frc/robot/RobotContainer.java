@@ -28,6 +28,7 @@ import frc.robot.commands.AutonSpitCoral;
 import frc.robot.commands.ClimberActivate;
 import frc.robot.commands.ClimberInitialize;
 import frc.robot.commands.CoralSpit;
+import frc.robot.commands.Drive;
 import frc.robot.commands.CoralPickup;
 //import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
@@ -99,12 +100,12 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
-            drivetrain.applyRequest(() ->
+            /*drivetrain.applyRequest(() ->
                 drive.withVelocityX(-driverController.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
                     .withVelocityY(-driverController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
                     .withRotationalRate(-driverController.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
-            )
-            //new Drive(drivetrain, driverController)
+            )*/
+            new Drive(drivetrain, driverController, m_coralIntake)
         );
 
         m_elevator.setDefaultCommand(new ElevatorManual(m_elevator, operatorController));
@@ -118,7 +119,7 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        //operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.x().onTrue(new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.b().onTrue(new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.a().onTrue(new Home(m_elevator, m_algaeIntake, m_coralIntake));

@@ -29,6 +29,7 @@ public class CoralIntake extends SubsystemBase {
 
   private double CoralIntakeRotateDesiredPos = 0;
   public boolean ScoringL4 = false;
+  public boolean Spitting = false;
 
   public CoralIntake() {
     this.coralIntakeConfiguration(m_coralSpin);
@@ -36,24 +37,26 @@ public class CoralIntake extends SubsystemBase {
   }
   //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+  public boolean getSpitting() {
+    return Spitting;
+  }
+
+  public void setSpitting(boolean spitting) {
+    Spitting = spitting;
+  }
+
   public double getCoralRotatePosition() {
     return m_coralRotate.getPosition().getValueAsDouble();
-=======
-=======
->>>>>>> Stashed changes
+  }
+
   public void setL4CoralSpitMode(boolean scoringL4) {
     ScoringL4 = scoringL4;
   }
 
   public boolean getL4CoralSpitMode() {
     return ScoringL4;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   }
+
 
   public void setcoralSpinPower(double speed) {
     m_coralSpin.setControl(coralSpinVelocityRequest.withVelocity(speed));

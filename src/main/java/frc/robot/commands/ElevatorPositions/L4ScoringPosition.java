@@ -44,15 +44,8 @@ public class L4ScoringPosition extends Command {
     m_CoralIntake.setcoralRotate(Constants.kCoralRotateL4Pos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL4ScoringPos);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     m_isFinished = true;
-=======
     m_CoralIntake.setL4CoralSpitMode(true);
->>>>>>> Stashed changes
-=======
-    m_CoralIntake.setL4CoralSpitMode(true);
->>>>>>> Stashed changes
   }
 
   // Called every time the scheduler runs while the command is scheduled.

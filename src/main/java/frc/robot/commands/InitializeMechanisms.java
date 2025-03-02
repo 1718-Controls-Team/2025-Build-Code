@@ -51,7 +51,7 @@ public class InitializeMechanisms extends Command {
     m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);  
     m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
     m_climberSubsystem.setTClimberPosition(-60);
-
+    m_coralSubsystem.setL4CoralSpitMode(false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

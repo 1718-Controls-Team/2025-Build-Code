@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.CoralIntake;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 
@@ -14,8 +15,7 @@ public class CoralSpit extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
 
-  @SuppressWarnings("unused")
-    private boolean m_isFinished = false;
+  private boolean m_isFinished = false;
   
     /**
      * Creates a new set-PowerCommand.
@@ -26,26 +26,31 @@ public class CoralSpit extends Command {
       m_coralSubsystem = coralSubsystem;
   
       addRequirements(m_coralSubsystem);
-      }
+    }
    
-        // Called when the command is initially scheduled.
+    // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-      m_isFinished = false;
       m_coralSubsystem.setcoralSpinPower(Constants.kCoralOutSpinSpeed);  
+      m_coralSubsystem.setSpitting(true);
     }
 
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    if (m_coralSubsystem.getL4CoralSpitMode() == true) {
+      m_coralSubsystem.setcoralRotate(m_coralSubsystem.getCoralRotatePosition() - 0.6);
+    }
+    System.out.println(m_coralSubsystem.getL4CoralSpitMode());
   }
+
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-  m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
-  m_isFinished=true;
+  //m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);
+  m_coralSubsystem.setSpitting(false);
+  
 }
   // Returns true when the command should end.
   @Override

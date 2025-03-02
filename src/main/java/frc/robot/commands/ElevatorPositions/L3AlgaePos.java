@@ -44,6 +44,7 @@ public class L3AlgaePos extends Command {
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeIntakePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL3AlgaePos);
     m_isFinished = true;
+    m_CoralIntake.setL4CoralSpitMode(false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
