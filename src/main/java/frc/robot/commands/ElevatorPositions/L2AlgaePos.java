@@ -17,7 +17,7 @@ public class L2AlgaePos extends Command {
   private final AlgaeIntake m_AlgaeIntake;
   private final CoralIntake m_CoralIntake;
 
-  @SuppressWarnings("unused")
+  
   private boolean m_isFinished = false;
 
 

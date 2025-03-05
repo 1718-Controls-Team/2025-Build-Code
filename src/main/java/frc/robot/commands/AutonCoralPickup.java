@@ -15,7 +15,6 @@ public class AutonCoralPickup extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
 
-  @SuppressWarnings("unused")
     private boolean m_isFinished = false;
     Timer spitTimer = new Timer();
   

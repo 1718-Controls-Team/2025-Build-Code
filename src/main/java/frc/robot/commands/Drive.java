@@ -7,7 +7,6 @@ package frc.robot.commands;
 import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
-import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveModule.SteerRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import frc.robot.Constants;
@@ -227,7 +226,8 @@ public class Drive extends Command {
       m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
       // negative Y (forward)
         .withVelocityY(-m_Controller.getLeftX() * MaxSpeed) // Drive left with negative X (left)
-        .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate)); // Drive counterclockwise with negative X (left)
+        .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate * 1.3
+        )); // Drive counterclockwise with negative X (left)
       break;
     }
   }

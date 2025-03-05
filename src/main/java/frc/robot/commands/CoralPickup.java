@@ -16,7 +16,7 @@ public class CoralPickup extends Command {
   private final CoralIntake m_coralSubsystem;
   private final Elevator m_elevatorSubsystem;
 
-  @SuppressWarnings("unused")
+  
     private boolean m_isFinished = false;
   
   

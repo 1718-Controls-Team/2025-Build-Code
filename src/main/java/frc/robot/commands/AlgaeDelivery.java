@@ -14,7 +14,7 @@ public class AlgaeDelivery extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final AlgaeIntake m_algaeSubsystem;
 
-  @SuppressWarnings("unused")
+  
   private boolean m_isFinished = false;
 
   /**

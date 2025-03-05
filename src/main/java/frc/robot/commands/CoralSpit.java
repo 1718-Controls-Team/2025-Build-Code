@@ -5,7 +5,6 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.CoralIntake;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 
@@ -42,7 +41,6 @@ public class CoralSpit extends Command {
     if (m_coralSubsystem.getL4CoralSpitMode() == true) {
       m_coralSubsystem.setcoralRotate(m_coralSubsystem.getCoralRotatePosition() - 0.6);
     }
-    System.out.println(m_coralSubsystem.getL4CoralSpitMode());
   }
 
   // Called once the command ends or is interrupted.
