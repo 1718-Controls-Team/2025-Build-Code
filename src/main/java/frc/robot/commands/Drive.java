@@ -50,7 +50,7 @@ public class Drive extends Command {
     .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
 
-  private final SwerveRequest.RobotCentric L4Score = new SwerveRequest.RobotCentric();
+  //private final SwerveRequest.RobotCentric L4Score = new SwerveRequest.RobotCentric();
 
 //############################################## CLASS INITIALIZATION ##################################################################
   public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller, CoralIntake coralIntake/*, VariablePassSubsystem variable*/) {
@@ -219,9 +219,9 @@ public class Drive extends Command {
          .withVelocityY(strafeController * MaxSpeed * 1.0) // Drive left with negative X (left)
          .withRotationalRate(turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
       break;
-      case "L4Score":
+      /*case "L4Score":
         m_Drivetrain.setControl(L4Score.withVelocityX(0.25));
-      break;
+      break;*/
       default:
       m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
       // negative Y (forward)

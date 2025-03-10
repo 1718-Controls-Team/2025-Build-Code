@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.Auton;
 
 import frc.robot.subsystems.CoralIntake;
 import edu.wpi.first.wpilibj.Timer;
@@ -11,11 +11,10 @@ import frc.robot.Constants;
 
 
 /** An example command that uses an example subsystem. */
-public class AutonSpitCoral extends Command {
+public class AutonCoralPickup extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final CoralIntake m_coralSubsystem;
 
-  
     private boolean m_isFinished = false;
     Timer spitTimer = new Timer();
   
@@ -24,7 +23,7 @@ public class AutonSpitCoral extends Command {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public AutonSpitCoral(CoralIntake coralSubsystem) {
+    public AutonCoralPickup(CoralIntake coralSubsystem) {
       m_coralSubsystem = coralSubsystem;
       // Use addRequirements() here to declare subsystem dependencies.
       addRequirements(m_coralSubsystem);
@@ -35,7 +34,7 @@ public class AutonSpitCoral extends Command {
     public void initialize() {
       m_isFinished = false;
       
-      m_coralSubsystem.setcoralSpinPower(Constants.kCoralOutSpinSpeed);  
+      m_coralSubsystem.setcoralSpinPower(Constants.kCoralInSpinSpeed);  
       spitTimer.reset();
       spitTimer.start();
     }

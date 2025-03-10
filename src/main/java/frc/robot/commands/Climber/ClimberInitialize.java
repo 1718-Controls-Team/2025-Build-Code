@@ -2,42 +2,58 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.Climber;
 
+import frc.robot.subsystems.AlgaeIntake;
+import frc.robot.subsystems.CoralIntake;
+import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.TClimber;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 
 
 /** An example command that uses an example subsystem. */
-public class ClimberActivate extends Command {
+public class ClimberInitialize extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final TClimber m_tClimber;
-  
-  private Boolean m_isFinished = false;
+  private final  Elevator m_Elevator;
+  private final AlgaeIntake m_AlgaeIntake;
+  private final CoralIntake m_CoralIntake;
+  private final TClimber m_Climber;
+
+  private boolean m_isFinished = false;
 
   /**
    * Creates a new set-PowerCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ClimberActivate(TClimber tClimber) {
-    m_tClimber = tClimber;
+  public ClimberInitialize(Elevator elevator, AlgaeIntake algaeIntake, CoralIntake coralIntake, TClimber climber) {
+    m_Elevator = elevator;
+    m_AlgaeIntake = algaeIntake;
+    m_CoralIntake = coralIntake;
+    m_Climber = climber;
    
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_tClimber);
+    addRequirements(m_Elevator);
+    addRequirements(m_AlgaeIntake);
+    addRequirements(m_CoralIntake);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_tClimber.setTClimberPosition(Constants.kTClimberUpPos);
+    m_CoralIntake.setcoralRotate(Constants.kCoralClimbPos);
+    m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeClimbPos);
+    m_Elevator.setElevatorDesiredPosition(Constants.kElevatorClimbPos);
+    m_Climber.setTClimberPosition(60);
+
+    m_isFinished = true;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_isFinished = true;
+
   }
 
   // Called once the command ends or is interrupted.

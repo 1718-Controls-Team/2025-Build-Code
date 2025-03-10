@@ -39,6 +39,10 @@ public class AlgaeIntake extends SubsystemBase {
   }
 //############################################## BEGIN WRITING CLASS FUNCTIONS ######################################################
 
+  public void setAlgaeOutput(double AlgaeIntakeOutput) {
+    AlgaeIntake1.setControl(AlgaeIntakeVoltage.withOutput(AlgaeIntakeOutput));
+    AlgaeIntake2.setControl(AlgaeIntakeVoltage.withOutput(AlgaeIntakeOutput));
+  }
 
   public void setAlgaeSpinPower(double AlgaeIntakePower) {
     AlgaeIntake1.setControl(AlgaeVelocityRequest.withVelocity(AlgaeIntakePower));

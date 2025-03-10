@@ -29,7 +29,7 @@ public static final String kLimelightName = "limelight-lime";
 
 // Coral rotate position range is 0-11
 public static final double kCoralRotateDeliveryPos = 6; //Was 5
-public static final double kCoralRotateL4Pos = 4.529;
+public static final double kCoralRotateL4Pos = 6.75;
 public static final double kCoralRotateHomePos = 3;  
 public static final double kCoralRotateAlgaePos = 0.5;  
 public static final double kCoralRotatePositionTolerance = 0.5;
@@ -45,14 +45,14 @@ public static final double kCoralStopSpinSpeed = 0;
 public static final double kTClimberUpPos = -69; //Was 38
 
 // Elevator 0-33.5 is position range
-public static final double kElevatorCoralIntakePos = 7.5;
-public static final double kElevatorAlgaeIntakePos = 4.5;
+public static final double kElevatorCoralIntakePos = 2.5;
+public static final double kElevatorAlgaeIntakePos = 2.5;
 public static final double kElevatorHomePos = 3;
-public static final double kElevatorL2ScoringPos = 10.7; //Was 15
-public static final double kElevatorL3ScoringPos = 24.7;
-public static final double kElevatorL4ScoringPos = 39.8;
+public static final double kElevatorL2ScoringPos = 5.2; //Was 15
+public static final double kElevatorL3ScoringPos = 18.1;
+public static final double kElevatorL4ScoringPos = 39.9;
 public static final double kElevatorL2AlgaePos = 16.8; //Was 20
-public static final double kElevatorL3AlgaePos = 27.6; //Was 26
+public static final double kElevatorL3AlgaePos = 29.8; //Was 26
 public static final double kElevatorClimbPos = 0;
 
 
@@ -64,7 +64,7 @@ public static final double kAlgaeStopSpinSpeed = 0;
 
 public static final double kAlgaeIntakePos = 3.5;
 public static final double kAlgaeClimbPos = 3.336;
-public static final double kAlgaeHomePos = 1.37;
+public static final double kAlgaeHomePos = 1.1;
 public static final double kAlgaeIntakePositionTolerance = 0.05;
 
 

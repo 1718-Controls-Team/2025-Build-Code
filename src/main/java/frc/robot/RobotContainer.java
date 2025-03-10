@@ -8,7 +8,6 @@ import static edu.wpi.first.units.Units.*;
 
 import java.io.File;
 
-import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -19,18 +18,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.commands.AlgaeDelivery;
-import frc.robot.commands.AlgaePickup;
-import frc.robot.commands.AutonCoralPickup;
-import frc.robot.commands.AutonSpitCoral;
-import frc.robot.commands.ClimberActivate;
-import frc.robot.commands.ClimberInitialize;
-import frc.robot.commands.CoralSpit;
 import frc.robot.commands.Drive;
-import frc.robot.commands.CoralPickup;
 //import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
 import frc.robot.commands.InitializeMechanisms;
+import frc.robot.commands.Auton.AutonCoralPickup;
+import frc.robot.commands.Auton.AutonSpitCoral;
+import frc.robot.commands.Climber.ClimberActivate;
+import frc.robot.commands.Climber.ClimberInitialize;
 import frc.robot.commands.ElevatorPositions.AlgaeProcessorPos;
 import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
 import frc.robot.commands.ElevatorPositions.L2AlgaePos;
@@ -38,6 +33,11 @@ import frc.robot.commands.ElevatorPositions.L2ScoringPosition;
 import frc.robot.commands.ElevatorPositions.L3AlgaePos;
 import frc.robot.commands.ElevatorPositions.L3ScoringPosition;
 import frc.robot.commands.ElevatorPositions.L4ScoringPosition;
+import frc.robot.commands.Intake.AlgaeDelivery;
+import frc.robot.commands.Intake.AlgaePickup;
+import frc.robot.commands.Intake.AlgaeSPIT;
+import frc.robot.commands.Intake.CoralPickup;
+import frc.robot.commands.Intake.CoralSpit;
 import frc.robot.commands.ManualControls.ClimberManual;
 import frc.robot.commands.ManualControls.CoralRotateManual;
 import frc.robot.commands.ManualControls.ElevatorManual;
@@ -52,19 +52,10 @@ import frc.robot.subsystems.TClimber;
 
 public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
-    private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
+    //private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
 
     /* Setting up bindings for necessary control of the swerve drive platform */
-    private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-            .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
-            .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
     private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
-
-    @SuppressWarnings("unused")
-    private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
-    @SuppressWarnings("unused")
-    private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric()
-            .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
 
     private final Telemetry logger = new Telemetry(MaxSpeed);
     private final TClimber m_tClimber = new TClimber();
@@ -76,14 +67,15 @@ public class RobotContainer {
     private final CommandXboxController driverController = new CommandXboxController(0);
     private final CommandXboxController operatorController = new CommandXboxController(1);
 
+
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+
 
     /* Path follower */
     private final SendableChooser<Command> autoChooser;
-
     File autonFolder = new File(Filesystem.getDeployDirectory() + "/pathplanner/autos");
-
     private Command m_delayCommand = new WaitCommand(0.01);
+
 
     public RobotContainer() {
         registerAutonCommands();
@@ -98,11 +90,6 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
-            /*drivetrain.applyRequest(() ->
-                drive.withVelocityX(-driverController.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
-                    .withVelocityY(-driverController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
-                    .withRotationalRate(-driverController.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
-            )*/
             new Drive(drivetrain, driverController, m_coralIntake)
         );
 
@@ -132,6 +119,7 @@ public class RobotContainer {
         driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_coralIntake));
         driverController.a().onTrue(new ClimberInitialize(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber));
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
+        driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake));
 
         
     }
