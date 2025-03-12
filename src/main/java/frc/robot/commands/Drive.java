@@ -42,6 +42,7 @@ public class Drive extends Command {
   private double rotationTarget = 0;
   private Pose2d RobotPosition;
 
+
   private double turnController;
   private double strafeController;
   private double driveController;
@@ -58,9 +59,9 @@ public class Drive extends Command {
     m_Controller = controller;
     m_CoralIntake = coralIntake;
 
-    this.drivePID = new PIDController(1, 0, 0.00); // 0.055, 0, 0.0013
-    this.strafePID = new PIDController(1, 0, 0.00); // 0.055, 0w, 0.0013
-    this.aimPID = new PIDController(0.008, 0, 0.0); // 0.055, 0, 0.0013
+    this.drivePID = new PIDController(0.5, 0, 0.00); // 1, 0, 0
+    this.strafePID = new PIDController(0.5, 0, 0.00); // 1, 0, 0
+    this.aimPID = new PIDController(0.024, 0, 0.0); // 0.008, 0, 0.0013
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Drivetrain);
@@ -195,6 +196,7 @@ public class Drive extends Command {
 
         RobotPosition = m_Drivetrain.getState().Pose;
 
+
         turnController = aimPID.calculate((m_Drivetrain.getPigeon2().getRotation2d().getDegrees() + 180)%360, rotationTarget);
         strafeController = strafePID.calculate(RobotPosition.getY(), yTarget);
         driveController = drivePID.calculate(RobotPosition.getX(), xTarget);
@@ -215,8 +217,8 @@ public class Drive extends Command {
           turnController = -1;
         }
 
-        m_Drivetrain.setControl(drive.withVelocityX(driveController * MaxSpeed * 1.0) // Drive forward with                                                                    
-         .withVelocityY(strafeController * MaxSpeed * 1.0) // Drive left with negative X (left)
+        m_Drivetrain.setControl(drive.withVelocityX(driveController * MaxSpeed * 0.5) // Drive forward with                                                                    
+         .withVelocityY(strafeController * MaxSpeed * 0.5) // Drive left with negative X (left)
          .withRotationalRate(turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
       break;
       /*case "L4Score":

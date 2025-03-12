@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.ctre.phoenix6.Utils;
+import com.ctre.phoenix6.hardware.Pigeon2;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.net.PortForwarder;
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
     //Set a custom brownout voltage for the RoboRIO.
     //Only works with the RIO2.
     RobotController.setBrownoutVoltage(Constants.kCustomBrownout);
+    m_robotContainer.drivetrain.getPigeon2().reset();
 
     //Start a simple recording to the data log.
     //This should log the contents of the NetworkTables, which should be good for now.
@@ -115,7 +117,6 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     //CommandScheduler.getInstance().schedule(m_robotContainer.runInitializeCommand());
-    
     kUseLimelight=true;
   }
 

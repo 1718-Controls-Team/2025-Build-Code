@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.4,
-        "y": 5.25
+        "x": 2.245429450200485,
+        "y": 3.806736891740295
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.994704861111112,
-        "y": 6.032638888888889
+        "x": 2.0203902121611303,
+        "y": 3.6978454717722062
       },
       "isLocked": false,
       "linkedName": "End of Blue Topside 1"
     },
     {
       "anchor": {
-        "x": 2.2309220431414793,
-        "y": 6.668409260766502
+        "x": 5.829965753424658,
+        "y": 5.512542808219178
       },
       "prevControl": {
-        "x": 2.3567032931414813,
-        "y": 5.773964816322058
+        "x": 5.6829228290058955,
+        "y": 5.310358787143381
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,16 +31,9 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "CoralIntakePosition",
-      "waypointRelativePos": 0.429850746268657,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 0.5,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -49,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 128.0189425931702
+    "rotation": -120.0685828218624
   },
   "reversed": false,
   "folder": "Blue Topside Folder",
@@ -57,5 +50,5 @@
     "velocity": 0,
     "rotation": -119.74488129694231
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -17,7 +17,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "L2ScoringPosition"
+                  "name": "L4ScoringPosition"
                 }
               }
             ]
@@ -37,6 +37,38 @@
                 "type": "wait",
                 "data": {
                   "waitTime": 0.75
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Blue Topside 2a"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Blue Topside 3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "CoralIntakePosition"
                 }
               }
             ]
