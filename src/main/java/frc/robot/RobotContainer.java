@@ -90,7 +90,7 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
-            new Drive(drivetrain, driverController, m_coralIntake)
+            new Drive(drivetrain, driverController/*, m_coralIntake*/)
         );
 
         m_elevator.setDefaultCommand(new ElevatorManual(m_elevator, operatorController));
