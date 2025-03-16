@@ -28,9 +28,9 @@ public static final String kLimelightName = "limelight-lime";
 */
 
 // Coral rotate position range is 0-11
-public static final double kCoralRotateDeliveryPos = 5.29; //Was 6
-public static final double kCoralRotateL4Pos = 6.04; //6.75
-public static final double kCoralRotateHomePos = 2.29;  
+public static final double kCoralRotateDeliveryPos = 6.29; //Was 6
+public static final double kCoralRotateL4Pos = 7.04; //6.75
+public static final double kCoralRotateHomePos = 3.29;  
 public static final double kCoralRotateAlgaePos = 0.5;  
 public static final double kCoralRotatePositionTolerance = 0.5;
 public static final double kCoralUpPos = 0;
@@ -49,7 +49,7 @@ public static final double kElevatorCoralIntakePos = 2.5;
 public static final double kElevatorAlgaeIntakePos = 2.5;
 public static final double kElevatorHomePos = 3;
 public static final double kElevatorL2ScoringPos = 5.2; //Was 15
-public static final double kElevatorL3ScoringPos = 18.1;
+public static final double kElevatorL3ScoringPos = 18;
 public static final double kElevatorL4ScoringPos = 39.9;
 public static final double kElevatorL2AlgaePos = 16.8; //Was 20
 public static final double kElevatorL3AlgaePos = 29.8; //Was 26
@@ -256,24 +256,24 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
 
 
   //Bunch of preset drive positions Xvalue, Yvalue, rotation
-  public static final double[] kBlueTopLR = {3.722, 5.019, -60};
-  public static final double[] kBlueTopLL = {4.017, 5.187, -60};
-  public static final double[] kBlueTopRR = {4.969, 5.191, -120};
-  public static final double[] kBlueTopRL = {5.256, 5.025, -120};
-  public static final double[] kBlueRightR = {5.739, 4.193, 180};
-  public static final double[] kBlueRightL = {5.739, 3.860, 180};
-  public static final double[] kBlueBottomRR = {5.257, 3.027, 120};
-  public static final double[] kBlueBottomRL = {4.966, 2.866, 120};
-  public static final double[] kBlueBottomLR = {4.130, 2.743, 60};
-  public static final double[] kBlueBottomLL = {3.716, 3.031, 60};
-  public static final double[] kBlueLeftR = {3.00, 3.862, 0};
-  public static final double[] kBlueLeftL = {3.00, 4.192, 0};
-  public static final double[] kRedTopLR = {(17.55 - kBlueTopRL[0]), kBlueTopRL[1], -60};
-  public static final double[] kRedTopLL = {(17.55 - kBlueTopRR[0]), kBlueTopRR[1], -60};
-  public static final double[] kRedTopRR = {(17.55 - kBlueTopLL[0]), kBlueTopLL[1], -120};
-  public static final double[] kRedTopRL = {(17.55 - kBlueTopLR[0]), kBlueTopLR[1], -120};
-  public static final double[] kRedRightR = {(17.55 - kBlueLeftL[0]), kBlueLeftL[1], -180};
-  public static final double[] kRedRightL = {(17.55 - kBlueLeftR[0]), kBlueLeftR[1], -180};
+  public static final double[] kBlueTopLR = {3.57, 5.15, 300}; //FIXED
+  public static final double[] kBlueTopLL = {3.812, 5.339, 300}; //FIXED
+  public static final double[] kBlueTopRR = {5.003, 5.432, 240}; //FIXED
+  public static final double[] kBlueTopRL = {5.296, 5.252, 240}; //FIXED
+  public static final double[] kBlueRightR = {5.971, 4.318, 180}; //FIXED
+  public static final double[] kBlueRightL = {5.971, 3.990, 180}; //FIXED
+  public static final double[] kBlueBottomRR = {5.477, 2.912, 120}; //FIXED
+  public static final double[] kBlueBottomRL = {5.24, 2.723, 120}; //FIXED
+  public static final double[] kBlueBottomLR = {3.914, 2.636, 60}; //FIXED
+  public static final double[] kBlueBottomLL = {3.679, 2.77, 60}; //FIXED
+  public static final double[] kBlueLeftR = {3.03, 3.763, 0}; //FIXED
+  public static final double[] kBlueLeftL = {3.03, 4.058, 0}; //FIXED
+  public static final double[] kRedTopLR = {(17.55 - kBlueTopRL[0]), kBlueTopRL[1], 300}; //
+  public static final double[] kRedTopLL = {(17.55 - kBlueTopRR[0]), kBlueTopRR[1], 300}; //
+  public static final double[] kRedTopRR = {(17.55 - kBlueTopLL[0]), kBlueTopLL[1], 240}; //
+  public static final double[] kRedTopRL = {(17.55 - kBlueTopLR[0]), kBlueTopLR[1], 240}; //
+  public static final double[] kRedRightR = {(17.55 - kBlueLeftL[0]), kBlueLeftL[1], 180}; //
+  public static final double[] kRedRightL = {(17.55 - kBlueLeftR[0]), kBlueLeftR[1], 180}; //
   public static final double[] kRedBottomRR = {(17.55 - kBlueBottomLL[0]), kBlueBottomLL[1], 120};
   public static final double[] kRedBottomRL = {(17.55 - kBlueBottomLR[0]), kBlueBottomLR[1], 120};
   public static final double[] kRedBottomLR = {(17.55 - kBlueBottomRL[0]), kBlueBottomRL[1], 60};
