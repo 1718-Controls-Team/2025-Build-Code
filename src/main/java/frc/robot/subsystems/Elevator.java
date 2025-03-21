@@ -13,6 +13,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -58,6 +59,9 @@ public class Elevator extends SubsystemBase {
     }
   }
 
+  public Command setElevatorPositionCommand(double targetPosition){
+    return this.runOnce(() -> setElevatorDesiredPosition(targetPosition));
+  }
 
 
 
