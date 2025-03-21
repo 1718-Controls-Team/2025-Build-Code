@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 2.245429450200485,
-        "y": 3.806736891740295
+        "x": 5.493021021950804,
+        "y": 5.215664645246355
       },
       "prevControl": {
-        "x": 2.724937646918386,
-        "y": 4.681839350753302
+        "x": 5.972529218668703,
+        "y": 6.0907671042593625
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,14 +33,14 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "L4ScoringPosition",
-      "waypointRelativePos": 0.5288135593220353,
+      "name": "AutonSpitCoral",
+      "waypointRelativePos": 0.8440677966101708,
       "endWaypointRelativePos": null,
       "command": null
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 1.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -49,7 +49,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -119.74488129694231
+    "rotation": -119.99999999999999
   },
   "reversed": false,
   "folder": "Blue Topside Folder",
@@ -57,5 +57,5 @@
     "velocity": 0,
     "rotation": 180.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

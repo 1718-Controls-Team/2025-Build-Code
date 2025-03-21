@@ -314,7 +314,7 @@ public class Drive extends Command {
         } 
 
         RobotAngle = (m_Drivetrain.getPigeon2().getRotation2d().getDegrees() + 180)%360;
-        if (RobotAngle < 0) {
+        if (RobotAngle < 5) {
            RobotAngle = RobotAngle + 360;
         }
 

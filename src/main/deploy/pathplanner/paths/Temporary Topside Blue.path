@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.245429450200485,
-        "y": 3.806736891740295
+        "x": 5.493021021950804,
+        "y": 5.215664645246355
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.116805511343603,
-        "y": 3.5923636603121594
+        "x": 5.364397083093922,
+        "y": 5.00129141381822
       },
       "isLocked": false,
       "linkedName": "End of Blue Topside 1"
@@ -48,7 +48,7 @@
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -119.74488129694231
+    "rotation": -119.99999999999999
   },
   "useDefaultConstraints": false
 }

@@ -44,7 +44,7 @@ public class AutonSpitCoral extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if ((spitTimer.get() > 2)){
+    if ((spitTimer.get() > 1)){
       m_isFinished=true;
     }
   }
