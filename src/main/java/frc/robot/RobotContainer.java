@@ -12,18 +12,27 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
+import edu.wpi.first.apriltag.AprilTagFields;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Drive;
 //import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
 import frc.robot.commands.InitializeMechanisms;
+import frc.robot.commands.Auton.AlignToReef;
 import frc.robot.commands.Auton.AutonCoralPickup;
+import frc.robot.commands.Auton.AutonPIDCommandTest;
 import frc.robot.commands.Auton.AutonSpitCoral;
+import frc.robot.commands.Auton.VariableAutos;
 import frc.robot.commands.Climber.ClimberActivate;
 import frc.robot.commands.Climber.ClimberInitialize;
 import frc.robot.commands.ElevatorPositions.AlgaeProcessorPos;
@@ -57,18 +66,19 @@ public class RobotContainer {
     /* Setting up bindings for necessary control of the swerve drive platform */
     private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
 
+    public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
     private final Telemetry logger = new Telemetry(MaxSpeed);
     private final TClimber m_tClimber = new TClimber();
     private final AlgaeIntake m_algaeIntake = new AlgaeIntake();
     private final Elevator m_elevator = new Elevator();
     private final CoralIntake m_coralIntake = new CoralIntake();
+    private final AlignToReef m_alignmentGenerator = new AlignToReef(drivetrain);
+    private final VariableAutos m_AUTOS_DONT_KILL_YOURSELVES = new VariableAutos(m_alignmentGenerator, m_coralIntake, m_elevator, m_algaeIntake);
     public Command AutonomousRun;
 
     private final CommandXboxController driverController = new CommandXboxController(0);
     private final CommandXboxController operatorController = new CommandXboxController(1);
 
-
-    public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
 
     /* Path follower */
@@ -76,6 +86,7 @@ public class RobotContainer {
     File autonFolder = new File(Filesystem.getDeployDirectory() + "/pathplanner/autos");
     private Command m_delayCommand = new WaitCommand(0.01);
 
+    private static final AprilTagFieldLayout fieldLayout = AprilTagFieldLayout.loadField(AprilTagFields.k2025Reefscape);
 
     public RobotContainer() {
         registerAutonCommands();
@@ -136,6 +147,10 @@ public class RobotContainer {
         NamedCommands.registerCommand("CoralPickup", new AutonCoralPickup(m_coralIntake));
         NamedCommands.registerCommand("Home", new Home(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("AutonSpitCoral", new AutonSpitCoral(m_coralIntake));
+
+        autoChooser.addOption("PID Move Test", Commands.sequence(
+            m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.830, 5.513, new Rotation2d(-120.069)), new Pose2d(1.833, 6.654, new Rotation2d(139.844)))
+        ));
     } 
     public Command getAutonomousCommand() {
         /* Run the path selected from the auto chooser */
@@ -154,5 +169,9 @@ public class RobotContainer {
 
     public Command runInitializeCommand() {
         return new InitializeMechanisms(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber);
+    }
+    
+    public static AprilTagFieldLayout getFieldLayout() {
+        return fieldLayout;
     }
 }
