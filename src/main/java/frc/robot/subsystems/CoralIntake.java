@@ -13,7 +13,6 @@ import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -86,10 +85,6 @@ public class CoralIntake extends SubsystemBase {
 
   public void ZeroCoralRotate() {
     m_coralRotate.setControl(coralRotateVoltageRequest);
-  }
-
-  public Command setCoralSpinCommand(double speed){
-    return this.runOnce(() -> setcoralSpinPower(speed));
   }
 
 

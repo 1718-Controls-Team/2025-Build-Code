@@ -8,8 +8,6 @@ import com.ctre.phoenix6.hardware.*;
 import com.ctre.phoenix6.signals.*;
 import com.ctre.phoenix6.swerve.*;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants.*;
-import com.pathplanner.lib.config.PIDConstants;
-import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.numbers.N1;
@@ -25,22 +23,15 @@ public class TunerConstants {
 
     // The steer motor uses any SwerveModule.SteerRequestType control request with the
     // output type specified by SwerveModuleConstants.SteerMotorClosedLoopOutput
-    public static final Slot0Configs steerGains = new Slot0Configs()
+    private static final Slot0Configs steerGains = new Slot0Configs()
         .withKP(150).withKI(0).withKD(0.5)
         .withKS(0.1).withKV(1.66).withKA(0)
         .withStaticFeedforwardSign(StaticFeedforwardSignValue.UseClosedLoopSign);
-
     // When using closed-loop control, the drive motor uses the control
     // output type specified by SwerveModuleConstants.DriveMotorClosedLoopOutput
-    public static final Slot0Configs driveGains = new Slot0Configs()
+    private static final Slot0Configs driveGains = new Slot0Configs()
         .withKP(0.1).withKI(0).withKD(0)
         .withKS(0).withKV(0.124);
-
-    public static final PIDConstants translationConstants = new PIDConstants(2, 0, 0);
-
-    public static final PIDConstants rotationConstants = new PIDConstants(0.024, 0, 0);
-    
-    public static final PPHolonomicDriveController holonomicControls = new PPHolonomicDriveController(translationConstants, rotationConstants);
 
     // The closed-loop output type to use for the steer motors;
     // This affects the PID/FF gains for the steer motors

@@ -5,24 +5,6 @@
 package frc.robot;
 
 import com.ctre.phoenix6.signals.InvertedValue;
-import com.pathplanner.lib.path.PathConstraints;
-
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.units.measure.Distance;
-import edu.wpi.first.units.measure.LinearVelocity;
-import edu.wpi.first.units.measure.Time;
-
-import static edu.wpi.first.units.Units.Amps;
-import static edu.wpi.first.units.Units.Centimeter;
-import static edu.wpi.first.units.Units.Degrees;
-import static edu.wpi.first.units.Units.Inches;
-import static edu.wpi.first.units.Units.InchesPerSecond;
-import static edu.wpi.first.units.Units.Kilogram;
-import static edu.wpi.first.units.Units.KilogramSquareMeters;
-import static edu.wpi.first.units.Units.Meters;
-import static edu.wpi.first.units.Units.MetersPerSecond;
-import static edu.wpi.first.units.Units.RadiansPerSecond;
-import static edu.wpi.first.units.Units.Seconds;
 
 
 public final class Constants {
@@ -272,14 +254,6 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   //Custom Brownout voltage for the RIO2.
   public static final double kCustomBrownout = 6.0;
 
-
-  public static final Rotation2d kRotationTolerance = Rotation2d.fromDegrees(2.0);
-  public static final Distance kPositionTolerance = Centimeter.of(1.0);
-  public static final LinearVelocity kSpeedTolerance = InchesPerSecond.of(1);
-  public static final Time kEndTriggerDebounce = Seconds.of(0.1);
-  public static final PathConstraints kPathContraints = new PathConstraints(2, 1.75, 1/2 * Math.PI, 1 * Math.PI);
-  public static final Time kAutoAlignAdjustTimeout = Seconds.of(0.6);
-  
 
   //Bunch of preset drive positions Xvalue, Yvalue, rotation
   public static final double[] kBlueTopLR = {3.57, 5.15, 300}; //FIXED

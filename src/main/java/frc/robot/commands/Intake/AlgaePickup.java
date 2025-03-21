@@ -42,11 +42,7 @@ public class AlgaePickup extends Command {
       m_coralSubsystem.setcoralRotate(Constants.kCoralUpPos);
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);
       m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);
-      /*System.out.println("Dear Sergeant Squirt, " +
-       "I am reaching out to you to tell you to please make us win at the next competition " +
-       "if you do not do that I will be taking a sledge hammer to you and you will die. Hope this helps. " +
-        "xoxo Ava Janel Business Supervisor Team 1718 The FIhgting Pi"
-      );*/
+
     }
   
   // Called every time the scheduler runs while the command is scheduled.
