@@ -46,9 +46,9 @@ public static final String kLimelightName = "limelight-lime";
 */
 
 // Coral rotate position range is 0-11
-public static final double kCoralRotateDeliveryPos = 6.19; //Was 6
-public static final double kCoralRotateL4Pos = 6.84; //6.75
-public static final double kCoralRotateHomePos = 3.29;  
+public static final double kCoralRotateDeliveryPos = 8.5; //Was 6.19
+public static final double kCoralRotateL4Pos = 8.5; //6.75
+public static final double kCoralRotateHomePos = 3.6;  
 public static final double kCoralRotateAlgaePos = 0.5;  
 public static final double kCoralRotatePositionTolerance = 0.5;
 public static final double kCoralUpPos = 0;
@@ -127,7 +127,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kCoralSpinMaxForwardVoltage = 11;
   public static final double kCoralSpinMaxReverseVoltage = -11;
 
-  public static final InvertedValue kCoralSpinDirection = InvertedValue.Clockwise_Positive;
+  public static final InvertedValue kCoralSpinDirection = InvertedValue.CounterClockwise_Positive;
   public static final double kCoralSpinSupplyCurrentLimit = 15;
 
   public static final double kCoralSpinVoltageClosedLoopRampPeriod = 0;
@@ -215,7 +215,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kAlgaeIntake1SupplyCurrentLimit = 40;
   public static final double kAlgaeIntake1VoltageClosedLoopRampPeriod = 0;
 
-  public static final InvertedValue kAlgaeIntake1Direction = InvertedValue.CounterClockwise_Positive;
+  public static final InvertedValue kAlgaeIntake1Direction = InvertedValue.Clockwise_Positive;
 
 /*
  * ####################################################################################################################################
@@ -237,7 +237,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kAlgaeIntake2SupplyCurrentLimit = 40;
   public static final double kAlgaeIntake2VoltageClosedLoopRampPeriod = 0;
 
-  public static final InvertedValue kAlgaeIntake2Direction = InvertedValue.Clockwise_Positive;
+  public static final InvertedValue kAlgaeIntake2Direction = InvertedValue.CounterClockwise_Positive;
 
 /*
  * ####################################################################################################################################
