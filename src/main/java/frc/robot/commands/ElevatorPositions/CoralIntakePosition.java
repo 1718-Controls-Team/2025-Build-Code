@@ -47,6 +47,7 @@ public class CoralIntakePosition extends Command {
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorCoralIntakePos);
     m_isFinished = true;
     m_CoralIntake.setL4CoralSpitMode(false);
+    m_Elevator.setAtIntakingPos(true);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
