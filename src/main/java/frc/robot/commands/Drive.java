@@ -14,6 +14,7 @@ import frc.robot.LimelightHelpers;
 import frc.robot.RepetitiveLogic.CoordinateTargets;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Elevator;
 //import frc.robot.subsystems.CoralIntake;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -28,6 +29,7 @@ public class Drive extends Command {
   private final CommandSwerveDrivetrain m_Drivetrain;
   private final CommandXboxController m_Controller;
   private final CoordinateTargets m_CoordinateCalculator = new CoordinateTargets();
+  private final Elevator m_Elevator;
   //private final CoralIntake m_CoralIntake;
 
   private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -60,9 +62,10 @@ public class Drive extends Command {
   //private final SwerveRequest.RobotCentric L4Score = new SwerveRequest.RobotCentric();
 
 //############################################## CLASS INITIALIZATION ##################################################################
-  public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller/*, CoralIntake coralIntake/*, VariablePassSubsystem variable*/) {
+  public Drive(CommandSwerveDrivetrain drive, CommandXboxController controller, Elevator elevator/*, CoralIntake coralIntake/*, VariablePassSubsystem variable*/) {
     m_Drivetrain = drive;
     m_Controller = controller;
+    m_Elevator = elevator;
     //m_CoralIntake = coralIntake;
 
     this.drivePID = new PIDController(2, 0, 0.00); // 1, 0, 0
@@ -112,6 +115,12 @@ public class Drive extends Command {
         //###########################################BEGIN DETERMINING TARGET POINTS################################################
         aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
         if (m_Controller.povRight().getAsBoolean()) {
+          if (m_Elevator.getAtIntakingPos()) {
+            targetPose2d = m_CoordinateCalculator.determineCoordinates(0, 0, true, true);
+            xTarget = targetPose2d.getX();
+            yTarget = targetPose2d.getY();
+            rotationTarget = targetPose2d.getRotation().getDegrees();
+          } else {
           if (lockedID == 0) {
             targetPose2d = m_CoordinateCalculator.determineCoordinates(aprilTagID, 0, false, true);
             xTarget = targetPose2d.getX();
@@ -125,7 +134,14 @@ public class Drive extends Command {
             yTarget = targetPose2d.getY();
             rotationTarget = targetPose2d.getRotation().getDegrees();
           }
+          }
         } else if (m_Controller.povLeft().getAsBoolean()) {
+          if (m_Elevator.getAtIntakingPos()) {
+            targetPose2d = m_CoordinateCalculator.determineCoordinates(0, 0, true, false);
+            xTarget = targetPose2d.getX();
+            yTarget = targetPose2d.getY();
+            rotationTarget = targetPose2d.getRotation().getDegrees();
+          } else {
           if (lockedID == 0) {
             targetPose2d = m_CoordinateCalculator.determineCoordinates(aprilTagID, 0, false, false);
             xTarget = targetPose2d.getX();
@@ -134,16 +150,17 @@ public class Drive extends Command {
             lockedID = aprilTagID;
           }
           if (((Math.abs(RobotPosition.getX() - xTarget) < 0.1) && (Math.abs(RobotPosition.getY() - yTarget) < 0.1))) {
-            targetPose2d = m_CoordinateCalculator.determineCoordinates(aprilTagID, 1, false, true);
+            targetPose2d = m_CoordinateCalculator.determineCoordinates(aprilTagID, 1, false, false);
             xTarget = targetPose2d.getX();
             yTarget = targetPose2d.getY();
             rotationTarget = targetPose2d.getRotation().getDegrees();
+          }
           }
         } 
 
         //###########################################END OF DETERMINING TARGET POINTS################################################
         //###########################################END OF DETERMINING TARGET POINTS################################################
-        
+
         RobotAngle = (m_Drivetrain.getPigeon2().getRotation2d().getDegrees() + 180)%360;
         if (RobotAngle < 5) {
            RobotAngle = RobotAngle + 360;

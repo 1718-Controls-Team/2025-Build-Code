@@ -27,6 +27,7 @@ public class Elevator extends SubsystemBase {
   private final DutyCycleOut ElevatorVoltageRequest = new DutyCycleOut(0);
 
   private double ElevatorDesiredPos = 0;
+  private boolean Intaking = false;
 
 
   public Elevator() {
@@ -63,6 +64,14 @@ public class Elevator extends SubsystemBase {
     return this.runOnce(() -> setElevatorDesiredPosition(targetPosition));
   }
 
+  public boolean getAtIntakingPos() {
+    if ((Math.abs(ElevatorDesiredPos - Constants.kElevatorCoralIntakePos)) < 0.5) {
+      Intaking = true;
+    } else { 
+      Intaking = false;
+    }
+    return Intaking;
+  }
 
 
 //######################################### Start OF ELEVATOR CONFIGURATION ######################################################

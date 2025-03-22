@@ -97,7 +97,7 @@ public class RobotContainer {
             m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.830, 5.513, new Rotation2d(-120.069)), new Pose2d(1.833, 6.654, new Rotation2d(139.844)))
         ));
 
-        
+
 
         configureBindings();
     }
@@ -107,7 +107,7 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
-            new Drive(drivetrain, driverController/*, m_coralIntake*/)
+            new Drive(drivetrain, driverController, m_elevator/*, m_coralIntake*/)
         );
 
         m_elevator.setDefaultCommand(new ElevatorManual(m_elevator, operatorController));
