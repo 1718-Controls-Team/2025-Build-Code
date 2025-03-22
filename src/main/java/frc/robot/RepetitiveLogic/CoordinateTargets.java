@@ -17,6 +17,23 @@ public class CoordinateTargets {
         if (intaking == false) {
             if (rightSide == true) {
                 if (stepNumber == 0) {
+                    if (aprilTagID == 1) {
+                        xTarget = 17.55 - 1.606;
+                        yTarget = 0.603;
+                        rotationTarget = 126;
+                    } else if (aprilTagID == 2) {
+                        xTarget = 17.55 - 1.52;
+                        yTarget = 7.364;
+                        rotationTarget = -126;
+                    } else if (aprilTagID == 12) {
+                        xTarget = 1.606;
+                        yTarget = 0.603;
+                        rotationTarget = -126;
+                    } else if (aprilTagID == 13) {
+                        xTarget = 1.52;
+                        yTarget = 7.364;
+                        rotationTarget = 126;
+                    } 
                     if (aprilTagID == 6) {
                       xTarget = Constants.kRedBottomRR[0];
                       yTarget = Constants.kRedBottomRR[1];
@@ -120,6 +137,23 @@ public class CoordinateTargets {
                 }
             } else if (rightSide == false) {
                 if (stepNumber == 0) {
+                    if (aprilTagID == 1) {
+                        xTarget = 17.55 - 1.606;
+                        yTarget = 0.603;
+                        rotationTarget = 126;
+                    } else if (aprilTagID == 2) {
+                        xTarget = 17.55 - 1.52;
+                        yTarget = 7.364;
+                        rotationTarget = -126;
+                    } else if (aprilTagID == 12) {
+                        xTarget = 1.606;
+                        yTarget = 0.603;
+                        rotationTarget = -126;
+                    } else if (aprilTagID == 13) {
+                        xTarget = 1.52;
+                        yTarget = 7.364;
+                        rotationTarget = 126;
+                    } 
                     if (aprilTagID == 6) {
                       xTarget = Constants.kRedBottomRL[0];
                       yTarget = Constants.kRedBottomRL[1];
@@ -235,7 +269,7 @@ public class CoordinateTargets {
                     rotationTarget = 126;
                 }
             } else {
-                if (rightSide == true) {
+                if (rightSide != true) {
                     xTarget = 17.55 - 1.606;
                     yTarget = 0.603;
                     rotationTarget = 126;
