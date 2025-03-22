@@ -93,6 +93,12 @@ public class RobotContainer {
         autoChooser = AutoBuilder.buildAutoChooser("Test Auto");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
+        autoChooser.addOption("PID Move Test", Commands.sequence(
+            m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.830, 5.513, new Rotation2d(-120.069)), new Pose2d(1.833, 6.654, new Rotation2d(139.844)))
+        ));
+
+        
+
         configureBindings();
     }
 
@@ -147,10 +153,6 @@ public class RobotContainer {
         NamedCommands.registerCommand("CoralPickup", new AutonCoralPickup(m_coralIntake));
         NamedCommands.registerCommand("Home", new Home(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("AutonSpitCoral", new AutonSpitCoral(m_coralIntake));
-
-        autoChooser.addOption("PID Move Test", Commands.sequence(
-            m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.830, 5.513, new Rotation2d(-120.069)), new Pose2d(1.833, 6.654, new Rotation2d(139.844)))
-        ));
     } 
     public Command getAutonomousCommand() {
         /* Run the path selected from the auto chooser */
