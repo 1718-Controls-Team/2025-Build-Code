@@ -107,7 +107,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kCoralRotateMotionMagicAcceleration = 100;
   public static final double kCoralRotateMotionMagicCruiseVelocity = 50;
 
-  public static final InvertedValue kCoralRotateDirection = InvertedValue.Clockwise_Positive;
+  public static final InvertedValue kCoralRotateDirection = InvertedValue.CounterClockwise_Positive;
 
   
 
