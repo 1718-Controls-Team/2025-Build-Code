@@ -115,12 +115,12 @@ public class Drive extends Command {
         //###########################################BEGIN DETERMINING TARGET POINTS################################################
         aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
         if (m_Controller.povRight().getAsBoolean()) {
-          if (m_Elevator.getAtIntakingPos()) {
+          /* if (m_Elevator.getAtIntakingPos()) {
             targetPose2d = m_CoordinateCalculator.determineCoordinates(0, 0, true, true);
             xTarget = targetPose2d.getX();
             yTarget = targetPose2d.getY();
             rotationTarget = targetPose2d.getRotation().getDegrees();
-          } else {
+          } else { */
           if (lockedID == 0) {
             targetPose2d = m_CoordinateCalculator.determineCoordinates(aprilTagID, 0, false, true);
             xTarget = targetPose2d.getX();
@@ -134,14 +134,14 @@ public class Drive extends Command {
             yTarget = targetPose2d.getY();
             rotationTarget = targetPose2d.getRotation().getDegrees();
           }
-          }
+          //}
         } else if (m_Controller.povLeft().getAsBoolean()) {
-          if (m_Elevator.getAtIntakingPos()) {
+          /* if (m_Elevator.getAtIntakingPos()) {
             targetPose2d = m_CoordinateCalculator.determineCoordinates(0, 0, true, false);
             xTarget = targetPose2d.getX();
             yTarget = targetPose2d.getY();
             rotationTarget = targetPose2d.getRotation().getDegrees();
-          } else {
+          } else { */
           if (lockedID == 0) {
             targetPose2d = m_CoordinateCalculator.determineCoordinates(aprilTagID, 0, false, false);
             xTarget = targetPose2d.getX();
@@ -154,7 +154,7 @@ public class Drive extends Command {
             xTarget = targetPose2d.getX();
             yTarget = targetPose2d.getY();
             rotationTarget = targetPose2d.getRotation().getDegrees();
-          }
+          //}
           }
         } 
 

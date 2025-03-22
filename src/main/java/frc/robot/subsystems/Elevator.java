@@ -64,12 +64,16 @@ public class Elevator extends SubsystemBase {
     return this.runOnce(() -> setElevatorDesiredPosition(targetPosition));
   }
 
+  public void setAtIntakingPos(boolean intaking) {
+    Intaking = intaking;
+  }
+
   public boolean getAtIntakingPos() {
-    if ((Math.abs(ElevatorDesiredPos - Constants.kElevatorCoralIntakePos)) < 0.5) {
+    /* if ((Math.abs(ElevatorDesiredPos - Constants.kElevatorCoralIntakePos)) < 0.5) {
       Intaking = true;
     } else { 
       Intaking = false;
-    }
+    } */
     return Intaking;
   }
 
