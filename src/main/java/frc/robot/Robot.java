@@ -20,8 +20,8 @@ public class Robot extends TimedRobot {
   private Command m_autonLoading;
   private int m_auto2 = 0;
 
-
   boolean kUseLimelight = false;
+  boolean m_autonEnabled = false;
 
   public Robot() {
     m_robotContainer = new RobotContainer();
@@ -97,7 +97,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand = m_robotContainer.getAutonomous2Command();
     }
 
-    
+    m_autonEnabled = true;
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -108,7 +108,9 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {}
 
   @Override
-  public void autonomousExit() {}
+  public void autonomousExit() {
+    m_autonEnabled = false;
+  }
 
   @Override
   public void teleopInit() {

@@ -16,6 +16,8 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 //import frc.robot.subsystems.CoralIntake;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -77,10 +79,10 @@ public class Drive extends Command {
     m_isFinished = false;
   }
 
-
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if (!DriverStation.isAutonomousEnabled()) {
     SmartDashboard.putNumber("XTarget", xTarget);
     SmartDashboard.putNumber("YTarget", yTarget);
     SmartDashboard.putNumber("Locked ID", lockedID);
@@ -312,7 +314,7 @@ public class Drive extends Command {
             }
           }
         } 
-
+      
         RobotAngle = (m_Drivetrain.getPigeon2().getRotation2d().getDegrees() + 180)%360;
         if (RobotAngle < 0) {
            RobotAngle = RobotAngle + 360;
@@ -354,6 +356,8 @@ public class Drive extends Command {
       break;
     }
   }
+  }
+
 
 
   // Called once the command ends or is interrupted.

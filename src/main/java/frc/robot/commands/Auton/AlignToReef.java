@@ -28,8 +28,6 @@ public class AlignToReef {
     
     private final CommandSwerveDrivetrain mSwerve;
 
-    public boolean isPIDLoopRunning = false;
-
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric();
 
 
@@ -78,9 +76,7 @@ public class AlignToReef {
             Commands.print("start position PID loop"),
             AutonPIDCommandTest.generateCommand(mSwerve, waypoint, (
                 Constants.kAutoAlignAdjustTimeout
-            ))
-                .beforeStarting(Commands.runOnce(() -> {isPIDLoopRunning = true;}))
-                .finallyDo(() -> {isPIDLoopRunning = false;}),
+            )), 
             Commands.print("end position PID loop")
         )).finallyDo((interupt) -> {
             if (interupt) { //if this is false then the position pid would've X braked & called the same method

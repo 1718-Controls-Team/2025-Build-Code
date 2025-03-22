@@ -277,7 +277,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final Distance kPositionTolerance = Centimeter.of(1.0);
   public static final LinearVelocity kSpeedTolerance = InchesPerSecond.of(1);
   public static final Time kEndTriggerDebounce = Seconds.of(0.1);
-  public static final PathConstraints kPathContraints = new PathConstraints(2, 1.75, 1/2 * Math.PI, 1 * Math.PI);
+  public static final PathConstraints kPathContraints = new PathConstraints(3, 3, 9.424778, 12.56637);
   public static final Time kAutoAlignAdjustTimeout = Seconds.of(0.6);
   
 

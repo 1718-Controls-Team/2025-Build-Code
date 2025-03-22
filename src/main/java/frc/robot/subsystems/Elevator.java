@@ -1,4 +1,4 @@
-// Copyright (c) FIRST and other WPILib contributors.
+/* // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Elevator extends SubsystemBase {
-  /** Creates a new Elevator. */
+  // Creates a new Elevator.
 
   TalonFX m_Elevator1 = new TalonFX(13, "rio");
   TalonFX m_Elevator2 = new TalonFX(14, "rio");
@@ -159,3 +159,4 @@ public class Elevator extends SubsystemBase {
     // This method will be called once per scheduler run during simulation
   }
   }
+ */

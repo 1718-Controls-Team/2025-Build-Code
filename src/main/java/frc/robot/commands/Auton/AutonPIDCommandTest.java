@@ -61,7 +61,7 @@ public class AutonPIDCommandTest extends Command{
 
             var speed = Math.sqrt((Math.pow(mSwerve.getState().Speeds.vxMetersPerSecond, 2)) + Math.pow(mSwerve.getState().Speeds.vyMetersPerSecond, 2))  < Constants.kSpeedTolerance.in(MetersPerSecond);
 
-            // System.out.println("end trigger conditions R: "+ rotation + "\tP: " + position + "\tS: " + speed);
+            System.out.println("end trigger conditions R: "+ rotation + "\tP: " + position + "\tS: " + speed);
             
             return rotation && position && speed;
         });

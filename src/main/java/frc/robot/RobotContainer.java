@@ -7,17 +7,26 @@ package frc.robot;
 import static edu.wpi.first.units.Units.*;
 
 import java.io.File;
+import java.util.List;
 
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+//import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.path.GoalEndState;
+import com.pathplanner.lib.path.PathConstraints;
+import com.pathplanner.lib.path.PathPlannerPath;
+import com.pathplanner.lib.path.Waypoint;
 
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.IterativeRobotBase;
+import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -26,37 +35,15 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Drive;
 //import frc.robot.commands.Drive;
-import frc.robot.commands.Home;
-import frc.robot.commands.InitializeMechanisms;
 import frc.robot.commands.Auton.AlignToReef;
-import frc.robot.commands.Auton.AutonCoralPickup;
-import frc.robot.commands.Auton.AutonPIDCommandTest;
-import frc.robot.commands.Auton.AutonSpitCoral;
-import frc.robot.commands.Auton.VariableAutos;
-import frc.robot.commands.Climber.ClimberActivate;
-import frc.robot.commands.Climber.ClimberInitialize;
-import frc.robot.commands.ElevatorPositions.AlgaeProcessorPos;
-import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
-import frc.robot.commands.ElevatorPositions.L2AlgaePos;
-import frc.robot.commands.ElevatorPositions.L2ScoringPosition;
-import frc.robot.commands.ElevatorPositions.L3AlgaePos;
-import frc.robot.commands.ElevatorPositions.L3ScoringPosition;
-import frc.robot.commands.ElevatorPositions.L4ScoringPosition;
-import frc.robot.commands.Intake.AlgaeDelivery;
-import frc.robot.commands.Intake.AlgaePickup;
-import frc.robot.commands.Intake.AlgaeSPIT;
-import frc.robot.commands.Intake.CoralPickup;
-import frc.robot.commands.Intake.CoralSpit;
-import frc.robot.commands.ManualControls.ClimberManual;
-import frc.robot.commands.ManualControls.CoralRotateManual;
-import frc.robot.commands.ManualControls.ElevatorManual;
+//import frc.robot.commands.Auton.AutonPIDCommandTest;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.AlgaeIntake;
+//import frc.robot.subsystems.AlgaeIntake;
 //import frc.robot.subsystems.BeamBreak;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.CoralIntake;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.TClimber;
+//import frc.robot.subsystems.CoralIntake;
+//import frc.robot.subsystems.Elevator;
+//import frc.robot.subsystems.TClimber;
 
 
 public class RobotContainer {
@@ -66,19 +53,20 @@ public class RobotContainer {
     /* Setting up bindings for necessary control of the swerve drive platform */
     private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
 
+
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
     private final Telemetry logger = new Telemetry(MaxSpeed);
-    private final TClimber m_tClimber = new TClimber();
+    /* private final TClimber m_tClimber = new TClimber();
     private final AlgaeIntake m_algaeIntake = new AlgaeIntake();
     private final Elevator m_elevator = new Elevator();
-    private final CoralIntake m_coralIntake = new CoralIntake();
+    private final CoralIntake m_coralIntake = new CoralIntake(); */
     private final AlignToReef m_alignmentGenerator = new AlignToReef(drivetrain);
-    private final VariableAutos m_AUTOS_DONT_KILL_YOURSELVES = new VariableAutos(m_alignmentGenerator, m_coralIntake, m_elevator, m_algaeIntake);
+    //private final VariableAutos m_AUTOS_DONT_KILL_YOURSELVES = new VariableAutos(m_alignmentGenerator, m_coralIntake, m_elevator, m_algaeIntake);
     public Command AutonomousRun;
+
 
     private final CommandXboxController driverController = new CommandXboxController(0);
     private final CommandXboxController operatorController = new CommandXboxController(1);
-
 
 
     /* Path follower */
@@ -86,36 +74,69 @@ public class RobotContainer {
     File autonFolder = new File(Filesystem.getDeployDirectory() + "/pathplanner/autos");
     private Command m_delayCommand = new WaitCommand(0.01);
 
+    public boolean kAutonomousEnabled = false;
+
+
     private static final AprilTagFieldLayout fieldLayout = AprilTagFieldLayout.loadField(AprilTagFields.k2025Reefscape);
 
     public RobotContainer() {
-        registerAutonCommands();
-        autoChooser = AutoBuilder.buildAutoChooser("Test Auto");
-        SmartDashboard.putData("Auto Mode", autoChooser);
-
         configureBindings();
+        registerAutonCommands();
+        autoChooser = AutoBuilder.buildAutoChooser("PID Move Test");
+        
+        autoChooser.addOption("PID Move Test", Commands.sequence(
+            //m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.830, 5.513, new Rotation2d(-120.069)), new Pose2d(1.833, 6.654, new Rotation2d(139.844)))
+            m_alignmentGenerator.generateCommand(new Pose2d(6, 0, new Rotation2d(0.0)))
+        ));
+
+        List<Waypoint> waypoints = PathPlannerPath.waypointsFromPoses(
+        new Pose2d(1.0, 1.0, Rotation2d.fromDegrees(0)),
+        new Pose2d(3.0, 1.0, Rotation2d.fromDegrees(0)),
+        new Pose2d(5.0, 3.0, Rotation2d.fromDegrees(90))
+        );
+
+        PathConstraints constraints = new PathConstraints(3.0, 3.0, 2 * Math.PI, 4 * Math.PI); // The constraints for this path.
+        
+
+        // Create the path using the waypoints created above
+        PathPlannerPath path = new PathPlannerPath(
+               waypoints,
+              constraints,
+             null, // The ideal starting state, this is only relevant for pre-planned paths, so can be null for on-the-fly paths.
+                new GoalEndState(0.0, Rotation2d.fromDegrees(-90)) // Goal end state. You can set a holonomic rotation here. If using a differential drivetrain, the rotation will have no effect.
+        );  
+
+        // Prevent the path from being flipped if the coordinates are already correct
+        path.preventFlipping = true;
+
+        autoChooser.addOption("AHHHHHHH", AutoBuilder.followPath(path));
+
+        SmartDashboard.putData("Auto Mode", autoChooser);
+        
     }
 
     private void configureBindings() {
         // Note that X is defined as forward according to WPILib convention,
         // and Y is defined as to the left according to WPILib convention.
-        drivetrain.setDefaultCommand(
-            // Drivetrain will execute this command periodically
-            new Drive(drivetrain, driverController/*, m_coralIntake*/)
-        );
+        
+            drivetrain.setDefaultCommand(
+               // Drivetrain will execute this command periodically
+               new Drive(drivetrain, driverController/*, m_coralIntake*/)
+            ); 
+        
 
-        m_elevator.setDefaultCommand(new ElevatorManual(m_elevator, operatorController));
+        /* m_elevator.setDefaultCommand(new ElevatorManual(m_elevator, operatorController));
         m_coralIntake.setDefaultCommand(new CoralRotateManual(m_coralIntake, operatorController));
         m_tClimber.setDefaultCommand(new ClimberManual(m_tClimber, driverController));
-        
-        driverController.a().whileTrue(drivetrain.applyRequest(() -> brake));
+        */
+        driverController.a().whileTrue(drivetrain.applyRequest(() -> brake)); 
 
         // reset the field-centric heading on left bumper press
         driverController.back().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        /* operatorController.y().onTrue(new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.x().onTrue(new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.b().onTrue(new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.a().onTrue(new Home(m_elevator, m_algaeIntake, m_coralIntake));
@@ -130,13 +151,13 @@ public class RobotContainer {
         driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_coralIntake));
         driverController.a().onTrue(new ClimberInitialize(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber));
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
-        driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake));
+        driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake)); */
 
         
     }
 
     private void registerAutonCommands() {
-        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeProcessorPos(m_elevator, m_algaeIntake, m_coralIntake));
+        /* NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeProcessorPos(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("CoralIntakePosition", new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L2ScoringPosition", new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L3ScoringPosition", new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
@@ -146,11 +167,9 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("CoralPickup", new AutonCoralPickup(m_coralIntake));
         NamedCommands.registerCommand("Home", new Home(m_elevator, m_algaeIntake, m_coralIntake));
-        NamedCommands.registerCommand("AutonSpitCoral", new AutonSpitCoral(m_coralIntake));
+        NamedCommands.registerCommand("AutonSpitCoral", new AutonSpitCoral(m_coralIntake)); */
 
-        autoChooser.addOption("PID Move Test", Commands.sequence(
-            m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.830, 5.513, new Rotation2d(-120.069)), new Pose2d(1.833, 6.654, new Rotation2d(139.844)))
-        ));
+        
     } 
     public Command getAutonomousCommand() {
         /* Run the path selected from the auto chooser */
@@ -167,9 +186,9 @@ public class RobotContainer {
         return AutonomousRun;
     }
 
-    public Command runInitializeCommand() {
+    /* public Command runInitializeCommand() {
         return new InitializeMechanisms(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber);
-    }
+    } */
     
     public static AprilTagFieldLayout getFieldLayout() {
         return fieldLayout;
