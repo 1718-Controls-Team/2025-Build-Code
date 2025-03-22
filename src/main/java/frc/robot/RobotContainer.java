@@ -97,7 +97,7 @@ public class RobotContainer {
             m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.830, 5.513, new Rotation2d(-120.069)), new Pose2d(1.833, 6.654, new Rotation2d(139.844)))
         ));
 
-
+        autoChooser.addOption("Movement Only Test", m_alignmentGenerator.generateCommand(new Pose2d(5.493, 5.216, new Rotation2d(0))));
 
         configureBindings();
     }

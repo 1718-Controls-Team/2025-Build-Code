@@ -21,7 +21,7 @@ public class Robot extends TimedRobot {
   private int m_auto2 = 0;
 
 
-  boolean kUseLimelight = false;
+  boolean kUseLimelight = true;
 
   public Robot() {
     m_robotContainer = new RobotContainer();
@@ -90,6 +90,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    kUseLimelight = false;
     if (m_auto2 == 0) {
       m_autonomousCommand = m_robotContainer.getAutonomousCommand();
       m_auto2 = 1;
