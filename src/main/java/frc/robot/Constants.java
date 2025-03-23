@@ -47,23 +47,23 @@ public static final String kLimelightName = "limelight-lime";
 
 // Coral rotate position range is 0-11
 public static final double kCoralRotateDeliveryPos = 8.5; //Was 6.19
-public static final double kCoralRotateL4Pos = 8.5; //6.75
-public static final double kCoralRotateHomePos = 3.6;  
+public static final double kCoralRotateL4Pos = 8.28; //6.75
+public static final double kCoralRotateHomePos = 4.2;   
 public static final double kCoralRotateAlgaePos = 0.5;  
 public static final double kCoralRotatePositionTolerance = 0.5;
 public static final double kCoralUpPos = 0;
 public static final double kCoralClimbPos = 5.929;
 
 public static final double kCoralOutSpinSpeed = -10;
-public static final double kCoralInSpinSpeed = 20;
-public static final double kCoralHoldSpinSpeed = 10;
+public static final double kCoralInSpinSpeed = 10;
+public static final double kCoralHoldSpinSpeed = 5;
 public static final double kCoralStopSpinSpeed = 0;
 
 //180 max position if zero is all the way up
 public static final double kTClimberUpPos = -56; //Was -69
 
 // Elevator 0-33.5 is position range
-public static final double kElevatorCoralIntakePos = 2.5;
+public static final double kElevatorCoralIntakePos = 0;
 public static final double kElevatorAlgaeIntakePos = 2.5;
 public static final double kElevatorHomePos = 3;
 public static final double kElevatorL2ScoringPos = 5.2; //Was 15
@@ -127,8 +127,8 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kCoralSpinMaxForwardVoltage = 11;
   public static final double kCoralSpinMaxReverseVoltage = -11;
 
-  public static final InvertedValue kCoralSpinDirection = InvertedValue.CounterClockwise_Positive;
-  public static final double kCoralSpinSupplyCurrentLimit = 15;
+  public static final InvertedValue kCoralSpinDirection = InvertedValue.Clockwise_Positive;
+  public static final double kCoralSpinSupplyCurrentLimit = 10;
 
   public static final double kCoralSpinVoltageClosedLoopRampPeriod = 0;
 
@@ -283,7 +283,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final LinearVelocity kSpeedTolerance = InchesPerSecond.of(1);
   public static final Time kEndTriggerDebounce = Seconds.of(0.1);
   public static final PathConstraints kPathContraints = new PathConstraints(2, 1.75, 1/2 * Math.PI, 1 * Math.PI);
-  public static final Time kAutoAlignAdjustTimeout = Seconds.of(0.6);
+  public static final Time kAutoAlignAdjustTimeout = Seconds.of(1.0);
   
 
   //Bunch of preset drive positions Xvalue, Yvalue, rotation
@@ -295,7 +295,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double[] kBlueRightL = {5.989 - kAprilX1Offset, 4.005, 180}; //FIXED
   public static final double[] kBlueBottomRR = {5.505 - kAprilX2Offset, 2.916, 120}; //FIXED
   public static final double[] kBlueBottomRL = {5.266 - kAprilX2Offset, 2.722, 120}; //FIXED
-  public static final double[] kBlueBottomLR = {3.914 - kAprilX2Offset, 2.636 + kAprilYOffset, 60}; //FIXED
+  public static final double[] kBlueBottomLR = {4.017 - kAprilX2Offset, 2.5513 + kAprilYOffset, 60}; //FIXED
   public static final double[] kBlueBottomLL = {3.628 - kAprilX2Offset, 2.794 + kAprilYOffset, 60}; //FIXED
   public static final double[] kBlueLeftR = {3.03 + kAprilX1Offset, 3.763, 0}; //FIXED
   public static final double[] kBlueLeftL = {3.03 + kAprilX1Offset, 4.058, 0}; //FIXED

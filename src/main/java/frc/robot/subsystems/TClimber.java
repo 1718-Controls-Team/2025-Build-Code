@@ -89,6 +89,7 @@ public void configureTClimber(TalonFX frontIntakeSpin){
     if (!TClimberStatus.isOK()) {
       System.out.println("Could not configure device. Error: " + TClimberStatus.toString());
     }
+    m_TClimber.setPosition(0);
   } 
 //######################################### END OF TCLIMBER CONFIGURATION ######################################################
 //######################################### END OF TCLIMBER CONFIGURATION ######################################################

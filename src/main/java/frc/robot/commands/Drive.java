@@ -18,6 +18,7 @@ import frc.robot.subsystems.Elevator;
 //import frc.robot.subsystems.CoralIntake;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -59,6 +60,9 @@ public class Drive extends Command {
     .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
 
+  private final SwerveRequest.FieldCentricFacingAngle autoAlign = new SwerveRequest.FieldCentricFacingAngle()
+    .withDeadband(MaxSpeed*0.1).withHeadingPID(0.024, 0, 0.0)
+    .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   //private final SwerveRequest.RobotCentric L4Score = new SwerveRequest.RobotCentric();
 
 //############################################## CLASS INITIALIZATION ##################################################################
@@ -393,9 +397,10 @@ public class Drive extends Command {
           turnController = -1;
         }
 
-        m_Drivetrain.setControl(drive.withVelocityX(driveController * MaxSpeed * 0.35) // Drive forward with                                                                    
+        m_Drivetrain.setControl(autoAlign.withVelocityX(driveController * MaxSpeed * 0.35) // Drive forward with                                                                    
          .withVelocityY(strafeController * MaxSpeed * 0.5) // Drive left with negative X (left)
-         .withRotationalRate(turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
+         .withTargetDirection(new Rotation2d(Math.toRadians(rotationTarget))));
+         //.withRotationalRate(-turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
       break;
       /*case "L4Score":
         m_Drivetrain.setControl(L4Score.withVelocityX(0.25));

@@ -66,7 +66,7 @@ public class AlignToReef {
         PathPlannerPath path = new PathPlannerPath( //Use Pathplanner to make a path
             waypoints, 
             pathConstraints,
-            new IdealStartingState(getVelocityMagnitude(mSwerve.getState().Speeds), mSwerve.getRotation3d().toRotation2d()), 
+            new IdealStartingState(getVelocityMagnitude(mSwerve.getState().Speeds), mSwerve.getPigeon2().getRotation2d().plus(new Rotation2d(Math.PI))), 
             new GoalEndState(0.0, waypoint.getRotation())
         );
 

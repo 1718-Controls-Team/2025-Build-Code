@@ -7,6 +7,7 @@ package frc.robot;
 import com.ctre.phoenix6.Utils;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.math.VecBuilder;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -35,13 +36,13 @@ public class Robot extends TimedRobot {
       PortForwarder.add(port, "limelight-lime.local", port);
     }
 
-    int[] validIDs = {12, 13, 16, 17, 18, 19, 20, 21, 22};
+    int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
 
     //Set a custom brownout voltage for the RoboRIO.
     //Only works with the RIO2.
     RobotController.setBrownoutVoltage(Constants.kCustomBrownout);
-    m_robotContainer.drivetrain.getPigeon2().reset();
+    m_robotContainer.drivetrain.resetRotation(new Rotation2d(Math.PI));
 
     //Start a simple recording to the data log.
     //This should log the contents of the NetworkTables, which should be good for now.
@@ -49,7 +50,6 @@ public class Robot extends TimedRobot {
     //This should log the joysticks as well.
     //DriverStation.startDataLog(DataLogManager.getLog());
   }
-
 
   @Override
   public void robotPeriodic() {
@@ -66,7 +66,7 @@ public class Robot extends TimedRobot {
      */
     if (kUseLimelight) {
       var driveState = m_robotContainer.drivetrain.getState();
-      double headingDeg = driveState.Pose.getRotation().getDegrees();
+      double headingDeg = m_robotContainer.drivetrain.getPigeon2().getRotation2d().getDegrees();
       
       LimelightHelpers.SetRobotOrientation("limelight-lime", headingDeg, 0, 0, 0, 0, 0);
       LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
@@ -78,10 +78,13 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    
+  }
 
   @Override
   public void disabledPeriodic() {
+    
     SmartDashboard.putNumber("Pigeon", m_robotContainer.drivetrain.getPigeon2().getRotation2d().getDegrees());
   }
 

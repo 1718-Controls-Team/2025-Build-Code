@@ -119,6 +119,15 @@ public void coralIntakeConfiguration(TalonFX m_coralSpin) {
       slot0.kV = Constants.kCoralSpinVelocityFeedForward; // Falcon 500 is a 500kV motor, 500rpm per V = 8.333 rps per V, 1/8.33 = 0.12 volts / Rotation per second Peak output of 8 volts
       slot0.kG = Constants.kCoralSpinGravityFeedForward;
       slot0.kS = Constants.kCoralSpinStaticFeedForward;
+
+    StatusCode coralSpinStatus = StatusCode.StatusCodeNotInitialized;
+    for(int i = 0; i < 5; ++i) {
+      coralSpinStatus = m_coralSpin.getConfigurator().apply(coralSpinConfig);
+      if (coralSpinStatus.isOK()) break;
+    }
+    if (!coralSpinStatus.isOK()) {
+      System.out.println("Could not configure device. Error: " + coralSpinStatus.toString());
+    }  
   }
   
   //############################################# CORAL ROTATE CONFIGURATION #################################################### 
@@ -151,6 +160,8 @@ public void coralIntakeConfiguration(TalonFX m_coralSpin) {
   if (!coralRotStatus.isOK()) {
     System.out.println("Could not configure device. Error: " + coralRotStatus.toString());
   }  
+  m_coralRotate.setPosition(0);
+
 }
 //############################################### END OF CORAL INTAKE CONFIGURATION ####################################################
 //############################################### END OF CORAL INTAKE CONFIGURATION ####################################################

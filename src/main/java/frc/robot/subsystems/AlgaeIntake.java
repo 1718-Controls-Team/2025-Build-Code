@@ -110,6 +110,7 @@ public class AlgaeIntake extends SubsystemBase {
     if (!algaeIntakeRotateStatus.isOK()) {
       System.out.println("Could not configure device. Error: " + algaeIntakeRotateStatus.toString());
     }
+    AlgaeRotate.setPosition(0);
   }
 
 //######################################### ALGAE SPIN 1 CONFIGURATION ###################################################### 

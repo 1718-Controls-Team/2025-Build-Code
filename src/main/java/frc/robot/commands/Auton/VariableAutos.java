@@ -3,6 +3,7 @@ package frc.robot.commands.Auton;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
 import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
 import frc.robot.commands.ElevatorPositions.L4ScoringPosition;
@@ -29,9 +30,10 @@ public class VariableAutos {
             new L4ScoringPosition(m_Elevator, m_AlgaeIntake, m_CoralIntake),
             m_alignmentGenerator.generateCommand(scorePose),
             m_CoralIntake.setCoralSpinCommand(-10),
+            new WaitCommand(1.5),
             new CoralIntakePosition(m_Elevator, m_AlgaeIntake, m_CoralIntake),
-            m_alignmentGenerator.generateCommand(intakePose),
-            new AutonCoralPickup(m_CoralIntake)
+            m_alignmentGenerator.generateCommand(intakePose)//,
+            //new AutonCoralPickup(m_CoralIntake)
         );
     }
 

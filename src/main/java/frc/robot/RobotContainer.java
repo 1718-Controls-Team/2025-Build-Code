@@ -94,13 +94,13 @@ public class RobotContainer {
         SmartDashboard.putData("Auto Mode", autoChooser);
 
         autoChooser.addOption("PID Move Test", Commands.sequence(
-            m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.830, 5.513, new Rotation2d(-120.069)), new Pose2d(1.833, 6.654, new Rotation2d(139.844)))
+            m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.0, 5.481, new Rotation2d(Math.PI*4/3)), new Pose2d(1.833, 6.654, new Rotation2d(2.199115)))
         ));
 
-        autoChooser.addOption("Movement Only Test", m_alignmentGenerator.generateCommand(new Pose2d(5.493, 5.216, new Rotation2d(0))));
+        autoChooser.addOption("Movement Only Test", m_alignmentGenerator.generateCommand(new Pose2d(5.025, 5.52, new Rotation2d(Math.PI*4/3))));
 
         configureBindings();
-    }
+    }  
 
     private void configureBindings() {
         // Note that X is defined as forward according to WPILib convention,

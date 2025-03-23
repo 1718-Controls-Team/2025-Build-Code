@@ -6,6 +6,7 @@ import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.Seconds;
 import frc.robot.Constants;
+import frc.robot.LimelightHelpers;
 
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
@@ -35,6 +36,8 @@ public class AutonPIDCommandTest extends Command{
     private final Trigger endTrigger;
     private final Trigger endTriggerDebounced;
 
+    private LimelightHelpers.PoseEstimate LLPose;
+
     private final Timer timer = new Timer();
   
     private final BooleanPublisher endTriggerLogger = NetworkTableInstance.getDefault().getTable("logging").getBooleanTopic("PositionPIDEndTrigger").publish();
@@ -48,6 +51,7 @@ public class AutonPIDCommandTest extends Command{
         
         endTrigger = new Trigger(() -> {
             Pose2d diff = mSwerve.getState().Pose.relativeTo(goalPose);
+            diff.getRotation().rotateBy(mSwerve.getPigeon2().getRotation2d().minus(diff.getRotation()));
 
             var rotation = MathUtil.isNear(
                 0.0, 
@@ -89,12 +93,12 @@ public class AutonPIDCommandTest extends Command{
 
         endTriggerLogger.accept(endTrigger.getAsBoolean());
 
+        LLPose = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
         
-
         mSwerve.applyRequest(() ->
         forwardStraight
-        .withVelocityX(mDriveController.calculateRobotRelativeSpeeds(mSwerve.getState().Pose, goalState).vxMetersPerSecond)
-        .withVelocityY(mDriveController.calculateRobotRelativeSpeeds(mSwerve.getState().Pose, goalState).vyMetersPerSecond));         
+        .withVelocityX(mDriveController.calculateRobotRelativeSpeeds(LLPose.pose, goalState).vxMetersPerSecond)
+        .withVelocityY(mDriveController.calculateRobotRelativeSpeeds(LLPose.pose, goalState).vyMetersPerSecond));         
 
         xErrLogger.accept(mSwerve.getState().Pose.getX() - goalPose.getX());
         yErrLogger.accept(mSwerve.getState().Pose.getY() - goalPose.getY());

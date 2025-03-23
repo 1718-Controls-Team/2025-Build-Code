@@ -42,7 +42,6 @@ public class CoralPickup extends Command {
     public void initialize() {
       m_isFinished = false;
 
-      m_coralSubsystem.setcoralRotate(Constants.kCoralRotateHomePos);  
       m_coralSubsystem.setcoralSpinPower(Constants.kCoralInSpinSpeed); 
       m_coralSubsystem.setL4CoralSpitMode(false); 
     }
