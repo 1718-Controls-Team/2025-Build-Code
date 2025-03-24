@@ -61,7 +61,7 @@ public class Drive extends Command {
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
 
   private final SwerveRequest.FieldCentricFacingAngle autoAlign = new SwerveRequest.FieldCentricFacingAngle()
-    .withDeadband(MaxSpeed*0.1).withHeadingPID(0.024, 0, 0.0)
+    .withDeadband(MaxSpeed*0.1).withHeadingPID(8, 0, 0.01)
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   //private final SwerveRequest.RobotCentric L4Score = new SwerveRequest.RobotCentric();
 
@@ -72,8 +72,8 @@ public class Drive extends Command {
     m_Elevator = elevator;
     //m_CoralIntake = coralIntake;
 
-    this.drivePID = new PIDController(2, 0, 0.00); // 1, 0, 0
-    this.strafePID = new PIDController(2, 0, 0.00); // 1, 0, 0
+    this.drivePID = new PIDController(2.3, 0, 0.01); // 1, 0, 0
+    this.strafePID = new PIDController(2.3, 0, 0.01); // 1, 0, 0
     this.aimPID = new PIDController(0.024, 0, 0.0); // 0.008, 0, 0.0013
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -398,7 +398,7 @@ public class Drive extends Command {
         }
 
         m_Drivetrain.setControl(autoAlign.withVelocityX(driveController * MaxSpeed * 0.35) // Drive forward with                                                                    
-         .withVelocityY(strafeController * MaxSpeed * 0.5) // Drive left with negative X (left)
+         .withVelocityY(strafeController * MaxSpeed * 0.35) // Drive left with negative X (left)
          .withTargetDirection(new Rotation2d(Math.toRadians(rotationTarget))));
          //.withRotationalRate(-turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
       break;
