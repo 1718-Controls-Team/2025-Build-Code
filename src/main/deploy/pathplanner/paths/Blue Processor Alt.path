@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.4,
-        "y": 2.75
+        "x": 5.37,
+        "y": 2.875
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.959027777777779,
-        "y": 2.2468749999999997
+        "x": 5.918552537920704,
+        "y": 2.834377241867919
       },
       "isLocked": false,
       "linkedName": "End of Blue 2 Coral 1"
     },
     {
       "anchor": {
-        "x": 1.8710069444444435,
-        "y": 0.5031249999999988
+        "x": 1.6828767123287671,
+        "y": 0.7794520547945205
       },
       "prevControl": {
-        "x": 1.8570312499999988,
-        "y": 0.9223958333333325
+        "x": 1.910819294347363,
+        "y": 1.3342116315052501
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,7 +34,7 @@
   "eventMarkers": [
     {
       "name": "CoralIntakePosition",
-      "waypointRelativePos": 0.5313432835820895,
+      "waypointRelativePos": 0.17966101694915254,
       "endWaypointRelativePos": null,
       "command": null
     },
@@ -55,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -129.80557109226527
+    "rotation": -127.56859202882747
   },
   "reversed": false,
   "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 121.26373169437757
+    "rotation": 119.99999999999999
   },
   "useDefaultConstraints": true
 }

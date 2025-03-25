@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.493021021950804,
-        "y": 5.215664645246355
+        "x": 5.152,
+        "y": 5.393
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.26798178391145,
-        "y": 5.106773225278267
+        "x": 5.276085885164152,
+        "y": 5.610031548635282
       },
       "isLocked": false,
-      "linkedName": "End of Blue Topside 1"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.829965753424658,
-        "y": 5.512542808219178
+        "x": 5.379195205479452,
+        "y": 5.767979452054794
       },
       "prevControl": {
-        "x": 5.6829228290058955,
-        "y": 5.310358787143381
+        "x": 5.2321522810606895,
+        "y": 5.565795430978997
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue Topside 2"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],

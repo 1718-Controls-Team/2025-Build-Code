@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 5.4,
-        "y": 2.75
+        "x": 5.37,
+        "y": 2.875
       },
       "prevControl": {
-        "x": 5.838957853855414,
-        "y": 1.7567812283052717
+        "x": 5.808957853855413,
+        "y": 1.8817812283052717
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 121.26373169437757
+    "rotation": 119.99999999999999
   },
   "reversed": false,
   "folder": "Blue Processor Folder",

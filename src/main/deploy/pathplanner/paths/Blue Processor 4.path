@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.8710069444444435,
-        "y": 0.5031249999999988
+        "x": 1.6828767123287671,
+        "y": 0.7794520547945205
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.07812885984273,
-        "y": 0.3631231708628584
+        "x": 1.8899986277270535,
+        "y": 0.6394502256573801
       },
       "isLocked": false,
       "linkedName": "End of Blue 2 Coral 3"
     },
     {
       "anchor": {
-        "x": 3.8415798611111103,
-        "y": 2.8789930555555556
+        "x": 3.922,
+        "y": 2.663
       },
       "prevControl": {
-        "x": 3.3136863905099085,
-        "y": 2.312012279947232
+        "x": 3.3941065293987984,
+        "y": 2.096019224391676
       },
       "nextControl": null,
       "isLocked": false,
@@ -61,7 +61,7 @@
   "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -129.80557109226527
+    "rotation": -127.56859202882747
   },
   "useDefaultConstraints": true
 }

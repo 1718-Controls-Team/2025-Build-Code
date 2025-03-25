@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5076388888888876,
-        "y": 6.456770833333333
+        "x": 1.712928082191781,
+        "y": 7.135316780821918
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.493445695874086,
-        "y": 6.059748532308397
+        "x": 2.084861704819536,
+        "y": 6.4490491190452435
       },
       "isLocked": false,
       "linkedName": "End of Blue Topside 3"
     },
     {
       "anchor": {
-        "x": 3.8415798611111103,
-        "y": 5.115104166666666
+        "x": 3.812,
+        "y": 5.339
       },
       "prevControl": {
-        "x": 3.1372877336655987,
-        "y": 6.00046713659666
+        "x": 3.054700074403976,
+        "y": 5.989767186709287
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "",
+      "name": "L4ScoringPosition",
       "waypointRelativePos": 0.43582089552238795,
       "endWaypointRelativePos": null,
       "command": null
@@ -55,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -57.17145820858737
+    "rotation": -59.99999999999999
   },
   "reversed": false,
   "folder": "Blue Topside Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -110.77225468204588
+    "rotation": 127.87498365109822
   },
   "useDefaultConstraints": true
 }
