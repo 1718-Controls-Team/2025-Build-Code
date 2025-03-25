@@ -402,8 +402,8 @@ public class Drive extends Command {
          .withTargetDirection(new Rotation2d(Math.toRadians(rotationTarget))));
          //.withRotationalRate(-turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
       break;
-      /*case "L4Score":
-        m_Drivetrain.setControl(L4Score.withVelocityX(0.25));
+      /*case "SpeedTest":
+        m_Drivetrain.setControl(autoAlign.withVol);
       break;*/
       default:
       m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
@@ -411,6 +411,8 @@ public class Drive extends Command {
         .withVelocityY(-m_Controller.getLeftX() * MaxSpeed) // Drive left with negative X (left)
         .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate * 1.3
         )); // Drive counterclockwise with negative X (left)
+        
+        System.out.println(Math.sqrt(Math.pow(m_Drivetrain.getState().Speeds.vxMetersPerSecond, 2)+Math.pow(m_Drivetrain.getState().Speeds.vyMetersPerSecond, 2)));
       break;
     }
     }

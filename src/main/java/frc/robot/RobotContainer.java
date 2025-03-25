@@ -8,6 +8,7 @@ import static edu.wpi.first.units.Units.*;
 
 import java.io.File;
 
+import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -30,7 +31,7 @@ import frc.robot.commands.Home;
 import frc.robot.commands.InitializeMechanisms;
 import frc.robot.commands.Auton.AlignToReef;
 import frc.robot.commands.Auton.AutonCoralPickup;
-import frc.robot.commands.Auton.AutonPIDCommandTest;
+//import frc.robot.commands.Auton.AutonPIDCommandTest;
 import frc.robot.commands.Auton.AutonSpitCoral;
 import frc.robot.commands.Auton.VariableAutos;
 import frc.robot.commands.Climber.ClimberActivate;
@@ -78,6 +79,7 @@ public class RobotContainer {
 
     private final CommandXboxController driverController = new CommandXboxController(0);
     private final CommandXboxController operatorController = new CommandXboxController(1);
+
 
 
 
