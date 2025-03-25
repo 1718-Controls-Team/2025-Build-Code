@@ -8,16 +8,20 @@ import static edu.wpi.first.units.Units.Seconds;
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
 
+import com.ctre.phoenix6.Utils;
+import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.trajectory.PathPlannerTrajectoryState;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.units.measure.Time;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -29,15 +33,20 @@ public class AutonPIDCommandTest extends Command{
     public CommandSwerveDrivetrain mSwerve;
     public final Pose2d goalPose;
     private PPHolonomicDriveController mDriveController = TunerConstants.holonomicControls;
+    private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond);
 
     private static final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
-    private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric();
-
+    // private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric();
+    private final SwerveRequest.FieldCentricFacingAngle forwardStraight = new SwerveRequest.FieldCentricFacingAngle()
+        .withDeadband(MaxSpeed*0.1).withHeadingPID(8, 0, 0.01)
+        .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
     private final Trigger endTrigger;
     private final Trigger endTriggerDebounced;
+    private final PIDController drivePID, strafePID;
 
     private LimelightHelpers.PoseEstimate LLPose;
-
+    private double strafeController;
+    private double driveController;
     private final Timer timer = new Timer();
   
     private final BooleanPublisher endTriggerLogger = NetworkTableInstance.getDefault().getTable("logging").getBooleanTopic("PositionPIDEndTrigger").publish();
@@ -48,6 +57,11 @@ public class AutonPIDCommandTest extends Command{
     public AutonPIDCommandTest(CommandSwerveDrivetrain mSwerve, Pose2d goalPose) {
         this.mSwerve = mSwerve;
         this.goalPose = goalPose;
+        this.drivePID = new PIDController(2, 0, 0.01); // 1, 0, 0
+        this.strafePID = new PIDController(2, 0, 0.01);
+
+        strafeController = strafePID.calculate(mSwerve.getState().Pose.getY(), goalPose.getY());
+        driveController = drivePID.calculate(mSwerve.getState().Pose.getX(), goalPose.getX());
         
         endTrigger = new Trigger(() -> {
             Pose2d diff = mSwerve.getState().Pose.relativeTo(goalPose);
@@ -93,12 +107,19 @@ public class AutonPIDCommandTest extends Command{
 
         endTriggerLogger.accept(endTrigger.getAsBoolean());
 
-        LLPose = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+       /* if (LimelightHelpers.getTV(Constants.kLimelightName) && (Math.abs(LimelightHelpers.getTX(Constants.kLimelightName)) < 15.0)) {
+            LLPose = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+            mSwerve.addVisionMeasurement(LLPose.pose, Utils.fpgaToCurrentTime(LLPose.timestampSeconds));
+        } */
+
+        
         
         mSwerve.applyRequest(() ->
         forwardStraight
+        .withVelocityX(driveController *MaxSpeed*0.3).withVelocityY(strafeController*MaxSpeed*0.3).withTargetDirection(goalPose.getRotation()));
+         /* forwardStraight
         .withVelocityX(mDriveController.calculateRobotRelativeSpeeds(LLPose.pose, goalState).vxMetersPerSecond)
-        .withVelocityY(mDriveController.calculateRobotRelativeSpeeds(LLPose.pose, goalState).vyMetersPerSecond));         
+        .withVelocityY(mDriveController.calculateRobotRelativeSpeeds(LLPose.pose, goalState).vyMetersPerSecond)); */      
 
         xErrLogger.accept(mSwerve.getState().Pose.getX() - goalPose.getX());
         yErrLogger.accept(mSwerve.getState().Pose.getY() - goalPose.getY());

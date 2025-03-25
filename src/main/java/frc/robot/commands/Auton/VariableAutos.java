@@ -25,13 +25,15 @@ public class VariableAutos {
         m_AlgaeIntake = algaeIntake;
     }
 
-    public Command generateAutonCycle(Pose2d scorePose, Pose2d intakePose) {
+    public Command generateAutonCycle(Pose2d scorePose, Pose2d intakePose, Pose2d backPose) {
         return Commands.sequence(
+            m_CoralIntake.setCoralSpinCommand(10),
             new L4ScoringPosition(m_Elevator, m_AlgaeIntake, m_CoralIntake),
             m_alignmentGenerator.generateCommand(scorePose),
             m_CoralIntake.setCoralSpinCommand(-10),
             new WaitCommand(1.5),
             new CoralIntakePosition(m_Elevator, m_AlgaeIntake, m_CoralIntake),
+            m_alignmentGenerator.generateCommand(backPose),
             m_alignmentGenerator.generateCommand(intakePose)//,
             //new AutonCoralPickup(m_CoralIntake)
         );
