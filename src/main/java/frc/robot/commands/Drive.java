@@ -411,9 +411,6 @@ public class Drive extends Command {
         .withVelocityY(-m_Controller.getLeftX() * MaxSpeed) // Drive left with negative X (left)
         .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate * 1.3
         )); // Drive counterclockwise with negative X (left)
-        
-        System.out.println(Math.sqrt(Math.pow(m_Drivetrain.getState().Speeds.vxMetersPerSecond, 2)+Math.pow(m_Drivetrain.getState().Speeds.vyMetersPerSecond, 2)));
-      break;
     }
     }
   }
