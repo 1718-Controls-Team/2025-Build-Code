@@ -92,7 +92,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void disabledExit() {}
+  public void disabledExit() {
+    kUseLimelight = false;
+  }
 
   @Override
   public void autonomousInit() {

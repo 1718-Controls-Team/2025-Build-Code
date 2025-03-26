@@ -3,38 +3,43 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.712928082191781,
-        "y": 7.135316780821918
+        "x": 1.8,
+        "y": 7.3
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.084861704819536,
-        "y": 6.4490491190452435
+        "x": 2.171933622627755,
+        "y": 6.6137323382233255
       },
       "isLocked": false,
       "linkedName": "End of Blue Topside 3"
     },
     {
       "anchor": {
-        "x": 3.812,
-        "y": 5.339
+        "x": 4.01,
+        "y": 5.35
       },
       "prevControl": {
-        "x": 3.054700074403976,
-        "y": 5.989767186709287
+        "x": 3.253078859923093,
+        "y": 6.00044168662892
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue Topside 4"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.7983870967741935,
+      "rotationDegrees": -59.99999999999999
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
       "name": "L4ScoringPosition",
-      "waypointRelativePos": 0.43582089552238795,
+      "waypointRelativePos": 0.8122866894197968,
       "endWaypointRelativePos": null,
       "command": null
     },

@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 7.0
+        "x": 4.01,
+        "y": 5.35
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0,
-        "y": 7.0
+        "x": 4.134085885164152,
+        "y": 5.567031548635282
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue Topside 4"
     },
     {
       "anchor": {
-        "x": 4.0,
-        "y": 7.0
+        "x": 1.85,
+        "y": 7.283
       },
       "prevControl": {
-        "x": 3.0,
-        "y": 7.0
+        "x": 1.7029570755812378,
+        "y": 7.080815978924204
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue Topside 5"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 127.87498365109822
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Blue Topside Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -59.99999999999999
   },
   "useDefaultConstraints": true
 }

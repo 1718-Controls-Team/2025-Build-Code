@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.712928082191781,
-        "y": 7.135316780821918
+        "x": 1.8,
+        "y": 7.3
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7131205631626387,
-        "y": 6.738772677490514
+        "x": 2.800192480970858,
+        "y": 6.903455896668596
       },
       "isLocked": false,
       "linkedName": "End of Blue Topside 3"

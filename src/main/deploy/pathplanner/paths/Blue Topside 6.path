@@ -3,37 +3,42 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.152,
-        "y": 5.393
+        "x": 1.85,
+        "y": 7.283
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.276085885164152,
-        "y": 5.610031548635282
+        "x": 2.097348845953569,
+        "y": 7.246688178158655
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue Topside 5"
     },
     {
       "anchor": {
-        "x": 5.379195205479452,
-        "y": 5.767979452054794
+        "x": 3.758,
+        "y": 5.24
       },
       "prevControl": {
-        "x": 5.2321522810606895,
-        "y": 5.565795430978997
+        "x": 2.985680721029145,
+        "y": 5.817475141341381
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.7983870967741935,
+      "rotationDegrees": -59.99999999999999
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 0.5,
+    "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -42,13 +47,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -120.069
+    "rotation": -59.99999999999999
   },
   "reversed": false,
   "folder": "Blue Topside Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -119.99999999999999
+    "rotation": 127.87498365109822
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }
