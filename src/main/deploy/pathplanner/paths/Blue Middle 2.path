@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.784201388888888,
-        "y": 4.011024305555555
+        "x": 5.989,
+        "y": 4.025
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.433333333333333,
-        "y": 5.66015625
+        "x": 5.739,
+        "y": 4.025
       },
       "isLocked": false,
       "linkedName": "End of Blue Middle 1"
     },
     {
       "anchor": {
-        "x": 0.669097222222221,
-        "y": 6.680381944444445
+        "x": 5.8148619965567,
+        "y": 4.025
       },
       "prevControl": {
-        "x": 1.060416666666665,
-        "y": 6.876041666666667
+        "x": 6.0648619965567,
+        "y": 4.025
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,22 +31,9 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "CoralIntakePosition",
-      "waypointRelativePos": 0.0985074626865672,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "CoralPickup",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 3.8,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -55,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 124.8244891569569
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "Blue Middle Folder",

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.8,
-        "y": 7.3
+        "x": 1.775,
+        "y": 7.35
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.171933622627755,
-        "y": 6.6137323382233255
+        "x": 2.1469336226277544,
+        "y": 6.663732338223325
       },
       "isLocked": false,
       "linkedName": "End of Blue Topside 3"
     },
     {
       "anchor": {
-        "x": 4.01,
-        "y": 5.35
+        "x": 3.96,
+        "y": 5.33
       },
       "prevControl": {
-        "x": 3.253078859923093,
-        "y": 6.00044168662892
+        "x": 3.2030788599230933,
+        "y": 5.980441686628921
       },
       "nextControl": null,
       "isLocked": false,
@@ -51,7 +51,7 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 3.8,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,

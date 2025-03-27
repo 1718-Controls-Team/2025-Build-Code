@@ -146,7 +146,9 @@ public class RobotContainer {
     }
 
     private void registerAutonCommands() {
-        NamedCommands.registerCommand("AlgaeIntakePosition", new AlgaeProcessorPos(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AlgaeProcessorPosition", new AlgaeProcessorPos(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AlgaeL2Position", new L2AlgaePos(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("AlgaeL3Position", new L3AlgaePos(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("CoralIntakePosition", new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L2ScoringPosition", new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L3ScoringPosition", new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));

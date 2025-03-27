@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.01,
-        "y": 5.35
+        "x": 3.96,
+        "y": 5.33
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.134085885164152,
-        "y": 5.567031548635282
+        "x": 4.084085885164152,
+        "y": 5.547031548635283
       },
       "isLocked": false,
       "linkedName": "End of Blue Topside 4"
@@ -20,7 +20,7 @@
         "y": 7.283
       },
       "prevControl": {
-        "x": 1.7029570755812378,
+        "x": 1.7029570755812375,
         "y": 7.080815978924204
       },
       "nextControl": null,
@@ -33,7 +33,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 3.8,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
