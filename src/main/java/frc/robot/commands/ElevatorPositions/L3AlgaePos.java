@@ -18,7 +18,7 @@ public class L3AlgaePos extends Command {
   private final CoralIntake m_CoralIntake;
 
   
-  private boolean m_isFinished = false;
+  private boolean m_isFinished = true;
 
 
   /**

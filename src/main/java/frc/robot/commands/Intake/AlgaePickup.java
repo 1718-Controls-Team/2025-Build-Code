@@ -38,7 +38,7 @@ public class AlgaePickup extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_isFinished = false;
+    m_isFinished = true;
       m_coralSubsystem.setcoralRotate(Constants.kCoralUpPos);
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);
       m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);

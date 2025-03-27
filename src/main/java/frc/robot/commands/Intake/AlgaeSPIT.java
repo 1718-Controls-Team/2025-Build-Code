@@ -15,7 +15,7 @@ public class AlgaeSPIT extends Command {
   private final AlgaeIntake m_algaeSubsystem;
 
   
-  private boolean m_isFinished = false;
+  private boolean m_isFinished = true;
 
   /**
    * Creates a new set-PowerCommand.
@@ -33,7 +33,7 @@ public class AlgaeSPIT extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-      m_isFinished = false;
+      m_isFinished = true;
       m_algaeSubsystem.setAlgaeOutput(-1);  
     }
   

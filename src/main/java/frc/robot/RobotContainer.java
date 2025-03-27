@@ -95,13 +95,13 @@ public class RobotContainer {
         autoChooser = AutoBuilder.buildAutoChooser("Test Auto");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
-        autoChooser.addOption("PID Move Test", Commands.sequence(
+        /*autoChooser.addOption("PID Move Test", Commands.sequence(
             m_AUTOS_DONT_KILL_YOURSELVES.generateAutonCycle(new Pose2d(5.0025, 5.49527, new Rotation2d(Math.PI*4/3)), new Pose2d(5.319, 5.768, new Rotation2d(Math.PI*4/3)), new Pose2d(1.833, 6.654, new Rotation2d(2.199115)))
-        ));
+        ));*/
 
-        autoChooser.addOption("Movement Only Test", m_alignmentGenerator.generateCommand(new Pose2d(5.0125, 5.49527, new Rotation2d(Math.PI*4/3)))); //5.12, 5.426
-        autoChooser.addOption("Middle Auton", Commands.sequence(m_coralIntake.setCoralSpinCommand(10), new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake),
-        m_alignmentGenerator.generateCommand(new Pose2d(6.010, 4.010, new Rotation2d(Math.PI*3/3))), new AutonSpitCoral(m_coralIntake)));
+        //autoChooser.addOption("Movement Only Test", m_alignmentGenerator.generateCommand(new Pose2d(5.0125, 5.49527, new Rotation2d(Math.PI*4/3)))); //5.12, 5.426
+        /*autoChooser.addOption("Middle Auton", Commands.sequence(m_coralIntake.setCoralSpinCommand(10), new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake),
+        m_alignmentGenerator.generateCommand(new Pose2d(6.010, 4.010, new Rotation2d(Math.PI*3/3))), new AutonSpitCoral(m_coralIntake)));*/
 
         configureBindings();
     }  
