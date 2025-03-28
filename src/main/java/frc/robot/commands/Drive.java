@@ -102,6 +102,8 @@ public class Drive extends Command {
     SmartDashboard.putNumber("RobotYPosition", RobotPosition.getY());
     SmartDashboard.putNumber("Rotation Target", rotationTarget);
 
+
+
     aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
     if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) {
       driveRequest = "limelightDrive";
@@ -152,8 +154,8 @@ public class Drive extends Command {
               rotationTarget = Constants.kRedBottomLR[2];
               lockedID = 11;
             } else if (aprilTagID == 17) {
-              xTarget = (Constants.kBlueBottomLR[0] - 0.5);
-              yTarget = (Constants.kBlueBottomLR[1] - 0.86603);
+              xTarget = (Constants.kBlueBottomLR[0] - 0.125);
+              yTarget = (Constants.kBlueBottomLR[1] - 0.2165075);
               rotationTarget = Constants.kBlueBottomLR[2];
               lockedID = 17;
             } else if (aprilTagID == 18) {
@@ -162,13 +164,13 @@ public class Drive extends Command {
               rotationTarget = Constants.kBlueLeftR[2];
               lockedID = 18;
             } else if (aprilTagID == 19) {
-              xTarget = (Constants.kBlueTopLR[0] - 0.5);
-              yTarget = (Constants.kBlueTopLR[1] + 0.86603);
+              xTarget = (Constants.kBlueTopLR[0] - 0.125);
+              yTarget = (Constants.kBlueTopLR[1] + 0.2165075);
               rotationTarget = Constants.kBlueTopLR[2];
               lockedID = 19;
             } else if (aprilTagID == 20) {
-              xTarget = (Constants.kBlueTopRR[0] + 0.5);
-              yTarget = (Constants.kBlueTopRR[1] + 0.86603);
+              xTarget = (Constants.kBlueTopRR[0] + 0.125);
+              yTarget = (Constants.kBlueTopRR[1] + 0.2165075);
               rotationTarget = Constants.kBlueTopRR[2];
               lockedID = 20;
             } else if (aprilTagID == 21) {
@@ -177,13 +179,13 @@ public class Drive extends Command {
               rotationTarget = Constants.kBlueRightR[2];
               lockedID = 21;
             } else if (aprilTagID == 22) {
-              xTarget = (Constants.kBlueBottomRR[0] + 0.5);
-              yTarget = (Constants.kBlueBottomRR[1] - 0.86603);
+              xTarget = (Constants.kBlueBottomRR[0] + 0.125);
+              yTarget = (Constants.kBlueBottomRR[1] - 0.2165075);
               rotationTarget = Constants.kBlueBottomRR[2];
               lockedID = 22;
             }
           } 
-          if ((Math.abs(RobotPosition.getX() - xTarget) < 0.1) && (Math.abs(RobotPosition.getY() - yTarget) < 0.1)) {
+          if ((Math.abs(RobotPosition.getX() - xTarget) < 0.12) && (Math.abs(RobotPosition.getY() - yTarget) < 0.12)) {
             if (lockedID == 6) {
               xTarget = Constants.kRedBottomRR[0];
               yTarget = Constants.kRedBottomRR[1];
@@ -255,38 +257,38 @@ public class Drive extends Command {
               rotationTarget = Constants.kRedBottomLL[2];
               lockedID = 11;
             } else if (aprilTagID == 17) {
-              xTarget = (Constants.kBlueBottomLL[0] - 0.5);
-              yTarget = (Constants.kBlueBottomLL[1] - 0.86603);
+              xTarget = (Constants.kBlueBottomLL[0] - 0.125);
+              yTarget = (Constants.kBlueBottomLL[1] - 0.2165075);
               rotationTarget = Constants.kBlueBottomLL[2];
               lockedID = 17;
             } else if (aprilTagID == 18) {
-              xTarget = (Constants.kBlueLeftL[0] - 1);
+              xTarget = (Constants.kBlueLeftL[0] - 0.25);
               yTarget = Constants.kBlueLeftL[1];
               rotationTarget = Constants.kBlueLeftL[2];
               lockedID = 18;
             } else if (aprilTagID == 19) {
-              xTarget = (Constants.kBlueTopLL[0] - 0.5);
-              yTarget = (Constants.kBlueTopLL[1] + 0.86603);
+              xTarget = (Constants.kBlueTopLL[0] - 0.125);
+              yTarget = (Constants.kBlueTopLL[1] + 0.2165075);
               rotationTarget = Constants.kBlueTopLL[2];
               lockedID = 19;
             } else if (aprilTagID == 20) {
-              xTarget = (Constants.kBlueTopRL[0] + 0.5);
-              yTarget = (Constants.kBlueTopRL[1] + 0.86603);
+              xTarget = (Constants.kBlueTopRL[0] + 0.125);
+              yTarget = (Constants.kBlueTopRL[1] + 0.2165075);
               rotationTarget = Constants.kBlueTopRL[2];
               lockedID = 20;
             } else if (aprilTagID == 21) {
-              xTarget = (Constants.kBlueRightL[0] + 1);
+              xTarget = (Constants.kBlueRightL[0] + 0.25);
               yTarget = Constants.kBlueRightL[1];
               rotationTarget = Constants.kBlueRightL[2];
               lockedID = 21;
             } else if (aprilTagID == 22) {
-              xTarget = (Constants.kBlueBottomRL[0] + 0.5);
-              yTarget = (Constants.kBlueBottomRL[1] - 0.86603);
+              xTarget = (Constants.kBlueBottomRL[0] + 0.125);
+              yTarget = (Constants.kBlueBottomRL[1] - 0.2165075);
               rotationTarget = Constants.kBlueBottomRL[2];
               lockedID = 22;
             }
           }
-          if (((Math.abs(RobotPosition.getX() - xTarget) < 0.1) && (Math.abs(RobotPosition.getY() - yTarget) < 0.1))) {
+          if (((Math.abs(RobotPosition.getX() - xTarget) < 0.12) && (Math.abs(RobotPosition.getY() - yTarget) < 0.12))) {
             if (lockedID == 6) {
               xTarget = Constants.kRedBottomRL[0];
               yTarget = Constants.kRedBottomRL[1];
@@ -406,9 +408,9 @@ public class Drive extends Command {
         m_Drivetrain.setControl(autoAlign.withVol);
       break;*/
       default:
-      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed) // Drive forward with
+      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed * m_Elevator.speedLimit) // Drive forward with
       // negative Y (forward)
-        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed * m_Elevator.speedLimit) // Drive left with negative X (left)
         .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate * 1.3
         )); // Drive counterclockwise with negative X (left)
     }

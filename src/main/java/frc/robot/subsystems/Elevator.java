@@ -28,6 +28,7 @@ public class Elevator extends SubsystemBase {
 
   private double ElevatorDesiredPos = 0;
   private boolean Intaking = false;
+  public double speedLimit = 1;
 
 
   public Elevator() {
@@ -77,6 +78,13 @@ public class Elevator extends SubsystemBase {
     return Intaking;
   }
 
+  public void setSpeedLimit(double newSpeedLimit){
+    speedLimit = newSpeedLimit;
+  }
+
+  public double getSpeedLimit(){
+    return speedLimit;
+  }
 
 //######################################### Start OF ELEVATOR CONFIGURATION ######################################################
 //######################################### Start OF ELEVATOR CONFIGURATION ######################################################
