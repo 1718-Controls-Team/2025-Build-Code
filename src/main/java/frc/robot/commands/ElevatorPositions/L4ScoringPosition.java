@@ -51,7 +51,9 @@ public class L4ScoringPosition extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    if (m_Elevator.getElevatorInPosition()) {
+      
+    }
   }
 
   // Called once the command ends or is interrupted.

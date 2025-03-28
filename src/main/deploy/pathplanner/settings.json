@@ -6,7 +6,8 @@
     "Blue Algae Folder",
     "Blue Middle Folder",
     "Blue Processor Folder",
-    "Blue Topside Folder"
+    "Blue Topside Folder",
+    "New Topside"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.8,
@@ -14,15 +15,15 @@
   "defaultMaxAngVel": 540.0,
   "defaultMaxAngAccel": 720.0,
   "defaultNominalVoltage": 12.0,
-  "robotMass": 54.43108,
-  "robotMOI": 4.725,
+  "robotMass": 62.369,
+  "robotMOI": 5.64,
   "robotTrackwidth": 0.5588,
-  "driveWheelRadius": 0.048514,
+  "driveWheelRadius": 0.0508,
   "driveGearing": 5.6,
-  "maxDriveSpeed": 5.0,
+  "maxDriveSpeed": 5.1,
   "driveMotorType": "krakenX60FOC",
   "driveCurrentLimit": 70.0,
-  "wheelCOF": 1.7,
+  "wheelCOF": 1.2,
   "flModuleX": 0.305,
   "flModuleY": 0.3048,
   "frModuleX": 0.3048,
@@ -33,5 +34,7 @@
   "brModuleY": -0.3048,
   "bumperOffsetX": 0.0,
   "bumperOffsetY": 0.0,
-  "robotFeatures": []
+  "robotFeatures": [
+    "{\"name\":\"Rectangle\",\"type\":\"rounded_rect\",\"data\":{\"center\":{\"x\":0.52,\"y\":0.1397},\"size\":{\"width\":0.2,\"length\":0.3048},\"borderRadius\":0.05,\"strokeWidth\":0.02,\"filled\":false}}"
+  ]
 }
