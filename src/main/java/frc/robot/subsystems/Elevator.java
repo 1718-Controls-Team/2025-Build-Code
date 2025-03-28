@@ -53,7 +53,7 @@ public class Elevator extends SubsystemBase {
 
 
   public boolean getElevatorInPosition(){
-    if ((Math.abs(m_Elevator1.getPosition().getValueAsDouble() - ElevatorDesiredPos) < Constants.kAlgaeIntakePositionTolerance)){
+    if ((Math.abs(m_Elevator1.getPosition().getValueAsDouble() - ElevatorDesiredPos) < 2)){
       return true;
     } else {
       return false;

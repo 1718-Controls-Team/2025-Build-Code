@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.37,
-        "y": 2.875
+        "x": 5.2254811610421585,
+        "y": 2.7208945992277735
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.37,
-        "y": 2.8750000000000004
+        "x": 5.118800602923549,
+        "y": 2.1942307373871937
       },
       "isLocked": false,
-      "linkedName": "End of Blue 2 Coral 1"
+      "linkedName": "End of Blue Processor 1"
     },
     {
       "anchor": {
-        "x": 6.343229166666666,
-        "y": 0.5031249999999988
+        "x": 1.7243182667933745,
+        "y": 0.6925709722035924
       },
       "prevControl": {
-        "x": 6.077690972222221,
-        "y": 1.4255208333333327
+        "x": 2.6792152378552436,
+        "y": 1.3142387362199492
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue 2 Coral 2"
+      "linkedName": "End of Blue Processor 2"
     }
   ],
   "rotationTargets": [],
@@ -55,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -126.0
   },
   "reversed": false,
   "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 119.99999999999999
+    "rotation": 121.32869286780407
   },
   "useDefaultConstraints": true
 }

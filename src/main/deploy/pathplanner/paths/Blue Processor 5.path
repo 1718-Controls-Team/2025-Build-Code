@@ -3,44 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.198,
-        "y": 5.185954610775752
+        "x": 1.7371106788684711,
+        "y": 0.6884254384116685
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.935364806866954,
-        "y": 5.576630901287554
+        "x": 2.7717556749211,
+        "y": 3.291015193225653
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of Blue Processor 4"
     },
     {
       "anchor": {
-        "x": 5.15,
-        "y": 5.525
+        "x": 3.6938697463205457,
+        "y": 2.7449118686372653
       },
       "prevControl": {
-        "x": 5.364965888921583,
-        "y": 5.652630978215141
+        "x": 3.032891234497144,
+        "y": 1.5759302739320984
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue Topside 1"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "AutonSpitCoral",
-      "waypointRelativePos": 0.8440677966101708,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 3.8,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -49,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -119.99999999999999
+    "rotation": 59.99999999999999
   },
   "reversed": false,
   "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -126.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

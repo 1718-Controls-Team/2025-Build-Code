@@ -3,48 +3,35 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.343229166666666,
-        "y": 0.5031249999999988
+        "x": 1.7243182667933745,
+        "y": 0.6925709722035924
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.652170138888888,
-        "y": 1.2857638888888883
+        "x": 1.9397374759871708,
+        "y": 2.880414866710522
       },
       "isLocked": false,
-      "linkedName": "End of Blue 2 Coral 2"
+      "linkedName": "End of Blue Processor 2"
     },
     {
       "anchor": {
-        "x": 1.6828767123287671,
-        "y": 0.7794520547945205
+        "x": 3.9990794799389153,
+        "y": 2.5633868732659573
       },
       "prevControl": {
-        "x": 1.361435740106545,
-        "y": 0.8772819159056325
+        "x": 3.6867586384786803,
+        "y": 1.750115414986206
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue 2 Coral 3"
+      "linkedName": "End of Blue Processor 3"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "CoralIntakePosition",
-      "waypointRelativePos": 0.45074626865671685,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "CoralPickup",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.8,
     "maxAcceleration": 3.0,
@@ -55,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -127.56859202882747
+    "rotation": 59.99999999999999
   },
   "reversed": false,
   "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -126.0
   },
   "useDefaultConstraints": true
 }

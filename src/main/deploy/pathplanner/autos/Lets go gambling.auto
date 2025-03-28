@@ -9,15 +9,15 @@
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "wait",
                 "data": {
-                  "name": "CoralPickup"
+                  "waitTime": 0.1
                 }
               },
               {
-                "type": "wait",
+                "type": "named",
                 "data": {
-                  "waitTime": 0.0
+                  "name": "CoralPickup"
                 }
               }
             ]
@@ -26,7 +26,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Processor 1"
+            "pathName": "NEW TOPSIDE 1"
           }
         },
         {
@@ -50,7 +50,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Processor 2"
+            "pathName": "NEW TOPSIDE 2"
           }
         },
         {
@@ -62,7 +62,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Processor 3"
+            "pathName": "NEW TOPSIDE 3"
           }
         },
         {
@@ -86,7 +86,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Processor 4"
+            "pathName": "NEW TOPSIDE 4"
           }
         },
         {
@@ -98,7 +98,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Processor 5"
+            "pathName": "NEW TOPSIDE 5"
           }
         },
         {
