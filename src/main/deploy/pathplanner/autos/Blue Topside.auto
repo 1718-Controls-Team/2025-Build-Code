@@ -24,51 +24,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "NEW TOPSIDE 1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "L4ScoringPosition"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutonSpitCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "CoralIntakePosition"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "NEW TOPSIDE 2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "CoralPickup"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "NEW TOPSIDE 3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "L4ScoringPosition"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Blue TOPSIDE 1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "L4ScoringPosition"
+                }
+              }
+            ]
           }
         },
         {
@@ -86,7 +57,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "NEW TOPSIDE 4"
+            "pathName": "Blue TOPSIDE 2"
           }
         },
         {
@@ -98,7 +69,55 @@
         {
           "type": "path",
           "data": {
-            "pathName": "NEW TOPSIDE 5"
+            "pathName": "Blue TOPSIDE 3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "L4ScoringPosition"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutonSpitCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "CoralIntakePosition"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Blue TOPSIDE 4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "CoralPickup"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 5.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Blue TOPSIDE 5"
           }
         },
         {

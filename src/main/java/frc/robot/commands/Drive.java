@@ -49,6 +49,7 @@ public class Drive extends Command {
   private double rotationTarget = 0;
   private Pose2d RobotPosition;
   private double RobotAngle;
+  private double speedControl = 1;
 
   private Pose2d targetPose2d;
 
@@ -101,8 +102,12 @@ public class Drive extends Command {
     SmartDashboard.putNumber("RobotXPosition", RobotPosition.getX());
     SmartDashboard.putNumber("RobotYPosition", RobotPosition.getY());
     SmartDashboard.putNumber("Rotation Target", rotationTarget);
-
-
+    
+    if (m_Controller.rightStick().getAsBoolean()) {
+      speedControl = 0.8;
+    } else if (m_Controller.leftStick().getAsBoolean()) {
+      speedControl = 1;
+    }
 
     aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
     if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) {
@@ -408,9 +413,10 @@ public class Drive extends Command {
         m_Drivetrain.setControl(autoAlign.withVol);
       break;*/
       default:
-      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed * m_Elevator.speedLimit) // Drive forward with
+
+      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed * m_Elevator.speedLimit * speedControl) // Drive forward with
       // negative Y (forward)
-        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed * m_Elevator.speedLimit) // Drive left with negative X (left)
+        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed * m_Elevator.speedLimit * speedControl) // Drive left with negative X (left)
         .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate * 1.3
         )); // Drive counterclockwise with negative X (left)
     }

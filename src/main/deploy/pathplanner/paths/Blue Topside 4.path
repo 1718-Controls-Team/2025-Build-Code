@@ -3,53 +3,35 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.825,
-        "y": 7.43
+        "x": 3.614,
+        "y": 5.360066132148474
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1969336226277543,
-        "y": 6.743732338223325
+        "x": 2.279480040734443,
+        "y": 5.567608369844114
       },
       "isLocked": false,
-      "linkedName": "End of Blue Topside 3"
+      "linkedName": "End of New Topside 3"
     },
     {
       "anchor": {
-        "x": 3.9,
-        "y": 5.48
+        "x": 1.6529458552445513,
+        "y": 7.335312512289023
       },
       "prevControl": {
-        "x": 3.143078859923093,
-        "y": 6.130441686628921
+        "x": 2.439505989985622,
+        "y": 5.554555068075675
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue Topside 4"
+      "linkedName": "End of New Topside 4"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.7983870967741935,
-      "rotationDegrees": -59.99999999999999
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "L4ScoringPosition",
-      "waypointRelativePos": 0.8122866894197968,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "AutonSpitCoral",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.8,
     "maxAcceleration": 3.0,
@@ -60,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -59.99999999999999
+    "rotation": 126.0
   },
   "reversed": false,
-  "folder": "Blue Topside Folder",
+  "folder": "Blue Topside Real",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 127.87498365109822
+    "rotation": -59.42077312751098
   },
   "useDefaultConstraints": true
 }

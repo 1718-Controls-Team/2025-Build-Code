@@ -3,45 +3,38 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.198,
-        "y": 5.185954610775752
+        "x": 7.095133749680198,
+        "y": 5.175
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.935364806866954,
-        "y": 5.576630901287554
+        "x": 5.784888698630137,
+        "y": 5.242080479452054
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.15,
-        "y": 5.525
+        "x": 5.032404978518133,
+        "y": 5.536252499014243
       },
       "prevControl": {
-        "x": 5.364965888921583,
-        "y": 5.652630978215141
+        "x": 5.224940533297374,
+        "y": 5.695720552698515
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue Topside 1"
+      "linkedName": "End Of New Topside 1"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "AutonSpitCoral",
-      "waypointRelativePos": 0.8440677966101708,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.8,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -52,10 +45,10 @@
     "rotation": -119.99999999999999
   },
   "reversed": false,
-  "folder": "Blue Topside Folder",
+  "folder": "Blue Topside Real",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

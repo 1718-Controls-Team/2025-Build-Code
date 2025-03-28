@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.759753072314715,
-        "y": 5.325203521384126
+        "x": 3.614,
+        "y": 5.360066132148474
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.425233113049158,
-        "y": 5.532745759079766
+        "x": 2.279480040734443,
+        "y": 5.567608369844114
       },
       "isLocked": false,
       "linkedName": "End of New Topside 3"
     },
     {
       "anchor": {
-        "x": 1.7484508660547657,
-        "y": 7.179445347601639
+        "x": 1.6529458552445513,
+        "y": 7.335312512289023
       },
       "prevControl": {
-        "x": 2.535011000795838,
-        "y": 5.398687903388291
+        "x": 2.439505989985622,
+        "y": 5.554555068075675
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
     "rotation": 126.0
   },
   "reversed": false,
-  "folder": "New Topside",
+  "folder": "Red Topside",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -59.42077312751098

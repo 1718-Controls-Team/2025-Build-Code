@@ -9,15 +9,15 @@
           "data": {
             "commands": [
               {
-                "type": "named",
-                "data": {
-                  "name": "CoralPickup"
-                }
-              },
-              {
                 "type": "wait",
                 "data": {
                   "waitTime": 0.1
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "CoralPickup"
                 }
               }
             ]
@@ -30,7 +30,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Blue Processor 1"
+                  "pathName": "NEW TOPSIDE 1"
                 }
               },
               {
@@ -57,7 +57,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Processor 2"
+            "pathName": "NEW TOPSIDE 2"
           }
         },
         {
@@ -67,35 +67,21 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Blue Processor 3"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 0.75
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "L4ScoringPosition"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "pathName": "NEW TOPSIDE 3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "L4ScoringPosition"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
           }
         },
         {
@@ -113,7 +99,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Processor 4"
+            "pathName": "NEW TOPSIDE 4"
           }
         },
         {
@@ -125,13 +111,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Processor 5"
+            "pathName": "NEW TOPSIDE 5"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "L4ScoringPosition"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
           }
         },
         {

@@ -3,11 +3,10 @@
   "robotLength": 0.889,
   "holonomicMode": true,
   "pathFolders": [
-    "Blue Algae Folder",
     "Blue Middle Folder",
     "Blue Processor Folder",
-    "Blue Topside Folder",
-    "New Topside"
+    "Blue Topside Real",
+    "Red Topside"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.8,

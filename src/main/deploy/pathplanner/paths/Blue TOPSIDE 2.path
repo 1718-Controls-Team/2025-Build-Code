@@ -3,37 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.85,
-        "y": 7.283
+        "x": 5.032404978518133,
+        "y": 5.536252499014243
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.097348845953569,
-        "y": 7.246688178158655
+        "x": 4.804771958912691,
+        "y": 5.723507809959361
       },
       "isLocked": false,
-      "linkedName": "End of Blue Topside 5"
+      "linkedName": "End Of New Topside 1"
     },
     {
       "anchor": {
-        "x": 3.808,
-        "y": 5.165
+        "x": 1.682,
+        "y": 7.347
       },
       "prevControl": {
-        "x": 3.035680721029145,
-        "y": 5.742475141341381
+        "x": 2.3485066773420322,
+        "y": 6.537202542289411
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End of New Topside 2"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.7983870967741935,
-      "rotationDegrees": -59.99999999999999
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -47,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -59.99999999999999
+    "rotation": 126.0
   },
   "reversed": false,
-  "folder": "Blue Topside Folder",
+  "folder": "Blue Topside Real",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 127.87498365109822
+    "rotation": -119.99999999999999
   },
   "useDefaultConstraints": true
 }
