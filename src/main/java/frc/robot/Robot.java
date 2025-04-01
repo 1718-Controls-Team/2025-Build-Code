@@ -11,6 +11,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -20,7 +21,8 @@ public class Robot extends TimedRobot {
   private final RobotContainer m_robotContainer;
   private Command m_autonLoading;
   private int m_auto2 = 0;
-
+  private Field2d field2d = new Field2d();
+  private Field2d odomField = new Field2d();
 
   boolean kUseLimelight = true;
 
@@ -49,6 +51,8 @@ public class Robot extends TimedRobot {
     //DataLogManager.start();
     //This should log the joysticks as well.
     //DriverStation.startDataLog(DataLogManager.getLog());
+    SmartDashboard.putData(field2d);
+    SmartDashboard.putData(odomField);
   }
 
   @Override
@@ -65,17 +69,19 @@ public class Robot extends TimedRobot {
      * of how to use vision should be tuned per-robot and to the team's specification.
      */
 
-     double headingDeg = m_robotContainer.drivetrain.getPigeon2().getRotation2d().getDegrees();
+     //double headingDeg = m_robotContainer.drivetrain.getPigeon2().getRotation2d().getDegrees();
       
-     LimelightHelpers.SetRobotOrientation("limelight-lime", headingDeg, 0, 0, 0, 0, 0);
+     //LimelightHelpers.SetRobotOrientation("limelight-lime", headingDeg, 0, 0, 0, 0, 0);
 
     if (kUseLimelight) {
       var driveState = m_robotContainer.drivetrain.getState();
       
-      LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+      //LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+      LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-lime");
+      field2d.setRobotPose(llMeasurement.pose);
+      odomField.setRobotPose(driveState.Pose);
       if (llMeasurement != null && llMeasurement.tagCount > 0) {
-        m_robotContainer.drivetrain.addVisionMeasurement(llMeasurement.pose, Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds));
-        m_robotContainer.drivetrain.setVisionMeasurementStdDevs(VecBuilder.fill(0.7, 0.7, 9999999));
+        m_robotContainer.drivetrain.addVisionMeasurement(llMeasurement.pose, Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds),VecBuilder.fill(0.7, 0.7, .1));
       }
     }
   }

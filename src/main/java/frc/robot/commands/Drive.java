@@ -58,11 +58,11 @@ public class Drive extends Command {
   private double driveController;
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-    .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
+    .withDeadband(MaxSpeed * 0.05).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // Use open-loop control for drive motors
  
   private final SwerveRequest.FieldCentricFacingAngle autoAlign = new SwerveRequest.FieldCentricFacingAngle()
-    .withDeadband(MaxSpeed*0.1).withHeadingPID(8, 0, 0.01)
+    .withDeadband(MaxSpeed*0.05).withHeadingPID(8, 0, 0.01)
     .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   //private final SwerveRequest.RobotCentric L4Score = new SwerveRequest.RobotCentric();
 
