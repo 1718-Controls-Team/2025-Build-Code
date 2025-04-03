@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.032,
-        "y": 5.536
+        "x": 4.9430127035007825,
+        "y": 5.527568493150685
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.804366980394558,
-        "y": 5.723255310945117
+        "x": 4.715379683895341,
+        "y": 5.714823804095802
       },
       "isLocked": false,
       "linkedName": "End of Blue TOPSIDE 1"
     },
     {
       "anchor": {
-        "x": 1.7140667650423946,
-        "y": 7.372668380191951
+        "x": 1.6846452459150532,
+        "y": 7.3829282657509205
       },
       "prevControl": {
-        "x": 2.380573442384426,
-        "y": 6.562870922481362
+        "x": 2.351151923257082,
+        "y": 6.5731308080403315
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,8 +33,8 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.8,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

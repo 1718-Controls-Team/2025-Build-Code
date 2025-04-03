@@ -140,7 +140,7 @@ public class RobotContainer {
         driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_coralIntake));
         driverController.a().onTrue(new ClimberInitialize(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber));
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
-        driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake));
+        driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake, m_elevator, m_coralIntake));
 
         
     }

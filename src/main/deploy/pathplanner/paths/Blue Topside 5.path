@@ -3,38 +3,57 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.6529458552445513,
-        "y": 7.335312512289023
+        "x": 1.588214897260274,
+        "y": 7.4117893835616435
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.436507511860417,
-        "y": 6.632934096482926
+        "x": 2.2388270547945206,
+        "y": 6.654494863013699
       },
       "isLocked": false,
       "linkedName": "End of Blue TOPSIDE 4"
     },
     {
       "anchor": {
-        "x": 3.3564157980424647,
-        "y": 5.134084132606026
+        "x": 3.398819816483116,
+        "y": 5.233073677988611
       },
       "prevControl": {
-        "x": 1.1499056084777521,
-        "y": 5.969399886282894
+        "x": 2.2483500418077966,
+        "y": 6.451334427166102
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.8502673796791445,
+      "rotationDegrees": -59.99999999999999
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7016949152542382,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 4.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.8,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -42,7 +61,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -59.42077312751098
+    "rotation": -59.99999999999999
   },
   "reversed": false,
   "folder": "Blue Topside Real",

@@ -82,6 +82,7 @@ public static final double kAlgaeStopSpinSpeed = 0;
 
 public static final double kAlgaeIntakePos = 3.5;
 public static final double kAlgaeClimbPos = 3.336;
+public static final double kAlgaeNetPos = 4.5;
 public static final double kAlgaeHomePos = 1.1;
 public static final double kAlgaeIntakePositionTolerance = 0.05;
 
@@ -212,7 +213,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kAlgaeIntake1MaxForwardVoltage = 11;
   public static final double kAlgaeIntake1MaxReverseVoltage = -11;
   
-  public static final double kAlgaeIntake1SupplyCurrentLimit = 10;
+  public static final double kAlgaeIntake1SupplyCurrentLimit = 20;
   public static final double kAlgaeIntake1VoltageClosedLoopRampPeriod = 0;
 
   public static final InvertedValue kAlgaeIntake1Direction = InvertedValue.Clockwise_Positive;
@@ -234,7 +235,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kAlgaeIntake2MaxForwardVoltage = 11;
   public static final double kAlgaeIntake2MaxReverseVoltage = -11;
 
-  public static final double kAlgaeIntake2SupplyCurrentLimit = 10;
+  public static final double kAlgaeIntake2SupplyCurrentLimit = 20;
   public static final double kAlgaeIntake2VoltageClosedLoopRampPeriod = 0;
 
   public static final InvertedValue kAlgaeIntake2Direction = InvertedValue.CounterClockwise_Positive;

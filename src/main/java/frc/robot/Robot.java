@@ -23,6 +23,8 @@ public class Robot extends TimedRobot {
   private int m_auto2 = 0;
   private Field2d field2d = new Field2d();
   private Field2d odomField = new Field2d();
+  private boolean useMegatag2 = false;
+  LimelightHelpers.PoseEstimate llMeasurement;
 
   boolean kUseLimelight = true;
 
@@ -38,7 +40,7 @@ public class Robot extends TimedRobot {
       PortForwarder.add(port, "limelight-lime.local", port);
     }
 
-    int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22};
+    int[] validIDs = {9, 11, 20, 22};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
 
     //Set a custom brownout voltage for the RoboRIO.
@@ -69,19 +71,24 @@ public class Robot extends TimedRobot {
      * of how to use vision should be tuned per-robot and to the team's specification.
      */
 
-     //double headingDeg = m_robotContainer.drivetrain.getPigeon2().getRotation2d().getDegrees();
+    double headingDeg = m_robotContainer.drivetrain.getState().Pose.getRotation().getDegrees();
       
-     //LimelightHelpers.SetRobotOrientation("limelight-lime", headingDeg, 0, 0, 0, 0, 0);
+    LimelightHelpers.SetRobotOrientation("limelight-lime", headingDeg, 0, 0, 0, 0, 0);
+    if (useMegatag2) {
+      llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+    } else {
+      llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-lime");
+    }
 
-    if (kUseLimelight) {
+    if (kUseLimelight && LimelightHelpers.getTV("limelight-lime")) {
       var driveState = m_robotContainer.drivetrain.getState();
       
       //LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
-      LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-lime");
+      
       field2d.setRobotPose(llMeasurement.pose);
       odomField.setRobotPose(driveState.Pose);
-      if (llMeasurement != null && llMeasurement.tagCount > 0) {
-        m_robotContainer.drivetrain.addVisionMeasurement(llMeasurement.pose, Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds),VecBuilder.fill(0.7, 0.7, .1));
+      if (llMeasurement != null && llMeasurement.tagCount > 0 && (m_robotContainer.drivetrain.getState().Speeds.omegaRadiansPerSecond < 1.0)) {
+        m_robotContainer.drivetrain.addVisionMeasurement(llMeasurement.pose, Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds),VecBuilder.fill(0.1, 0.1, .1));
       }
     }
   }
@@ -99,12 +106,14 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledExit() {
-    kUseLimelight = false;
+    
   }
 
   @Override
   public void autonomousInit() {
-    kUseLimelight = false;
+    useMegatag2 = true;
+    int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22};
+    LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
     if (m_auto2 == 0) {
       m_autonomousCommand = m_robotContainer.getAutonomousCommand();
       m_auto2 = 1;
@@ -123,7 +132,9 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {}
 
   @Override
-  public void autonomousExit() {}
+  public void autonomousExit() {
+    useMegatag2 = false;
+  }
 
   @Override
   public void teleopInit() {
@@ -131,7 +142,10 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     //CommandScheduler.getInstance().schedule(m_robotContainer.runInitializeCommand());
-    kUseLimelight=true;
+    int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
+    LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
+    kUseLimelight= true;
+    useMegatag2 = true;
   }
 
   @Override
@@ -141,7 +155,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopExit() {
-    kUseLimelight=false;
+    int[] validIDs = {9, 11, 20, 22};
+    LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
+    useMegatag2 = false;
   }
 
   @Override

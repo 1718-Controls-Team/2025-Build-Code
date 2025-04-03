@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.095133749680198,
-        "y": 5.175
+        "x": 7.107148972602739,
+        "y": 6.203724315068493
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.784888698630137,
-        "y": 5.242080479452054
+        "x": 6.205500346713696,
+        "y": 5.891748702659365
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.032,
-        "y": 5.536
+        "x": 4.9430127035007825,
+        "y": 5.527568493150685
       },
       "prevControl": {
-        "x": 5.224535554779242,
-        "y": 5.695468053684271
+        "x": 5.208362593556207,
+        "y": 5.620752791939072
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,7 +48,7 @@
   "folder": "Blue Topside Real",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 179.21340100020427
   },
   "useDefaultConstraints": false
 }

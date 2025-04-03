@@ -3,37 +3,56 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7140667650423946,
-        "y": 7.372668380191951
+        "x": 1.6846452459150532,
+        "y": 7.3829282657509205
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.420057874463115,
-        "y": 6.699133236595786
+        "x": 2.1650681204531734,
+        "y": 6.9721455497299925
       },
       "isLocked": false,
       "linkedName": "End of Blue TOPSIDE 2"
     },
     {
       "anchor": {
-        "x": 3.614,
-        "y": 5.37
+        "x": 3.599628987319514,
+        "y": 5.353448250502924
       },
       "prevControl": {
-        "x": 1.247631018609245,
-        "y": 5.818777484669854
+        "x": 2.413872964992258,
+        "y": 6.536960390373202
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "End of Blue TOPSIDE 3"
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.6844919786096253,
+      "rotationDegrees": -59.99999999999999
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7525423728813565,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 4.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.8,
+    "maxVelocity": 4.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -50,5 +69,5 @@
     "velocity": 0,
     "rotation": 126.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }
