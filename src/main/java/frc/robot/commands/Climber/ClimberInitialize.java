@@ -45,7 +45,7 @@ public class ClimberInitialize extends Command {
     m_CoralIntake.setcoralRotate(Constants.kCoralClimbPos);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeClimbPos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorClimbPos);
-    m_Climber.setTClimberPosition(60);
+    m_Climber.setTClimberPosition(114);
     if (m_Elevator.speedLimit < 1.0) {
       m_Elevator.setSpeedLimit(1);
     } else {

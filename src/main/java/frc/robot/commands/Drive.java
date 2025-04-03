@@ -105,9 +105,17 @@ public class Drive extends Command {
     
     if (m_Controller.rightStick().getAsBoolean()) {
       speedControl = 0.8;
+      int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22};
+      LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
     } else if (m_Controller.leftStick().getAsBoolean()) {
       speedControl = 1;
     }
+
+    if (lockedID != 0) {
+      int[] validIDs = {Math.toIntExact(Math.round(lockedID))};
+      LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
+    } 
+
 
     aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
     if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) {
@@ -404,8 +412,8 @@ public class Drive extends Command {
           turnController = -1;
         }
 
-        m_Drivetrain.setControl(autoAlign.withVelocityX(driveController * MaxSpeed * 0.35) // Drive forward with                                                                    
-         .withVelocityY(strafeController * MaxSpeed * 0.35) // Drive left with negative X (left)
+        m_Drivetrain.setControl(autoAlign.withVelocityX(-driveController * MaxSpeed * 0.35) // Drive forward with                                                                    
+         .withVelocityY(-strafeController * MaxSpeed * 0.35) // Drive left with negative X (left)
          .withTargetDirection(new Rotation2d(Math.toRadians(rotationTarget))));
          //.withRotationalRate(-turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
       break;

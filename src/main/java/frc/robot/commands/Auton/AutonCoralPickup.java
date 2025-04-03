@@ -43,7 +43,7 @@ public class AutonCoralPickup extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if ((spitTimer.get() > 1)){
+    if ((spitTimer.get() > 0.75)){
       m_isFinished=true;
     }
   }

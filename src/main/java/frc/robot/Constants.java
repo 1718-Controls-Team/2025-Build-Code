@@ -60,7 +60,7 @@ public static final double kCoralHoldSpinSpeed = 5;
 public static final double kCoralStopSpinSpeed = 0;
 
 //180 max position if zero is all the way up
-public static final double kTClimberUpPos = -56; //Was -69
+public static final double kTClimberUpPos = -40; //Was -69
 
 // Elevator 0-33.5 is position range
 public static final double kElevatorCoralIntakePos = 0;
@@ -288,28 +288,40 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   
 
   //Bunch of preset drive positions Xvalue, Yvalue, rotation
-  public static final double[] kBlueTopLR = {3.57 + kAprilX2Offset, 5.15 - kAprilYOffset, 300}; //FIXED
-  public static final double[] kBlueTopLL = {3.812 + kAprilX2Offset, 5.339 - kAprilYOffset, 300}; //FIXED
-  public static final double[] kBlueTopRR = {5.152 + kAprilX2Offset, 5.393 - kAprilYOffset, 240}; //FIXED
-  public static final double[] kBlueTopRL = {5.389 + kAprilX2Offset, 5.227 - kAprilYOffset, 240}; //FIXED
-  public static final double[] kBlueRightR = {5.989 - kAprilX1Offset, 4.340, 180}; //FIXED
-  public static final double[] kBlueRightL = {5.989 - kAprilX1Offset, 3.969, 180}; //FIXED
-  public static final double[] kBlueBottomRR = {5.37 - kAprilX2Offset, 2.875, 120}; //FIXED
-  public static final double[] kBlueBottomRL = {5.202 - kAprilX2Offset, 2.707, 120}; //FIXED
-  public static final double[] kBlueBottomLR = {3.922 - kAprilX2Offset, 2.663 + kAprilYOffset, 60}; //FIXED
-  public static final double[] kBlueBottomLL = {3.628 - kAprilX2Offset, 2.794 + kAprilYOffset, 60}; //FIXED
-  public static final double[] kBlueLeftR = {3.03 + kAprilX1Offset, 3.763, 0}; //FIXED
-  public static final double[] kBlueLeftL = {3.03 + kAprilX1Offset, 4.058, 0}; //FIXED
+  public static final double[] kBlueTopLR = {3.57 + kAprilX2Offset, 5.15 - kAprilYOffset, 300}; 
+  public static final double[] kBlueTopLL = {3.725 + kAprilX2Offset, 5.3603 - kAprilYOffset, 300}; //FIXED
+  public static final double[] kBlueTopRR = {5.152 + kAprilX2Offset, 5.393 - kAprilYOffset, 240}; 
+  public static final double[] kBlueTopRL = {5.249 + kAprilX2Offset, 5.3603 - kAprilYOffset, 240}; //FIXED
+  public static final double[] kBlueRightR = {5.989 - kAprilX1Offset, 4.340, 180}; 
+  public static final double[] kBlueRightL = {5.989 - kAprilX1Offset, 3.969, 180}; 
+  public static final double[] kBlueBottomRR = {5.37 - kAprilX2Offset, 2.875, 120}; 
+  public static final double[] kBlueBottomRL = {5.249 - kAprilX2Offset, 2.7197, 120}; //FIXED
+  public static final double[] kBlueBottomLR = {3.922 - kAprilX2Offset, 2.663 + kAprilYOffset, 60}; 
+  public static final double[] kBlueBottomLL = {3.725 - kAprilX2Offset, 2.7197 + kAprilYOffset, 60}; //FIXED
+  public static final double[] kBlueLeftR = {3.03 + kAprilX1Offset, 3.763, 0}; 
+  public static final double[] kBlueLeftL = {3.03 + kAprilX1Offset, 4.058, 0}; 
   public static final double[] kRedTopLR = {(17.55 - kBlueTopRL[0]), kBlueTopRL[1], 120}; //
-  public static final double[] kRedTopLL = {(17.55 - kBlueTopRR[0]), kBlueTopRR[1], 120}; //
+  public static final double[] kRedTopLL = {(11.539), 5.3603, 120}; //FIXED
   public static final double[] kRedTopRR = {(17.55 - kBlueTopLL[0]), kBlueTopLL[1], 60}; //
-  public static final double[] kRedTopRL = {(17.55 - kBlueTopLR[0]), kBlueTopLR[1], 60}; //
+  public static final double[] kRedTopRL = {(13.825), 5.3603, 60}; //FIXED
   public static final double[] kRedRightR = {(17.55 - kBlueLeftL[0]), kBlueLeftL[1], 0}; //
-  public static final double[] kRedRightL = {(17.55 - kBlueLeftR[0]), kBlueLeftR[1], 0}; //
+  public static final double[] kRedRightL = {(14.587), 4.04, 0}; //FIXED
   public static final double[] kRedBottomRR = {(17.55 - kBlueBottomLL[0]), kBlueBottomLL[1], 300};
-  public static final double[] kRedBottomRL = {(17.55 - kBlueBottomLR[0]), kBlueBottomLR[1], 300};
+  public static final double[] kRedBottomRL = {(13.825), 2.7197, 300}; //FIXED
   public static final double[] kRedBottomLR = {(17.55 - kBlueBottomRL[0]), kBlueBottomRL[1], 240};
-  public static final double[] kRedBottomLL = {(17.55 - kBlueBottomRR[0]), kBlueBottomRR[1], 240};
+  public static final double[] kRedBottomLL = {(14.587), 2.7197, 240}; //FIXED
   public static final double[] kRedLeftR = {(17.55 - kBlueRightL[0]), kBlueRightL[1], 180};
-  public static final double[] kRedLeftL = {(17.55 - kBlueRightR[0]), kBlueRightR[1], 180};
+  public static final double[] kRedLeftL = {(11.539), 4.04, 180}; //FIXED
 }
+/*
+ * Math
+ * Center of Red Reef:
+ * x = 13.063
+ * y = 4.04
+ * (13.825-13.063)^2 + (4.04-2.7197)^2
+ * r = 1.5244133593 for all red(?) left scores
+ * 
+ * For scoring on left Branch
+ * Standard X change = 0.762
+ * Standard Y change = 1.3203
+ */

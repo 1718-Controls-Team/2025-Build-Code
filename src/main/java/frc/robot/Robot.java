@@ -155,8 +155,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopExit() {
-    int[] validIDs = {9, 11, 20, 22};
-    LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
+    
     useMegatag2 = false;
   }
 
