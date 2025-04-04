@@ -6,6 +6,8 @@ package frc.robot.commands;
 
 import static edu.wpi.first.units.Units.*;
 
+import java.util.Optional;
+
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
@@ -20,6 +22,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -29,7 +32,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 public class Drive extends Command {
   private final CommandSwerveDrivetrain m_Drivetrain;
   private final CommandXboxController m_Controller;
-  private final CoordinateTargets m_CoordinateCalculator = new CoordinateTargets();
+  //private final CoordinateTargets m_CoordinateCalculator = new CoordinateTargets();
   private final Elevator m_Elevator;
   //private final CoralIntake m_CoralIntake;
 
@@ -41,19 +44,18 @@ public class Drive extends Command {
   private String driveRequest = "";
   private boolean UsingLimelight = false;
   
-  private final PIDController drivePID, strafePID, aimPID;
+  private final PIDController drivePID, strafePID;
   private double aprilTagID;
   private double lockedID = 0;
   private double xTarget = 0;
   private double yTarget = 0;
   private double rotationTarget = 0;
   private Pose2d RobotPosition;
-  private double RobotAngle;
   private double speedControl = 1;
 
-  private Pose2d targetPose2d;
+  private double autoAlignFlip = -1;
+  Optional<Alliance> allianceColor = DriverStation.getAlliance();
 
-  private double turnController;
   private double strafeController;
   private double driveController;
 
@@ -75,7 +77,6 @@ public class Drive extends Command {
 
     this.drivePID = new PIDController(2.3, 0, 0.01); // 1, 0, 0
     this.strafePID = new PIDController(2.3, 0, 0.01); // 1, 0, 0
-    this.aimPID = new PIDController(0.024, 0, 0.0); // 0.008, 0, 0.0013
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Drivetrain);
@@ -105,8 +106,6 @@ public class Drive extends Command {
     
     if (m_Controller.rightStick().getAsBoolean()) {
       speedControl = 0.8;
-      int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22};
-      LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
     } else if (m_Controller.leftStick().getAsBoolean()) {
       speedControl = 1;
     }
@@ -118,7 +117,11 @@ public class Drive extends Command {
 
 
     aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
-    if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()) && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) {
+    if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()
+    || m_Controller.povDownLeft().getAsBoolean() || m_Controller.povUpLeft().getAsBoolean()
+    || m_Controller.povDownRight().getAsBoolean() || m_Controller.povUpRight().getAsBoolean())
+    && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) 
+    {
       driveRequest = "limelightDrive";
       UsingLimelight = true;
     } /*else if ((m_CoralIntake.getL4CoralSpitMode() == true) && (m_CoralIntake.getSpitting())) {
@@ -127,6 +130,8 @@ public class Drive extends Command {
       lockedID = 0;
       driveRequest = "";
       UsingLimelight = false;
+      int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22};
+      LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
     }
 
     switch(driveRequest) {
@@ -134,7 +139,7 @@ public class Drive extends Command {
         //###########################################BEGIN DETERMINING TARGET POINTS################################################
         //###########################################BEGIN DETERMINING TARGET POINTS################################################
         aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
-        if (m_Controller.povRight().getAsBoolean()) {
+        if (m_Controller.povRight().getAsBoolean() || m_Controller.povDownRight().getAsBoolean() || m_Controller.povUpRight().getAsBoolean()) {
           if (lockedID == 0) {
             if (aprilTagID == 6) {
               xTarget = Constants.kRedBottomRR[0];
@@ -237,7 +242,7 @@ public class Drive extends Command {
               yTarget = Constants.kBlueBottomRR[1];
             }
           }
-        } else if (m_Controller.povLeft().getAsBoolean()) {
+        } else if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povDownLeft().getAsBoolean()) || m_Controller.povUpLeft().getAsBoolean()) {
           if (lockedID == 0) {
             if (aprilTagID == 6) {
               xTarget = Constants.kRedBottomRL[0];
@@ -387,12 +392,6 @@ public class Drive extends Command {
         //###########################################END OF DETERMINING TARGET POINTS################################################
         //###########################################END OF DETERMINING TARGET POINTS################################################
 
-        RobotAngle = (m_Drivetrain.getPigeon2().getRotation2d().getDegrees() + 180)%360;
-        if (RobotAngle < 5) {
-           RobotAngle = RobotAngle + 360;
-        }
-
-        turnController = aimPID.calculate(RobotAngle, rotationTarget);
         strafeController = strafePID.calculate(RobotPosition.getY(), yTarget);
         driveController = drivePID.calculate(RobotPosition.getX(), xTarget);
 
@@ -406,16 +405,17 @@ public class Drive extends Command {
         } else if (strafeController < -1) {
           strafeController = -1;
         }
-        if (turnController > 1) {
-          turnController = 1;
-        } else if (turnController < -1) {
-          turnController = -1;
+
+        allianceColor = DriverStation.getAlliance();
+        if (allianceColor.get() == Alliance.Red) {
+          autoAlignFlip = -1;
+        } else {
+          autoAlignFlip = 1;
         }
 
-        m_Drivetrain.setControl(autoAlign.withVelocityX(-driveController * MaxSpeed * 0.35) // Drive forward with                                                                    
-         .withVelocityY(-strafeController * MaxSpeed * 0.35) // Drive left with negative X (left)
+        m_Drivetrain.setControl(autoAlign.withVelocityX(driveController * MaxSpeed * 0.4 * autoAlignFlip) // Drive forward with                                                                    
+         .withVelocityY(strafeController * MaxSpeed * 0.4 * autoAlignFlip) // Drive left with negative X (left)
          .withTargetDirection(new Rotation2d(Math.toRadians(rotationTarget))));
-         //.withRotationalRate(-turnController * MaxAngularRate)); // Drive counterclockwise with negative X (left)
       break;
       /*case "SpeedTest":
         m_Drivetrain.setControl(autoAlign.withVol);

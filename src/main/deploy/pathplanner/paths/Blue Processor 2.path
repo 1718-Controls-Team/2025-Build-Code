@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.7243182667933745,
-        "y": 0.6925709722035924
+        "x": 1.6996768403192761,
+        "y": 0.7162943498947744
       },
       "prevControl": {
-        "x": 2.6792152378552436,
-        "y": 1.3142387362199495
+        "x": 2.6545738113811455,
+        "y": 1.3379621139111317
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,7 +48,7 @@
   "folder": "Blue Processor Folder",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 121.32869286780407
+    "rotation": 119.99999999999999
   },
   "useDefaultConstraints": true
 }

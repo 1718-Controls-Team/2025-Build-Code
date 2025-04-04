@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7717556749211,
-        "y": 3.291015193225653
+        "x": 3.863474496715797,
+        "y": 3.341502686845377
       },
       "isLocked": false,
       "linkedName": "End of Blue Processor 4"
@@ -20,16 +20,35 @@
         "y": 2.7449118686372653
       },
       "prevControl": {
-        "x": 3.032891234497144,
-        "y": 1.5759302739320984
+        "x": 3.6373075465836573,
+        "y": 2.5013944820692333
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.7967914438502675,
+      "rotationDegrees": 59.99999999999999
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7525423728813536,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 4.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {

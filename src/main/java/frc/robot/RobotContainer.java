@@ -30,6 +30,7 @@ import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
 import frc.robot.commands.InitializeMechanisms;
 import frc.robot.commands.Auton.AlignToReef;
+import frc.robot.commands.Auton.AutoL4Scoring;
 import frc.robot.commands.Auton.AutonCoralPickup;
 //import frc.robot.commands.Auton.AutonPIDCommandTest;
 import frc.robot.commands.Auton.AutonSpitCoral;
@@ -152,7 +153,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("CoralIntakePosition", new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L2ScoringPosition", new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L3ScoringPosition", new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
-        NamedCommands.registerCommand("L4ScoringPosition", new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("L4ScoringPosition", new AutoL4Scoring(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("AlgaeDelivery", new AlgaeDelivery(m_algaeIntake));
         NamedCommands.registerCommand("AlgaePickup", new AlgaePickup(m_algaeIntake, m_coralIntake));
 

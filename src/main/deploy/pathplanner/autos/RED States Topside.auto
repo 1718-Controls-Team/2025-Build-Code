@@ -30,83 +30,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Blue Middle 1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "L4ScoringPosition"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "AutonSpitCoral"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.75
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "AlgaeL2Position"
-                }
-              },
-              {
-                "type": "parallel",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Blue Middle 2"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "AlgaePickup"
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.5
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Blue Middle 3"
+                  "pathName": "NEW TOPSIDE 1"
                 }
               },
               {
@@ -116,13 +40,13 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.75
+                        "waitTime": 0.5
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "AlgaeProcessorPosition"
+                        "name": "L4ScoringPosition"
                       }
                     }
                   ]
@@ -134,57 +58,25 @@
         {
           "type": "named",
           "data": {
-            "name": "AlgaeDelivery"
+            "name": "AutonSpitCoral"
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 0.75
+            "name": "CoralIntakePosition"
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Blue Middle 4"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 0.75
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "AlgaeL3Position"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "AlgaePickup"
-                      }
-                    },
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 1.0
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "pathName": "NEW TOPSIDE 2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "CoralPickup"
           }
         },
         {
@@ -194,7 +86,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Blue Middle 5"
+                  "pathName": "NEW TOPSIDE 3"
                 }
               },
               {
@@ -204,13 +96,13 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.75
+                        "waitTime": 1.25
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "AlgaeProcessorPosition"
+                        "name": "L4ScoringPosition"
                       }
                     }
                   ]
@@ -222,13 +114,69 @@
         {
           "type": "named",
           "data": {
-            "name": "AlgaeDelivery"
+            "name": "AutonSpitCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "CoralIntakePosition"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "NEW TOPSIDE 4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "CoralPickup"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "NEW TOPSIDE 5"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 1.25
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "L4ScoringPosition"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutonSpitCoral"
           }
         }
       ]
     }
   },
-  "resetOdom": true,
+  "resetOdom": false,
   "folder": null,
   "choreoAuto": false
 }

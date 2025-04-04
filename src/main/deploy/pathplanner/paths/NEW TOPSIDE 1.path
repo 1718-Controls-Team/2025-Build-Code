@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 4.9781480606044415,
-        "y": 5.530108111442076
+        "x": 4.943,
+        "y": 5.527568493150685
       },
       "prevControl": {
-        "x": 5.170683615383683,
-        "y": 5.689576165126348
+        "x": 5.135535554779241,
+        "y": 5.687036546834957
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End Of New Topside 1"
+      "linkedName": "End Red Topside 1"
     }
   ],
   "rotationTargets": [],

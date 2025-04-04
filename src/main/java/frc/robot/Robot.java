@@ -40,7 +40,7 @@ public class Robot extends TimedRobot {
       PortForwarder.add(port, "limelight-lime.local", port);
     }
 
-    int[] validIDs = {9, 11, 20, 22};
+    int[] validIDs = {9, 10, 11, 20, 21, 22};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
 
     //Set a custom brownout voltage for the RoboRIO.
@@ -142,7 +142,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     //CommandScheduler.getInstance().schedule(m_robotContainer.runInitializeCommand());
-    int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
+    int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
     kUseLimelight= true;
     useMegatag2 = true;

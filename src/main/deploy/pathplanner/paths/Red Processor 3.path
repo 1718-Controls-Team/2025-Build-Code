@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.6996768403192761,
-        "y": 0.7162943498947744
+        "x": 1.7243182667933745,
+        "y": 0.6925709722035924
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.1450905293535136,
-        "y": 2.702974378900435
+        "x": 2.299737589489135,
+        "y": 2.555238375272954
       },
       "isLocked": false,
-      "linkedName": "End of Blue Processor 2"
+      "linkedName": "End Red Processor 2"
     },
     {
       "anchor": {
@@ -20,24 +20,24 @@
         "y": 2.5633868732659573
       },
       "prevControl": {
-        "x": 3.6211900684931506,
-        "y": 2.0115582191780823
+        "x": 3.865110849224403,
+        "y": 2.0089403622295436
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue Processor 3"
+      "linkedName": "End Red Processor 3"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.85,
+      "waypointRelativePos": 0.5481283422459893,
       "rotationDegrees": 59.99999999999999
     }
   ],
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.7491525423728812,
+      "minWaypointRelativePos": 0.75,
       "maxWaypointRelativePos": 1.0,
       "constraints": {
         "maxVelocity": 4.0,
@@ -64,7 +64,7 @@
     "rotation": 59.99999999999999
   },
   "reversed": false,
-  "folder": "Blue Processor Folder",
+  "folder": "Red Processor",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -126.0

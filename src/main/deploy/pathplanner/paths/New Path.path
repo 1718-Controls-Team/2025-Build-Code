@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.094309007445579,
-        "y": 2.7208945992277735
+        "x": 3.379,
+        "y": 5.148
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.5251568761397465,
-        "y": 2.5188565921062063
+        "x": -3.8904914383588602,
+        "y": 5.929361301364959
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.2254811610421585,
-        "y": 2.7208945992277735
+        "x": 13.825,
+        "y": 2.7197
       },
       "prevControl": {
-        "x": 5.475481152155833,
-        "y": 2.7208279421739117
+        "x": 12.825,
+        "y": 2.7197
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue Processor 1"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -34,7 +34,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 2.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -45,10 +45,10 @@
     "rotation": 119.99999999999999
   },
   "reversed": false,
-  "folder": "Blue Processor Folder",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -57.26453835394813
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }
