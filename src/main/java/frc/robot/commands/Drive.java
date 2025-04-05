@@ -124,14 +124,14 @@ public class Drive extends Command {
     {
       driveRequest = "limelightDrive";
       UsingLimelight = true;
-    } /*else if ((m_CoralIntake.getL4CoralSpitMode() == true) && (m_CoralIntake.getSpitting())) {
-      driveRequest = "L4Score";
-    }*/ else {
+    } else {
       lockedID = 0;
       driveRequest = "";
+      if (UsingLimelight = true) {
+        int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22};
+        LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
+      }
       UsingLimelight = false;
-      int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22};
-      LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
     }
 
     switch(driveRequest) {
