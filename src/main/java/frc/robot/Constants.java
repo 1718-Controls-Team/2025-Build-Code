@@ -289,30 +289,30 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   
 
   //Bunch of preset drive positions Xvalue, Yvalue, rotation
-  public static final double[] kBlueTopLR = {3.45 + kAprilX2Offset, 5.17 - kAprilYOffset, 300};       //RIGHT FIXED
-  public static final double[] kBlueTopLL = {3.725 + kAprilX2Offset, 5.3603 - kAprilYOffset, 300};    //FIXED
-  public static final double[] kBlueTopRR = {5.524 + kAprilX2Offset, 5.17 - kAprilYOffset, 240};     //RIGHT FIXED
-  public static final double[] kBlueTopRL = {5.249 + kAprilX2Offset, 5.3603 - kAprilYOffset, 240};    //FIXED
-  public static final double[] kBlueRightR = {6.011 - kAprilX1Offset, 4.352, 180}; 
-  public static final double[] kBlueRightL = {6.011 - kAprilX1Offset, 4.04, 180}; //Maybe
-  public static final double[] kBlueBottomRR = {5.524 - kAprilX2Offset, 2.91, 120};                  //RIGHT FIXED
-  public static final double[] kBlueBottomRL = {5.249 - kAprilX2Offset, 2.7197, 120};                 //FIXED
-  public static final double[] kBlueBottomLR = {3.45 - kAprilX2Offset, 2.91 + kAprilYOffset, 60};     //RIGHT FIXED
-  public static final double[] kBlueBottomLL = {3.725 - kAprilX2Offset, 2.7197 + kAprilYOffset, 60};  //FIXED
-  public static final double[] kBlueLeftR = {2.963 + kAprilX1Offset, 3.676, 0}; 
-  public static final double[] kBlueLeftL = {2.963 + kAprilX1Offset, 4.04, 0}; //Maybe
-  public static final double[] kRedTopLR = {(12.026), 5.17, 120};                            //RIGHT FIXED
-  public static final double[] kRedTopLL = {(11.539), 5.3603, 120};                             //FIXED
-  public static final double[] kRedTopRR = {(14.1), 5.17, 60};                               //RIGHT FIXED
-  public static final double[] kRedTopRL = {(13.825), 5.3603, 60};                              //FIXED
-  public static final double[] kRedRightR = {(14.56), 4.362, 0}; 
-  public static final double[] kRedRightL = {(14.587), 4.04, 0};                                //FIXED
-  public static final double[] kRedBottomRR = {(14.1), 2.91, 300};                           //RIGHT FIXED
-  public static final double[] kRedBottomRL = {(13.825), 2.7197, 300};                          //THIS IS THE OG FIXED 
-  public static final double[] kRedBottomLR = {(12.026), 2.91, 240};                         //RIGHT FIXED
-  public static final double[] kRedBottomLL = {(14.587), 2.7197, 240};                          //FIXED
-  public static final double[] kRedLeftR = {(11.539), 3.693, 180};
-  public static final double[] kRedLeftL = {(11.539), 4.04, 180};                               //FIXED
+  public static final double[] kBlue19R = {3.45 + kAprilX2Offset, 5.17 - kAprilYOffset, 300};       //RIGHT FIXED
+  public static final double[] kBlue19L = {3.725 + kAprilX2Offset, 5.3603 - kAprilYOffset, 300};    //FIXED
+  public static final double[] kBlue20R = {5.524 + kAprilX2Offset, 5.17 - kAprilYOffset, 240};     //RIGHT FIXED
+  public static final double[] kBlue20L = {5.249 + kAprilX2Offset, 5.3603 - kAprilYOffset, 240};    //FIXED
+  public static final double[] kBlue21R = {6.011 - kAprilX1Offset, 4.352, 180}; 
+  public static final double[] kBlue21L = {6.011 - kAprilX1Offset, 4.04, 180}; //Maybe
+  public static final double[] kBlue22R = {5.524 - kAprilX2Offset, 2.91, 120};                  //RIGHT FIXED
+  public static final double[] kBlue22L = {5.249 - kAprilX2Offset, 2.7197, 120};                 //FIXED
+  public static final double[] kBlue17R = {3.45 - kAprilX2Offset, 2.91 + kAprilYOffset, 60};     //RIGHT FIXED
+  public static final double[] kBlue17L = {3.725 - kAprilX2Offset, 2.7197 + kAprilYOffset, 60};  //FIXED
+  public static final double[] kBlue18R = {2.963 + kAprilX1Offset, 3.676, 0}; 
+  public static final double[] kBlue18L = {2.963 + kAprilX1Offset, 4.04, 0}; //Maybe
+  public static final double[] kRed9R = {(12.026), 5.17, 120};                            //RIGHT FIXED
+  public static final double[] kRed9L = {(11.539), 5.3603, 120};                             //FIXED
+  public static final double[] kRed8R = {(14.1), 5.17, 60};                               //RIGHT FIXED
+  public static final double[] kRed8L = {(13.825), 5.3603, 60};                              //FIXED
+  public static final double[] kRed7R = {(14.56), 4.362, 0}; 
+  public static final double[] kRed7L = {(14.587), 4.04, 0};                                //FIXED
+  public static final double[] kRed6R = {(14.1), 2.91, 300};                           //RIGHT FIXED
+  public static final double[] kRed6L = {(13.825), 2.7197, 300};                          //THIS IS THE OG FIXED 
+  public static final double[] kRed11R = {(12.026), 2.91, 240};                         //RIGHT FIXED
+  public static final double[] kRed11L = {(14.587), 2.7197, 240};                          //FIXED
+  public static final double[] kRed10R = {(11.539), 3.693, 180};
+  public static final double[] kRed10L = {(11.539), 4.04, 180};                               //FIXED
 }
 /*
  * Math

@@ -142,207 +142,207 @@ public class Drive extends Command {
         if (m_Controller.povRight().getAsBoolean() || m_Controller.povDownRight().getAsBoolean() || m_Controller.povUpRight().getAsBoolean()) {
           if (lockedID == 0) {
             if (aprilTagID == 6) {
-              xTarget = Constants.kRedBottomRR[0];
-              yTarget = Constants.kRedBottomRR[1];
-              rotationTarget = Constants.kRedBottomRR[2];
+              xTarget = Constants.kRed6R[0];
+              yTarget = Constants.kRed6R[1];
+              rotationTarget = Constants.kRed6R[2];
               lockedID = 6;
             } else if (aprilTagID == 7) {
-              xTarget = Constants.kRedRightR[0];
-              yTarget = Constants.kRedRightR[1];
-              rotationTarget = Constants.kRedRightR[2];
+              xTarget = Constants.kRed7R[0];
+              yTarget = Constants.kRed7R[1];
+              rotationTarget = Constants.kRed7R[2];
               lockedID = 7;
             } else if (aprilTagID == 8) {
-              xTarget = Constants.kRedTopRR[0];
-              yTarget = Constants.kRedTopRR[1];
-              rotationTarget = Constants.kRedTopRR[2];
+              xTarget = Constants.kRed8R[0];
+              yTarget = Constants.kRed8R[1];
+              rotationTarget = Constants.kRed8R[2];
               lockedID = 8;
             } else if (aprilTagID == 9) {
-              xTarget = Constants.kRedTopLR[0];
-            yTarget = Constants.kRedTopLR[1];
-              rotationTarget = Constants.kRedTopLR[2];
+              xTarget = Constants.kRed9R[0];
+            yTarget = Constants.kRed9R[1];
+              rotationTarget = Constants.kRed9R[2];
               lockedID = 9;
             } else if (aprilTagID == 10) {
-              xTarget = Constants.kRedLeftR[0];
-              yTarget = Constants.kRedLeftR[1];
-              rotationTarget = Constants.kRedLeftR[2];
+              xTarget = Constants.kRed10R[0];
+              yTarget = Constants.kRed10R[1];
+              rotationTarget = Constants.kRed10R[2];
               lockedID = 10;
             } else if (aprilTagID == 11) {
-              xTarget = Constants.kRedBottomLR[0];
-              yTarget = Constants.kRedBottomLR[1];
-              rotationTarget = Constants.kRedBottomLR[2];
+              xTarget = Constants.kRed11R[0];
+              yTarget = Constants.kRed11R[1];
+              rotationTarget = Constants.kRed11R[2];
               lockedID = 11;
             } else if (aprilTagID == 17) {
-              xTarget = (Constants.kBlueBottomLR[0] - 0.125);
-              yTarget = (Constants.kBlueBottomLR[1] - 0.2165075);
-              rotationTarget = Constants.kBlueBottomLR[2];
+              xTarget = (Constants.kBlue17R[0] - 0.125);
+              yTarget = (Constants.kBlue17R[1] - 0.2165075);
+              rotationTarget = Constants.kBlue17R[2];
               lockedID = 17;
             } else if (aprilTagID == 18) {
-              xTarget = (Constants.kBlueLeftR[0] - 1);
-              yTarget = Constants.kBlueLeftR[1];
-              rotationTarget = Constants.kBlueLeftR[2];
+              xTarget = (Constants.kBlue18R[0] - 1);
+              yTarget = Constants.kBlue18R[1];
+              rotationTarget = Constants.kBlue18R[2];
               lockedID = 18;
             } else if (aprilTagID == 19) {
-              xTarget = (Constants.kBlueTopLR[0] - 0.125);
-              yTarget = (Constants.kBlueTopLR[1] + 0.2165075);
-              rotationTarget = Constants.kBlueTopLR[2];
+              xTarget = (Constants.kBlue19R[0] - 0.125);
+              yTarget = (Constants.kBlue19R[1] + 0.2165075);
+              rotationTarget = Constants.kBlue19R[2];
               lockedID = 19;
             } else if (aprilTagID == 20) {
-              xTarget = (Constants.kBlueTopRR[0] + 0.125);
-              yTarget = (Constants.kBlueTopRR[1] + 0.2165075);
-              rotationTarget = Constants.kBlueTopRR[2];
+              xTarget = (Constants.kBlue20R[0] + 0.125);
+              yTarget = (Constants.kBlue20R[1] + 0.2165075);
+              rotationTarget = Constants.kBlue20R[2];
               lockedID = 20;
             } else if (aprilTagID == 21) {
-              xTarget = (Constants.kBlueRightR[0] + 1);
-              yTarget = Constants.kBlueRightR[1];
-              rotationTarget = Constants.kBlueRightR[2];
+              xTarget = (Constants.kBlue21R[0] + 1);
+              yTarget = Constants.kBlue21R[1];
+              rotationTarget = Constants.kBlue21R[2];
               lockedID = 21;
             } else if (aprilTagID == 22) {
-              xTarget = (Constants.kBlueBottomRR[0] + 0.125);
-              yTarget = (Constants.kBlueBottomRR[1] - 0.2165075);
-              rotationTarget = Constants.kBlueBottomRR[2];
+              xTarget = (Constants.kBlue22R[0] + 0.125);
+              yTarget = (Constants.kBlue22R[1] - 0.2165075);
+              rotationTarget = Constants.kBlue22R[2];
               lockedID = 22;
             }
           } 
           if ((Math.abs(RobotPosition.getX() - xTarget) < 0.12) && (Math.abs(RobotPosition.getY() - yTarget) < 0.12)) {
             if (lockedID == 6) {
-              xTarget = Constants.kRedBottomRR[0];
-              yTarget = Constants.kRedBottomRR[1];
+              xTarget = Constants.kRed6R[0];
+              yTarget = Constants.kRed6R[1];
             } else if (lockedID == 7) {
-              xTarget = Constants.kRedRightR[0];
-              yTarget = Constants.kRedRightR[1];
+              xTarget = Constants.kRed7R[0];
+              yTarget = Constants.kRed7R[1];
             } else if (lockedID == 8) {
-              xTarget = Constants.kRedTopRR[0];
-              yTarget = Constants.kRedTopRR[1];
+              xTarget = Constants.kRed8R[0];
+              yTarget = Constants.kRed8R[1];
             } else if (lockedID == 9) {
-              xTarget = Constants.kRedTopLR[0];
-              yTarget = Constants.kRedTopLR[1];
+              xTarget = Constants.kRed9R[0];
+              yTarget = Constants.kRed9R[1];
             } else if (lockedID == 10) {
-              xTarget = Constants.kRedLeftR[0];
-              yTarget = Constants.kRedLeftR[1];
+              xTarget = Constants.kRed10R[0];
+              yTarget = Constants.kRed10R[1];
             } else if (lockedID == 11) {
-              xTarget = Constants.kRedBottomLR[0];
-              yTarget = Constants.kRedBottomLR[1];
+              xTarget = Constants.kRed11R[0];
+              yTarget = Constants.kRed11R[1];
             } else if (lockedID == 17) {
-              xTarget = Constants.kBlueBottomLR[0];
-              yTarget = Constants.kBlueBottomLR[1];
+              xTarget = Constants.kBlue17R[0];
+              yTarget = Constants.kBlue17R[1];
             } else if (lockedID == 18) {
-              xTarget = Constants.kBlueLeftR[0];
-              yTarget = Constants.kBlueLeftR[1];
+              xTarget = Constants.kBlue18R[0];
+              yTarget = Constants.kBlue18R[1];
             } else if (lockedID == 19) {
-              xTarget = Constants.kBlueTopLR[0];
-              yTarget = Constants.kBlueTopLR[1];
+              xTarget = Constants.kBlue19R[0];
+              yTarget = Constants.kBlue19R[1];
             } else if (lockedID == 20) {
-              xTarget = Constants.kBlueTopRR[0];
-              yTarget = Constants.kBlueTopRR[1];
+              xTarget = Constants.kBlue20R[0];
+              yTarget = Constants.kBlue20R[1];
             } else if (lockedID == 21) {
-              xTarget = Constants.kBlueRightR[0];
-              yTarget = Constants.kBlueRightR[1];
+              xTarget = Constants.kBlue21R[0];
+              yTarget = Constants.kBlue21R[1];
             } else if (lockedID == 22) {
-              xTarget = Constants.kBlueBottomRR[0];
-              yTarget = Constants.kBlueBottomRR[1];
+              xTarget = Constants.kBlue22R[0];
+              yTarget = Constants.kBlue22R[1];
             }
           }
         } else if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povDownLeft().getAsBoolean()) || m_Controller.povUpLeft().getAsBoolean()) {
           if (lockedID == 0) {
             if (aprilTagID == 6) {
-              xTarget = Constants.kRedBottomRL[0];
-              yTarget = Constants.kRedBottomRL[1];
-              rotationTarget = Constants.kRedBottomRL[2];
+              xTarget = Constants.kRed6L[0];
+              yTarget = Constants.kRed6L[1];
+              rotationTarget = Constants.kRed6L[2];
               lockedID = 6;
             } else if (aprilTagID == 7) {
-              xTarget = Constants.kRedRightL[0];
-              yTarget = Constants.kRedRightL[1];
-              rotationTarget = Constants.kRedRightL[2];
+              xTarget = Constants.kRed7L[0];
+              yTarget = Constants.kRed7L[1];
+              rotationTarget = Constants.kRed7L[2];
               lockedID = 7;
             } else if (aprilTagID == 8) {
-              xTarget = Constants.kRedTopRL[0];
-              yTarget = Constants.kRedTopRL[1];
-              rotationTarget = Constants.kRedTopRL[2];
+              xTarget = Constants.kRed8L[0];
+              yTarget = Constants.kRed8L[1];
+              rotationTarget = Constants.kRed8L[2];
               lockedID = 8;
             } else if (aprilTagID == 9) {
-              xTarget = Constants.kRedTopLL[0];
-              yTarget = Constants.kRedTopLL[1];
-              rotationTarget = Constants.kRedTopLL[2];
+              xTarget = Constants.kRed9L[0];
+              yTarget = Constants.kRed9L[1];
+              rotationTarget = Constants.kRed9L[2];
               lockedID = 9;
             } else if (aprilTagID == 10) {
-              xTarget = Constants.kRedLeftL[0];
-              yTarget = Constants.kRedLeftL[1];
-              rotationTarget = Constants.kRedLeftL[2];
+              xTarget = Constants.kRed10L[0];
+              yTarget = Constants.kRed10L[1];
+              rotationTarget = Constants.kRed10L[2];
               lockedID = 10;
             } else if (aprilTagID == 11) {
-              xTarget = Constants.kRedBottomLL[0];
-              yTarget = Constants.kRedBottomLL[1];
-              rotationTarget = Constants.kRedBottomLL[2];
+              xTarget = Constants.kRed11L[0];
+              yTarget = Constants.kRed11L[1];
+              rotationTarget = Constants.kRed11L[2];
               lockedID = 11;
             } else if (aprilTagID == 17) {
-              xTarget = (Constants.kBlueBottomLL[0] - 0.125);
-              yTarget = (Constants.kBlueBottomLL[1] - 0.2165075);
-              rotationTarget = Constants.kBlueBottomLL[2];
+              xTarget = (Constants.kBlue17L[0] - 0.125);
+              yTarget = (Constants.kBlue17L[1] - 0.2165075);
+              rotationTarget = Constants.kBlue17L[2];
               lockedID = 17;
             } else if (aprilTagID == 18) {
-              xTarget = (Constants.kBlueLeftL[0] - 0.25);
-              yTarget = Constants.kBlueLeftL[1];
-              rotationTarget = Constants.kBlueLeftL[2];
+              xTarget = (Constants.kBlue18L[0] - 0.25);
+              yTarget = Constants.kBlue18L[1];
+              rotationTarget = Constants.kBlue18L[2];
               lockedID = 18;
             } else if (aprilTagID == 19) {
-              xTarget = (Constants.kBlueTopLL[0] - 0.125);
-              yTarget = (Constants.kBlueTopLL[1] + 0.2165075);
-              rotationTarget = Constants.kBlueTopLL[2];
+              xTarget = (Constants.kBlue19L[0] - 0.125);
+              yTarget = (Constants.kBlue19L[1] + 0.2165075);
+              rotationTarget = Constants.kBlue19L[2];
               lockedID = 19;
             } else if (aprilTagID == 20) {
-              xTarget = (Constants.kBlueTopRL[0] + 0.125);
-              yTarget = (Constants.kBlueTopRL[1] + 0.2165075);
-              rotationTarget = Constants.kBlueTopRL[2];
+              xTarget = (Constants.kBlue20L[0] + 0.125);
+              yTarget = (Constants.kBlue20L[1] + 0.2165075);
+              rotationTarget = Constants.kBlue20L[2];
               lockedID = 20;
             } else if (aprilTagID == 21) {
-              xTarget = (Constants.kBlueRightL[0] + 0.25);
-              yTarget = Constants.kBlueRightL[1];
-              rotationTarget = Constants.kBlueRightL[2];
+              xTarget = (Constants.kBlue21L[0] + 0.25);
+              yTarget = Constants.kBlue21L[1];
+              rotationTarget = Constants.kBlue21L[2];
               lockedID = 21;
             } else if (aprilTagID == 22) {
-              xTarget = (Constants.kBlueBottomRL[0] + 0.125);
-              yTarget = (Constants.kBlueBottomRL[1] - 0.2165075);
-              rotationTarget = Constants.kBlueBottomRL[2];
+              xTarget = (Constants.kBlue22L[0] + 0.125);
+              yTarget = (Constants.kBlue22L[1] - 0.2165075);
+              rotationTarget = Constants.kBlue22L[2];
               lockedID = 22;
             }
           }
           if (((Math.abs(RobotPosition.getX() - xTarget) < 0.12) && (Math.abs(RobotPosition.getY() - yTarget) < 0.12))) {
             if (lockedID == 6) {
-              xTarget = Constants.kRedBottomRL[0];
-              yTarget = Constants.kRedBottomRL[1];
+              xTarget = Constants.kRed6L[0];
+              yTarget = Constants.kRed6L[1];
             } else if (lockedID == 7) {
-              xTarget = Constants.kRedRightL[0];
-              yTarget = Constants.kRedRightL[1];
+              xTarget = Constants.kRed7L[0];
+              yTarget = Constants.kRed7L[1];
             } else if (lockedID == 8) {
-              xTarget = Constants.kRedTopRL[0];
-              yTarget = Constants.kRedTopRL[1];
+              xTarget = Constants.kRed8L[0];
+              yTarget = Constants.kRed8L[1];
             } else if (lockedID == 9) {
-              xTarget = Constants.kRedTopLL[0];
-              yTarget = Constants.kRedTopLL[1];
+              xTarget = Constants.kRed9L[0];
+              yTarget = Constants.kRed9L[1];
             } else if (lockedID == 10) {
-              xTarget = Constants.kRedLeftL[0];
-              yTarget = Constants.kRedLeftL[1];
+              xTarget = Constants.kRed10L[0];
+              yTarget = Constants.kRed10L[1];
             } else if (lockedID == 11) {
-              xTarget = Constants.kRedBottomLL[0];
-              yTarget = Constants.kRedBottomLL[1];
+              xTarget = Constants.kRed11L[0];
+              yTarget = Constants.kRed11L[1];
             } else if (lockedID == 17) {
-              xTarget = Constants.kBlueBottomLL[0];
-              yTarget = Constants.kBlueBottomLL[1];
+              xTarget = Constants.kBlue17L[0];
+              yTarget = Constants.kBlue17L[1];
             } else if (lockedID == 18) {
-              xTarget = Constants.kBlueLeftL[0];
-              yTarget = Constants.kBlueLeftL[1];
+              xTarget = Constants.kBlue18L[0];
+              yTarget = Constants.kBlue18L[1];
             } else if (lockedID == 19) {
-              xTarget = Constants.kBlueTopLL[0];
-              yTarget = Constants.kBlueTopLL[1];
+              xTarget = Constants.kBlue19L[0];
+              yTarget = Constants.kBlue19L[1];
             } else if (lockedID == 20) {
-              xTarget = Constants.kBlueTopRL[0];
-              yTarget = Constants.kBlueTopRL[1];
+              xTarget = Constants.kBlue20L[0];
+              yTarget = Constants.kBlue20L[1];
             } else if (lockedID == 21) {
-              xTarget = Constants.kBlueRightL[0];
-              yTarget = Constants.kBlueRightL[1];
+              xTarget = Constants.kBlue21L[0];
+              yTarget = Constants.kBlue21L[1];
             } else if (lockedID == 22) {
-              xTarget = Constants.kBlueBottomRL[0];
-              yTarget = Constants.kBlueBottomRL[1];
+              xTarget = Constants.kBlue22L[0];
+              yTarget = Constants.kBlue22L[1];
             }
         /*if (m_Controller.povRight().getAsBoolean()) {
 
