@@ -289,29 +289,29 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   
 
   //Bunch of preset drive positions Xvalue, Yvalue, rotation
-  public static final double[] kBlueTopLR = {3.379 + kAprilX2Offset, 5.148 - kAprilYOffset, 300};     //FIXED  
+  public static final double[] kBlueTopLR = {3.45 + kAprilX2Offset, 5.17 - kAprilYOffset, 300};       //RIGHT FIXED
   public static final double[] kBlueTopLL = {3.725 + kAprilX2Offset, 5.3603 - kAprilYOffset, 300};    //FIXED
-  public static final double[] kBlueTopRR = {5.595 + kAprilX2Offset, 5.148 - kAprilYOffset, 240};     //FIXED
+  public static final double[] kBlueTopRR = {5.524 + kAprilX2Offset, 5.17 - kAprilYOffset, 240};     //RIGHT FIXED
   public static final double[] kBlueTopRL = {5.249 + kAprilX2Offset, 5.3603 - kAprilYOffset, 240};    //FIXED
-  public static final double[] kBlueRightR = {5.989 - kAprilX1Offset, 4.340, 180}; 
+  public static final double[] kBlueRightR = {6.011 - kAprilX1Offset, 4.352, 180}; 
   public static final double[] kBlueRightL = {6.011 - kAprilX1Offset, 4.04, 180}; //Maybe
-  public static final double[] kBlueBottomRR = {5.595 - kAprilX2Offset, 3.379, 120};                  //FIXED
+  public static final double[] kBlueBottomRR = {5.524 - kAprilX2Offset, 2.91, 120};                  //RIGHT FIXED
   public static final double[] kBlueBottomRL = {5.249 - kAprilX2Offset, 2.7197, 120};                 //FIXED
-  public static final double[] kBlueBottomLR = {3.379 - kAprilX2Offset, 3.379 + kAprilYOffset, 60};   //FIXED
+  public static final double[] kBlueBottomLR = {3.45 - kAprilX2Offset, 2.91 + kAprilYOffset, 60};     //RIGHT FIXED
   public static final double[] kBlueBottomLL = {3.725 - kAprilX2Offset, 2.7197 + kAprilYOffset, 60};  //FIXED
-  public static final double[] kBlueLeftR = {3.03 + kAprilX1Offset, 3.763, 0}; 
+  public static final double[] kBlueLeftR = {2.963 + kAprilX1Offset, 3.676, 0}; 
   public static final double[] kBlueLeftL = {2.963 + kAprilX1Offset, 4.04, 0}; //Maybe
-  public static final double[] kRedTopLR = {(12.104), 5.148, 120};                              // Right fixed
+  public static final double[] kRedTopLR = {(12.026), 5.17, 120};                            //RIGHT FIXED
   public static final double[] kRedTopLL = {(11.539), 5.3603, 120};                             //FIXED
-  public static final double[] kRedTopRR = {(14.022), 5.148, 60};                               //Right Fixed
+  public static final double[] kRedTopRR = {(14.1), 5.17, 60};                               //RIGHT FIXED
   public static final double[] kRedTopRL = {(13.825), 5.3603, 60};                              //FIXED
-  public static final double[] kRedRightR = {(17.55 - kBlueLeftL[0]), kBlueLeftL[1], 0}; 
+  public static final double[] kRedRightR = {(14.56), 4.362, 0}; 
   public static final double[] kRedRightL = {(14.587), 4.04, 0};                                //FIXED
-  public static final double[] kRedBottomRR = {(14.022), 2.932, 300};                           //RIGHT FIXED
+  public static final double[] kRedBottomRR = {(14.1), 2.91, 300};                           //RIGHT FIXED
   public static final double[] kRedBottomRL = {(13.825), 2.7197, 300};                          //THIS IS THE OG FIXED 
-  public static final double[] kRedBottomLR = {(12.104), 2.932, 240};                           //RIGHT FIXED
+  public static final double[] kRedBottomLR = {(12.026), 2.91, 240};                         //RIGHT FIXED
   public static final double[] kRedBottomLL = {(14.587), 2.7197, 240};                          //FIXED
-  public static final double[] kRedLeftR = {(17.55 - kBlueRightL[0]), kBlueRightL[1], 180};
+  public static final double[] kRedLeftR = {(11.539), 3.693, 180};
   public static final double[] kRedLeftL = {(11.539), 4.04, 180};                               //FIXED
 }
 /*
@@ -321,10 +321,10 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
  * y = 4.04
  * 
  * For scoring on right Branch
- * (14.022-13.063)^2 + (4.04-2.932)^2
- * r = 2.147345
- * Standard X change = 0.959
- * Standard Y change = 1.108
+ * (14.1-13.063)^2 + (4.04-2.91)^2
+ * r = 2.3527
+ * Standard X change = 1.037
+ * Standard Y change = 1.13
  * 
  * 
  * For scoring on left Branch
