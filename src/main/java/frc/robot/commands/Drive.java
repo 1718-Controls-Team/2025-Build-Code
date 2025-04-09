@@ -13,7 +13,7 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
-import frc.robot.RepetitiveLogic.CoordinateTargets;
+//import frc.robot.RepetitiveLogic.CoordinateTargets;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Elevator;
@@ -102,7 +102,7 @@ public class Drive extends Command {
     RobotPosition = m_Drivetrain.getState().Pose;
     SmartDashboard.putNumber("RobotXPosition", RobotPosition.getX());
     SmartDashboard.putNumber("RobotYPosition", RobotPosition.getY());
-    SmartDashboard.putNumber("Rotation Target", rotationTarget);
+    SmartDashboard.putNumber("Robot Angle", RobotPosition.getRotation().getDegrees());
     
     if (m_Controller.rightStick().getAsBoolean()) {
       speedControl = 0.8;
@@ -128,7 +128,7 @@ public class Drive extends Command {
       lockedID = 0;
       driveRequest = "";
       if (UsingLimelight = true) {
-        int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22};
+        int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
         LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
       }
       UsingLimelight = false;
@@ -177,7 +177,7 @@ public class Drive extends Command {
               rotationTarget = Constants.kBlue17R[2];
               lockedID = 17;
             } else if (aprilTagID == 18) {
-              xTarget = (Constants.kBlue18R[0] - 1);
+              xTarget = (Constants.kBlue18R[0] - 0.25);
               yTarget = Constants.kBlue18R[1];
               rotationTarget = Constants.kBlue18R[2];
               lockedID = 18;
@@ -192,7 +192,7 @@ public class Drive extends Command {
               rotationTarget = Constants.kBlue20R[2];
               lockedID = 20;
             } else if (aprilTagID == 21) {
-              xTarget = (Constants.kBlue21R[0] + 1);
+              xTarget = (Constants.kBlue21R[0] + 0.25);
               yTarget = Constants.kBlue21R[1];
               rotationTarget = Constants.kBlue21R[2];
               lockedID = 21;
@@ -422,9 +422,9 @@ public class Drive extends Command {
       break;*/
       default:
 
-      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed * m_Elevator.speedLimit * speedControl) // Drive forward with
+      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed * m_Elevator.speedLimit * speedControl*0.2) // Drive forward with
       // negative Y (forward)
-        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed * m_Elevator.speedLimit * speedControl) // Drive left with negative X (left)
+        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed * m_Elevator.speedLimit * speedControl*0.2) // Drive left with negative X (left)
         .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate * 1.3
         )); // Drive counterclockwise with negative X (left)
     }

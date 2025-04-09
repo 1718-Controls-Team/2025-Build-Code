@@ -112,7 +112,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     useMegatag2 = true;
-    int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22};
+    int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
     if (m_auto2 == 0) {
       m_autonomousCommand = m_robotContainer.getAutonomousCommand();
