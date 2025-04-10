@@ -15,59 +15,98 @@ import frc.robot.commands.Auton.AlignToReef;
 public class TeleOpCoralRoutine {
 
     private AlignToReef m_alignmentGenerator;
-    private CommandXboxController m_controller;
+    private CommandXboxController m_driveController;
+    private CommandXboxController m_operatorController;
     private Pose2d targetPose;
+    private Pose2d intakePose;
     private double lockedID;
+    private boolean leftSideCoral = false;
 
-    public TeleOpCoralRoutine(AlignToReef alignmentGenerator, CommandXboxController controller) {
+    public TeleOpCoralRoutine(AlignToReef alignmentGenerator, CommandXboxController driveController, CommandXboxController operatorController) {
         m_alignmentGenerator = alignmentGenerator;
-        m_controller = controller;
+        m_driveController = driveController;
+        m_operatorController = operatorController;
     }
 
-    public Command generateTeleOpCycle(Pose2d scorePose, Pose2d intakePose, boolean leftRight) {
+    public Command generateTeleOpCycle(boolean leftSide) {
         lockedID = LimelightHelpers.getFiducialID("limelight-lime");
-        if (lockedID == 6) {
-            targetPose = new Pose2d(Constants.kRed6L[0], Constants.kRed6L[1], new Rotation2d(Constants.kRed6L[2]));
-        } else if (lockedID == 7) {
-            targetPose = new Pose2d(Constants.kRed7L[0], Constants.kRed7L[1], new Rotation2d(Constants.kRed7L[2]));
-        } else if (lockedID == 8) {
-            targetPose = new Pose2d(Constants.kRed8L[0], Constants.kRed8L[1], new Rotation2d(Constants.kRed8L[2]));
-        } else if (lockedID == 9) {
-            targetPose = new Pose2d(Constants.kRed9L[0], Constants.kRed9L[1], new Rotation2d(Constants.kRed9L[2]));
-        } else if (lockedID == 10) {
-            targetPose = new Pose2d(Constants.kRed10L[0], Constants.kRed10L[1], new Rotation2d(Constants.kRed10L[2]));
-        } else if (lockedID == 11) {
-            targetPose = new Pose2d(Constants.kRed11L[0], Constants.kRed11L[1], new Rotation2d(Constants.kRed11L[2]));
-        } else if (lockedID == 17) {
-            targetPose = new Pose2d(Constants.kBlue17L[0], Constants.kBlue17L[1], new Rotation2d(Constants.kBlue17L[2]));
-        } else if (lockedID == 18) {
-            targetPose = new Pose2d(Constants.kBlue18L[0], Constants.kBlue18L[1], new Rotation2d(Constants.kBlue18L[2]));
-        } else if (lockedID == 19) {
-            targetPose = new Pose2d(Constants.kBlue19L[0], Constants.kBlue19L[1], new Rotation2d(Constants.kBlue19L[2]));
-        } else if (lockedID == 20) {
-            targetPose = new Pose2d(Constants.kBlue20L[0], Constants.kBlue20L[1], new Rotation2d(Constants.kBlue20L[2]));
-        } else if (lockedID == 21) {
-            targetPose = new Pose2d(Constants.kBlue21L[0], Constants.kBlue21L[1], new Rotation2d(Constants.kBlue21L[2]));
-        } else if (lockedID == 22) {
-            targetPose = new Pose2d(Constants.kBlue22L[0], Constants.kBlue22L[1], new Rotation2d(Constants.kBlue22L[2]));
+        if (leftSide == true) {
+          if (lockedID == 6) {
+              targetPose = new Pose2d(Constants.kRed6L[0], Constants.kRed6L[1], new Rotation2d(Constants.kRed6L[2]));
+          } else if (lockedID == 7) {
+              targetPose = new Pose2d(Constants.kRed7L[0], Constants.kRed7L[1], new Rotation2d(Constants.kRed7L[2]));
+          } else if (lockedID == 8) {
+              targetPose = new Pose2d(Constants.kRed8L[0], Constants.kRed8L[1], new Rotation2d(Constants.kRed8L[2]));
+          } else if (lockedID == 9) {
+              targetPose = new Pose2d(Constants.kRed9L[0], Constants.kRed9L[1], new Rotation2d(Constants.kRed9L[2]));
+          } else if (lockedID == 10) {
+              targetPose = new Pose2d(Constants.kRed10L[0], Constants.kRed10L[1], new Rotation2d(Constants.kRed10L[2]));
+          } else if (lockedID == 11) {
+              targetPose = new Pose2d(Constants.kRed11L[0], Constants.kRed11L[1], new Rotation2d(Constants.kRed11L[2]));
+          } else if (lockedID == 17) {
+              targetPose = new Pose2d(Constants.kBlue17L[0], Constants.kBlue17L[1], new Rotation2d(Constants.kBlue17L[2]));
+          } else if (lockedID == 18) {
+              targetPose = new Pose2d(Constants.kBlue18L[0], Constants.kBlue18L[1], new Rotation2d(Constants.kBlue18L[2]));
+          } else if (lockedID == 19) {
+              targetPose = new Pose2d(Constants.kBlue19L[0], Constants.kBlue19L[1], new Rotation2d(Constants.kBlue19L[2]));
+          } else if (lockedID == 20) {
+              targetPose = new Pose2d(Constants.kBlue20L[0], Constants.kBlue20L[1], new Rotation2d(Constants.kBlue20L[2]));
+          } else if (lockedID == 21) {
+              targetPose = new Pose2d(Constants.kBlue21L[0], Constants.kBlue21L[1], new Rotation2d(Constants.kBlue21L[2]));
+          } else if (lockedID == 22) {
+              targetPose = new Pose2d(Constants.kBlue22L[0], Constants.kBlue22L[1], new Rotation2d(Constants.kBlue22L[2]));
+          }
+        } else {
+            if (lockedID == 6) {
+                targetPose = new Pose2d(Constants.kRed6R[0], Constants.kRed6R[1], new Rotation2d(Constants.kRed6R[2]));
+            } else if (lockedID == 7) {
+                targetPose = new Pose2d(Constants.kRed7R[0], Constants.kRed7R[1], new Rotation2d(Constants.kRed7R[2]));
+            } else if (lockedID == 8) {
+                targetPose = new Pose2d(Constants.kRed8R[0], Constants.kRed8R[1], new Rotation2d(Constants.kRed8R[2]));
+            } else if (lockedID == 9) {
+                targetPose = new Pose2d(Constants.kRed9R[0], Constants.kRed9R[1], new Rotation2d(Constants.kRed9R[2]));
+            } else if (lockedID == 10) {
+                targetPose = new Pose2d(Constants.kRed10R[0], Constants.kRed10R[1], new Rotation2d(Constants.kRed10R[2]));
+            } else if (lockedID == 11) {
+                targetPose = new Pose2d(Constants.kRed11R[0], Constants.kRed11R[1], new Rotation2d(Constants.kRed11R[2]));
+            } else if (lockedID == 17) {
+                targetPose = new Pose2d(Constants.kBlue17R[0], Constants.kBlue17R[1], new Rotation2d(Constants.kBlue17R[2]));
+            } else if (lockedID == 18) {
+                targetPose = new Pose2d(Constants.kBlue18R[0], Constants.kBlue18R[1], new Rotation2d(Constants.kBlue18R[2]));
+            } else if (lockedID == 19) {
+                targetPose = new Pose2d(Constants.kBlue19R[0], Constants.kBlue19R[1], new Rotation2d(Constants.kBlue19R[2]));
+            } else if (lockedID == 20) {
+                targetPose = new Pose2d(Constants.kBlue20R[0], Constants.kBlue20R[1], new Rotation2d(Constants.kBlue20R[2]));
+            } else if (lockedID == 21) {
+                targetPose = new Pose2d(Constants.kBlue21R[0], Constants.kBlue21R[1], new Rotation2d(Constants.kBlue21R[2]));
+            } else if (lockedID == 22) {
+                targetPose = new Pose2d(Constants.kBlue22R[0], Constants.kBlue22R[1], new Rotation2d(Constants.kBlue22R[2]));
+            }
+        }
+
+        if (m_operatorController.back().getAsBoolean()) {
+            leftSideCoral = true;
+        } else {
+            leftSideCoral = false;
+        }
+
+        if (leftSideCoral) {
+            intakePose = new Pose2d(1.657, 7.363, new Rotation2d(126));
+        } else {
+            intakePose = new Pose2d(1.700, 0.716, new Rotation2d(-126));
         }
 
         return Commands.sequence(
-            m_alignmentGenerator.generateCommand(scorePose), Commands.waitUntil(m_controller.rightTrigger(0.5)),
-            Commands.waitUntil(m_controller.rightTrigger(0.5).negate()), m_alignmentGenerator.generateCommand(intakePose),
-            Commands.waitUntil(m_controller.leftTrigger()), Commands.waitUntil(m_controller.leftTrigger().negate()),
-            m_alignmentGenerator.generateCommand(scorePose), Commands.waitUntil(m_controller.rightTrigger(0.5)),
-            Commands.waitUntil(m_controller.rightTrigger(0.5).negate()), m_alignmentGenerator.generateCommand(intakePose),
-            Commands.waitUntil(m_controller.leftTrigger()), Commands.waitUntil(m_controller.leftTrigger().negate()),
-            m_alignmentGenerator.generateCommand(scorePose), Commands.waitUntil(m_controller.rightTrigger(0.5)),
-            Commands.waitUntil(m_controller.rightTrigger(0.5).negate()), m_alignmentGenerator.generateCommand(intakePose),
-            Commands.waitUntil(m_controller.leftTrigger()), Commands.waitUntil(m_controller.leftTrigger().negate())
+            m_alignmentGenerator.generateCommand(targetPose), Commands.waitUntil(m_driveController.rightTrigger(0.5)),
+            Commands.waitUntil(m_driveController.rightTrigger(0.5).negate()), m_alignmentGenerator.generateCommand(intakePose),
+            Commands.waitUntil(m_driveController.leftTrigger()), Commands.waitUntil(m_driveController.leftTrigger().negate()),
+            m_alignmentGenerator.generateCommand(targetPose), Commands.waitUntil(m_driveController.rightTrigger(0.5)),
+            Commands.waitUntil(m_driveController.rightTrigger(0.5).negate()), m_alignmentGenerator.generateCommand(intakePose),
+            Commands.waitUntil(m_driveController.leftTrigger()), Commands.waitUntil(m_driveController.leftTrigger().negate()),
+            m_alignmentGenerator.generateCommand(targetPose), Commands.waitUntil(m_driveController.rightTrigger(0.5)),
+            Commands.waitUntil(m_driveController.rightTrigger(0.5).negate()), m_alignmentGenerator.generateCommand(intakePose),
+            Commands.waitUntil(m_driveController.leftTrigger()), Commands.waitUntil(m_driveController.leftTrigger().negate())
         );
-    }
-
-    public BooleanEvent controllerReleaseSpit() {
-        
-        return new BooleanEvent(null, null);
     }
 }
 
