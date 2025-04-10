@@ -32,13 +32,13 @@ public class AlgaePickup extends Command {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_algaeSubsystem);
     addRequirements(m_coralSubsystem);
-
+    m_isFinished = false;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_isFinished = true;
+      m_isFinished = false;
       m_coralSubsystem.setcoralRotate(Constants.kCoralUpPos);
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);
       m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);

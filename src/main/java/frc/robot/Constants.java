@@ -78,7 +78,7 @@ public static final double kElevatorClimbPos = 0;
 // Algae is -0.441 to 3
 public static final double kAlgaeOutSpinSpeed = -20;
 public static final double kAlgaeInSpinSpeed = 30;
-public static final double kAlgaeIdleSpinSpeed = 10;
+public static final double kAlgaeIdleSpinSpeed = 5; //10
 public static final double kAlgaeStopSpinSpeed = 0;
 
 public static final double kAlgaeIntakePos = 3.5;
@@ -86,6 +86,7 @@ public static final double kAlgaeClimbPos = 3.336;
 public static final double kAlgaeNetPos = 5.7;
 public static final double kAlgaeHomePos = 1.1;
 public static final double kAlgaeIntakePositionTolerance = 0.05;
+
 
 
 
