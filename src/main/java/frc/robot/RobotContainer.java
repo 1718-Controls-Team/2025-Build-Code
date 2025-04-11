@@ -29,6 +29,7 @@ import frc.robot.commands.Drive;
 //import frc.robot.commands.Drive;
 import frc.robot.commands.Home;
 import frc.robot.commands.InitializeMechanisms;
+import frc.robot.commands.TeleOpCoralRoutine;
 import frc.robot.commands.Auton.AlignToReef;
 import frc.robot.commands.Auton.AutoL4Scoring;
 import frc.robot.commands.Auton.AutonCoralPickup;
@@ -68,6 +69,9 @@ public class RobotContainer {
     /* Setting up bindings for necessary control of the swerve drive platform */
     private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
 
+    private final CommandXboxController driverController = new CommandXboxController(0);
+    private final CommandXboxController operatorController = new CommandXboxController(1);
+
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
     private final Telemetry logger = new Telemetry(MaxSpeed);
     private final TClimber m_tClimber = new TClimber();
@@ -76,11 +80,8 @@ public class RobotContainer {
     private final CoralIntake m_coralIntake = new CoralIntake();
     private final AlignToReef m_alignmentGenerator = new AlignToReef(drivetrain);
     private final VariableAutos m_AUTOS_DONT_KILL_YOURSELVES = new VariableAutos(m_alignmentGenerator, m_coralIntake, m_elevator, m_algaeIntake);
+    private final TeleOpCoralRoutine m_RunCoralPlease = new TeleOpCoralRoutine(m_alignmentGenerator, driverController);
     public Command AutonomousRun;
-
-    private final CommandXboxController driverController = new CommandXboxController(0);
-    private final CommandXboxController operatorController = new CommandXboxController(1);
-
 
 
 
@@ -143,7 +144,14 @@ public class RobotContainer {
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
         driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake, m_elevator, m_coralIntake));
 
+        operatorController.back().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(true));
+        operatorController.start().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(false));
+
+        driverController.povDownLeft().or(driverController.povLeft().or(driverController.povUpLeft()))
+        .whileTrue(m_RunCoralPlease.generateTeleOpCycle(true)).onFalse(m_RunCoralPlease.cancelTeleopCycleCommand());
         
+        driverController.povDownRight().or(driverController.povRight().or(driverController.povUpRight()))
+        .whileTrue(m_RunCoralPlease.generateTeleOpCycle(false)).onFalse(m_RunCoralPlease.cancelTeleopCycleCommand());
     }
 
     private void registerAutonCommands() {

@@ -117,10 +117,10 @@ public class Drive extends Command {
 
 
     aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");
-    if ((m_Controller.povLeft().getAsBoolean() || m_Controller.povRight().getAsBoolean()
-    || m_Controller.povDownLeft().getAsBoolean() || m_Controller.povUpLeft().getAsBoolean()
-    || m_Controller.povDownRight().getAsBoolean() || m_Controller.povUpRight().getAsBoolean())
-    && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) 
+    if ((m_Controller.povLeft().getAsBoolean() && m_Controller.povRight().getAsBoolean()
+    && m_Controller.povDownLeft().getAsBoolean() && m_Controller.povUpLeft().getAsBoolean()
+    && m_Controller.povDownRight().getAsBoolean() && m_Controller.povUpRight().getAsBoolean())
+    && (LimelightHelpers.getTV(Constants.kLimelightName) && UsingLimelight)) 
     {
       driveRequest = "limelightDrive";
       UsingLimelight = true;

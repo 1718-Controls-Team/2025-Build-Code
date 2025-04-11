@@ -1,31 +1,33 @@
 package frc.robot.commands;
 
-import java.util.function.BooleanSupplier;
-
+import java.util.Optional;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.event.BooleanEvent;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
 import frc.robot.commands.Auton.AlignToReef;
 
-public class TeleOpCoralRoutine {
+public class TeleOpCoralRoutine extends SubsystemBase{
 
     private AlignToReef m_alignmentGenerator;
     private CommandXboxController m_driveController;
-    private CommandXboxController m_operatorController;
     private Pose2d targetPose;
     private Pose2d intakePose;
     private double lockedID;
     private boolean leftSideCoral = false;
+    private boolean redSide = false;
+    Optional<Alliance> allianceColor = DriverStation.getAlliance();
+    private Command teleOpCycleCommand;
 
-    public TeleOpCoralRoutine(AlignToReef alignmentGenerator, CommandXboxController driveController, CommandXboxController operatorController) {
+    public TeleOpCoralRoutine(AlignToReef alignmentGenerator, CommandXboxController driveController) {
         m_alignmentGenerator = alignmentGenerator;
         m_driveController = driveController;
-        m_operatorController = operatorController;
     }
 
     public Command generateTeleOpCycle(boolean leftSide) {
@@ -84,19 +86,28 @@ public class TeleOpCoralRoutine {
             }
         }
 
-        if (m_operatorController.back().getAsBoolean()) {
-            leftSideCoral = true;
+        allianceColor = DriverStation.getAlliance();
+        if (allianceColor.get() == Alliance.Red) {
+          redSide = true;
         } else {
-            leftSideCoral = false;
+          redSide = false;
         }
 
-        if (leftSideCoral) {
-            intakePose = new Pose2d(1.657, 7.363, new Rotation2d(126));
+        if (redSide = false) {
+           if (leftSideCoral) {
+                intakePose = new Pose2d(1.657, 7.363, new Rotation2d(Math.toRadians(126)));
+            } else {
+                intakePose = new Pose2d(1.700, 0.716, new Rotation2d(Math.toRadians(-126)));
+            } 
         } else {
-            intakePose = new Pose2d(1.700, 0.716, new Rotation2d(-126));
+            if (leftSideCoral) {
+                intakePose = new Pose2d(16.126, 0.834, new Rotation2d(Math.toRadians(-55)));
+            } else {
+                intakePose = new Pose2d(15.931, 7.337, new Rotation2d(Math.toRadians(55)));
+            } 
         }
-
-        return Commands.sequence(
+        
+        teleOpCycleCommand = Commands.sequence(
             m_alignmentGenerator.generateCommand(targetPose), Commands.waitUntil(m_driveController.rightTrigger(0.5)),
             Commands.waitUntil(m_driveController.rightTrigger(0.5).negate()), m_alignmentGenerator.generateCommand(intakePose),
             Commands.waitUntil(m_driveController.leftTrigger()), Commands.waitUntil(m_driveController.leftTrigger().negate()),
@@ -107,6 +118,23 @@ public class TeleOpCoralRoutine {
             Commands.waitUntil(m_driveController.rightTrigger(0.5).negate()), m_alignmentGenerator.generateCommand(intakePose),
             Commands.waitUntil(m_driveController.leftTrigger()), Commands.waitUntil(m_driveController.leftTrigger().negate())
         );
+        return teleOpCycleCommand;
+    }
+
+    public Command setLeftSideCoralCommand(boolean GoToLeft) {
+        return this.runOnce(() -> setLeftSideCoral(GoToLeft));
+    }
+
+    public void setLeftSideCoral(boolean GoToLeft) {
+        leftSideCoral = GoToLeft;
+    }
+
+    public void cancelTeleopCycle() {
+        teleOpCycleCommand.cancel();
+    }
+
+    public Command cancelTeleopCycleCommand() {
+        return this.runOnce(() -> cancelTeleopCycle());
     }
 }
 
