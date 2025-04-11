@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.657152931610622,
-        "y": 7.3627129412976435
+        "x": 1.6533624124792774,
+        "y": 7.335224279813426
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.331265098671187,
-        "y": 6.715216014714982
+        "x": 2.3274745795398424,
+        "y": 6.687727353230764
       },
       "isLocked": false,
       "linkedName": "End Red Topside 2"
@@ -50,9 +50,21 @@
     }
   ],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "L4ScoringPosition",
+      "waypointRelativePos": 0.9389830508474565,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "L4ScoringPosition"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
+    "maxVelocity": 4.0,
     "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -69,5 +81,5 @@
     "velocity": 0,
     "rotation": 126.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -24,35 +24,9 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Break things 1"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 0.5
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "L4ScoringPosition"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "pathName": "Break things 1"
           }
         },
         {
@@ -62,9 +36,9 @@
           }
         },
         {
-          "type": "named",
+          "type": "wait",
           "data": {
-            "name": "CoralIntakePosition"
+            "waitTime": 5.0
           }
         },
         {
@@ -80,47 +54,27 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "wait",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Break things 3"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 1.25
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "L4ScoringPosition"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "waitTime": 5.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Break things 3"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 5.0
           }
         },
         {
           "type": "named",
           "data": {
             "name": "AutonSpitCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "CoralIntakePosition"
           }
         },
         {
@@ -136,35 +90,15 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "wait",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Break things 5"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 1.25
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "L4ScoringPosition"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "waitTime": 5.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Break things 5"
           }
         },
         {

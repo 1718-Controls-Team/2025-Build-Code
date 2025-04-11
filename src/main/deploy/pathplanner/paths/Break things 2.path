@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.0,
-        "y": 5.4
+        "x": 5.049070556245488,
+        "y": 5.464292071248512
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.772366980394558,
-        "y": 5.5872553109451175
+        "x": 4.821437536640047,
+        "y": 5.6515473821936295
       },
       "isLocked": false,
       "linkedName": "End Red Topside 1"
     },
     {
       "anchor": {
-        "x": 1.657,
-        "y": 7.3627129412976435
+        "x": 1.6587088354418886,
+        "y": 7.335224279813426
       },
       "prevControl": {
-        "x": 2.323506677342032,
-        "y": 6.5529154835870544
+        "x": 2.3252155127839194,
+        "y": 6.525426822102837
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,9 +31,21 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "CoralIntakePosition",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "CoralIntakePosition"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
+    "maxVelocity": 4.0,
     "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -50,5 +62,5 @@
     "velocity": 0,
     "rotation": -119.99999999999999
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

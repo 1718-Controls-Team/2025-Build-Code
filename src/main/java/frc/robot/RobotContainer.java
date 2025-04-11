@@ -144,14 +144,14 @@ public class RobotContainer {
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
         driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake, m_elevator, m_coralIntake));
 
-        operatorController.back().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(true));
+        /*operatorController.back().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(true));
         operatorController.start().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(false));
 
-        driverController.povDownLeft().or(driverController.povLeft().or(driverController.povUpLeft()))
+        /* driverController.povDownLeft().or(driverController.povLeft().or(driverController.povUpLeft()))
         .whileTrue(m_RunCoralPlease.generateTeleOpCycle(true)).onFalse(m_RunCoralPlease.cancelTeleopCycleCommand());
         
         driverController.povDownRight().or(driverController.povRight().or(driverController.povUpRight()))
-        .whileTrue(m_RunCoralPlease.generateTeleOpCycle(false)).onFalse(m_RunCoralPlease.cancelTeleopCycleCommand());
+        .whileTrue(m_RunCoralPlease.generateTeleOpCycle(false)).onFalse(m_RunCoralPlease.cancelTeleopCycleCommand()); */
     }
 
     private void registerAutonCommands() {

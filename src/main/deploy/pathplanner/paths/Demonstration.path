@@ -16,11 +16,11 @@
     },
     {
       "anchor": {
-        "x": 5.837,
+        "x": 4.537756849315069,
         "y": 6.260706967213114
       },
       "prevControl": {
-        "x": 6.173510912944945,
+        "x": 4.874267762260012,
         "y": 6.260706967213114
       },
       "nextControl": null,
@@ -45,7 +45,19 @@
     }
   ],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "AlgaeL2Position",
+      "waypointRelativePos": 0.6271186440677954,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "AlgaeL2Position"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 4.0,
     "maxAcceleration": 4.0,
