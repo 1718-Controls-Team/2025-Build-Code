@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 11.549,
-        "y": 3.693
+        "x": 3.850719,
+        "y": 5.301503
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.279508561641141,
-        "y": 4.474361301364963
+        "x": 2.516199040734443,
+        "y": 5.5090452376956405
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End Red Topside 3"
     },
     {
       "anchor": {
-        "x": 14.1,
-        "y": 2.91
+        "x": 1.588214897260274,
+        "y": 7.4117893835616435
       },
       "prevControl": {
-        "x": 13.1,
-        "y": 2.91
+        "x": 2.3747750320013448,
+        "y": 5.631031939348295
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "End Red Topside 4"
     }
   ],
   "rotationTargets": [],
@@ -33,7 +33,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.0,
+    "maxVelocity": 2.0,
     "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 119.99999999999999
+    "rotation": 126.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Red Topside",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -2.567503472239647e-13
+    "rotation": -59.99999999999999
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

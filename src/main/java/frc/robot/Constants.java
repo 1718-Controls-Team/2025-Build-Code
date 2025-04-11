@@ -290,18 +290,18 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   
 
   //Bunch of preset drive positions Xvalue, Yvalue, rotation
-  public static final double[] kBlue19R = {3.45 + kAprilX2Offset, 5.17 - kAprilYOffset, 300};       //RIGHT FIXED
-  public static final double[] kBlue19L = {3.725 + kAprilX2Offset, 5.3603 - kAprilYOffset, 300};    //FIXED
-  public static final double[] kBlue20R = {5.524 + kAprilX2Offset, 5.17 - kAprilYOffset, 240};     //RIGHT FIXED
-  public static final double[] kBlue20L = {5.249 + kAprilX2Offset, 5.3603 - kAprilYOffset, 240};    //FIXED
-  public static final double[] kBlue21R = {6.011 - kAprilX1Offset, 4.352, 180}; 
-  public static final double[] kBlue21L = {6.011 - kAprilX1Offset, 4.04, 180}; //Maybe
-  public static final double[] kBlue22R = {5.524 - kAprilX2Offset, 2.91, 120};                  //RIGHT FIXED
-  public static final double[] kBlue22L = {5.249 - kAprilX2Offset, 2.7197, 120};                 //FIXED
-  public static final double[] kBlue17R = {3.45 - kAprilX2Offset, 2.91 + kAprilYOffset, 60};     //RIGHT FIXED
-  public static final double[] kBlue17L = {3.725 - kAprilX2Offset, 2.7197 + kAprilYOffset, 60};  //FIXED
-  public static final double[] kBlue18R = {3.0473 + kAprilX1Offset, 3.723, 0}; 
-  public static final double[] kBlue18L = {3.0473 + kAprilX1Offset, 4.075, 0}; //Maybe
+  public static final double[] kBlue19R = {3.517652 + kAprilX2Offset, 5.137091 - kAprilYOffset, 300};       //RIGHT FIXED
+  public static final double[] kBlue19L = {3.850719 + kAprilX2Offset, 5.301503 - kAprilYOffset, 300};    //FIXED
+  public static final double[] kBlue20R = {5.00 + kAprilX2Offset, 5.40 - kAprilYOffset, 240};     //RIGHT FIXED
+  public static final double[] kBlue20L = {5.289 + kAprilX2Offset, 5.244 - kAprilYOffset, 240};    //FIXED
+  public static final double[] kBlue21R = {5.97 - kAprilX1Offset, 4.246, 180}; 
+  public static final double[] kBlue21L = {5.97 - kAprilX1Offset, 3.96, 180}; //Maybe
+  public static final double[] kBlue22R = {5.498 - kAprilX2Offset, 2.8877, 120};                  //RIGHT FIXED
+  public static final double[] kBlue22L = {5.178 - kAprilX2Offset, 2.749, 120};                 //FIXED
+  public static final double[] kBlue17R = {3.976 - kAprilX2Offset, 2.617 + kAprilYOffset, 60};     //RIGHT FIXED
+  public static final double[] kBlue17L = {3.646 - kAprilX2Offset, 2.818 + kAprilYOffset, 60};  //FIXED
+  public static final double[] kBlue18R = {3.029257 + kAprilX1Offset, 3.810388, 0}; 
+  public static final double[] kBlue18L = {3.091596 + kAprilX1Offset, 4.147526, 0}; //Maybe
   public static final double[] kRed9R = {(12.026), 5.17, 120};                            //RIGHT FIXED
   public static final double[] kRed9L = {(11.539), 5.3603, 120};                             //FIXED
   public static final double[] kRed8R = {(14.1), 5.17, 60};                               //RIGHT FIXED

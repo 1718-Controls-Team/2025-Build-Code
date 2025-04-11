@@ -422,9 +422,9 @@ public class Drive extends Command {
       break;*/
       default:
 
-      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed * m_Elevator.speedLimit * speedControl*0.2) // Drive forward with
+      m_Drivetrain.setControl(drive.withVelocityX(-m_Controller.getLeftY() * MaxSpeed * m_Elevator.speedLimit * speedControl) // Drive forward with
       // negative Y (forward)
-        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed * m_Elevator.speedLimit * speedControl*0.2) // Drive left with negative X (left)
+        .withVelocityY(-m_Controller.getLeftX() * MaxSpeed * m_Elevator.speedLimit * speedControl) // Drive left with negative X (left)
         .withRotationalRate(-m_Controller.getRightX() * MaxAngularRate * 1.3
         )); // Drive counterclockwise with negative X (left)
     }

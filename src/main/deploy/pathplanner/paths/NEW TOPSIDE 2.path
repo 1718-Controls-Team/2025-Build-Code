@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.943,
-        "y": 5.527568493150685
+        "x": 5.0,
+        "y": 5.4
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.715366980394558,
-        "y": 5.714823804095802
+        "x": 4.772366980394558,
+        "y": 5.5872553109451175
       },
       "isLocked": false,
       "linkedName": "End Red Topside 1"
