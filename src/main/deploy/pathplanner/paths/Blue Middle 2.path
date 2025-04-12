@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 5.997366265064183,
-        "y": 4.0
+        "y": 3.95
       },
       "prevControl": null,
       "nextControl": {
         "x": 5.747366265064183,
-        "y": 4.0
+        "y": 3.95
       },
       "isLocked": false,
       "linkedName": "End of Blue Middle 1"
@@ -31,7 +31,19 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "AlgaeL2Position",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "AlgaeL2Position"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 4.0,
     "maxAcceleration": 3.0,
