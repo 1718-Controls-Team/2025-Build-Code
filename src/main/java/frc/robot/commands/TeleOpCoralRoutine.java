@@ -126,7 +126,7 @@ public class TeleOpCoralRoutine extends SubsystemBase{
     }
 
     public void setLeftSideCoral(boolean GoToLeft) {
-        leftSideCoral = GoToLeft;
+        this.leftSideCoral = GoToLeft;
     }
 
     public void cancelTeleopCycle() {
