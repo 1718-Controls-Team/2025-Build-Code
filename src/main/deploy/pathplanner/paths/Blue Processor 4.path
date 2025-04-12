@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.9990794799389153,
-        "y": 2.5633868732659573
+        "x": 3.9207702362646653,
+        "y": 2.5648588922427917
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.80709316156163,
-        "y": 2.638900368921296
+        "x": 1.7287839178873798,
+        "y": 2.6403723878981307
       },
       "isLocked": false,
       "linkedName": "End of Blue Processor 3"
     },
     {
       "anchor": {
-        "x": 1.7371106788684711,
-        "y": 0.6884254384116685
+        "x": 1.7163274460904898,
+        "y": 0.7086691935293652
       },
       "prevControl": {
-        "x": 2.6729417967036504,
-        "y": 1.5082009897232864
+        "x": 2.6521585639256697,
+        "y": 1.528444744840983
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,7 +34,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

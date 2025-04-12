@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7340406344763348,
-        "y": 7.255278653855012
+        "x": 1.6735353797606922,
+        "y": 7.341170214581852
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.4081528015369,
-        "y": 6.60778172727235
+        "x": 2.347647546821257,
+        "y": 6.69367328799919
       },
       "isLocked": false,
       "linkedName": "End Red Topside 2"
@@ -53,7 +53,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

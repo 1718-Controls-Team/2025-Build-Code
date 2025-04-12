@@ -51,7 +51,7 @@ public class AutoL4Scoring extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_coralSubsystem.setcoralRotate(Constants.kCoralAutonL4Pos);
+    m_coralSubsystem.setcoralRotate(Constants.kCoralRotateL4Pos);
     m_isFinished = true;
   }
 

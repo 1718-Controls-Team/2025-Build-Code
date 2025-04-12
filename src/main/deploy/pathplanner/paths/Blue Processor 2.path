@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.2254811610421585,
-        "y": 2.7208945992277735
+        "x": 5.160214901965212,
+        "y": 2.6789241529840306
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.118800602923549,
-        "y": 2.1942307373871937
+        "x": 5.053534343846602,
+        "y": 2.1522602911434507
       },
       "isLocked": false,
       "linkedName": "End of Blue Processor 1"
@@ -34,7 +34,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
