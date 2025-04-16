@@ -49,7 +49,7 @@ public static final String kLimelightName = "limelight-lime";
 public static final double kCoralRotateDeliveryPos = 8.25; //Was 6.19
 public static final double kCoralRotateL4Pos = 8.73; //6.75
 public static final double kCoralAutonL4Pos = 8.28; //6.75
-public static final double kCoralRotateHomePos = 4.2;   
+public static final double kCoralRotateHomePos = 3.5; //4.2  
 public static final double kCoralRotateAlgaePos = 0.5;  
 public static final double kCoralRotatePositionTolerance = 0.5;
 public static final double kCoralUpPos = 0;
@@ -70,22 +70,23 @@ public static final double kElevatorHomePos = 3;
 public static final double kElevatorL2ScoringPos = 5.2; //Was 15
 public static final double kElevatorL3ScoringPos = 19.1;
 public static final double kElevatorL4ScoringPos = 39.9;
-public static final double kElevatorL2AlgaePos = 16.8; //Was 20
-public static final double kElevatorL3AlgaePos = 29.8; //Was 26
+public static final double kElevatorL2AlgaePos = 16.32; //Was 20
+public static final double kElevatorL3AlgaePos = 27.8; //Was 26
 public static final double kElevatorClimbPos = 0;
 
 
 // Algae is -0.441 to 3
 public static final double kAlgaeOutSpinSpeed = -20;
 public static final double kAlgaeInSpinSpeed = 30;
-public static final double kAlgaeIdleSpinSpeed = 5; //10
+public static final double kAlgaeIdleSpinSpeed = 10; //10
 public static final double kAlgaeStopSpinSpeed = 0;
 
-public static final double kAlgaeIntakePos = 3.5;
+public static final double kAlgaeIntakePos = 4.4;
 public static final double kAlgaeClimbPos = 3.336;
-public static final double kAlgaeNetPos = 5.7;
-public static final double kAlgaeHomePos = 1.1;
+public static final double kAlgaeNetPos = 1.807;
+public static final double kAlgaeHomePos = 1.3; // potentially like 7
 public static final double kAlgaeIntakePositionTolerance = 0.05;
+public static final double kAlgaeFloorPickupPos = 5.4;
 
 
 
@@ -262,7 +263,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final double kAlgaeIntakeRotateVoltageClosedLoopRampPeriod = 0;
   public static final double kAlgaeIntakeRotateSupplyCurrentLimit = 40;
 
-  public static final InvertedValue kAlgaeIntakeRotateDirection = InvertedValue.CounterClockwise_Positive;
+  public static final InvertedValue kAlgaeIntakeRotateDirection = InvertedValue.Clockwise_Positive;
 
 
 
@@ -285,7 +286,7 @@ public static final double kAlgaeIntakePositionTolerance = 0.05;
   public static final Distance kPositionTolerance = Centimeter.of(1.0);
   public static final LinearVelocity kSpeedTolerance = InchesPerSecond.of(1);
   public static final Time kEndTriggerDebounce = Seconds.of(0.1);
-  public static final PathConstraints kPathContraints = new PathConstraints(2, 1.75, 1/2 * Math.PI, 1 * Math.PI);
+  public static final PathConstraints kPathContraints = new PathConstraints(4, 3, 3/2 * Math.PI, 2 * Math.PI);
   public static final Time kAutoAlignAdjustTimeout = Seconds.of(1.0);
   
 

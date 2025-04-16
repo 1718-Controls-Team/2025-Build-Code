@@ -93,14 +93,16 @@ public class TeleOpCoralRoutine extends SubsystemBase{
           redSide = false;
         }
 
+        System.out.println("Inside of teleop routine function left side coral is: ");
+        System.out.println(this.leftSideCoral);
         if (redSide == false) {
-           if (leftSideCoral) {
+           if (this.leftSideCoral) {
                 intakePose = new Pose2d(1.657, 7.363, new Rotation2d(Math.toRadians(126)));
             } else {
                 intakePose = new Pose2d(1.700, 0.716, new Rotation2d(Math.toRadians(-126)));
             } 
         } else {
-            if (leftSideCoral) {
+            if (this.leftSideCoral) {
                 intakePose = new Pose2d(16.126, 0.834, new Rotation2d(Math.toRadians(-54)));
             } else {
                 intakePose = new Pose2d(15.931, 7.337, new Rotation2d(Math.toRadians(54)));
@@ -127,6 +129,8 @@ public class TeleOpCoralRoutine extends SubsystemBase{
 
     public void setLeftSideCoral(boolean GoToLeft) {
         this.leftSideCoral = GoToLeft;
+        System.out.println("Changed leftSideCoral to be: ");
+        System.out.println(this.leftSideCoral);
     }
 
     public void cancelTeleopCycle() {

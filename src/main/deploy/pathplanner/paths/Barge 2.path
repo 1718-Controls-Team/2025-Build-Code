@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.997366265064183,
+        "x": 6.1,
         "y": 3.95
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.747366265064183,
-        "y": 3.95
+        "x": 6.348191824358919,
+        "y": 3.919986364408968
       },
       "isLocked": false,
-      "linkedName": "End of Blue Middle 1"
+      "linkedName": "End of Barge 1"
     },
     {
       "anchor": {
-        "x": 5.8148619965567,
-        "y": 4.025
+        "x": 5.874313008319945,
+        "y": 4.0
       },
       "prevControl": {
-        "x": 6.0648619965567,
-        "y": 4.025
+        "x": 5.898671113354502,
+        "y": 4.248810535788028
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue Middle 2"
+      "linkedName": "End of Barge 2"
     }
   ],
   "rotationTargets": [],
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 178.40885972880545
   },
   "reversed": false,
-  "folder": "Blue Middle Folder",
+  "folder": "Middle In Barge",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

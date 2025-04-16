@@ -24,9 +24,11 @@ public class Robot extends TimedRobot {
   private Field2d field2d = new Field2d();
   private Field2d odomField = new Field2d();
   private boolean useMegatag2 = false;
-  LimelightHelpers.PoseEstimate llMeasurement;
+  LimelightHelpers.PoseEstimate llMeasurementReef;
+  LimelightHelpers.PoseEstimate llMeasurementCoral;
 
-  boolean kUseLimelight = true;
+  boolean kUseLimelightReef = true;
+  boolean kUseLimelightCoral = true;
 
   public Robot() {
     m_robotContainer = new RobotContainer();
@@ -38,10 +40,14 @@ public class Robot extends TimedRobot {
     //Only setting the port-forwarding once in the code.
     for (int port = 5800; port <= 5807; port++) {
       PortForwarder.add(port, "limelight-lime.local", port);
+      PortForwarder.add(port, "limelight-coral.local", port);
     }
 
     int[] validIDs = {9, 10, 11, 20, 21, 22};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
+
+    int[] coralIDs = {6, 8, 17, 19};
+    LimelightHelpers.SetFiducialIDFiltersOverride("limelight-coral", coralIDs);
 
     //Set a custom brownout voltage for the RoboRIO.
     //Only works with the RIO2.
@@ -75,20 +81,29 @@ public class Robot extends TimedRobot {
       
     LimelightHelpers.SetRobotOrientation("limelight-lime", headingDeg, 0, 0, 0, 0, 0);
     if (useMegatag2) {
-      llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
+      llMeasurementReef = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
     } else {
-      llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-lime");
+      llMeasurementReef = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-lime");
     }
 
-    if (kUseLimelight && LimelightHelpers.getTV("limelight-lime")) {
+    LimelightHelpers.SetRobotOrientation("limelight-coral", headingDeg, 0, 0, 0, 0, 0);
+    if (kUseLimelightCoral && LimelightHelpers.getTV("limelight-coral")) {
+      llMeasurementCoral = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-coral");
+      
+      if (llMeasurementCoral != null && llMeasurementCoral.tagCount > 0 && (m_robotContainer.drivetrain.getState().Speeds.omegaRadiansPerSecond < 1.8)) {
+        m_robotContainer.drivetrain.addVisionMeasurement(llMeasurementCoral.pose, Utils.fpgaToCurrentTime(llMeasurementCoral.timestampSeconds),VecBuilder.fill(0.1, 0.1, .1));
+      }
+    }
+
+
+    if (kUseLimelightReef && LimelightHelpers.getTV("limelight-lime")) {
       var driveState = m_robotContainer.drivetrain.getState();
+      //LimelightHelpers.PoseEstimate llMeasurementReef = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
       
-      //LimelightHelpers.PoseEstimate llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-lime");
-      
-      field2d.setRobotPose(llMeasurement.pose);
+      field2d.setRobotPose(llMeasurementReef.pose);
       odomField.setRobotPose(driveState.Pose);
-      if (llMeasurement != null && llMeasurement.tagCount > 0 && (m_robotContainer.drivetrain.getState().Speeds.omegaRadiansPerSecond < 1.0)) {
-        m_robotContainer.drivetrain.addVisionMeasurement(llMeasurement.pose, Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds),VecBuilder.fill(0.1, 0.1, .1));
+      if (llMeasurementReef != null && llMeasurementReef.tagCount > 0 && (m_robotContainer.drivetrain.getState().Speeds.omegaRadiansPerSecond < 1.5)) {
+        m_robotContainer.drivetrain.addVisionMeasurement(llMeasurementReef.pose, Utils.fpgaToCurrentTime(llMeasurementReef.timestampSeconds),VecBuilder.fill(0.1, 0.1, .1));
       }
     }
   }
@@ -144,7 +159,7 @@ public class Robot extends TimedRobot {
     //CommandScheduler.getInstance().schedule(m_robotContainer.runInitializeCommand());
     int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-lime", validIDs);
-    kUseLimelight= true;
+    kUseLimelightReef= true;
     useMegatag2 = true;
   }
 

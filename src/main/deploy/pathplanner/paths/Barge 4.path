@@ -3,35 +3,47 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.997366265064183,
-        "y": 3.95
+        "x": 7.144473504573459,
+        "y": 4.399628539331343
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.747366265064183,
-        "y": 3.95
+        "x": 6.286746563006082,
+        "y": 2.7993823116824936
       },
       "isLocked": false,
-      "linkedName": "End of Blue Middle 1"
+      "linkedName": "End of Barge 3"
     },
     {
       "anchor": {
-        "x": 5.8148619965567,
-        "y": 4.025
+        "x": 5.182507078877578,
+        "y": 2.8132394823797906
       },
       "prevControl": {
-        "x": 6.0648619965567,
-        "y": 4.025
+        "x": 5.326109562028424,
+        "y": 2.3989131331953697
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of Blue Middle 2"
+      "linkedName": "End of Barge 4"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "AlgaeL3Position",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "AlgaeL3Position"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 4.0,
     "maxAcceleration": 3.0,
@@ -42,13 +54,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 120.4342357534434
   },
   "reversed": false,
-  "folder": "Blue Middle Folder",
+  "folder": "Middle In Barge",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 17.592424562181304
   },
   "useDefaultConstraints": true
 }

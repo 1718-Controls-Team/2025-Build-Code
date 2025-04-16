@@ -7,6 +7,7 @@ package frc.robot;
 import static edu.wpi.first.units.Units.*;
 
 import java.io.File;
+import java.util.jar.Attributes.Name;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
@@ -38,6 +39,7 @@ import frc.robot.commands.Auton.AutonSpitCoral;
 import frc.robot.commands.Auton.VariableAutos;
 import frc.robot.commands.Climber.ClimberActivate;
 import frc.robot.commands.Climber.ClimberInitialize;
+import frc.robot.commands.ElevatorPositions.AlgaeFloorPos;
 import frc.robot.commands.ElevatorPositions.AlgaeProcessorPos;
 import frc.robot.commands.ElevatorPositions.CoralIntakePosition;
 import frc.robot.commands.ElevatorPositions.L2AlgaePos;
@@ -135,6 +137,7 @@ public class RobotContainer {
         operatorController.povRight().onTrue(new L3AlgaePos(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.rightBumper().onTrue(new AlgaeProcessorPos(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.leftBumper().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
+        operatorController.povDown().onTrue(new AlgaeFloorPos(m_elevator, m_algaeIntake, m_coralIntake));
         
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator));
         driverController.rightTrigger(0.5).whileTrue(new CoralSpit(m_coralIntake));
@@ -164,6 +167,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("L4ScoringPosition", new AutoL4Scoring(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("AlgaeDelivery", new AlgaeDelivery(m_algaeIntake));
         NamedCommands.registerCommand("AlgaePickup", new AlgaePickup(m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("BargeAlgae", new AlgaeSPIT(m_algaeIntake, m_elevator, m_coralIntake));
 
         NamedCommands.registerCommand("CoralPickup", new AutonCoralPickup(m_coralIntake));
         NamedCommands.registerCommand("Home", new Home(m_elevator, m_algaeIntake, m_coralIntake));

@@ -1,0 +1,82 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.182507078877578,
+        "y": 2.8132394823797906
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.522964121158507,
+        "y": 2.5049575626801444
+      },
+      "isLocked": false,
+      "linkedName": "End of Barge 4"
+    },
+    {
+      "anchor": {
+        "x": 5.484375,
+        "y": 2.462328767123288
+      },
+      "prevControl": {
+        "x": 5.213912671232877,
+        "y": 2.8529965753424653
+      },
+      "nextControl": {
+        "x": 5.914618342932503,
+        "y": 1.8408661606652281
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.137747636162183,
+        "y": 4.386946347795033
+      },
+      "prevControl": {
+        "x": 5.917764820309397,
+        "y": 4.016607324474025
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "End of Barge 5"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "AlgaeProcessorPosition",
+      "waypointRelativePos": 1.0915254237288121,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "AlgaeProcessorPosition"
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 17.592424562181304
+  },
+  "reversed": false,
+  "folder": "Middle In Barge",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 120.4342357534434
+  },
+  "useDefaultConstraints": true
+}

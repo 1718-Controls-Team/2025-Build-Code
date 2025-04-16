@@ -1,0 +1,155 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "CoralIntakePosition"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Barge 1"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.1
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutonSpitCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AlgaeL2Position"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Barge 2"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AlgaePickup"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Barge 3"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "BargeAlgae"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.8
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Barge 4"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AlgaePickup"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Barge 5"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "BargeAlgae"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.8
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AlgaeL3Position"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Barge 6"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": false,
+  "folder": null,
+  "choreoAuto": false
+}

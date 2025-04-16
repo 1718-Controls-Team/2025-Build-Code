@@ -58,7 +58,7 @@ public class AlgaeSPIT extends Command {
       case 2:
         if (m_coralIntake.getCoralRotateInPosition()) {
           m_elevator.setElevatorDesiredPosition(Constants.kElevatorL4ScoringPos);
-            if (m_elevator.getElevatorCurrentPosition() > 25) {
+            if (m_elevator.getElevatorCurrentPosition() > 30) {
               m_algaeSubsystem.setAlgaeOutput(-1);  
               m_stateMachine = 0;
             }   

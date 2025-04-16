@@ -72,9 +72,9 @@ public class AlignToReef {
 
         path.preventFlipping = true;
 
-        Command testPath = AutoBuilder.pathfindToPose(waypoint, pathConstraints);
+        //Command testPath = AutoBuilder.pathfindToPose(waypoint, pathConstraints);
 
-        return (/* AutoBuilder.followPath(path) */testPath.andThen( //Run path and then PID the position, probably for fine tuning
+        return (AutoBuilder.followPath(path).andThen( //Run path and then PID the position, probably for fine tuning
             Commands.print("start position PID loop"),
             AutonPIDCommandTest.generateCommand(mSwerve, waypoint, (
                 Constants.kAutoAlignAdjustTimeout

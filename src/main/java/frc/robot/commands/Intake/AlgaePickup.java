@@ -41,7 +41,6 @@ public class AlgaePickup extends Command {
       m_isFinished = false;
       m_coralSubsystem.setcoralRotate(Constants.kCoralUpPos);
       m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeInSpinSpeed);
-      m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeIntakePos);
       /*System.out.println("Dear Sergeant Squirt, " +
        "I am reaching out to you to tell you to please make us win at the next competition " +
        "if you do not do that I will be taking a sledge hammer to you and you will die. Hope this helps. " +
