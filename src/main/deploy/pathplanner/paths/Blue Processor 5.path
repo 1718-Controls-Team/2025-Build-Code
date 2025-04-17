@@ -9,7 +9,7 @@
       "prevControl": null,
       "nextControl": {
         "x": 3.1517409250095554,
-        "y": 2.8435571019533135
+        "y": 2.843557101953314
       },
       "isLocked": false,
       "linkedName": "End of Blue Processor 4"
@@ -53,7 +53,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.4,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

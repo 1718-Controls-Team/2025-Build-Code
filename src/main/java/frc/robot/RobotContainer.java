@@ -7,9 +7,6 @@ package frc.robot;
 import static edu.wpi.first.units.Units.*;
 
 import java.io.File;
-import java.util.jar.Attributes.Name;
-
-import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -17,13 +14,10 @@ import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Drive;
@@ -52,6 +46,7 @@ import frc.robot.commands.Intake.AlgaePickup;
 import frc.robot.commands.Intake.AlgaeSPIT;
 import frc.robot.commands.Intake.CoralPickup;
 import frc.robot.commands.Intake.CoralSpit;
+import frc.robot.commands.ManualControls.AlgaeRotateManual;
 import frc.robot.commands.ManualControls.ClimberManual;
 import frc.robot.commands.ManualControls.CoralRotateManual;
 import frc.robot.commands.ManualControls.ElevatorManual;
@@ -121,6 +116,7 @@ public class RobotContainer {
         m_elevator.setDefaultCommand(new ElevatorManual(m_elevator, operatorController));
         m_coralIntake.setDefaultCommand(new CoralRotateManual(m_coralIntake, operatorController));
         m_tClimber.setDefaultCommand(new ClimberManual(m_tClimber, driverController));
+        m_algaeIntake.setDefaultCommand(new AlgaeRotateManual(m_algaeIntake, operatorController));
         
         driverController.a().whileTrue(drivetrain.applyRequest(() -> brake));
 

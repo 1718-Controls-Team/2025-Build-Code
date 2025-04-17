@@ -315,6 +315,14 @@ public static final double kAlgaeFloorPickupPos = 5.4;
   public static final double[] kRed11L = {(14.587), 2.7197, 240};                          //FIXED
   public static final double[] kRed10R = {(11.539), 3.693, 180};
   public static final double[] kRed10L = {(11.539), 4.04, 180};                               //FIXED
+
+  public static final double[] kBlueBargeProc = {7.144, 5.075, 17.592};
+  public static final double[] kBlueBargeMid = {7.144, 6.170, 17.592};
+  public static final double[] kBlueBargeLeft = {7.144, 7.265, 17.592};
+
+  public static final double[] kRedBargeProc = {10.406, 3.005, -162.408};
+  public static final double[] kRedBargeMid = {10.406, 1.91, -162.408};
+  public static final double[] kRedBargeLeft = {10.406, 0.815, -162.408};
 }
 /*
  * Math

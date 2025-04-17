@@ -53,6 +53,11 @@ public class Drive extends Command {
   private Pose2d RobotPosition;
   private double speedControl = 1;
 
+  private int bargePosition = 0;
+  private double yDifference = 0;
+
+
+
   private double autoAlignFlip = -1;
   Optional<Alliance> allianceColor = DriverStation.getAlliance();
 
@@ -122,8 +127,10 @@ public class Drive extends Command {
     || m_Controller.povDownRight().getAsBoolean() || m_Controller.povUpRight().getAsBoolean())
     && (LimelightHelpers.getTV(Constants.kLimelightName) || UsingLimelight)) 
     {
-      driveRequest = "limelightDrive";
+      driveRequest = "reefAutoAlign";
       UsingLimelight = true;
+    } else if (m_Controller.b().getAsBoolean()) {
+      driveRequest = "bargeAutoAlign";
     } else {
       lockedID = 0;
       driveRequest = "";
@@ -135,7 +142,86 @@ public class Drive extends Command {
     }
 
     switch(driveRequest) {
-      case "limelightDrive":
+      case "bargeAutoAlign":
+      if (allianceColor.get() == Alliance.Blue) { //BLUE SIDE CASE
+        yDifference = RobotPosition.getY() - Constants.kBlueBargeLeft[1];
+        bargePosition = 0;
+        //Following code find the shortest distance from robot position to a barge position
+        if (yDifference > (RobotPosition.getY() - Constants.kBlueBargeMid[1])) {
+          yDifference = RobotPosition.getY() - Constants.kBlueBargeMid[1];
+          bargePosition = 1;
+        }
+        if (yDifference > (RobotPosition.getY() - Constants.kBlueBargeProc[1])) {
+          yDifference = RobotPosition.getY() - Constants.kBlueBargeProc[1];
+          bargePosition = 2;
+        }
+
+        if (bargePosition == 0) {
+          xTarget = Constants.kBlueBargeLeft[0];
+          yTarget = Constants.kBlueBargeLeft[1];
+          rotationTarget = Constants.kBlueBargeLeft[2];
+        } else if (bargePosition == 1) {
+          xTarget = Constants.kBlueBargeMid[0];
+          yTarget = Constants.kBlueBargeMid[1];
+          rotationTarget = Constants.kBlueBargeMid[2];
+        } else {
+          xTarget = Constants.kBlueBargeProc[0];
+          yTarget = Constants.kBlueBargeProc[1];
+          rotationTarget = Constants.kBlueBargeProc[2];
+        }
+      } else { //RED SIDE CASE
+        yDifference = RobotPosition.getY() - Constants.kRedBargeLeft[1];
+        bargePosition = 0;
+        if (yDifference > (RobotPosition.getY() - Constants.kRedBargeMid[1])) {
+          yDifference = RobotPosition.getY() - Constants.kRedBargeMid[1];
+          bargePosition = 1;
+        }
+        if (yDifference > (RobotPosition.getY() - Constants.kRedBargeProc[1])) {
+          yDifference = RobotPosition.getY() - Constants.kRedBargeProc[1];
+          bargePosition = 2;
+        }
+
+        if (bargePosition == 0) {
+          xTarget = Constants.kRedBargeLeft[0];
+          yTarget = Constants.kRedBargeLeft[1];
+          rotationTarget = Constants.kRedBargeLeft[2];
+        } else if (bargePosition == 1) {
+          xTarget = Constants.kRedBargeMid[0];
+          yTarget = Constants.kRedBargeMid[1];
+          rotationTarget = Constants.kRedBargeMid[2];
+        } else {
+          xTarget = Constants.kRedBargeProc[0];
+          yTarget = Constants.kRedBargeProc[1];
+          rotationTarget = Constants.kRedBargeProc[2];
+        }
+      }
+
+        strafeController = strafePID.calculate(RobotPosition.getY(), yTarget);
+        driveController = drivePID.calculate(RobotPosition.getX(), xTarget);
+
+        if (driveController > 1) {
+          driveController = 1;
+        } else if (driveController < -1) {
+          driveController = -1;
+        }
+        if (strafeController > 1) {
+          strafeController = 1;
+        } else if (strafeController < -1) {
+          strafeController = -1;
+        }
+
+        allianceColor = DriverStation.getAlliance();
+        if (allianceColor.get() == Alliance.Red) {
+          autoAlignFlip = -1;
+        } else {
+          autoAlignFlip = 1;
+        }
+
+        m_Drivetrain.setControl(autoAlign.withVelocityX(driveController * MaxSpeed * 0.4 * autoAlignFlip) // Drive forward with
+         .withVelocityY(strafeController * MaxSpeed * 0.4 * autoAlignFlip) // Drive left with negative X (left)
+         .withTargetDirection(new Rotation2d(Math.toRadians(rotationTarget))));
+      break;
+      case "reefAutoAlign":
         //###########################################BEGIN DETERMINING TARGET POINTS################################################
         //###########################################BEGIN DETERMINING TARGET POINTS################################################
         aprilTagID = LimelightHelpers.getFiducialID("limelight-lime");

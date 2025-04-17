@@ -60,6 +60,9 @@ public class AlgaeIntake extends SubsystemBase {
     AlgaeRotate.setControl(AlgaeIntakeVoltage);
   }
 
+  public double getAlgaeRotatePosition() {
+    return AlgaeRotate.getPosition().getValueAsDouble();
+  }
 
   public boolean getAlgaeRotateInPosition(){
     if ((Math.abs(AlgaeRotate.getPosition().getValueAsDouble() - AlgaeIntakeRotateDesiredPos) < Constants.kAlgaeIntakePositionTolerance)){

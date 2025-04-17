@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7174451689996977,
-        "y": 7.264473621601606
+        "x": 1.6847721623244252,
+        "y": 7.2967974794309365
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.3445787827842173,
-        "y": 6.252212794166183
+        "x": 2.3119057761089445,
+        "y": 6.284536651995513
       },
       "isLocked": false,
       "linkedName": "End Red Topside 4"
     },
     {
       "anchor": {
-        "x": 3.48542420546953,
-        "y": 5.216165519957076
+        "x": 3.501790565717652,
+        "y": 5.207149081948047
       },
       "prevControl": {
-        "x": 1.7573060408001646,
-        "y": 6.413978878280353
+        "x": 1.7736724010482867,
+        "y": 6.404962440271324
       },
       "nextControl": null,
       "isLocked": false,
@@ -65,7 +65,7 @@
   ],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.4,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

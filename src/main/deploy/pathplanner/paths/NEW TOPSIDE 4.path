@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.817994134153452,
-        "y": 5.3710520656842355
+        "x": 3.786925860541487,
+        "y": 5.407616936168523
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.483474174887895,
-        "y": 5.578594303379876
+        "x": 2.45240590127593,
+        "y": 5.615159173864163
       },
       "isLocked": false,
       "linkedName": "End Red Topside 3"
     },
     {
       "anchor": {
-        "x": 1.7174451689996977,
-        "y": 7.264473621601606
+        "x": 1.6847721623244252,
+        "y": 7.2967974794309365
       },
       "prevControl": {
-        "x": 2.504005303740768,
-        "y": 5.483716177388258
+        "x": 2.471332297065495,
+        "y": 5.516040035217588
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,7 +34,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 3.4,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
