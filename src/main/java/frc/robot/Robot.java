@@ -158,7 +158,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    int[] coralIDs = {1, 6, 8, 11, 13, 17, 19, 20};
+    int[] coralIDs = {};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-coral", coralIDs);
     //CommandScheduler.getInstance().schedule(m_robotContainer.runInitializeCommand());
     int[] validIDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};

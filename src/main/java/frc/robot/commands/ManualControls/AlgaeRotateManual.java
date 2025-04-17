@@ -39,7 +39,7 @@ public class AlgaeRotateManual extends Command {
   @Override
   public void execute() {
     if ((m_operator.getRightTriggerAxis() > 0.2) || (m_operator.getLeftTriggerAxis() > 0.2)) {
-      m_algaeSubsystem.setAlgaeRotatePos(m_algaeSubsystem.getAlgaeRotatePosition() + (1 * m_operator.getRightTriggerAxis()) - (1 * m_operator.getLeftTriggerAxis()));
+      m_algaeSubsystem.setAlgaeRotatePos(m_algaeSubsystem.getAlgaeRotatePosition() + (0.3 * m_operator.getRightTriggerAxis()) - (0.3 * m_operator.getLeftTriggerAxis()));
       flag = false;
     } else if (flag == false){
       m_algaeSubsystem.setAlgaeRotatePos(m_algaeSubsystem.getAlgaeRotatePosition());

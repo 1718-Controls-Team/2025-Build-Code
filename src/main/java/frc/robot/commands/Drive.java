@@ -54,6 +54,7 @@ public class Drive extends Command {
   private double speedControl = 1;
 
   private int bargePosition = 0;
+  private int coralStation = 0;
   private double yDifference = 0;
 
 
@@ -131,7 +132,9 @@ public class Drive extends Command {
       UsingLimelight = true;
     } else if (m_Controller.b().getAsBoolean()) {
       driveRequest = "bargeAutoAlign";
-    } else {
+    } else if (m_Controller.start().getAsBoolean()) {
+      driveRequest = "coralAutoAlign";
+    } else { 
       lockedID = 0;
       driveRequest = "";
       if (UsingLimelight = true) {
@@ -143,17 +146,27 @@ public class Drive extends Command {
 
     switch(driveRequest) {
       case "bargeAutoAlign":
-      if (allianceColor.get() == Alliance.Blue) { //BLUE SIDE CASE
-        yDifference = RobotPosition.getY() - Constants.kBlueBargeLeft[1];
+        yDifference = Math.pow(RobotPosition.getX() - Constants.kBlueBargeLeft[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueBargeLeft[1], 2);
         bargePosition = 0;
         //Following code find the shortest distance from robot position to a barge position
-        if (yDifference > (RobotPosition.getY() - Constants.kBlueBargeMid[1])) {
-          yDifference = RobotPosition.getY() - Constants.kBlueBargeMid[1];
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kBlueBargeMid[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueBargeMid[1], 2))) {
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kBlueBargeMid[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueBargeMid[1], 2);
           bargePosition = 1;
         }
-        if (yDifference > (RobotPosition.getY() - Constants.kBlueBargeProc[1])) {
-          yDifference = RobotPosition.getY() - Constants.kBlueBargeProc[1];
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kBlueBargeProc[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueBargeProc[1], 2))) {
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kBlueBargeProc[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueBargeProc[1], 2);
           bargePosition = 2;
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedBargeLeft[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedBargeLeft[1], 2))) {
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kRedBargeLeft[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedBargeLeft[1], 2);
+          bargePosition = 3;
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedBargeMid[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedBargeMid[1], 2))) {
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kRedBargeMid[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedBargeMid[1], 2);
+          bargePosition = 4;
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedBargeProc[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedBargeProc[1], 2))) {
+          bargePosition = 5;
         }
 
         if (bargePosition == 0) {
@@ -164,28 +177,15 @@ public class Drive extends Command {
           xTarget = Constants.kBlueBargeMid[0];
           yTarget = Constants.kBlueBargeMid[1];
           rotationTarget = Constants.kBlueBargeMid[2];
-        } else {
+        } else if (bargePosition == 2) {
           xTarget = Constants.kBlueBargeProc[0];
           yTarget = Constants.kBlueBargeProc[1];
           rotationTarget = Constants.kBlueBargeProc[2];
-        }
-      } else { //RED SIDE CASE
-        yDifference = RobotPosition.getY() - Constants.kRedBargeLeft[1];
-        bargePosition = 0;
-        if (yDifference > (RobotPosition.getY() - Constants.kRedBargeMid[1])) {
-          yDifference = RobotPosition.getY() - Constants.kRedBargeMid[1];
-          bargePosition = 1;
-        }
-        if (yDifference > (RobotPosition.getY() - Constants.kRedBargeProc[1])) {
-          yDifference = RobotPosition.getY() - Constants.kRedBargeProc[1];
-          bargePosition = 2;
-        }
-
-        if (bargePosition == 0) {
+        } else if (bargePosition == 3) {
           xTarget = Constants.kRedBargeLeft[0];
           yTarget = Constants.kRedBargeLeft[1];
           rotationTarget = Constants.kRedBargeLeft[2];
-        } else if (bargePosition == 1) {
+        } else if (bargePosition == 4) {
           xTarget = Constants.kRedBargeMid[0];
           yTarget = Constants.kRedBargeMid[1];
           rotationTarget = Constants.kRedBargeMid[2];
@@ -194,7 +194,67 @@ public class Drive extends Command {
           yTarget = Constants.kRedBargeProc[1];
           rotationTarget = Constants.kRedBargeProc[2];
         }
-      }
+
+        strafeController = strafePID.calculate(RobotPosition.getY(), yTarget);
+        driveController = drivePID.calculate(RobotPosition.getX(), xTarget);
+
+        if (driveController > 1) {
+          driveController = 1;
+        } else if (driveController < -1) {
+          driveController = -1;
+        }
+        if (strafeController > 1) {
+          strafeController = 1;
+        } else if (strafeController < -1) {
+          strafeController = -1;
+        }
+
+        allianceColor = DriverStation.getAlliance();
+        if (allianceColor.get() == Alliance.Red) {
+          autoAlignFlip = -1;
+        } else {
+          autoAlignFlip = 1;
+        }
+
+        m_Drivetrain.setControl(autoAlign.withVelocityX(driveController * MaxSpeed * 0.4 * autoAlignFlip) // Drive forward with
+         .withVelocityY(strafeController * MaxSpeed * 0.4 * autoAlignFlip) // Drive left with negative X (left)
+         .withTargetDirection(new Rotation2d(Math.toRadians(rotationTarget))));
+      break;
+      case "coralAutoAlign":
+        yDifference = (Math.pow(RobotPosition.getX() - Constants.kBlueLeftCoralStation[0], 2) + Math.pow((RobotPosition.getY() - Constants.kBlueLeftCoralStation[1]), 2));
+        coralStation = 0;
+        //Following code find the shortest distance from robot position to a barge position
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kBlueRightCoralStation[0], 2) + Math.pow((RobotPosition.getY() - Constants.kBlueRightCoralStation[1]), 2))) {
+          yDifference = (Math.pow(RobotPosition.getX() - Constants.kBlueRightCoralStation[0], 2) + Math.pow((RobotPosition.getY() - Constants.kBlueRightCoralStation[1]), 2));
+          coralStation = 1;
+        } 
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedLeftCoralStation[0], 2) + Math.pow((RobotPosition.getY() - Constants.kRedLeftCoralStation[1]), 2))) {
+          yDifference = (Math.pow(RobotPosition.getX() - Constants.kRedLeftCoralStation[0], 2) + Math.pow((RobotPosition.getY() - Constants.kRedLeftCoralStation[1]), 2));
+          coralStation = 2;
+        } 
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedRightCoralStation[0], 2) + Math.pow((RobotPosition.getY() - Constants.kRedRightCoralStation[1]), 2))) {
+          yDifference = (Math.pow(RobotPosition.getX() - Constants.kRedRightCoralStation[0], 2) + Math.pow((RobotPosition.getY() - Constants.kRedRightCoralStation[1]), 2));
+          coralStation = 3;
+        }
+
+        if (coralStation == 0) {
+          xTarget = Constants.kBlueLeftCoralStation[0];
+          yTarget = Constants.kBlueLeftCoralStation[1];
+          rotationTarget = Constants.kBlueLeftCoralStation[2];
+        } else if (coralStation == 1) {
+          xTarget = Constants.kBlueRightCoralStation[0];
+          yTarget = Constants.kBlueRightCoralStation[1];
+          rotationTarget = Constants.kBlueRightCoralStation[2];
+        } else if (coralStation == 2) {
+          xTarget = Constants.kRedLeftCoralStation[0];
+          yTarget = Constants.kRedLeftCoralStation[1];
+          rotationTarget = Constants.kRedLeftCoralStation[2];
+        } else {
+          xTarget = Constants.kRedRightCoralStation[0];
+          yTarget = Constants.kRedRightCoralStation[1];
+          rotationTarget = Constants.kRedRightCoralStation[2];
+        }
+      
 
         strafeController = strafePID.calculate(RobotPosition.getY(), yTarget);
         driveController = drivePID.calculate(RobotPosition.getX(), xTarget);

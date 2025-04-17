@@ -48,14 +48,14 @@ public static final String kLimelightName = "limelight-lime";
 // Coral rotate position range is 0-11
 public static final double kCoralRotateDeliveryPos = 8.25; //Was 6.19
 public static final double kCoralRotateL4Pos = 8.73; //6.75
-public static final double kCoralAutonL4Pos = 8.28; //6.75
+public static final double kCoralAutonL4Pos = 8.28; //8.28
 public static final double kCoralRotateHomePos = 3.5; //4.2  
 public static final double kCoralRotateAlgaePos = 0.5;  
 public static final double kCoralRotatePositionTolerance = 0.5;
 public static final double kCoralUpPos = 0;
 public static final double kCoralClimbPos = 5.929;
 
-public static final double kCoralOutSpinSpeed = -28;
+public static final double kCoralOutSpinSpeed = -14; //-28
 public static final double kCoralInSpinSpeed = 35;
 public static final double kCoralHoldSpinSpeed = 5;
 public static final double kCoralStopSpinSpeed = 0;
@@ -68,7 +68,7 @@ public static final double kElevatorCoralIntakePos = 0;
 public static final double kElevatorAlgaeIntakePos = 2.5;
 public static final double kElevatorHomePos = 3;
 public static final double kElevatorL2ScoringPos = 5.2; //Was 15
-public static final double kElevatorL3ScoringPos = 19.1;
+public static final double kElevatorL3ScoringPos = 18.17;
 public static final double kElevatorL4ScoringPos = 39.9;
 public static final double kElevatorL2AlgaePos = 16.32; //Was 20
 public static final double kElevatorL3AlgaePos = 27.8; //Was 26
@@ -84,7 +84,7 @@ public static final double kAlgaeStopSpinSpeed = 0;
 public static final double kAlgaeIntakePos = 4.4;
 public static final double kAlgaeClimbPos = 3.336;
 public static final double kAlgaeNetPos = 1.807;
-public static final double kAlgaeHomePos = 1.3; // potentially like 7
+public static final double kAlgaeHomePos = 0.2; // potentially like 7
 public static final double kAlgaeIntakePositionTolerance = 0.05;
 public static final double kAlgaeFloorPickupPos = 5.4;
 
@@ -310,19 +310,25 @@ public static final double kAlgaeFloorPickupPos = 5.4;
   public static final double[] kRed7R = {(14.56), 4.362, 0}; 
   public static final double[] kRed7L = {(14.587), 4.04, 0};                                //FIXED
   public static final double[] kRed6R = {(14.1), 2.91, 300};                           //RIGHT FIXED
-  public static final double[] kRed6L = {(13.825), 2.7197, 300};                          //THIS IS THE OG FIXED 
+  public static final double[] kRed6L = {(13.6), 2.67, 300};                          //THIS IS THE OG FIXED 
   public static final double[] kRed11R = {(12.026), 2.91, 240};                         //RIGHT FIXED
   public static final double[] kRed11L = {(14.587), 2.7197, 240};                          //FIXED
   public static final double[] kRed10R = {(11.539), 3.693, 180};
   public static final double[] kRed10L = {(11.539), 4.04, 180};                               //FIXED
 
-  public static final double[] kBlueBargeProc = {7.144, 5.075, 17.592};
-  public static final double[] kBlueBargeMid = {7.144, 6.170, 17.592};
-  public static final double[] kBlueBargeLeft = {7.144, 7.265, 17.592};
+  public static final double[] kBlueBargeProc = {7.144, 5.075, 162.408};
+  public static final double[] kBlueBargeMid = {7.144, 6.170, 162.408};
+  public static final double[] kBlueBargeLeft = {7.144, 7.265, -162.408};
 
-  public static final double[] kRedBargeProc = {10.406, 3.005, -162.408};
-  public static final double[] kRedBargeMid = {10.406, 1.91, -162.408};
-  public static final double[] kRedBargeLeft = {10.406, 0.815, -162.408};
+  public static final double[] kRedBargeProc = {10.406, 3.005, 17.592};
+  public static final double[] kRedBargeMid = {10.406, 1.91, 17.592};
+  public static final double[] kRedBargeLeft = {10.406, 0.815, 17.592};
+
+  public static final double[] kBlueLeftCoralStation = {1.708, 7.315, 126};
+  public static final double[] kBlueRightCoralStation = {1.716, 0.709, -126};
+
+  public static final double[] kRedLeftCoralStation = {15.842, 0.765, -54};
+  public static final double[] kRedRightCoralStation = {15.834, 7.371, 54};
 }
 /*
  * Math

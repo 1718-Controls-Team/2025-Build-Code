@@ -135,6 +135,7 @@ public class RobotContainer {
         operatorController.leftBumper().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.povDown().onTrue(new AlgaeFloorPos(m_elevator, m_algaeIntake, m_coralIntake));
         
+        driverController.start().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator));
         driverController.rightTrigger(0.5).whileTrue(new CoralSpit(m_coralIntake));
         driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake));
@@ -161,6 +162,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("L2ScoringPosition", new L2ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L3ScoringPosition", new L3ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("L4ScoringPosition", new AutoL4Scoring(m_elevator, m_algaeIntake, m_coralIntake));
+        NamedCommands.registerCommand("BetterL4Position", new L4ScoringPosition(m_elevator, m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("AlgaeDelivery", new AlgaeDelivery(m_algaeIntake));
         NamedCommands.registerCommand("AlgaePickup", new AlgaePickup(m_algaeIntake, m_coralIntake));
         NamedCommands.registerCommand("BargeAlgae", new AlgaeSPIT(m_algaeIntake, m_elevator, m_coralIntake));
