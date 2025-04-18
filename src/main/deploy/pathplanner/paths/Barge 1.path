@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 6.1171328349183804,
-        "y": 3.95
+        "x": 5.97,
+        "y": 3.93
       },
       "prevControl": {
-        "x": 6.517050848546953,
-        "y": 3.952132102390442
+        "x": 6.369918013628572,
+        "y": 3.932132102390442
       },
       "nextControl": null,
       "isLocked": false,
@@ -77,7 +77,7 @@
       "command": {
         "type": "named",
         "data": {
-          "name": "L4ScoringPosition"
+          "name": "BetterL4Position"
         }
       }
     }

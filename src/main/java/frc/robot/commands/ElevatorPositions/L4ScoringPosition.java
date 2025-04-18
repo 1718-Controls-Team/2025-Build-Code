@@ -42,7 +42,7 @@ public class L4ScoringPosition extends Command {
   @Override
   public void initialize() {
     m_isFinished = false;
-    m_CoralIntake.setcoralRotate(1);
+    m_CoralIntake.setcoralRotate(3);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL4ScoringPos);
     

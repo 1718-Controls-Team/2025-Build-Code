@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.1171328349183804,
-        "y": 3.95
+        "x": 5.97,
+        "y": 3.93
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.367132804999682,
-        "y": 3.9501223084150094
+        "x": 6.219999970081301,
+        "y": 3.9301223084150094
       },
       "isLocked": false,
       "linkedName": "End of Barge 1"

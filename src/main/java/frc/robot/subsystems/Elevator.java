@@ -54,7 +54,7 @@ public class Elevator extends SubsystemBase {
 
 
   public boolean getElevatorInPosition(){
-    if ((Math.abs(m_Elevator1.getPosition().getValueAsDouble() - ElevatorDesiredPos) < 5)){
+    if ((Math.abs(m_Elevator1.getPosition().getValueAsDouble() - ElevatorDesiredPos) < 15)){
       return true;
     } else {
       return false;

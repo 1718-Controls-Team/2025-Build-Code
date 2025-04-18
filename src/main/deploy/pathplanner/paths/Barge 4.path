@@ -20,8 +20,8 @@
         "y": 2.8421445009813544
       },
       "prevControl": {
-        "x": 5.56226198848835,
-        "y": 2.013549598268878
+        "x": 5.634631849315068,
+        "y": 1.771147260273973
       },
       "nextControl": null,
       "isLocked": false,
@@ -35,7 +35,7 @@
       "minWaypointRelativePos": 0.37288135593220334,
       "maxWaypointRelativePos": 1.0,
       "constraints": {
-        "maxVelocity": 4.0,
+        "maxVelocity": 1.5,
         "maxAcceleration": 2.4,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
@@ -47,8 +47,14 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
+      "name": "AlgaeProcessorPosition",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
       "name": "AlgaeL3Position",
-      "waypointRelativePos": 0.0,
+      "waypointRelativePos": 0.5118644067796618,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",

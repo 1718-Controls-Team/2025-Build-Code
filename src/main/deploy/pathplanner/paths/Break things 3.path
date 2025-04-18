@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.6735353797606922,
-        "y": 7.341170214581852
+        "x": 1.6602292506676344,
+        "y": 7.330089814343048
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.347647546821257,
-        "y": 6.69367328799919
+        "x": 2.334341417728199,
+        "y": 6.682592887760387
       },
       "isLocked": false,
       "linkedName": "End Red Topside 2"
@@ -58,7 +58,7 @@
       "command": {
         "type": "named",
         "data": {
-          "name": "BetterL4Position"
+          "name": "L4ScoringPosition"
         }
       }
     }
