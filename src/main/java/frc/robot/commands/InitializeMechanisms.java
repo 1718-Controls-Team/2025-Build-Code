@@ -46,21 +46,21 @@ public class InitializeMechanisms extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeStopSpinSpeed); 
-    m_coralSubsystem.setcoralRotate(Constants.kCoralRotateHomePos);  
-    m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);  
-    m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
-    m_climberSubsystem.setTClimberPosition(-60);
-    m_coralSubsystem.setL4CoralSpitMode(false);
+    //m_algaeSubsystem.setAlgaeSpinPower(Constants.kAlgaeStopSpinSpeed); 
+    //m_coralSubsystem.setcoralRotate(Constants.kCoralRotateHomePos);  
+    //m_coralSubsystem.setcoralSpinPower(Constants.kCoralStopSpinSpeed);  
+    //m_elevatorSubsystem.setElevatorDesiredPosition(Constants.kElevatorHomePos);
+    //m_climberSubsystem.setTClimberPosition(-60);
+    //m_coralSubsystem.setL4CoralSpitMode(false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-        if (m_elevatorSubsystem.getElevatorInPosition()) {
-          m_algaeSubsystem.setAlgaeRotatePos(Constants.kAlgaeHomePos);  
+        //if (m_elevatorSubsystem.getElevatorInPosition()) {
+          m_algaeSubsystem.setAlgaeRotatePos(4);  
           m_isFinished = true;
-        }
+        //}
  
   }
 

@@ -319,10 +319,16 @@ public static final double kAlgaeFloorPickupPos = 5.4;
   public static final double[] kBlueBargeProc = {7.144, 5.075, 162.408};
   public static final double[] kBlueBargeMid = {7.144, 6.170, 162.408};
   public static final double[] kBlueBargeLeft = {7.144, 7.265, -162.408};
+  public static final double[] kBlueFarBargeProc = {10.406, 5.075, -17.592};
+  public static final double[] kBlueFarBargeMid = {10.406, 6.170, 17.592};
+  public static final double[] kBlueFarBargeLeft = {10.406, 7.265, 17.592};
 
   public static final double[] kRedBargeProc = {10.406, 3.005, 17.592};
   public static final double[] kRedBargeMid = {10.406, 1.91, 17.592};
   public static final double[] kRedBargeLeft = {10.406, 0.815, 17.592};
+  public static final double[] kRedFarBargeProc = {7.144, 3.005, -162.408};
+  public static final double[] kRedFarBargeMid = {7.144, 1.91, 162.408};
+  public static final double[] kRedFarBargeLeft = {7.144, 0.815, 162.408};
 
   public static final double[] kBlueLeftCoralStation = {1.708, 7.315, 126};
   public static final double[] kBlueRightCoralStation = {1.716, 0.709, -126};

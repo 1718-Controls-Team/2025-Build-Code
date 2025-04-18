@@ -142,7 +142,7 @@ public class RobotContainer {
         driverController.leftBumper().whileTrue(new AlgaePickup(m_algaeIntake, m_coralIntake));
         driverController.a().onTrue(new ClimberInitialize(m_elevator, m_algaeIntake, m_coralIntake, m_tClimber));
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
-        driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake, m_elevator, m_coralIntake));
+        driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake, m_elevator, m_coralIntake)).onFalse(new AlgaeFloorPos(m_elevator, m_algaeIntake, m_coralIntake));
 
         /* operatorController.back().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(true));
         operatorController.start().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(false));

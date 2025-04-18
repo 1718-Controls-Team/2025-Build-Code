@@ -126,6 +126,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    CommandScheduler.getInstance().schedule(m_robotContainer.runInitializeCommand());
     useMegatag2 = true;
     int[] coralIDs = {21};
     LimelightHelpers.SetFiducialIDFiltersOverride("limelight-coral", coralIDs);

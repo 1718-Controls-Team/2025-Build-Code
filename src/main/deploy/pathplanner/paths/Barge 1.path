@@ -16,11 +16,11 @@
     },
     {
       "anchor": {
-        "x": 6.15,
+        "x": 6.1171328349183804,
         "y": 3.95
       },
       "prevControl": {
-        "x": 6.549918013628573,
+        "x": 6.517050848546953,
         "y": 3.952132102390442
       },
       "nextControl": null,
@@ -71,7 +71,7 @@
       }
     },
     {
-      "name": "L4ScoringPosition",
+      "name": "BetterL4Position",
       "waypointRelativePos": 0.05423728813559317,
       "endWaypointRelativePos": null,
       "command": {

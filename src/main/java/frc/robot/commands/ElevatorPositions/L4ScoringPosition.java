@@ -41,6 +41,7 @@ public class L4ScoringPosition extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_isFinished = false;
     m_CoralIntake.setcoralRotate(1);
     m_AlgaeIntake.setAlgaeRotatePos(Constants.kAlgaeHomePos);
     m_Elevator.setElevatorDesiredPosition(Constants.kElevatorL4ScoringPos);
@@ -51,10 +52,10 @@ public class L4ScoringPosition extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //if (m_Elevator.getElevatorInPosition()) {
+    if (m_Elevator.getElevatorInPosition()) {
       m_CoralIntake.setcoralRotate(Constants.kCoralRotateL4Pos);
       m_isFinished = true;
-    //}
+    }
   }
 
   // Called once the command ends or is interrupted.

@@ -167,6 +167,30 @@ public class Drive extends Command {
         }
         if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedBargeProc[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedBargeProc[1], 2))) {
           bargePosition = 5;
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kRedBargeProc[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedBargeProc[1], 2);
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kBlueFarBargeLeft[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueFarBargeLeft[1], 2))) {
+          bargePosition = 6;
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kBlueFarBargeLeft[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueFarBargeLeft[1], 2);
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kBlueFarBargeMid[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueFarBargeMid[1], 2))) {
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kBlueFarBargeMid[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueFarBargeMid[1], 2);
+          bargePosition = 7;
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kBlueFarBargeProc[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueFarBargeProc[1], 2))) {
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kBlueFarBargeProc[0], 2) + Math.pow(RobotPosition.getY() - Constants.kBlueFarBargeProc[1], 2);
+          bargePosition = 8;
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedFarBargeLeft[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedFarBargeLeft[1], 2))) {
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kRedFarBargeLeft[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedFarBargeLeft[1], 2);
+          bargePosition = 9;
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedFarBargeMid[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedFarBargeMid[1], 2))) {
+          yDifference = Math.pow(RobotPosition.getX() - Constants.kRedFarBargeMid[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedFarBargeMid[1], 2);
+          bargePosition = 10;
+        }
+        if (yDifference > (Math.pow(RobotPosition.getX() - Constants.kRedFarBargeProc[0], 2) + Math.pow(RobotPosition.getY() - Constants.kRedFarBargeProc[1], 2))) {
+          bargePosition = 11;
         }
 
         if (bargePosition == 0) {
@@ -189,10 +213,34 @@ public class Drive extends Command {
           xTarget = Constants.kRedBargeMid[0];
           yTarget = Constants.kRedBargeMid[1];
           rotationTarget = Constants.kRedBargeMid[2];
-        } else {
+        } else if (bargePosition == 5) {
           xTarget = Constants.kRedBargeProc[0];
           yTarget = Constants.kRedBargeProc[1];
           rotationTarget = Constants.kRedBargeProc[2];
+        } else if (bargePosition == 6) { // BEGIN CHANGING
+          xTarget = Constants.kBlueFarBargeLeft[0];
+          yTarget = Constants.kBlueFarBargeLeft[1];
+          rotationTarget = Constants.kBlueFarBargeLeft[2];
+        } else if (bargePosition == 7) {
+          xTarget = Constants.kBlueFarBargeMid[0];
+          yTarget = Constants.kBlueFarBargeMid[1];
+          rotationTarget = Constants.kBlueBargeMid[2];
+        } else if (bargePosition == 8) {
+          xTarget = Constants.kBlueFarBargeProc[0];
+          yTarget = Constants.kBlueFarBargeProc[1];
+          rotationTarget = Constants.kBlueFarBargeProc[2];
+        } else if (bargePosition == 9) {
+          xTarget = Constants.kRedFarBargeLeft[0];
+          yTarget = Constants.kRedFarBargeLeft[1];
+          rotationTarget = Constants.kRedFarBargeLeft[2];
+        } else if (bargePosition == 10) {
+          xTarget = Constants.kRedFarBargeMid[0];
+          yTarget = Constants.kRedFarBargeMid[1];
+          rotationTarget = Constants.kRedFarBargeMid[2];
+        } else {
+          xTarget = Constants.kRedFarBargeProc[0];
+          yTarget = Constants.kRedFarBargeProc[1];
+          rotationTarget = Constants.kRedFarBargeProc[2];
         }
 
         strafeController = strafePID.calculate(RobotPosition.getY(), yTarget);
