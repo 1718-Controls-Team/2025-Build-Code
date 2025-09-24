@@ -51,7 +51,7 @@ public class CoralIntake extends SubsystemBase {
   }
 
   public void setL4CoralSpitMode(boolean scoringL4) {
-    ScoringL4 = scoringL4;
+    //ScoringL4 = scoringL4;
   }
 
   public boolean getL4CoralSpitMode() {
@@ -60,13 +60,13 @@ public class CoralIntake extends SubsystemBase {
 
 
   public void setcoralSpinPower(double speed) {
-    m_coralSpin.setControl(coralSpinVelocityRequest.withVelocity(speed));
+    //m_coralSpin.setControl(coralSpinVelocityRequest.withVelocity(speed));
   }
 
 
   public void setcoralRotate(double position) {
-    m_coralRotate.setControl(coralRotationRequest.withPosition(position));
-    CoralIntakeRotateDesiredPos = position;
+    //m_coralRotate.setControl(coralRotationRequest.withPosition(position));
+    //CoralIntakeRotateDesiredPos = position;
   }
 
 

@@ -7,6 +7,8 @@ package frc.robot;
 import static edu.wpi.first.units.Units.*;
 
 import java.io.File;
+
+import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -63,6 +65,11 @@ public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
     //private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
 
+    private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
+    private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
+    .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
+    .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
+
     /* Setting up bindings for necessary control of the swerve drive platform */
     private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
 
@@ -109,8 +116,13 @@ public class RobotContainer {
         // Note that X is defined as forward according to WPILib convention,
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
+            drivetrain.applyRequest(() ->
+                drive.withVelocityX(-driverController.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
+                    .withVelocityY(-driverController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+                    .withRotationalRate(-driverController.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
+            )
             // Drivetrain will execute this command periodically
-            new Drive(drivetrain, driverController, m_elevator/*, m_coralIntake*/)
+            //new Drive(drivetrain, driverController, m_elevator/*, m_coralIntake*/)
         );
 
         m_elevator.setDefaultCommand(new ElevatorManual(m_elevator, operatorController));
@@ -135,7 +147,6 @@ public class RobotContainer {
         operatorController.leftBumper().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         operatorController.povDown().onTrue(new AlgaeFloorPos(m_elevator, m_algaeIntake, m_coralIntake));
         
-        driverController.start().onTrue(new CoralIntakePosition(m_elevator, m_algaeIntake, m_coralIntake));
         driverController.leftTrigger(0.5).whileTrue(new CoralPickup(m_coralIntake, m_elevator));
         driverController.rightTrigger(0.5).whileTrue(new CoralSpit(m_coralIntake));
         driverController.rightBumper().whileTrue(new AlgaeDelivery(m_algaeIntake));
@@ -144,14 +155,14 @@ public class RobotContainer {
         driverController.y().whileTrue(new ClimberActivate(m_tClimber));
         driverController.x().whileTrue(new AlgaeSPIT(m_algaeIntake, m_elevator, m_coralIntake)).onFalse(new AlgaeFloorPos(m_elevator, m_algaeIntake, m_coralIntake));
 
-        /* operatorController.back().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(true));
+        operatorController.back().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(true));
         operatorController.start().onTrue(m_RunCoralPlease.setLeftSideCoralCommand(false));
 
         driverController.povDownLeft().or(driverController.povLeft().or(driverController.povUpLeft()))
         .whileTrue(m_RunCoralPlease.generateTeleOpCycle(true)).onFalse(m_RunCoralPlease.cancelTeleopCycleCommand());
         
         driverController.povDownRight().or(driverController.povRight().or(driverController.povUpRight()))
-        .whileTrue(m_RunCoralPlease.generateTeleOpCycle(false)).onFalse(m_RunCoralPlease.cancelTeleopCycleCommand()); */
+        .whileTrue(m_RunCoralPlease.generateTeleOpCycle(false)).onFalse(m_RunCoralPlease.cancelTeleopCycleCommand()); 
     }
 
     private void registerAutonCommands() {
